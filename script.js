@@ -22,3 +22,13 @@ function addEntry() {
 
 
 }
+
+function saveEntries() {
+    $.post('server.php', { save: todos }).done(function () {
+        console.log('Success');
+    }).fail(function () {
+        alert('FAIL');
+    }).always(function () {
+        console.log('Tegime midagi AJAXiga');
+    });
+}
