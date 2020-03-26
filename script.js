@@ -7,7 +7,6 @@ class Todo {
 }
 
 const todos = [];
-const url = 'server.php';
 
 // Funktsioon kutsutakse esile faili laadides
 loadEntries();
@@ -24,23 +23,20 @@ function addEntry() {
 
 }
 
+const url = 'server.php';
 const data = {
     title: 'test',
-    desc: 'ladida',
+    desc: 'sadawdawdwadaw',
 };
-  
-async function postData(url, data) {
-    const response = await fetch(url, {
-        method: 'POST',
-        /*
-        headers: { 
-            'Content-Type': 'application/x-www-form-urlencoded', 
-        },
-        */
-        body: '?save=' + data,
-       
+
+async function saveData(url, data) {
+    return new Promise(function (resolve, reject) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', url);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () { this.status >= 200 && this.status < 300 ? resolve : reject }
+        xhr.onerror = reject;
+        xhr.send('save=' + JSON.stringify(data));
     });
-    return await response;
 }
-  
-postData(url, data).then((result) => console.log(result));
+saveData(url, data).then((result) => console.log(result));
