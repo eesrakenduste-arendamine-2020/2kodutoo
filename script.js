@@ -1,8 +1,8 @@
 class Todo {
-    constructor(title, description, date) {
+    constructor(title, description, dueDate) {
         this.title = title;
         this.description = description;
-        this.date = date;
+        this.dueDate = dueDate;
     }
 }
 
@@ -18,7 +18,7 @@ function loadEntries() {
 function addEntry() {
     const title = document.getElementById('title').value;
     const desc = document.getElementById('description').value;
-    const date = document.getElementById('date').value;
+    const date = document.getElementById('dueDate').value;
 
 
 }
@@ -34,7 +34,7 @@ async function saveData(url, data) {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', url);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.onload = function () { this.status >= 200 && this.status < 300 ? resolve : reject }
+        xhr.onload = function () { this.status >= 200 && this.status < 300 ? resolve : reject; }
         xhr.onerror = reject;
         xhr.send('save=' + JSON.stringify(data));
     });
