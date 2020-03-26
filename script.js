@@ -7,7 +7,7 @@ class Todo {
 }
 
 const todos = [];
-const url = 'https://httpbin.org/post';
+const url = 'server.php';
 
 // Funktsioon kutsutakse esile faili laadides
 loadEntries();
