@@ -26,17 +26,24 @@ function addEntry() {
 const url = 'server.php';
 const data = {
     title: 'test',
-    desc: 'sadawdawdwadaw',
+    desc: 'sadawdawdw2adaw',
 };
 
-async function saveData(url, data) {
+function saveData(url, data) {
     return new Promise(function (resolve, reject) {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', url);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.onload = function () { this.status >= 200 && this.status < 300 ? resolve : reject; }
+        xhr.onload = function () {
+            if (this.status >= 200 && this.status < 300) {
+                resolve();
+            } else {
+                reject(new Error());
+            };
+        }
         xhr.onerror = reject;
         xhr.send('save=' + JSON.stringify(data));
     });
 }
-saveData(url, data).then((result) => console.log(result));
+saveData(url, data)
+    .catch((err) => console.log(err));
