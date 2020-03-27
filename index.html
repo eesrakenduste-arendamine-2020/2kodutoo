@@ -10,27 +10,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script defer src="script.js"></script>
 
 
     <title>ToDo</title>
 </head>
+
 <body>
     <div id="container">
-        <div id="inputContainer">
-        <input type="text" id="title">
-        <input type="text" id="description">
-        <input type="date" id="dueDate">
-        <input type="button" id="add" value="Lisa">
+        <div id="input-container">
+            <input type="text" id="title">
+            <input type="text" id="description">
+            <input type="date" id="dueDate">
+            <input type="button" id="add" value="Lisa">
         </div>
     </div>
     <div id="container2">
-        <div id="sortContainer">
-            <button id="sort1" value="TIITEL" class="nool">
-            <button id="sort2" value="KUUPÄEV" class="nool">
-        </div> 
+        <div id="sort-container">
+            <div class="sort-text">TIITEL</div>
+            <button id="sort-title" class="sort-button"></button>
+            <div class="sort-text">KUUPÄEV</div>
+            <button id="sort-date" class="sort-button"></button>
+        </div>
         <div id="todos">ToDod</div>
     </div>
 </body>
+
 </html>

@@ -1,8 +1,9 @@
 class Todo {
-    constructor(title, description, dueDate) {
+    constructor(title, description, dueDate, isChecked) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
+        this.isChecked = isChecked;
     }
 }
 
@@ -19,17 +20,35 @@ function addEntry() {
     const title = document.getElementById('title').value;
     const desc = document.getElementById('description').value;
     const date = document.getElementById('dueDate').value;
-
-
 }
 
+// Leiame kõik sorteerimisnupud (hetkel 2)
+const sortButtons = document.getElementsByClassName('sort-button');
+
+// Igale sorteerimisnupule lisame eventlisteneri
+for (const button of sortButtons) {
+    button.addEventListener('click', function () { 
+
+        // Kui tal flip classi ei ole siis anname selle
+        // Kui on siis eemaldame selle
+        if(!this.classList.contains('flip')) {
+            this.classList.add('flip');
+        } else {
+            this.classList.remove('flip');
+        }
+    });
+}
+
+// Katsetusandmed
 const url = 'server.php';
 const data = {
     title: 'test',
     desc: 'sadawdawdw2adaw',
 };
 
+// Alternatiiv jQuery POST meetodile; asünkroonne, oleks kasutanud Fetch API-t kuid see ei tegi POST-i asemel GET-i igakord ???
 function saveData(url, data) {
+    // Promise teeb selle asünkroonseks, muidu peaks callbackidega seda tegema
     return new Promise(function (resolve, reject) {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', url);
@@ -39,11 +58,14 @@ function saveData(url, data) {
                 resolve();
             } else {
                 reject(new Error());
-            };
-        }
+            }
+        };
         xhr.onerror = reject;
+        // Millegipärast see nii peab käima
         xhr.send('save=' + JSON.stringify(data));
     });
 }
+
+// Katsetus POST
 saveData(url, data)
-    .catch((err) => console.log(err));
+    .catch((err) => console.error(err));
