@@ -1,6 +1,6 @@
 <?php
-    if (isset($_POST["add"]) && !empty($_POST["add"])) {
-        saveToFile($_POST["add"]);
+    if (isset($_POST["save"]) && !empty($_POST["save"])) {
+        saveToFile($_POST["save"]);
     }
 
     function saveToFile($stringToSave) {
@@ -9,9 +9,5 @@
         $object->content = $stringToSave;
         $jsonString = json_encode($object);
         file_put_contents("database.json", $jsonString);
-    }
-
-    function addToFile(){
-
     }
 ?>
