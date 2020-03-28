@@ -8,32 +8,28 @@ class Todo {
 }
 
 const todos = [];
+// Funktsioon kutsutakse esile faili laadides
 loadEntries();
 
-// Funktsioon kutsutakse esile faili laadides
-
 function loadEntries() {
-    $('#todos').html("");
+    $('#todos').html('');
         
-        $.get('database.json', function(data){
-            let content = JSON.parse(data.content);
-            console.log(content);
+    $.get('database.json', function (data) {
+        const content = JSON.parse(data.content);
+        console.log(content);
 
-            content.forEach(function(todo, todoIndex){
-                todos.push(todo);
-                $('#todos').append("<ul><li>" + todo.title + "</li><li>" + todo.description + "</li><li>" + todo.dueDate + "</li></ul>");
-                loadNewEntry(todo);
-            });
-        })
-
+        for (const todo of content) {
+            todos.push(todo);
+            loadNewEntry(todo);
+        }
+    });
 }
 
-function loadNewEntry(todo){
-    $('#todos').append("<ul><li>" + todo.title + "</li><li>" + todo.description + "</li><li>" + todo.dueDate + "</li></ul>");
+function loadNewEntry(todo) {
+    $('#todos').append('<ul><li>' + todo.title + '</li><li>' + todo.description + '</li><li>' + todo.dueDate + '</li></ul>');
 }
 
 $('#add').click(addEntry);
-
 
 function addEntry() {
     const title = document.getElementById('title').value;
