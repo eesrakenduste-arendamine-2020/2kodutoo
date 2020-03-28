@@ -36,12 +36,13 @@ function addEntry() {
     const desc = document.getElementById('description').value;
     const date = document.getElementById('dueDate').value;
 
-    todos.push(new Todo(title, desc, date));
+    const todo = new Todo(title, desc, date);
+    todos.push(todo);
     console.log(todos);
 
     saveData('server.php', todos).catch((err) => console.error(err));
 
-    loadNewEntry(new Todo(title, desc, date));
+    loadNewEntry(todo);
 }
 
 const testArray = [
