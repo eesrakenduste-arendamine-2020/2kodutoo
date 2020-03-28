@@ -1,6 +1,6 @@
 <?php
-    if (isset($_POST["add"]) && !empty($_POST["add"])) {
-        saveData($_POST["add"]);
+    if (isset($_POST["save"]) && !empty($_POST["save"])) {
+        saveData($_POST["save"]);
     }
 
     function saveData($stringToSave) {
