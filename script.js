@@ -16,10 +16,18 @@ function loadEntries() {
 
 }
 
+$('#add').click(addEntry);
+
+
 function addEntry() {
     const title = document.getElementById('title').value;
     const desc = document.getElementById('description').value;
     const date = document.getElementById('dueDate').value;
+
+    todos.push(new Todo(title, desc, date));
+    console.log(todos);
+
+    saveData();
 }
 
 // Leiame kõik sorteerimisnupud (hetkel 2)

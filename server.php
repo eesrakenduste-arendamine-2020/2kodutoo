@@ -1,9 +1,9 @@
 <?php
-    if (isset($_POST["save"]) && !empty($_POST["save"])) {
-        saveToFile($_POST["save"]);
+    if (isset($_POST["add"]) && !empty($_POST["add"])) {
+        saveData($_POST["add"]);
     }
 
-    function saveToFile($stringToSave) {
+    function saveData($stringToSave) {
         $object = new StdClass();
         $object->last_modified = time();
         $object->content = $stringToSave;
