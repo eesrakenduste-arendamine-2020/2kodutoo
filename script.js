@@ -54,7 +54,7 @@ const data = {
     desc: 'sadawdawdw2adaw',
 };
 
-// Alternatiiv jQuery POST meetodile; asünkroonne, oleks kasutanud Fetch API-t kuid see ei tegi POST-i asemel GET-i igakord ???
+// Alternatiiv jQuery POST meetodile; asünkroonne, oleks kasutanud Fetch API-t kuid see tegi POST-i asemel GET-i igakord ???
 function saveData(url, data) {
     // Promise teeb selle asünkroonseks, muidu peaks callbackidega seda tegema
     return new Promise(function (resolve, reject) {
