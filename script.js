@@ -8,19 +8,20 @@ class Todo {
 }
 
 const todos = [];
+loadEntries();
 
 // Funktsioon kutsutakse esile faili laadides
-loadEntries();
 
 function loadEntries() {
     $('#todos').html("");
         
         $.get('database.json', function(data){
-            let content = JSON.parse(data).content;
+            let content = JSON.parse(data.content);
             console.log(content);
 
             content.forEach(function(todo, todoIndex){
-                $('#todos').append("<ul><li>" + todo.title + "</li><li>" + todo.description + "</li><li>" + todo.date + "</li></ul>");
+                todos.push(todo);
+                $('#todos').append("<ul><li>" + todo.title + "</li><li>" + todo.description + "</li><li>" + todo.dueDate + "</li></ul>");
             });
         })
 }
@@ -37,7 +38,6 @@ function addEntry() {
     console.log(todos);
 
     saveData('server.php', todos).catch((err) => console.error(err));
-    
 }
 
 // Leiame kõik sorteerimisnupud (hetkel 2)
@@ -66,6 +66,7 @@ function saveData(url, data) {
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.onload = function () {
             if (this.status >= 200 && this.status < 300) {
+                console.log(xhr.responseText);
                 resolve();
             } else {
                 reject(new Error());
