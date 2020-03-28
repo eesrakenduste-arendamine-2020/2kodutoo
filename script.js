@@ -7,9 +7,20 @@ class Todo {
     }
 }
 
-const todos = [];
+/*
+const testArray = [
+    { 'title':'abwefwefwef', 'description':'fwefw', 'dueDate':'2020-03-30', 'isChecked':false }, 
+    { 'title':'klwefwefwef', 'description':'fwefw', 'dueDate':'2020-03-31', 'isChecked':true },
+    { 'title':'fqwefwefwef', 'description':'fwefw', 'dueDate':'2020-02-31', 'isChecked':true }, 
+    { 'title':'posdasda', 'description':'dadasda', 'dueDate':'2019-03-31', 'isChecked':false }, 
+    { 'title':'dasdasdaASs', 'description':'dadasda', 'dueDate':'2020-04-01', 'isChecked':false },
+];
+*/
+
+let todos = [];
 // Funktsioon kutsutakse esile faili laadides
 loadEntries();
+renderEntries(todos);
 
 function loadEntries() {
     $('#todos').html('');
@@ -18,13 +29,31 @@ function loadEntries() {
         const content = JSON.parse(data.content);
         console.log(content);
 
-        const todos = Array.from(content);
+        todos = Array.from(content);
         renderEntries(todos);
     });
 }
 
-function loadNewEntry(todo) {
-    $('#todos').append('<ul><li>' + todo.title + '</li><li>' + todo.description + '</li><li>' + todo.dueDate + '</li></ul>');
+// Efektiivne viis renderdada todo list
+function renderEntries(todos) {
+    const todosElement = document.getElementById('todos');
+    // Teeme olemasoleva elemendi sisu tühjaks, et seal varasemaid todo-sid ei oleks
+    todosElement.textContent = '';
+    // Loome virtuaalse dokumendi et me ei peaks HTML-i uuendama iga tsükliga
+    const todosContainer = document.createDocumentFragment();
+    for (const todo of todos) {
+        const ul = document.createElement('ul');
+        for (const value in todo) {
+            // isChecked meid ei huvita hetkel
+            if (value !== 'isChecked') {
+                const li = document.createElement('li');
+                li.innerText = todo[value];
+                ul.appendChild(li);
+            }
+        }
+        todosContainer.appendChild(ul);
+    }
+    todosElement.appendChild(todosContainer);
 }
 
 $('#add').click(addEntry);
@@ -40,21 +69,13 @@ function addEntry() {
 
     saveData('server.php', todos).catch((err) => console.error(err));
 
-    loadNewEntry(todo);
+    renderEntries(todos);
 }
-
-const testArray = [
-    { 'title':'abwefwefwef', 'description':'fwefw', 'dueDate':'2020-03-30', 'isChecked':false }, 
-    { 'title':'klwefwefwef', 'description':'fwefw', 'dueDate':'2020-03-31', 'isChecked':true },
-    { 'title':'fqwefwefwef', 'description':'fwefw', 'dueDate':'2020-02-31', 'isChecked':true }, 
-    { 'title':'posdasda', 'description':'dadasda', 'dueDate':'2019-03-31', 'isChecked':false }, 
-    { 'title':'dasdasdaASs', 'description':'dadasda', 'dueDate':'2020-04-01', 'isChecked':false },
-];
 
 // Sorteerib ülesanded soovitud key järgi, saab ka tagurpidi sorteerida
 function sortEntries(array, key, reverse = false) {
     array.sort(({ [key]: a }, { [key]: b }) => {
-        typeof array[key] === 'string' ? a.localeCompare(b) : a - b;
+        return typeof a === 'string' ? a.localeCompare(b) : a - b;
     });
     if (reverse) array.reverse();
 }
@@ -72,9 +93,11 @@ for (const button of sortButtons) {
         if(!this.classList.contains('flip')) {
             this.id === 'sort-title' ? sortEntries(todos, 'title') : sortEntries(todos, 'dueDate');
             this.classList.add('flip');
+            renderEntries(todos);
         } else {
             this.id === 'sort-title' ? sortEntries(todos, 'title', true) : sortEntries(todos, 'dueDate', true);
             this.classList.remove('flip');
+            renderEntries(todos);
         }
     });
 }
