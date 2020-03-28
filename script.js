@@ -47,13 +47,6 @@ for (const button of sortButtons) {
     });
 }
 
-// Katsetusandmed
-const url = 'server.php';
-const data = {
-    title: 'test',
-    desc: 'sadawdawdw2adaw',
-};
-
 // Alternatiiv jQuery POST meetodile; asünkroonne, oleks kasutanud Fetch API-t kuid see tegi POST-i asemel GET-i igakord ???
 function saveData(url, data) {
     // Promise teeb selle asünkroonseks, muidu peaks callbackidega seda tegema
@@ -73,7 +66,3 @@ function saveData(url, data) {
         xhr.send('save=' + JSON.stringify(data));
     });
 }
-
-// Katsetus POST
-saveData(url, data)
-    .catch((err) => console.error(err));
