@@ -27,7 +27,8 @@ function addEntry() {
     todos.push(new Todo(title, desc, date));
     console.log(todos);
 
-    saveData();
+    saveData('server.php', todos).catch((err) => console.error(err));
+    
 }
 
 // Leiame kõik sorteerimisnupud (hetkel 2)
