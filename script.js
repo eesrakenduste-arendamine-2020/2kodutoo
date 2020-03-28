@@ -13,7 +13,16 @@ const todos = [];
 loadEntries();
 
 function loadEntries() {
+    $('#todos').html("");
+        
+        $.get('database.json', function(data){
+            let content = JSON.parse(data).content;
+            console.log(content);
 
+            content.forEach(function(todo, todoIndex){
+                $('#todos').append("<ul><li>" + todo.title + "</li><li>" + todo.description + "</li><li>" + todo.date + "</li></ul>");
+            });
+        })
 }
 
 $('#add').click(addEntry);
