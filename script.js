@@ -18,10 +18,8 @@ function loadEntries() {
         const content = JSON.parse(data.content);
         console.log(content);
 
-        for (const todo of content) {
-            todos.push(todo);
-            loadNewEntry(todo);
-        }
+        const todos = Array.from(content);
+        renderEntries(todos);
     });
 }
 
