@@ -22,8 +22,14 @@ function loadEntries() {
             content.forEach(function(todo, todoIndex){
                 todos.push(todo);
                 $('#todos').append("<ul><li>" + todo.title + "</li><li>" + todo.description + "</li><li>" + todo.dueDate + "</li></ul>");
+                loadNewEntry(todo);
             });
         })
+
+}
+
+function loadNewEntry(todo){
+    $('#todos').append("<ul><li>" + todo.title + "</li><li>" + todo.description + "</li><li>" + todo.dueDate + "</li></ul>");
 }
 
 $('#add').click(addEntry);
@@ -38,6 +44,8 @@ function addEntry() {
     console.log(todos);
 
     saveData('server.php', todos).catch((err) => console.error(err));
+
+    loadNewEntry(new Todo(title, desc, date));
 }
 
 // Leiame kõik sorteerimisnupud (hetkel 2)
