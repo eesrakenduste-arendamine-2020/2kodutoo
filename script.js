@@ -44,6 +44,22 @@ function addEntry() {
     loadNewEntry(new Todo(title, desc, date));
 }
 
+const testArray = [
+    { 'title':'abwefwefwef', 'description':'fwefw', 'dueDate':'2020-03-30', 'isChecked':false }, 
+    { 'title':'klwefwefwef', 'description':'fwefw', 'dueDate':'2020-03-31', 'isChecked':true },
+    { 'title':'fqwefwefwef', 'description':'fwefw', 'dueDate':'2020-02-31', 'isChecked':true }, 
+    { 'title':'posdasda', 'description':'dadasda', 'dueDate':'2019-03-31', 'isChecked':false }, 
+    { 'title':'dasdasdaASs', 'description':'dadasda', 'dueDate':'2020-04-01', 'isChecked':false },
+];
+
+// Sorteerib ülesanded soovitud key järgi, saab ka tagurpidi sorteerida
+function sortEntries(array, key, reverse = false) {
+    array.sort(({ [key]: a }, { [key]: b }) => {
+        typeof array[key] === 'string' ? a.localeCompare(b) : a - b;
+    });
+    if (reverse) array.reverse();
+}
+
 // Leiame kõik sorteerimisnupud (hetkel 2)
 const sortButtons = document.getElementsByClassName('sort-button');
 
