@@ -69,9 +69,12 @@ for (const button of sortButtons) {
 
         // Kui tal flip classi ei ole siis anname selle
         // Kui on siis eemaldame selle
+        // Samal ajal ka sorteerime todos array vastavalt
         if(!this.classList.contains('flip')) {
+            this.id === 'sort-title' ? sortEntries(todos, 'title') : sortEntries(todos, 'dueDate');
             this.classList.add('flip');
         } else {
+            this.id === 'sort-title' ? sortEntries(todos, 'title', true) : sortEntries(todos, 'dueDate', true);
             this.classList.remove('flip');
         }
     });
