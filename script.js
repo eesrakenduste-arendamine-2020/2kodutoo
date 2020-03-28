@@ -1,5 +1,5 @@
 class Todo {
-    constructor(title, description, dueDate, isChecked) {
+    constructor(title, description, dueDate, isChecked = false) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
