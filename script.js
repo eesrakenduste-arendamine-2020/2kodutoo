@@ -18,12 +18,13 @@ const testArray = [
 */
 
 let todos = [];
+// todos = [...testArray];
 // Funktsioon kutsutakse esile faili laadides
 loadEntries();
 renderEntries(todos);
 
 function loadEntries() {
-    $('#todos').html('');
+    $('#todos').html(''); // Kas see teeb ka midagi? See vist juba tehakse renderEntries fn-is ära textContent'iga
         
     $.get('database.json', function (data) {
         const content = JSON.parse(data.content);
@@ -42,16 +43,18 @@ function renderEntries(todos) {
     // Loome virtuaalse dokumendi et me ei peaks HTML-i uuendama iga tsükliga
     const todosContainer = document.createDocumentFragment();
     for (const todo of todos) {
-        const ul = document.createElement('ul');
+        const todoDiv = document.createElement('div');
+        todoDiv.className = 'todo';
         for (const value in todo) {
             // isChecked meid ei huvita hetkel
             if (value !== 'isChecked') {
-                const li = document.createElement('li');
-                li.innerText = todo[value];
-                ul.appendChild(li);
+                const elementDiv = document.createElement('div');
+                elementDiv.className = value;
+                elementDiv.innerText = todo[value];
+                todoDiv.appendChild(elementDiv);
             }
         }
-        todosContainer.appendChild(ul);
+        todosContainer.appendChild(todoDiv);
     }
     todosElement.appendChild(todosContainer);
 }
@@ -59,9 +62,9 @@ function renderEntries(todos) {
 $('#add').click(addEntry);
 
 function addEntry() {
-    const title = document.getElementById('title').value;
-    const desc = document.getElementById('description').value;
-    const date = document.getElementById('dueDate').value;
+    const title = document.getElementById('titleInput').value;
+    const desc = document.getElementById('descriptionInput').value;
+    const date = document.getElementById('dueDateInput').value;
 
     const todo = new Todo(title, desc, date);
     todos.push(todo);
@@ -83,7 +86,7 @@ function sortEntries(array, key, reverse = false) {
 // Leiame kõik sorteerimisnupud (hetkel 2)
 const sortButtons = document.getElementsByClassName('sort-button');
 
-// Igale sorteerimisnupule lisame eventlisteneri
+// Igale sorteerimisnuptodoDive lisame eventlisteneri
 for (const button of sortButtons) {
     button.addEventListener('click', function () { 
 
