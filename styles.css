@@ -47,9 +47,8 @@ body {
 }
 
 .delete-button {
-    color: red;
-    font-size: 25px;
-    font-weight: 900;
+    background: url("x.svg") no-repeat;
+    padding: 1em;
     cursor: pointer;
 }
 
