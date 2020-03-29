@@ -51,6 +51,9 @@ body {
     padding: 1em;
     cursor: pointer;
 }
+.important-task{
+    background-color: yellow;
+}
 
 #todos {
     overflow-y: scroll;

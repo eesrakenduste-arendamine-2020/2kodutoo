@@ -51,6 +51,20 @@ function renderEntries(todos) {
         removeButton.classList.add('delete-button');
         todoDiv.appendChild(removeButton);
         todoDiv.className = 'todo';
+         
+        const importantButton = document.createElement('div');
+        importantButton.addEventListener('click', function () {
+            if(!this.parentNode.classList.contains('important-task')) {
+                this.parentNode.classList.add('important-task');
+            } else {
+                this.parentNode.classList.remove('important-task');
+            }
+
+            })
+
+        importantButton.classList.add('important-button');
+        todoDiv.appendChild(importantButton);
+        
         for (const value in todo) {
             // isChecked meid ei huvita hetkel
             if (value !== 'isChecked') {
@@ -62,6 +76,7 @@ function renderEntries(todos) {
         }
         todosContainer.appendChild(todoDiv);
     }
+    
     todosElement.appendChild(todosContainer);
 }
 
