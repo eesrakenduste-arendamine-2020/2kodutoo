@@ -7,7 +7,7 @@ class Todo {
     }
 }
 
-/*
+
 const testArray = [
     { 'title':'abwefwefwef', 'description':'fwefw', 'dueDate':'2020-03-30', 'isChecked':false }, 
     { 'title':'klwefwefwef', 'description':'fwefw', 'dueDate':'2020-03-31', 'isChecked':true },
@@ -15,12 +15,12 @@ const testArray = [
     { 'title':'posdasda', 'description':'dadasda', 'dueDate':'2019-03-31', 'isChecked':false }, 
     { 'title':'dasdasdaASs', 'description':'dadasda', 'dueDate':'2020-04-01', 'isChecked':false },
 ];
-*/
+
 
 let todos = [];
-// todos = [...testArray];
+todos = [...testArray];
 // Funktsioon kutsutakse esile faili laadides
-loadEntries();
+// loadEntries();
 renderEntries(todos);
 
 function loadEntries() {
@@ -50,27 +50,6 @@ function renderEntries(todos) {
         // Iga todo individuaalne container
         const todoDiv = document.createElement('div');
         todoDiv.className = 'todo';
-
-        // removeButton
-        const removeButton = document.createElement('div');
-        removeButton.classList.add('delete-button');
-        removeButton.addEventListener('click', function () {
-            this.parentNode.remove();
-        });
-        todoDiv.appendChild(removeButton);
-
-        // importantButton
-        const importantButton = document.createElement('div');
-        importantButton.classList.add('important-button');
-        importantButton.addEventListener('click', function () {
-            if(!this.parentNode.classList.contains('important-task')) {
-                this.parentNode.classList.add('important-task');
-            } else {
-                this.parentNode.classList.remove('important-task');
-            }
-
-        });        
-        todoDiv.appendChild(importantButton);
         
         // Käime kõik todo võtmed läbi ükshaaval
         for (const value in todo) {
@@ -82,6 +61,26 @@ function renderEntries(todos) {
                 todoDiv.appendChild(elementDiv);
             }
         }
+
+        // importantButton
+        const importantButton = document.createElement('div');
+        importantButton.classList.add('important-button');
+        importantButton.addEventListener('click', function () {
+            if(!this.parentNode.classList.contains('important-task')) {
+                this.parentNode.classList.add('important-task');
+            } else {
+                this.parentNode.classList.remove('important-task');
+            }
+        });        
+        todoDiv.appendChild(importantButton);
+
+        // removeButton
+        const removeButton = document.createElement('div');
+        removeButton.classList.add('delete-button');
+        removeButton.addEventListener('click', function () {
+            this.parentNode.remove();
+        });
+        todoDiv.appendChild(removeButton);
 
         // Lisame individuaalse todo containeri kõiki todosid sisaldavase virtuaalkonteinerisse
         todosContainer.appendChild(todoDiv);
