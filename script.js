@@ -37,22 +37,31 @@ function loadEntries() {
 
 // Efektiivne viis renderdada todo list
 function renderEntries(todos) {
+
     const todosElement = document.getElementById('todos');
     // Teeme olemasoleva elemendi sisu tühjaks, et seal varasemaid todo-sid ei oleks
     todosElement.textContent = '';
-    // Loome virtuaalse dokumendi et me ei peaks HTML-i uuendama iga tsükliga
+    // Loome virtuaalse dokumendi et me ei peaks HTML-i reflow-i triggerima iga tsükliga, vaid saame lõpus lihtsalt ühe korraga ära lehe uuendada
     const todosContainer = document.createDocumentFragment();
+    
+    // Käime kõik todo-d läbi ükshaaval
     for (const todo of todos) {
+
+        // Iga todo individuaalne container
         const todoDiv = document.createElement('div');
+        todoDiv.className = 'todo';
+
+        // removeButton
         const removeButton = document.createElement('div');
+        removeButton.classList.add('delete-button');
         removeButton.addEventListener('click', function () {
             this.parentNode.remove();
-        })
-        removeButton.classList.add('delete-button');
+        });
         todoDiv.appendChild(removeButton);
-        todoDiv.className = 'todo';
-         
+
+        // importantButton
         const importantButton = document.createElement('div');
+        importantButton.classList.add('important-button');
         importantButton.addEventListener('click', function () {
             if(!this.parentNode.classList.contains('important-task')) {
                 this.parentNode.classList.add('important-task');
@@ -60,11 +69,10 @@ function renderEntries(todos) {
                 this.parentNode.classList.remove('important-task');
             }
 
-            })
-
-        importantButton.classList.add('important-button');
+        });        
         todoDiv.appendChild(importantButton);
         
+        // Käime kõik todo võtmed läbi ükshaaval
         for (const value in todo) {
             // isChecked meid ei huvita hetkel
             if (value !== 'isChecked') {
@@ -74,9 +82,12 @@ function renderEntries(todos) {
                 todoDiv.appendChild(elementDiv);
             }
         }
+
+        // Lisame individuaalse todo containeri kõiki todosid sisaldavase virtuaalkonteinerisse
         todosContainer.appendChild(todoDiv);
     }
     
+    // Kõige viimane tegevus, lisab terve virtuaalkonteineri (ja selle kõik elemendid) leheküljele
     todosElement.appendChild(todosContainer);
 }
 
