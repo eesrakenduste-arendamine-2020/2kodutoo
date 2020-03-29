@@ -45,10 +45,11 @@ function renderEntries(todos) {
     for (const todo of todos) {
         const todoDiv = document.createElement('div');
         const removeButton = document.createElement('div');
+        removeButton.addEventListener('click', function () {
+            this.parentNode.remove();
+        })
         removeButton.classList.add('delete-button');
-
         todoDiv.appendChild(removeButton);
-
         todoDiv.className = 'todo';
         for (const value in todo) {
             // isChecked meid ei huvita hetkel
