@@ -49,10 +49,7 @@ function renderEntries(todos) {
 
         todoDiv.appendChild(removeButton);
 
-
         todoDiv.className = 'todo';
-
-
         for (const value in todo) {
             // isChecked meid ei huvita hetkel
             if (value !== 'isChecked') {
