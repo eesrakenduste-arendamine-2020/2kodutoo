@@ -92,7 +92,7 @@ body {
     padding: 1em;
     margin: 0.5em;
     display: grid;
-    grid-template-columns: auto auto auto auto 7.5% 7.5%;
+    grid-template-columns: min-content auto auto auto 7.5% 7.5%;
     column-gap: 0.5em;
     grid-template-rows: minmax(2em, 1fr) minmax(1em, 1fr) minmax(2em, 1fr);
     grid-template-areas: 
@@ -120,6 +120,7 @@ body {
     color: var(--gray-tint-2);
     grid-area: date;
     align-self: center;
+    justify-self: end;
 }
 
 input[type='checkbox'] {
