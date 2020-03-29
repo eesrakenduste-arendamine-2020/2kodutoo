@@ -9,8 +9,8 @@ class Todo {
 
 
 const testArray = [
-    { 'title':'abwefwefwef', 'description':'fwefw', 'dueDate':'2020-03-30', 'isChecked':false }, 
-    { 'title':'klwefwefwef', 'description':'fwefw', 'dueDate':'2020-03-31', 'isChecked':true },
+    { 'title':'abwefwefwef', 'description':'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'dueDate':'2020-03-30', 'isChecked':false }, 
+    { 'title':'klwefwefwef', 'description':'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'dueDate':'2020-03-31', 'isChecked':true },
     { 'title':'fqwefwefwef', 'description':'fwefw', 'dueDate':'2020-02-31', 'isChecked':true }, 
     { 'title':'posdasda', 'description':'dadasda', 'dueDate':'2019-03-31', 'isChecked':false }, 
     { 'title':'dasdasdaASs', 'description':'dadasda', 'dueDate':'2020-04-01', 'isChecked':false },
@@ -50,6 +50,19 @@ function renderEntries(todos) {
         // Iga todo individuaalne container
         const todoDiv = document.createElement('div');
         todoDiv.className = 'todo';
+
+        // Label mille sisse läheb inputCheckbox
+        const label = document.createElement('label');
+        label.className = 'checkbox';
+
+        // input mille type=checkbox
+        const inputCheckbox = document.createElement('input');
+        inputCheckbox.setAttribute('type', 'checkbox');
+
+        // Paneme inputCheckbox-i label-i sisse
+        label.appendChild(inputCheckbox);
+        // Paneme label-i todoDiv-i sisse
+        todoDiv.appendChild(label);
         
         // Käime kõik todo võtmed läbi ükshaaval
         for (const value in todo) {

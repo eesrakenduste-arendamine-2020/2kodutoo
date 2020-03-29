@@ -2,23 +2,30 @@
 
 :root {
     --shadow: 0px 4px 24px hsla(0, 0%, 27%, 0.15);
-    --background-color: hsl(195, 100%, 97%); /* Background color */
-    --frame-color: hsl(0, 0%, 100%); /* Frame color */
-    --gray-tint-1: hsl(0, 0%, 20%); /* Primary text */
-    --gray-tint-2: hsl(0, 0%, 43%); /* Secondary text/icons */
-    --gray-tint-3: hsl(0, 1%, 75%); /* Separator bar */
-    --gray-tint-4: hsl(0, 0%, 93%); /* Alternative frame color */
+    /* Background color */
+    --background-color: hsl(195, 100%, 97%);
+    /* Frame color */
+    --frame-color: hsl(0, 0%, 100%);
+    /* Primary text */
+    --gray-tint-1: hsl(0, 0%, 20%);
+    /* Secondary text/icons */
+    --gray-tint-2: hsl(0, 0%, 43%);
+    /* Separator bar */
+    --gray-tint-3: hsl(0, 1%, 75%);
+    /* Alternative frame color */
+    --gray-tint-4: hsl(0, 0%, 93%);
+    /* Favorites color */
+    --important-color: hsl(56, 100%, 48%);
 }
 
 body {
     background-color: var(--background-color);
+    color: var(--gray-tint-1);
     font-family: 'Cabin', sans-serif;
 }
 
-.task-completed {
+.checked {
     text-decoration: line-through;
-    width: 80%;
-    cursor: pointer;
 }
 
 #inputContainer {
@@ -44,24 +51,16 @@ body {
 #sort-container {
     display: flex;
     flex-direction: row;
-}
-
-.delete-button {
-    background: url("x.svg") no-repeat;
-    padding: 1em;
-    cursor: pointer;
-}
-.important-task{
-    background-color: yellow;
+    column-gap: 1em;
+    padding: 2em 8em 1em 8em;
+    background-color: var(--gray-tint-4);
+    border-radius: 0.75em 0.75em 0 0;
+    border-bottom: var(--gray-tint-3) solid 0.125em;
 }
 
 #todos {
     overflow-y: scroll;
     padding: 2em;
-}
-
-.nool:hover, #add:hover {
-    cursor: pointer;
 }
 
 .sort-button {
@@ -90,6 +89,66 @@ body {
 .todo {
     box-shadow: var(--shadow);
     border-radius: 0.5em;
-    padding: 2em;
+    padding: 1em;
     margin: 0.5em;
+    display: grid;
+    grid-template-columns: auto auto auto auto 7.5% 7.5%;
+    column-gap: 0.5em;
+    grid-template-rows: minmax(2em, 1fr) minmax(1em, 1fr) minmax(2em, 1fr);
+    grid-template-areas: 
+    ". title title date . ."
+    "checkbox description description description important delete"
+    ". description description description . .";
+}
+
+.todo > * {
+    padding: 0.5rem;
+}
+
+.title {
+    font-size: 2em;
+    grid-area: title;
+    
+}
+
+.description {
+    color: var(--gray-tint-2);
+    grid-area: description;
+}
+
+.dueDate {
+    color: var(--gray-tint-2);
+    grid-area: date;
+    align-self: center;
+}
+
+input[type='checkbox'] {
+    display: none;
+    width: 0;
+    height: 0;
+    margin: 0;
+}
+
+.checkbox {
+    width: 1em;
+    height: 1em;
+    border: 0.1875em solid var(--gray-tint-3);
+    border-radius: 0.125em;
+    grid-area: checkbox;
+}
+
+.important-button {
+    background: url("important.svg") no-repeat;
+    cursor: pointer;
+    grid-area: important;
+}
+
+.important-task {
+    background-color: var(--important-color);
+}
+
+.delete-button {
+    background: url("x.svg") no-repeat;
+    cursor: pointer;
+    grid-area: delete;
 }
