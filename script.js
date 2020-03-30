@@ -1,21 +1,18 @@
 class Todo {
-    constructor(title, description, dueDate, isImportant = false, isChecked = false) {
-        
+    constructor(title, description, dueDate, isImportant = false, isChecked = false, id = this.generateQuickGuid()) {
+
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.isImportant = isImportant;
         this.isChecked = isChecked;
-    }
-
-    get id() {
-        return this.generateQuickGuid();
+        this.id = id;
     }
 
     // https://stackoverflow.com/a/13403498
     generateQuickGuid() {
         return Math.random().toString(36).substring(2, 15) +
-        Math.random().toString(36).substring(2, 15);
+            Math.random().toString(36).substring(2, 15);
     }
 }
 
@@ -33,22 +30,34 @@ todos.toJSON = () => {
     return [...todos.entries()];
 };
 
+loadEntries();
 // Üritame leida database.json-i üles, kui see on olemas siis kirjutame todos Map-i üle
-fetch('database.json')
-    .then(response => {
-        if (response.status === 200 && response.body.length) {
-            todos = new Map(response.json()
-                .map(todo => {
-                    return [todo.id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked)];
-                }));
-            renderEntries();
-        } else {
-            console.warn('Failed to load database from the server!');
-        }
-    })
-    .catch(error => {
-        console.error(error);
-    });
+async function loadEntries() {
+    const jsonDatabase = await fetch('database.json')
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                console.warn('Failed to load database from the server!');
+            }
+        })
+        .catch(error => {
+            console.warn(`Tühi või vigane JSON fail\n${error}`);
+        });
+
+    if (!jsonDatabase) return;
+    /*
+    todos = new Map(JSON.parse(jsonDatabase)
+        .map(todo => {
+            return [todo.id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked)];
+        }));
+    */
+    for (const [id, todo] of JSON.parse(jsonDatabase)) {
+        todos.set(id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked, id));
+    }
+
+    renderEntries();
+}
 
 // Efektiivne viis renderdada todo list
 function renderEntries() {
@@ -58,9 +67,9 @@ function renderEntries() {
     todosElement.textContent = '';
     // Loome virtuaalse dokumendi et me ei peaks HTML-i reflow-i triggerima iga tsükliga, vaid saame lõpus lihtsalt ühe korraga ära lehe uuendada
     const todosContainer = document.createDocumentFragment();
-    
+
     // Käime kõik todo-d läbi ükshaaval
-    for (const todo of todos) {
+    for (const [id, todo] of todos) {
 
         // Iga todo individuaalne container
         const todoDiv = document.createElement('div');
@@ -78,14 +87,14 @@ function renderEntries() {
         label.appendChild(inputCheckbox);
         // Paneme label-i todoDiv-i sisse
         todoDiv.appendChild(label);
-        
+
         // Käime kõik todo võtmed läbi ükshaaval
-        for (const [key, value] in todo) {
+        for (const item in todo) {
             // isChecked meid ei huvita hetkel
-            if (value !== 'isChecked') {
+            if (item !== 'isChecked') {
                 const elementDiv = document.createElement('div');
-                elementDiv.className = value;
-                elementDiv.innerText = todo[value];
+                elementDiv.className = item;
+                elementDiv.innerText = todo[item];
                 todoDiv.appendChild(elementDiv);
             }
         }
@@ -93,7 +102,7 @@ function renderEntries() {
         // importantButton
         const importantButton = document.createElement('div');
         importantButton.classList.add('important-button');
-        importantButton.addEventListener('click', importantButtonHandler);        
+        importantButton.addEventListener('click', importantButtonHandler);
         todoDiv.appendChild(importantButton);
 
         // removeButton
@@ -105,13 +114,13 @@ function renderEntries() {
         // Lisame individuaalse todo containeri kõiki todosid sisaldavase virtuaalkonteinerisse
         todosContainer.appendChild(todoDiv);
     }
-    
+
     // Kõige viimane tegevus, lisab terve virtuaalkonteineri (ja selle kõik elemendid) leheküljele
     todosElement.appendChild(todosContainer);
 }
 
 function importantButtonHandler() {
-    if(!this.parentNode.classList.contains('important-task')) {
+    if (!this.parentNode.classList.contains('important-task')) {
         this.parentNode.classList.add('important-task');
     } else {
         this.parentNode.classList.remove('important-task');
@@ -157,12 +166,12 @@ const sortButtons = document.getElementsByClassName('sort-button');
 
 // Igale sorteerimisnuptodoDive lisame eventlisteneri
 for (const button of sortButtons) {
-    button.addEventListener('click', function () { 
+    button.addEventListener('click', function () {
 
         // Kui tal flip classi ei ole siis anname selle
         // Kui on siis eemaldame selle
         // Samal ajal ka sorteerime todos array vastavalt
-        if(!this.classList.contains('flip')) {
+        if (!this.classList.contains('flip')) {
             this.id === 'sort-title' ? sortEntries(todos, 'title') : sortEntries(todos, 'dueDate');
             this.classList.add('flip');
             renderEntries();
