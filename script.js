@@ -48,7 +48,7 @@ async function loadEntries() {
 
     if (!jsonDatabase) return;
 
-    for (const [id, todo] of JSON.parse(jsonDatabase)) {
+    for (const [id, todo] of jsonDatabase) {
         todos.set(id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked, id));
     }
     todosView = mapToArray(todos);
