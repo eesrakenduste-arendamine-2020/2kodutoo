@@ -1,42 +1,50 @@
 class Todo {
-    constructor(title, description, dueDate, isChecked = false) {
+    constructor(title, description, dueDate, isImportant = false, isChecked = false) {
+        this.id = this.generateQuickGuid();
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
+        this.isImportant = isImportant;
         this.isChecked = isChecked;
+    }
+
+    get id() {
+        return this.id;
+    }
+
+    // https://stackoverflow.com/a/13403498
+    generateQuickGuid() {
+        return Math.random().toString(36).substring(2, 15) +
+        Math.random().toString(36).substring(2, 15);
     }
 }
 
+let todos = new Map();
 
-const testArray = [
-    { 'title':'abwefwefwef', 'description':'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'dueDate':'2020-03-30', 'isChecked':false }, 
-    { 'title':'klwefwefwef', 'description':'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'dueDate':'2020-03-31', 'isChecked':true },
-    { 'title':'fqwefwefwef', 'description':'fwefw', 'dueDate':'2020-02-31', 'isChecked':true }, 
-    { 'title':'posdasda', 'description':'dadasda', 'dueDate':'2019-03-31', 'isChecked':false }, 
-    { 'title':'dasdasdaASs', 'description':'dadasda', 'dueDate':'2020-04-01', 'isChecked':false },
-];
+// Map ei serialiseeru normaalselt, seega peame sellist hacki tegema, et kirjutame üle ta toJSON-i fn-i
+todos.toJSON = () => {
+    return [...todos.entries()];
+};
 
-
-let todos = [];
-// todos = [...testArray];
-// Funktsioon kutsutakse esile faili laadides
-loadEntries();
-renderEntries(todos);
-
-function loadEntries() {
-    $('#todos').html(''); // Kas see teeb ka midagi? See vist juba tehakse renderEntries fn-is ära textContent'iga
-        
-    $.get('database.json', function (data) {
-        const content = JSON.parse(data.content);
-        console.log(content);
-
-        todos = Array.from(content);
-        renderEntries(todos);
+// Üritame leida database.json-i üles, kui see on olemas siis kirjutame todos Map-i üle
+fetch('database.json')
+    .then(response => {
+        if (response.status === 200) {
+            todos = new Map(response.json()
+                .map(todo => {
+                    return [todo.id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked)];
+                }));
+            renderEntries();
+        } else {
+            throw new Error('Something went wrong on the server!');
+        }
+    })
+    .catch(error => {
+        console.error(error);
     });
-}
 
 // Efektiivne viis renderdada todo list
-function renderEntries(todos) {
+function renderEntries() {
 
     const todosElement = document.getElementById('todos');
     // Teeme olemasoleva elemendi sisu tühjaks, et seal varasemaid todo-sid ei oleks
@@ -118,9 +126,14 @@ function addEntry() {
     todos.push(todo);
     console.log(todos);
 
-    saveData('server.php', todos).catch((err) => console.error(err));
+    saveData('server.php', todos)
+        .catch(error => console.error(error));
 
-    renderEntries(todos);
+    renderEntries();
+}
+
+function editEntry(options = {}) {
+
 }
 
 // Sorteerib ülesanded soovitud key järgi, saab ka tagurpidi sorteerida
@@ -144,11 +157,11 @@ for (const button of sortButtons) {
         if(!this.classList.contains('flip')) {
             this.id === 'sort-title' ? sortEntries(todos, 'title') : sortEntries(todos, 'dueDate');
             this.classList.add('flip');
-            renderEntries(todos);
+            renderEntries();
         } else {
             this.id === 'sort-title' ? sortEntries(todos, 'title', true) : sortEntries(todos, 'dueDate', true);
             this.classList.remove('flip');
-            renderEntries(todos);
+            renderEntries();
         }
     });
 }
@@ -165,7 +178,7 @@ function saveData(url, data) {
                 console.log(xhr.responseText);
                 resolve();
             } else {
-                reject(new Error());
+                reject(new Error('Something went wrong on the server'));
             }
         };
         xhr.onerror = reject;
