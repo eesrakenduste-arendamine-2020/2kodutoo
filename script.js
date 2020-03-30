@@ -19,6 +19,13 @@ class Todo {
     }
 }
 
+// Garanteerib et uus instance Todo-st on kasutamata ID-ga, teisisõnu soovitaks uusi Todo-sid genereerida ainult selle funktsiooniga
+// Tõenäosus, et ta läheb rekursiooni on alla ~1/1000000
+function instantiateTodo(mapToCompareAgainst, title, description, dueDate) {
+    const todo = new Todo(title, description, dueDate);
+    return mapToCompareAgainst.has(todo.id) ? instantiateTodo(mapToCompareAgainst, title, description, dueDate) : todo;
+}
+
 let todos = new Map();
 
 // Map ei serialiseeru normaalselt, seega peame sellist hacki tegema, et kirjutame üle ta toJSON-i fn-i
@@ -122,7 +129,8 @@ function addEntry() {
     const desc = document.getElementById('descriptionInput').value;
     const date = document.getElementById('dueDateInput').value;
 
-    const todo = new Todo(title, desc, date);
+    const todo = instantiateTodo(title, desc, date);
+
     todos.push(todo);
     console.log(todos);
 
@@ -132,7 +140,7 @@ function addEntry() {
     renderEntries();
 }
 
-function editEntry(options = {}) {
+function editEntry(overwrites = {}) {
 
 }
 
