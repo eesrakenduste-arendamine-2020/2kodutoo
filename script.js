@@ -43,7 +43,7 @@ fetch('database.json')
                 }));
             renderEntries();
         } else {
-            throw new Error('Something went wrong on the server!');
+            console.warn('Failed to load database from the server!');
         }
     })
     .catch(error => {
