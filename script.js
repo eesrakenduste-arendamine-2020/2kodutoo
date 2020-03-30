@@ -1,6 +1,6 @@
 class Todo {
     constructor(title, description, dueDate, isImportant = false, isChecked = false) {
-        this.id = this.generateQuickGuid();
+        
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
@@ -9,7 +9,7 @@ class Todo {
     }
 
     get id() {
-        return this.id;
+        return this.generateQuickGuid();
     }
 
     // https://stackoverflow.com/a/13403498
