@@ -36,7 +36,8 @@ todos.toJSON = () => {
 // Üritame leida database.json-i üles, kui see on olemas siis kirjutame todos Map-i üle
 fetch('database.json')
     .then(response => {
-        if (response.status === 200) {
+        if (response.status === 200 && response.body) {
+            console.debug(response.body);
             todos = new Map(response.json()
                 .map(todo => {
                     return [todo.id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked)];
@@ -80,7 +81,7 @@ function renderEntries() {
         todoDiv.appendChild(label);
         
         // Käime kõik todo võtmed läbi ükshaaval
-        for (const value in todo) {
+        for (const [key, value] in todo) {
             // isChecked meid ei huvita hetkel
             if (value !== 'isChecked') {
                 const elementDiv = document.createElement('div');
