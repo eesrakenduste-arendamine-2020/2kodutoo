@@ -48,6 +48,30 @@ body {
     left: 23%;
 }
 
+#input-container{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--frame-color);
+    align-items: center;
+    width: 60%;
+    height: 75px;
+    box-shadow: var(--shadow);
+    border-radius: 0.75em;
+    position: absolute;
+    left: 23%; 
+}
+
+#titleInput, #descriptionInput, #dueDateInput{
+    box-shadow: var(--shadow);
+    border: 0.1875em solid var(--gray-tint-3);
+    border-radius: 0.75em;
+    width: 60%;
+    height: 20%;
+    padding: 1em;
+    margin: 0.5em;
+    font-size: large;
+}
+
 #sort-container {
     display: flex;
     flex-direction: row;
