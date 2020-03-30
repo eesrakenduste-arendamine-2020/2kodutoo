@@ -129,9 +129,9 @@ function addEntry() {
     const desc = document.getElementById('descriptionInput').value;
     const date = document.getElementById('dueDateInput').value;
 
-    const todo = instantiateTodo(title, desc, date);
+    const todo = instantiateTodo(todos, title, desc, date);
 
-    todos.push(todo);
+    todos.set(todo.id, todo);
     console.log(todos);
 
     saveData('server.php', todos)
