@@ -24,6 +24,7 @@ function instantiateTodo(mapToCompareAgainst, title, description, dueDate) {
 }
 
 const todos = new Map();
+let todosView = [];
 
 // Map ei serialiseeru normaalselt, seega peame sellist hacki tegema, et kirjutame üle ta toJSON-i fn-i
 todos.toJSON = () => {
@@ -47,15 +48,21 @@ async function loadEntries() {
 
     if (!jsonDatabase) return;
 
-    for (const [id, todo] of jsonDatabase) {
+    for (const [id, todo] of JSON.parse(jsonDatabase)) {
         todos.set(id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked, id));
     }
+    todosView = mapToArray(todos);
 
-    renderEntries();
+    renderEntries(todosView);
 }
 
+function mapToArray(map) {
+    return [...map.values()];
+}
+
+
 // Efektiivne viis renderdada todo list
-function renderEntries() {
+function renderEntries(todosArray) {
 
     const todosElement = document.getElementById('todos');
     // Teeme olemasoleva elemendi sisu tühjaks, et seal varasemaid todo-sid ei oleks
@@ -85,13 +92,20 @@ function renderEntries() {
 
         // Käime kõik todo võtmed läbi ükshaaval
         for (const item in todo) {
-            // isChecked meid ei huvita hetkel
-            if (item !== 'isChecked') {
-                const elementDiv = document.createElement('div');
-                elementDiv.className = item;
-                elementDiv.innerText = todo[item];
-                todoDiv.appendChild(elementDiv);
+            switch (item) {
+            case 'isChecked':
+                // apply mingi class
+                continue;
+            case 'isImportant':
+                // apply mingi class
+                continue;
+            case 'id': continue;
             }
+
+            const elementDiv = document.createElement('div');
+            elementDiv.className = item;
+            elementDiv.innerText = todo[item];
+            todoDiv.appendChild(elementDiv);
         }
 
         // importantButton
@@ -136,12 +150,14 @@ function addEntry() {
     const todo = instantiateTodo(todos, title, desc, date);
 
     todos.set(todo.id, todo);
+    todosView = mapToArray(todos);
+
     console.log(todos);
 
     saveData('server.php', todos)
         .catch(error => console.error(error));
 
-    renderEntries();
+    renderEntries(todosView);
 }
 
 function editEntry(overwrites = {}) {
@@ -167,13 +183,13 @@ for (const button of sortButtons) {
         // Kui on siis eemaldame selle
         // Samal ajal ka sorteerime todos array vastavalt
         if (!this.classList.contains('flip')) {
-            this.id === 'sort-title' ? sortEntries(todos, 'title') : sortEntries(todos, 'dueDate');
+            this.id === 'sort-title' ? sortEntries(todosView, 'title') : sortEntries(todosView, 'dueDate');
             this.classList.add('flip');
-            renderEntries();
+            renderEntries(todosView);
         } else {
-            this.id === 'sort-title' ? sortEntries(todos, 'title', true) : sortEntries(todos, 'dueDate', true);
+            this.id === 'sort-title' ? sortEntries(todosView, 'title', true) : sortEntries(todosView, 'dueDate', true);
             this.classList.remove('flip');
-            renderEntries();
+            renderEntries(todosView);
         }
     });
 }
