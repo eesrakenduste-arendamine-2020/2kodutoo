@@ -4,10 +4,7 @@
     }
 
     function saveData($stringToSave) {
-        $object = new StdClass();
-        $object->last_modified = time();
-        $object->content = $stringToSave;
-        $jsonString = json_encode($object);
+        $jsonString = json_encode($stringToSave);
         file_put_contents("database.json", $jsonString);
     }
 ?>
