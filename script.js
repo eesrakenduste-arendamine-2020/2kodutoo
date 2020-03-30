@@ -71,7 +71,7 @@ function renderEntries(todosArray) {
     const todosContainer = document.createDocumentFragment();
 
     // Käime kõik todo-d läbi ükshaaval
-    for (const [id, todo] of todos) {
+    for (const todo of todosArray) {
 
         // Iga todo individuaalne container
         const todoDiv = document.createElement('div');
