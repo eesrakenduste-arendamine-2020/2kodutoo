@@ -46,13 +46,8 @@ async function loadEntries() {
         });
 
     if (!jsonDatabase) return;
-    /*
-    todos = new Map(JSON.parse(jsonDatabase)
-        .map(todo => {
-            return [todo.id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked)];
-        }));
-    */
-    for (const [id, todo] of JSON.parse(jsonDatabase)) {
+
+    for (const [id, todo] of jsonDatabase) {
         todos.set(id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked, id));
     }
 
