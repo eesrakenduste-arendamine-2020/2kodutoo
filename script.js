@@ -16,6 +16,9 @@ class Todo {
     }
 }
 
+// Selle õuduse eksisteerimise põhjuseks on see, et on vaja Map-i ja Array-d sünkroonis hoida, Map-is on kiired lookupid ja Array-d saab kiirelt sorteerida
+// See kombinatsioon iseenesest tõenäoliselt väga palju kiirem ei ole tavalisest objektide array-st (kui on üldse)
+// Sünkroonis hoidmiseks igakord kui TodoMap-i uuendame siis uuendame kohe ka Array-d automaatselt ilma et seda peaks ise igas koodijupis manuaalselt tegema
 class TodoMap extends Map {
     set(...args) {
         const map = super.set(...args);
@@ -74,9 +77,14 @@ function renderEntries(todosArray) {
         // input mille type=checkbox
         const inputCheckbox = document.createElement('input');
         inputCheckbox.setAttribute('type', 'checkbox');
+        inputCheckbox.addEventListener('click', () => {checkboxHandler(todo);});
 
-        // Paneme inputCheckbox-i label-i sisse
+        // div checkbox-i kõrvale
+        const div = document.createElement('div');
+
+        // Paneme inputCheckbox-i ja div-i label-i sisse
         label.appendChild(inputCheckbox);
+        label.appendChild(div);
         // Paneme label-i todoDiv-i sisse
         todoDiv.appendChild(label);
 
@@ -120,13 +128,19 @@ function renderEntries(todosArray) {
 }
 
 function importantButtonHandler(todo) {
-    !todo.isImportant;
+    todo.isImportant = !todo.isImportant;
     todos.set(todo.id, todo);
     saveData('server.php', todos);
 }
 
 function removeButtonHandler(id) {
     todos.delete(id);
+    saveData('server.php', todos);
+}
+
+function checkboxHandler(todo) {
+    todo.isChecked = !todo.isChecked;
+    todos.set(todo.id, todo);
     saveData('server.php', todos);
 }
 
