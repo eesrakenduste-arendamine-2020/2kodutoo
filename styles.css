@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400&display=swap');
-
 :root {
     --shadow: 0px 4px 24px hsla(0, 0%, 27%, 0.15);
     /* Background color */
@@ -16,60 +15,75 @@
     --gray-tint-4: hsl(0, 0%, 93%);
     /* Favorites color */
     --important-color: hsl(56, 100%, 48%);
+    font-family: 'Cabin', sans-serif;
 }
 
 body {
     background-color: var(--background-color);
     color: var(--gray-tint-1);
-    font-family: 'Cabin', sans-serif;
 }
 
 .checked {
     text-decoration: line-through;
 }
 
-#inputContainer {
-    width: 100vw;
+#container {
     display: flex;
-    justify-content: center;
-    margin: 5px;
+    align-items: center;
+    flex-direction: column;
+    margin: 2em;
 }
 
-#container2 {
+#container>* {
+    width: 50vw;
+}
+
+#todo-container {
     display: flex;
     flex-direction: column;
     background-color: var(--frame-color);
-    width: 60%;
-    height: 500px;
+    height: 50vh;
     box-shadow: var(--shadow);
     border-radius: 0.75em;
-    position: absolute;
-    top: 20%;
-    left: 23%;
 }
 
-#input-container{
+#input-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     background-color: var(--frame-color);
-    align-items: center;
-    width: 60%;
-    height: 75px;
+    padding: 2rem 0.33rem;
     box-shadow: var(--shadow);
     border-radius: 0.75em;
-    position: absolute;
-    left: 23%; 
+    margin-top: 1em;
 }
 
-#titleInput, #descriptionInput, #dueDateInput{
+#input-container>:not(#add) {
     box-shadow: var(--shadow);
-    border: 0.1875em solid var(--gray-tint-3);
+    border: 0.25rem solid var(--gray-tint-3);
     border-radius: 0.75em;
-    width: 60%;
-    height: 20%;
-    padding: 1em;
-    margin: 0.5em;
-    font-size: large;
+    padding: 1em 0.25em;
+    font-size: 1.25em;
+    max-width: 15%;
+
+}
+
+#input-container>#titleInput {
+    max-width: 25%;
+}
+
+#input-container>#descriptionInput {
+    max-width: 25%;
+}
+
+#input-container>#dueDateInput {
+    max-width: 20%;
+}
+
+#add {}
+
+#input-container>::placeholder {
+    color: var(--gray-tint-3);
 }
 
 #sort-container {
@@ -119,20 +133,16 @@ body {
     grid-template-columns: min-content auto auto auto 7.5% 7.5%;
     column-gap: 0.5em;
     grid-template-rows: minmax(2em, 1fr) minmax(1em, 1fr) minmax(2em, 1fr);
-    grid-template-areas: 
-    ". title title date . ."
-    "checkbox description description description important delete"
-    ". description description description . .";
+    grid-template-areas: ". title title date . ." "checkbox description description description important delete" ". description description description . .";
 }
 
-.todo > * {
+.todo>* {
     padding: 0.5rem;
 }
 
 .title {
     font-size: 2em;
     grid-area: title;
-    
 }
 
 .description {
