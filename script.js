@@ -101,17 +101,17 @@ function renderEntries(todosArray) {
 
         // Käime kõik todo võtmed läbi ükshaaval
         for (const item in todo) {
-            switch (item && item[todo]) {
-            case item === 'isChecked':
+
+            if (item && item[todo] === 'isChecked') {
                 todoDiv.classList.add('checked');
                 continue;
-            case item === 'isImportant':
+            } else if (item && item[todo] === 'isImportant') {
                 todoDiv.classList.add('important-task');
                 continue;
-            case 'id': continue;
+            } else if (item === 'id') {
+                continue;
             }
             
-
             const elementDiv = document.createElement('div');
             elementDiv.className = item;
             elementDiv.innerText = todo[item];
