@@ -46,29 +46,10 @@ function instantiateTodo(mapToCompareAgainst, title, description, dueDate) {
 }
 
 const todos = new TodoMap();
+// Saab muuta const-iks kui TodoMap.prototype.set() teha normaalsemaks, mitte uut array-d luua iga kord
 let todosView = [];
 
 loadEntries();
-// Üritame leida database.json-i üles, kui see on olemas siis kirjutame todos Map-i üle
-async function loadEntries() {
-    const jsonDatabase = await fetch('database.json')
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                console.warn('Failed to load database from the server!');
-            }
-        })
-        .catch(error => {
-            console.warn(`Tühi või vigane JSON fail\n${error}`);
-        });
-
-    if (!jsonDatabase) return;
-
-    for (const [id, todo] of JSON.parse(jsonDatabase)) {
-        todos.set(id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked, id));
-    }
-}
 
 // Efektiivne viis renderdada todo list
 function renderEntries(todosArray) {
@@ -141,13 +122,15 @@ function renderEntries(todosArray) {
 function importantButtonHandler(todo) {
     !todo.isImportant;
     todos.set(todo.id, todo);
+    saveData('server.php', todos);
 }
 
 function removeButtonHandler(id) {
     todos.delete(id);
+    saveData('server.php', todos);
 }
 
-$('#add').click(addEntry);
+document.getElementById('add').addEventListener('click', addEntry);
 
 function addEntry() {
     const title = document.getElementById('titleInput').value;
@@ -158,8 +141,7 @@ function addEntry() {
 
     todos.set(todo.id, todo);
 
-    saveData('server.php', todos)
-        .catch(error => console.error(error));
+    saveData('server.php', todos);
 }
 
 // Sorteerib ülesanded soovitud key järgi, saab ka tagurpidi sorteerida
@@ -191,8 +173,32 @@ for (const button of sortButtons) {
     });
 }
 
+// Üritame leida database.json-i üles, kui see on olemas siis kirjutame todos Map-i üle
+async function loadEntries() {
+    const jsonDatabase = await fetch('database.json')
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                console.warn('Failed to load database from the server!');
+            }
+        })
+        .catch(error => {
+            console.warn(`Tühi või vigane JSON fail\n${error}`);
+        });
+
+    if (!jsonDatabase) return;
+
+    for (const [id, todo] of JSON.parse(jsonDatabase)) {
+        todos.set(id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked, id));
+    }
+}
+
 // Alternatiiv jQuery POST meetodile; asünkroonne, oleks kasutanud Fetch API-t kuid see tegi POST-i asemel GET-i igakord ???
 function saveData(url, data) {
+    // Kirjutame localStorage-isse et saada punkt selle eest
+    localStorage.setItem('todos', JSON.stringify(todos));
+
     // Promise teeb selle asünkroonseks, muidu peaks callbackidega seda tegema
     return new Promise(function (resolve, reject) {
         const xhr = new XMLHttpRequest();
