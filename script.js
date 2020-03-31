@@ -76,15 +76,16 @@ function renderEntries(todosArray) {
 
         // Label mille sisse läheb inputCheckbox
         const label = document.createElement('label');
-        label.className = 'checkbox';
 
         // input mille type=checkbox
         const inputCheckbox = document.createElement('input');
+        inputCheckbox.className = 'checkbox';
         inputCheckbox.setAttribute('type', 'checkbox');
         inputCheckbox.addEventListener('click', () => {checkboxHandler(todo);});
 
         // div checkbox-i kõrvale
         const div = document.createElement('div');
+        div.className = 'checkbox-decoy';
 
         // Paneme inputCheckbox-i ja div-i label-i sisse
         label.appendChild(inputCheckbox);
@@ -96,10 +97,15 @@ function renderEntries(todosArray) {
         for (const item in todo) {
 
             if (item === 'isChecked') {
-                if (item[todo]) todoDiv.classList.add('checked');
+                if (todo[item]) { 
+                    todoDiv.classList.add('checked');
+                    // Kuna seda HTML ei tee kui iga klikiga laetakse see osa DOM-ist uuesti
+                    // aga ma tahan seda sest see teeb CSS-i natuke lihtsamaks
+                    inputCheckbox.checked = true;
+                }
                 continue;
             } else if (item === 'isImportant') {
-                if (item[todo]) todoDiv.classList.add('important-task');
+                if (todo[item]) todoDiv.classList.add('important-task');
                 continue;
             } else if (item === 'id') {
                 continue;

@@ -65,7 +65,6 @@ body {
     padding: 1em 0.25em;
     font-size: 1.25em;
     max-width: 15%;
-
 }
 
 #input-container>#titleInput {
@@ -130,7 +129,7 @@ body {
     padding: 1em;
     margin: 0.5em;
     display: grid;
-    grid-template-columns: min-content auto auto auto 7.5% 7.5%;
+    grid-template-columns: 20% auto auto auto 7.5% 7.5%;
     column-gap: 0.5em;
     grid-template-rows: minmax(2em, 1fr) minmax(1em, 1fr) minmax(2em, 1fr);
     grid-template-areas: ". title title date . ." "checkbox description description description important delete" ". description description description . .";
@@ -157,19 +156,28 @@ body {
     justify-self: end;
 }
 
-input[type='checkbox'] {
-    display: none;
-    width: 0;
-    height: 0;
-    margin: 0;
+label {
+    grid-area: checkbox;
 }
 
 .checkbox {
-    width: 1em;
-    height: 1em;
+    display: none;
+    width: 0;
+    height: 0; 
+}
+
+.checkbox+.checkbox-decoy {
     border: 0.1875em solid var(--gray-tint-3);
     border-radius: 0.125em;
-    grid-area: checkbox;
+}
+
+.checkbox:checked+.checkbox-decoy {
+    background: url("checkmark.svg") var(--gray-tint-3) no-repeat;
+}
+
+.checkbox-decoy {
+    height: 3em;
+    max-width: 3em;
 }
 
 .important-button {
