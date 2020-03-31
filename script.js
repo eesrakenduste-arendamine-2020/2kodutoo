@@ -18,14 +18,18 @@ class Todo {
 
 class TodoMap extends Map {
     set(...args) {
-        // TODO: Tee seda kiiremaks, isegi kui see on praegu lollikindel
-        todosView = [...super.values()];
-        return super.set(...args);
+        const map = super.set(...args);
+        // Seda vist saaks kiiremaks teha...
+        todosView = [...this.values()];
+        renderEntries(todosView);
+        return map;
     }
 
     delete(...args) {
+        const map = super.delete(...args);
         todosView.splice(todosView.findIndex(todo => todo.id === args[0]), 1);
-        return super.get(...args);
+        renderEntries(todosView);
+        return map;
     }
 
     // Map ei serialiseeru normaalselt, seega anname talle toJSON fn-i https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#toJSON_behavior
@@ -64,9 +68,6 @@ async function loadEntries() {
     for (const [id, todo] of JSON.parse(jsonDatabase)) {
         todos.set(id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked, id));
     }
-    // todosView = mapToArray(todos);
-
-    renderEntries(todosView);
 }
 
 // Efektiivne viis renderdada todo list
@@ -150,7 +151,6 @@ function importantButtonHandler(todo) {
 function removeButtonHandler(id) {
     // this.parentNode.remove();
     todos.delete(todo.id);
-    renderEntries(todosView);
 }
 
 function editEntry(overwrites = {}) {
@@ -171,14 +171,9 @@ function addEntry() {
     const todo = instantiateTodo(todos, title, desc, date);
 
     todos.set(todo.id, todo);
-    // todosView = mapToArray(todos);
-
-    console.log(todos);
 
     saveData('server.php', todos)
         .catch(error => console.error(error));
-
-    renderEntries(todosView);
 }
 
 // Sorteerib ülesanded soovitud key järgi, saab ka tagurpidi sorteerida
@@ -187,6 +182,7 @@ function sortEntries(array, key, reverse = false) {
         return typeof a === 'string' ? a.localeCompare(b) : a - b;
     });
     if (reverse) array.reverse();
+    renderEntries(todosView);
 }
 
 // Leiame kõik sorteerimisnupud (hetkel 2)
@@ -202,11 +198,9 @@ for (const button of sortButtons) {
         if (!this.classList.contains('flip')) {
             this.id === 'sort-title' ? sortEntries(todosView, 'title') : sortEntries(todosView, 'dueDate');
             this.classList.add('flip');
-            renderEntries(todosView);
         } else {
             this.id === 'sort-title' ? sortEntries(todosView, 'title', true) : sortEntries(todosView, 'dueDate', true);
             this.classList.remove('flip');
-            renderEntries(todosView);
         }
     });
 }
