@@ -140,6 +140,14 @@ function removeButtonHandler() {
     this.parentNode.remove();
 }
 
+function editEntry(overwrites = {}) {
+
+}
+
+function removeEntry(id, map) {
+    
+}
+
 $('#add').click(addEntry);
 
 function addEntry() {
@@ -158,10 +166,6 @@ function addEntry() {
         .catch(error => console.error(error));
 
     renderEntries(todosView);
-}
-
-function editEntry(overwrites = {}) {
-
 }
 
 // Sorteerib ülesanded soovitud key järgi, saab ka tagurpidi sorteerida
