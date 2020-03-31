@@ -16,6 +16,24 @@ class Todo {
     }
 }
 
+class TodoMap extends Map {
+    set(...args) {
+        // TODO: Tee seda kiiremaks, isegi kui see on praegu lollikindel
+        todosView = [...super.values()];
+        return super.set(...args);
+    }
+
+    delete(...args) {
+        todosView.splice(todosView.findIndex(todo => todo.id === args[0]), 1);
+        return super.get(...args);
+    }
+
+    // Map ei serialiseeru normaalselt, seega anname talle toJSON fn-i https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#toJSON_behavior
+    toJSON() {
+        return [...super.entries()];
+    }
+}
+
 // Garanteerib et uus instance Todo-st on kasutamata ID-ga, teisisõnu soovitaks uusi Todo-sid genereerida ainult selle funktsiooniga
 // Tõenäosus, et ta läheb rekursiooni on alla ~1/1000000
 function instantiateTodo(mapToCompareAgainst, title, description, dueDate) {
@@ -23,13 +41,8 @@ function instantiateTodo(mapToCompareAgainst, title, description, dueDate) {
     return mapToCompareAgainst.has(todo.id) ? instantiateTodo(mapToCompareAgainst, title, description, dueDate) : todo;
 }
 
-const todos = new Map();
+const todos = new TodoMap();
 let todosView = [];
-
-// Map ei serialiseeru normaalselt, seega peame sellist hacki tegema, et kirjutame üle ta toJSON-i fn-i
-todos.toJSON = () => {
-    return [...todos.entries()];
-};
 
 loadEntries();
 // Üritame leida database.json-i üles, kui see on olemas siis kirjutame todos Map-i üle
@@ -51,15 +64,10 @@ async function loadEntries() {
     for (const [id, todo] of JSON.parse(jsonDatabase)) {
         todos.set(id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked, id));
     }
-    todosView = mapToArray(todos);
+    // todosView = mapToArray(todos);
 
     renderEntries(todosView);
 }
-
-function mapToArray(map) {
-    return [...map.values()];
-}
-
 
 // Efektiivne viis renderdada todo list
 function renderEntries(todosArray) {
@@ -111,13 +119,13 @@ function renderEntries(todosArray) {
         // importantButton
         const importantButton = document.createElement('div');
         importantButton.classList.add('important-button');
-        importantButton.addEventListener('click', importantButtonHandler);
+        importantButton.addEventListener('click', () => {importantButtonHandler(todo);});
         todoDiv.appendChild(importantButton);
 
         // removeButton
         const removeButton = document.createElement('div');
         removeButton.classList.add('delete-button');
-        removeButton.addEventListener('click', removeButtonHandler);
+        removeButton.addEventListener('click', () => {removeButtonHandler(todo);});
         todoDiv.appendChild(removeButton);
 
         // Lisame individuaalse todo containeri kõiki todosid sisaldavase virtuaalkonteinerisse
@@ -128,16 +136,21 @@ function renderEntries(todosArray) {
     todosElement.appendChild(todosContainer);
 }
 
-function importantButtonHandler() {
+function importantButtonHandler(todo) {
+    todos.set(todo.id, todo.isImportant);
+    /*
     if (!this.parentNode.classList.contains('important-task')) {
         this.parentNode.classList.add('important-task');
     } else {
         this.parentNode.classList.remove('important-task');
     }
+    */
 }
 
-function removeButtonHandler() {
-    this.parentNode.remove();
+function removeButtonHandler(id) {
+    // this.parentNode.remove();
+    todos.delete(todo.id);
+    renderEntries(todosView);
 }
 
 function editEntry(overwrites = {}) {
@@ -158,7 +171,7 @@ function addEntry() {
     const todo = instantiateTodo(todos, title, desc, date);
 
     todos.set(todo.id, todo);
-    todosView = mapToArray(todos);
+    // todosView = mapToArray(todos);
 
     console.log(todos);
 
