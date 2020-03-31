@@ -129,7 +129,7 @@ body {
     padding: 1em;
     margin: 0.5em;
     display: grid;
-    grid-template-columns: 20% auto auto auto 7.5% 7.5%;
+    grid-template-columns: min-content auto auto auto 7.5% 7.5%;
     column-gap: 0.5em;
     grid-template-rows: minmax(2em, 1fr) minmax(1em, 1fr) minmax(2em, 1fr);
     grid-template-areas: ". title title date . ." "checkbox description description description important delete" ". description description description . .";
@@ -178,6 +178,7 @@ label {
 .checkbox-decoy {
     height: 3em;
     max-width: 3em;
+    width: 3em;
 }
 
 .important-button {
