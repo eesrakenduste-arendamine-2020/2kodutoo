@@ -103,10 +103,10 @@ function renderEntries(todosArray) {
         for (const item in todo) {
             switch (item) {
             case 'isChecked':
-                // apply mingi class
+                todo.classList.add('checked');
                 continue;
             case 'isImportant':
-                // apply mingi class
+                todo.classList.add('important-task');
                 continue;
             case 'id': continue;
             }
@@ -126,7 +126,7 @@ function renderEntries(todosArray) {
         // removeButton
         const removeButton = document.createElement('div');
         removeButton.classList.add('delete-button');
-        removeButton.addEventListener('click', () => {removeButtonHandler(todo);});
+        removeButton.addEventListener('click', () => {removeButtonHandler(todo.id);});
         todoDiv.appendChild(removeButton);
 
         // Lisame individuaalse todo containeri kõiki todosid sisaldavase virtuaalkonteinerisse
@@ -138,27 +138,12 @@ function renderEntries(todosArray) {
 }
 
 function importantButtonHandler(todo) {
-    todos.set(todo.id, todo.isImportant);
-    /*
-    if (!this.parentNode.classList.contains('important-task')) {
-        this.parentNode.classList.add('important-task');
-    } else {
-        this.parentNode.classList.remove('important-task');
-    }
-    */
+    !todo.isImportant;
+    todos.set(todo.id, todo);
 }
 
 function removeButtonHandler(id) {
-    // this.parentNode.remove();
-    todos.delete(todo.id);
-}
-
-function editEntry(overwrites = {}) {
-
-}
-
-function removeEntry(id, map) {
-    
+    todos.delete(id);
 }
 
 $('#add').click(addEntry);
