@@ -55,13 +55,17 @@ let todosView = [];
 loadEntries();
 
 // Efektiivne viis renderdada todo list
+// Tõenäoliselt saab teha asünkroonseks ilma probleemideta
 function renderEntries(todosArray) {
 
     const todosElement = document.getElementById('todos');
-    // Teeme olemasoleva elemendi sisu tühjaks, et seal varasemaid todo-sid ei oleks
-    todosElement.textContent = '';
+
     // Loome virtuaalse dokumendi et me ei peaks HTML-i reflow-i triggerima iga tsükliga, vaid saame lõpus lihtsalt ühe korraga ära lehe uuendada
-    const todosContainer = document.createDocumentFragment();
+    const todoFragment = document.createDocumentFragment();
+
+    // Teeme konteineri mida saame hiljem asendada
+    const todoFrame = document.createElement('div');
+    todoFrame.id = 'todo-frame';
 
     // Käime kõik todo-d läbi ükshaaval
     for (const todo of todosArray) {
@@ -120,11 +124,14 @@ function renderEntries(todosArray) {
         todoDiv.appendChild(removeButton);
 
         // Lisame individuaalse todo containeri kõiki todosid sisaldavase virtuaalkonteinerisse
-        todosContainer.appendChild(todoDiv);
+        todoFrame.appendChild(todoDiv);
+        todoFragment.appendChild(todoFrame);
     }
 
     // Kõige viimane tegevus, lisab terve virtuaalkonteineri (ja selle kõik elemendid) leheküljele
-    todosElement.appendChild(todosContainer);
+    // Me võime textContenti tühjaks teha ja siis alati appendChild teha kuid see teeks kokku 2 reflow-i funktsiooni jooksul
+    // Kasutades .replaceWith() saame terve funktsiooni läbida 1 reflow-iga
+    todosElement.textContent === '' ? todosElement.appendChild(todoFragment) : document.getElementById('todo-frame').replaceWith(todoFragment);
 }
 
 function importantButtonHandler(todo) {
