@@ -8,7 +8,7 @@
     /* Primary text */
     --gray-tint-1: hsl(0, 0%, 20%);
     /* Secondary text/icons */
-    --gray-tint-2: hsl(0, 0%, 43%);
+    --gray-tint-2: hsl(0, 0%, 55%);
     /* Separator bar */
     --gray-tint-3: hsl(0, 1%, 75%);
     /* Alternative frame color */
@@ -16,11 +16,12 @@
     /* Favorites color */
     --important-color: hsl(56, 100%, 48%);
     font-family: 'Cabin', sans-serif;
+    color: var(--gray-tint-1);
+    transition: .1s;
 }
 
 body {
     background-color: var(--background-color);
-    color: var(--gray-tint-1);
 }
 
 .checked {
@@ -56,30 +57,31 @@ body {
     box-shadow: var(--shadow);
     border-radius: 0.75em;
     margin-top: 1em;
+    font-size: 1.25em;
 }
 
-#input-container>:not(#add) {
+input {
+    font-family: 'Cabin', sans-serif;
+    font-size: 1.25rem;
+}
+
+#titleInput, #descriptionInput, #dueDateInput {
     box-shadow: var(--shadow);
     border: 0.25rem solid var(--gray-tint-3);
     border-radius: 0.75em;
     padding: 1em 0.25em;
-    font-size: 1.25em;
-    max-width: 15%;
+    margin: 0.25em;
+    width: 25%;
+    color: var(--gray-tint-1);
 }
 
-#input-container>#titleInput {
-    max-width: 25%;
+#add {
+    background: url("plus.svg") var(--frame-color) no-repeat;
+    box-shadow: var(--shadow);
+    border: none;
+    border-radius: 0.75em;
+    margin: 0.25em;
 }
-
-#input-container>#descriptionInput {
-    max-width: 25%;
-}
-
-#input-container>#dueDateInput {
-    max-width: 20%;
-}
-
-#add {}
 
 #input-container>::placeholder {
     color: var(--gray-tint-3);
@@ -88,15 +90,14 @@ body {
 #sort-container {
     display: flex;
     flex-direction: row;
-    column-gap: 1em;
-    padding: 2em 8em 1em 8em;
+    padding: 1em;
     background-color: var(--gray-tint-4);
     border-radius: 0.75em 0.75em 0 0;
     border-bottom: var(--gray-tint-3) solid 0.125em;
 }
 
 #todos {
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 2em;
 }
 
@@ -107,7 +108,7 @@ body {
     border: none;
     cursor: pointer;
     transition: .1s;
-    height: 2em;
+
 }
 
 .sort-button:focus {
@@ -129,9 +130,9 @@ body {
     padding: 1em;
     margin: 0.5em;
     display: grid;
-    grid-template-columns: min-content auto auto auto 7.5% 7.5%;
+    grid-template-columns: min-content auto auto auto 2em 2em;
     column-gap: 0.5em;
-    grid-template-rows: minmax(2em, 1fr) minmax(1em, 1fr) minmax(2em, 1fr);
+    grid-template-rows: 2em minmax(1em, auto) 2em;
     grid-template-areas: ". title title date . ." "checkbox description description description important delete" ". description description description . .";
 }
 
@@ -140,7 +141,7 @@ body {
 }
 
 .title {
-    font-size: 2em;
+    font-size: 1.667em;
     grid-area: title;
 }
 
@@ -185,6 +186,7 @@ label {
     background: url("important.svg") no-repeat;
     cursor: pointer;
     grid-area: important;
+    /*place-self: center;*/
 }
 
 .important-task {
@@ -195,4 +197,5 @@ label {
     background: url("x.svg") no-repeat;
     cursor: pointer;
     grid-area: delete;
+    /*place-self: center;*/
 }
