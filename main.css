@@ -24,7 +24,6 @@ body {
     height: 100vh;
 }
 
-
 .i1 , .i4{
     flex-shrink: 1;
     flex-grow: 1;
@@ -42,15 +41,33 @@ body {
     background-color: #ffffff;
 }
 
-
 .i1__box,
 .i2__box,
 .i3__box,
 .i4__box {
     height: 50px;
-    background: #36b8c8;
+    background-color: #36b8c8;
 }
 
 .i3__box {
+    background-color: #24bfd2;
+}
+
+.icon {
+    top: 7px;
+    padding-left: 5px;
+    position: absolute;
+    opacity: 1;
+} 
+    
+.input-field { 
+    width: 100%; 
+    border: 0;
+    height: 50px;
     background: #24bfd2;
+    font-size: 30px;
+    margin-top: 0px;
+    vertical-align: top;
+    color:#ffffff;
+    padding-left: 10px;
 }
