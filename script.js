@@ -80,7 +80,7 @@ function renderEntries(todosArray) {
         // input mille type=checkbox
         const inputCheckbox = document.createElement('input');
         inputCheckbox.className = 'checkbox';
-        inputCheckbox.setAttribute('type', 'checkbox');
+        inputCheckbox.type = 'checkbox';
         inputCheckbox.addEventListener('click', () => {checkboxHandler(todo);});
 
         // div checkbox-i kõrvale
