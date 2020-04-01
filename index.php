@@ -13,6 +13,14 @@
 </head>
 <body>
 
+<div class="container">
+
+    <div class="item i1"><div class="i1__box"></div></div>
+    <div class="item i2"><div class="i2__box"></div></div>
+    <div class="item i3"><div class="i3__box"></div></div>
+    <div class="item i4"><div class="i4__box"></div></div>
+
+</div>
 
 </body>
 </html>

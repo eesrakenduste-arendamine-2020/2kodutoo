@@ -8,3 +8,49 @@ body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.47;
 }
+
+.container {
+    background-color: #ccc;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;/*x when row, y when column*/
+    align-items: center; /*y when row, x when column*/
+}
+
+.item {
+    color: #fff;
+    font-size: 40px;
+    height: 100vh;
+}
+
+
+.i1 , .i4{
+    flex-shrink: 1;
+    flex-grow: 1;
+    flex: 1 1 30px;
+    background-color: #f1f1f1;
+}
+
+.i2 {
+    background-color: #3b3737;
+    flex-basis: 360px;
+}
+
+.i3 {
+    flex-basis: 720px;
+    background-color: #ffffff;
+}
+
+
+.i1__box,
+.i2__box,
+.i3__box,
+.i4__box {
+    height: 50px;
+    background: #36b8c8;
+}
+
+.i3__box {
+    background: #24bfd2;
+}
