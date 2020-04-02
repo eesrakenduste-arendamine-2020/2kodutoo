@@ -91,13 +91,15 @@ class Todo{
 
     sortBy(){
         var val = document.getElementById('#sortBy').value;
+        console.log(val);
         if(val = "Date"){
-            const sortedByDate = entries.slice().sort((a, b, c, d) => c.date);//sorteeri kp järgi     
+            const sortedByDate = entries.slice().sort((a, b, c, d) => c.date);//sorteeri kp jÃ¤rgi     
             document.getElementById("#sortBy").innerHTML = sortedByDate;
         } //else {
-            //sorteeri nime järgi
+            //sorteeri nime jÃ¤rgi
         //}
     }
+}
 
 
 const todo = new Todo();
