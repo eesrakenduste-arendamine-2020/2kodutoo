@@ -1,0 +1,48 @@
+body{
+    margin: 0;
+}
+
+
+.task-done{
+    background-color: lightgreen;
+    text-decoration: line-through;
+}
+
+.entry{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:90%;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 1%;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin: 5px;
+    animation: fadein 2s;
+}
+
+@keyframes fadein{
+	from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+	}
+}
+
+#inputContainer{
+	width: 80%;
+	margin: auto;
+	border: 2px solid red;
+	border-radius: 4px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#buttonContainer{
+	margin: auto;
+	display: flex;
+	justify-content: center;
+}
