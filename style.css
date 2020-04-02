@@ -54,6 +54,10 @@ li{
     margin: 5px;
 }
 
+li:hover{
+    background-color: steelblue;
+}
+
 .delete-button{
     color: red;
     font-size: 1.3em;
@@ -75,4 +79,5 @@ li{
 
 .entry-value:hover{
     background-color: steelblue;
+    font-size: large;
 }
