@@ -10,7 +10,7 @@ body{
     text-decoration: line-through;
 }
 
-#inputContainer, #buttonContainer{
+#inputContainer, #button{
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -33,6 +33,7 @@ input[type="button"]{
     color: white;
     width: 15%;
     border-radius: 10px;
+    text-align: center;
 }
 
 input[type="button"]:hover{
