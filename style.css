@@ -81,3 +81,7 @@ li:hover{
     background-color: steelblue;
     font-size: large;
 }
+
+#sortBy{
+    list-style-type: circle;
+}
