@@ -104,7 +104,36 @@
     justify-content: space-evenly;
     background-color: var(--frame-color);
     box-shadow: var(--shadow);
-    font-size: 1.25em;
+    flex-wrap: wrap;
+}
+
+#titleInput, #descriptionInput, #dueDateInput {
+    box-shadow: var(--shadow);
+    border: 0.25rem solid var(--gray-tint-3);
+    border-radius: 0.75em;
+    padding: 1em 0.25em;
+    color: var(--gray-tint-1);
+}
+
+#titleInput, #descriptionInput {
+    max-width: 20%;
+}
+
+#dueDateInput {
+    max-width: 25%;
+}
+
+#add {
+    box-shadow: var(--shadow);
+    border: none;
+    border-radius: 0.75em;
+    width: 12.5%;
+    height: auto;
+}
+
+#add:active {
+    box-shadow: none;
+    transition: 0.1s;
 }
 
 #todos {
@@ -126,15 +155,7 @@ body {
 
 input {
     font-family: 'Cabin', sans-serif;
-    font-size: 1.25rem;
-}
-
-#add {
-    background: url("plus.svg") var(--frame-color) no-repeat;
-    box-shadow: var(--shadow);
-    border: none;
-    border-radius: 0.75em;
-    margin: 0.25em;
+    font-size: 1.25em;
 }
 
 #input-container>::placeholder {
@@ -147,15 +168,6 @@ input {
     padding: 1em;
     box-shadow: var(--shadow);
     border-radius: 0.75em 0.75em 0 0;
-}
-
-#titleInput, #descriptionInput, #dueDateInput {
-    box-shadow: var(--shadow);
-    border: 0.25rem solid var(--gray-tint-3);
-    border-radius: 0.75em;
-    padding: 1em 0.25em;
-    margin: 0.25em;
-    color: var(--gray-tint-1);
 }
 
 .sort-button {
@@ -227,6 +239,7 @@ label {
 }
 
 /* } */
+
 /* Task actions { */
 
 .important-button {
