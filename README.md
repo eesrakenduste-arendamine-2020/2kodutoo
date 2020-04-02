@@ -17,7 +17,7 @@
    - Ülesannete salvestamiseks ja kuvamiseks kasutatakse AJAX-it (1 punkti) ❌ (Poolik?)
    - Kui kasutaja tuleb lehele, siis näidatakse varem salvestatud ülesandeid (1 punkt) ✔️
    - Rakendus töötab loogiliselt ja kasutaja ei pea mõtlema, et kuidas rakendus töötab. (2 punkti) ✔️
-   - Lisa ise 5 funktsionaalsust juurde.(5 punkti) ❌
+   - Lisa ise 5 funktsionaalsust juurde.(5 punkti)
      Näiteks:
      - Võimalus lisada kategooriad ja nende alusel jagada ülesandeid ❌
      - Möödunud ja/või tänase kuupäevaga tegemata ülesanded märkida erinevalt ❌
