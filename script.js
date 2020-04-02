@@ -51,12 +51,14 @@ function instantiateTodo(mapToCompareAgainst, title, description, dueDate) {
 const todos = new TodoMap();
 // Saab muuta const-iks kui TodoMap.prototype.set() teha normaalsemaks, mitte uut array-d luua iga kord
 let todosView = [];
+// Sorteerimisolekud
+// const states = new Map([['title', false], ['dueDate', false]]);
 
 loadEntries();
 
 // Efektiivne viis renderdada todo list
 // Tõenäoliselt saab teha asünkroonseks ilma probleemideta
-function renderEntries(todosArray) {
+async function renderEntries(todosArray) {
 
     const todosElement = document.getElementById('todos');
 
@@ -160,7 +162,10 @@ function checkboxHandler(todo) {
         .catch(error => console.error('Salvestamine ebaõnnestus', error));
 }
 
-document.getElementById('add').addEventListener('click', addEntry);
+document.getElementById('add').addEventListener('click', () => {
+    const titleInput = document.getElementById('titleInput');
+    if (titleInput.value) addEntry(); 
+});
 
 function addEntry() {
     const title = document.getElementById('titleInput').value;
@@ -220,13 +225,13 @@ async function loadEntries() {
 
     if (!jsonDatabase) {
         // Laeme localStorage-ist kui fetch ebaõnnestub
-        if (localStorage.getItem('todos')) {
-            jsonDatabase = localStorage.getItem('todos');
+        if (!localStorage.getItem('todos')) {
+            return;
         }
-        return;
+        jsonDatabase = JSON.parse(localStorage.getItem('todos'));
     }
 
-    for (const [id, todo] of JSON.parse(jsonDatabase)) {
+    for (const [id, todo] of jsonDatabase) {
         todos.set(id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked, id));
     }
 }
