@@ -96,9 +96,7 @@ class Todo{
             document.getElementById("#sortBy").innerHTML = sortedByDate;
         } //else {
             //sorteeri nime järgi
-        }
     }
-}
 
 
 const todo = new Todo();
