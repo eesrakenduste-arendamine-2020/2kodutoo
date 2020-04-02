@@ -51,8 +51,6 @@ function instantiateTodo(mapToCompareAgainst, title, description, dueDate) {
 const todos = new TodoMap();
 // Saab muuta const-iks kui TodoMap.prototype.set() teha normaalsemaks, mitte uut array-d luua iga kord
 let todosView = [];
-// Sorteerimisolekud
-// const states = new Map([['title', false], ['dueDate', false]]);
 
 loadEntries();
 
@@ -140,6 +138,14 @@ async function renderEntries(todosArray) {
     // Me võime textContenti tühjaks teha ja siis alati appendChild teha kuid see teeks kokku 2 reflow-i funktsiooni jooksul
     // Kasutades .replaceWith() saame terve funktsiooni läbida 1 reflow-iga
     todosElement.textContent === '' ? todosElement.appendChild(todoFragment) : document.getElementById('todo-frame').replaceWith(todoFragment);
+
+    const sortTitle = document.getElementById('sort-title');
+    const dueDate = document.getElementById('sort-date');
+    if (dueDate.classList.contains('flip')) {
+        sortEntries(todosView, 'title', true);
+    } else if (sortTitle.classList.contains('flip')) {
+        sortEntries(todosView, 'dueDate', true);
+    }
 }
 
 function importantButtonHandler(todo) {
@@ -220,7 +226,7 @@ async function loadEntries() {
             }
         })
         .catch(error => {
-            console.warn(`Tühi või vigane JSON fail\n${error}`);
+            console.warn('Tühi või vigane JSON fail', error);
         });
 
     if (!jsonDatabase) {
