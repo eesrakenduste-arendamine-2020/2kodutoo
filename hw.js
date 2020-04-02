@@ -87,15 +87,16 @@ class Todo{
     }
 
 
-    document.querySelector('#sortBy').addEventListener('click', ()=>{this.sortBy();});
+    //document.querySelector('#sortBy').addEventListener('click', ()=>{this.sortBy();});
 
     sortBy(){
-        const val = document.getElementById('#sortBy').value;
+        var val = document.getElementById('#sortBy').value;
         if(val = "Date"){
             const sortedByDate = entries.slice().sort((a, b, c, d) => c.date);//sorteeri kp järgi     
             document.getElementById("#sortBy").innerHTML = sortedByDate;
         } //else {
             //sorteeri nime järgi
+        //}
     }
 
 
