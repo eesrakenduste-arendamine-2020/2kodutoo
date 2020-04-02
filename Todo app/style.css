@@ -1,0 +1,94 @@
+body {
+    background-color: lightgray;
+    font-family: "Pacifico", cursive;
+    margin: 0
+  }
+  
+  #data {
+    font-size: large;
+    font-family: "Pacifico", cursive;
+  }
+
+.task-completed{
+    border-color: lightgreen;
+}
+
+.task-completed .entry-value{
+    text-decoration: line-through;
+}
+
+#inputContainer, #buttonContainer{
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+input{
+    width: 25%;
+    margin: 5px;
+    border-radius: 5px;
+    height: 25px;
+}
+
+input[type="button"]{
+    width:15%;
+    border-radius: 10px;
+    height: 37px;
+    padding: 10px;
+    font-size: 17px;
+    background-color: green;
+    border: 1px solid green;
+    color:white;
+}
+input[type="button"]:hover{
+    background-color: darkgreen;
+    border-color: darkgreen;
+    font-weight: 600;
+}
+
+li{
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
+    border: 2px solid gray;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.delete-button{
+    color: red;
+    font-size: 1.3em;
+    font-weight:500;
+}
+
+.delete-button:hover{
+    font-weight: 900;
+    color:darkred;
+    font-size: 1.4em;
+    cursor: pointer;
+
+}
+
+.entry-value{
+    cursor:pointer;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.entry-value:hover{
+    background-color: #EEE;
+}
+
+.clear i {
+  font-size: 30px;
+  color:black;
+}
+.clear i:hover {
+  cursor: pointer;
+  text-shadow: 1px 3px 5px #000;
+  transform: rotate(45deg);
+}
