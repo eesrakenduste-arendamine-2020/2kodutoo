@@ -164,7 +164,6 @@ input {
     margin-right: 2em;
     border: none;
     cursor: pointer;
-    transition: .1s;
 }
 
 .sort-button:focus {
@@ -198,6 +197,8 @@ input {
     white-space: nowrap;
 }
 
+/* Checkbox { */
+
 label {
     grid-area: checkbox;
     place-self: center center;
@@ -215,14 +216,18 @@ label {
 }
 
 .checkbox:checked+.checkbox-decoy {
-    background: url("checkmark.svg") var(--gray-tint-3) no-repeat;
+    background: url("checkmark.svg") no-repeat;
 }
 
 .checkbox-decoy {
     height: 3em;
     max-width: 3em;
     width: 3em;
+    cursor: pointer;
 }
+
+/* } */
+/* Task actions { */
 
 .important-button {
     background: url("important.svg") no-repeat;
@@ -245,3 +250,9 @@ label {
     padding: 1em;
     margin: 0.5em;
 }
+
+.delete-button:hover {
+    transform: rotate(90deg);
+}
+
+/* } */
