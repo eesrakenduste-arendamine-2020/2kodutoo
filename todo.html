@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="todo.js"></script>
+    <title>Todo</title>
+</head>
+<body>
+    <div id="container">
+        <div id="inputContainer">
+            <label for="title">Tiitel</label><br>
+            <input type="text" name="title" id="title"><br />
+            <label for="description">Kirjeldus</label><br>
+            <input type="text" name="description" id="description"><br />
+            <label for="date">Kuupaev</label><br>
+            <input type="date" name="date" id="date">
+        </div>
+        <div id="buttonContainer">
+            <input type="button" value="LISA" id="addButton">
+            <input type="button" value="SORTEERI(TIITEL)" id="sortTitleButton">
+            <input type="button" value="SORTEERI(KUUPAEV)" id="sortDateButton">
+        </div>
+    </div>
+</body>
+</html>
