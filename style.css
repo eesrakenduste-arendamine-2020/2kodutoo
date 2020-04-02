@@ -4,9 +4,10 @@ body{
 
 .task-completed{
     border-color: teal;
+    
 }
 
-.task-completed.entry-value{
+.task-completed .entry-value{
     text-decoration: line-through;
 }
 
