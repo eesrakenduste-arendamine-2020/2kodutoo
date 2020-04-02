@@ -143,18 +143,21 @@ function renderEntries(todosArray) {
 function importantButtonHandler(todo) {
     todo.isImportant = !todo.isImportant;
     todos.set(todo.id, todo);
-    saveData('server.php', todos);
+    saveData('server.php', todos)
+        .catch(error => console.error('Salvestamine ebaõnnestus', error));
 }
 
 function removeButtonHandler(id) {
     todos.delete(id);
-    saveData('server.php', todos);
+    saveData('server.php', todos)
+        .catch(error => console.error('Salvestamine ebaõnnestus', error));
 }
 
 function checkboxHandler(todo) {
     todo.isChecked = !todo.isChecked;
     todos.set(todo.id, todo);
-    saveData('server.php', todos);
+    saveData('server.php', todos)
+        .catch(error => console.error('Salvestamine ebaõnnestus', error));
 }
 
 document.getElementById('add').addEventListener('click', addEntry);
@@ -168,7 +171,8 @@ function addEntry() {
 
     todos.set(todo.id, todo);
 
-    saveData('server.php', todos);
+    saveData('server.php', todos)
+        .catch(error => console.error('Salvestamine ebaõnnestus', error));
 }
 
 // Sorteerib ülesanded soovitud key järgi, saab ka tagurpidi sorteerida
@@ -202,7 +206,7 @@ for (const button of sortButtons) {
 
 // Üritame leida database.json-i üles, kui see on olemas siis kirjutame todos Map-i üle
 async function loadEntries() {
-    const jsonDatabase = await fetch('database.json')
+    let jsonDatabase = await fetch('database.json')
         .then(response => {
             if (response.ok) {
                 return response.json();
@@ -214,7 +218,13 @@ async function loadEntries() {
             console.warn(`Tühi või vigane JSON fail\n${error}`);
         });
 
-    if (!jsonDatabase) return;
+    if (!jsonDatabase) {
+        // Laeme localStorage-ist kui fetch ebaõnnestub
+        if (localStorage.getItem('todos')) {
+            jsonDatabase = localStorage.getItem('todos');
+        }
+        return;
+    }
 
     for (const [id, todo] of JSON.parse(jsonDatabase)) {
         todos.set(id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked, id));
