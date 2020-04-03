@@ -1,3 +1,8 @@
+### Autorid
+*Karl-Markus Pihlakas
+*Daniel Gurevitš
+
+
 # 2. kodutöö – ToDo rakendus
 
 ### Tähtpäev 05.04.2020 23:59
