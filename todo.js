@@ -1,5 +1,18 @@
 console.log("fail õigesti ühendatud.");
 
+function sortFunction() {
+  const sortbutton = document.getElementById("sort");
+  sortbutton.addEventListener("change", sortFunction);
+  var selected = sortbutton.value;
+  console.log(selected);
+  sortList(selected);
+}
+
+function sortList(selected) {
+  if (selected == "3") {
+  }
+}
+
 class Entry {
   constructor(title, description, date) {
     this.title = title;

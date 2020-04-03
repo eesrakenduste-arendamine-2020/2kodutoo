@@ -16,6 +16,17 @@ body {
   justify-content: center;
   margin: 5px;
 }
+#buttonContainer {
+  float: left;
+}
+
+/* Placeholder praegu */
+#sortContainer {
+  float: left;
+  position: absolute;
+  padding-left: 2.4%;
+  padding-top: 1.6%;
+}
 
 input {
   margin: 5px;
