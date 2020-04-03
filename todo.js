@@ -8,6 +8,7 @@ function sortFunction() {
   sortList(selected);
 }
 
+//Funktsioon mis sorteerib Entry-d vastavalt valikule
 function sortList(selected) {
   if (selected == "3") {
   }
@@ -79,7 +80,7 @@ class Todo {
         this.saveLocal();
       });
 
-      div.innerHTML = `${entryValue.title} <br> ${entryValue.description} <br> ${entryValue.date}`;
+      div.innerHTML = ` <b> ${entryValue.title} </b> <br> ${entryValue.description} <br> ${entryValue.date}`;
 
       removeButton.appendChild(removeIcon);
       li.appendChild(div);
@@ -95,5 +96,13 @@ class Todo {
     console.log("save");
   }
 }
+
+$("entry").mouseover(function() {
+  $("div").animate({
+    left: "250px",
+    height: "+=150px",
+    width: "+=150px"
+  });
+});
 
 const todo = new Todo();

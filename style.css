@@ -47,7 +47,8 @@ input {
 }
 
 .todo-list {
-  width: 90%;
+  width: 87vw;
+  text-align: center;
 }
 
 .delete-button {
@@ -74,6 +75,5 @@ input[type="button"] {
 }
 
 input[type="button"]:hover {
-  color: lightgrey;
-  background-color: dodgerblue;
+  background-color: darkgreen;
 }
