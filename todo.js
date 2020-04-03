@@ -11,7 +11,21 @@ function sortFunction() {
 //Funktsioon mis sorteerib Entry-d vastavalt valikule
 function sortList(selected) {
   if (selected == "3") {
+    $("ul li")
+      .sort(Ascending_sort)
+      .appendTo("ul");
   }
+}
+
+function Ascending_sort(a, b) {
+  return $(b)
+    .text()
+    .toUpperCase() <
+    $(a)
+      .text()
+      .toUpperCase()
+    ? 1
+    : -1;
 }
 
 class Entry {
@@ -96,13 +110,4 @@ class Todo {
     console.log("save");
   }
 }
-
-$("entry").mouseover(function() {
-  $("div").animate({
-    left: "250px",
-    height: "+=150px",
-    width: "+=150px"
-  });
-});
-
 const todo = new Todo();
