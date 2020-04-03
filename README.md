@@ -13,8 +13,8 @@
    - Saab lisad ja kustutada (1 punkt) ✔️
    - Saab märkida ülesandeid tehtuks (1 punkt) ✔️ (Poolik, clickable zone on ainult tekstil, mitte tervel div-il)
    - Saab järjestada kuupäeva ja nime järgi ülesandeid (2 punkti) ❌
-   - Ülesanded salvestatakse localStorage'isse ja faili/andmebaasi (2 punkti) ❓
-   - Ülesannete salvestamiseks ja kuvamiseks kasutatakse AJAX-it (1 punkti) ❌ (Poolik?)
+   - Ülesanded salvestatakse localStorage'isse ja faili/andmebaasi (2 punkti) ✔️
+   - Ülesannete salvestamiseks ja kuvamiseks kasutatakse AJAX-it (1 punkti) ✔️
    - Kui kasutaja tuleb lehele, siis näidatakse varem salvestatud ülesandeid (1 punkt) ✔️
    - Rakendus töötab loogiliselt ja kasutaja ei pea mõtlema, et kuidas rakendus töötab. (2 punkti) ✔️
    - Lisa ise 5 funktsionaalsust juurde.(5 punkti)
