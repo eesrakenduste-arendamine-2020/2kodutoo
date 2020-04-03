@@ -1,7 +1,7 @@
 console.log("fail ühendatud");
 
 window.addEventListener('load', function () {
-    loadFromFile();
+    loadFromFile("");
 })
 
 class Entry{
@@ -115,32 +115,46 @@ function GetSortOrder(prop) {
     }
 }
 
-function loadFromFile(){
-
-
+function loadFromFile(text){
 
     const sort_order = document.querySelector("#sort_order").value;
     //console.log();
     $.get('database.txt', function(data){
         let content = JSON.parse(data).content;
-        console.log(content);
+
         ToDo.entries = [];
         //content.sort(GetSortOrder("title"));
         content.sort(GetSortOrder(sort_order));
         content.forEach(function(todo){
 
-            ToDo.entries.push(new Entry(todo.title, todo.description, todo.date));
+            console.log("test"+text);
+            if (text !== ""){
+                if (todo.description.includes(text) || todo.title.includes(text)){
+                    ToDo.entries.push(new Entry(todo.title, todo.description, todo.date));
+                }
+
+            }
+            else{
+                console.log("ALLL");
+                ToDo.entries.push(new Entry(todo.title, todo.description, todo.date));
+            }
+
         });
         ToDo.render();
     })
 
-
-
 }
 
+function searchTest(){
+    const text = document.querySelector("#search").value;
+    loadFromFile(text);
+}
+$('#search').on('keydown', function() {
+        searchTest();
+});
 
-
-$('#load').click(loadFromFile);
+$('#sort_order').change(loadFromFile(""));
+$('#load').click(loadFromFile(""));
 $('#save').click(saveToFile);
 $('#add').click(ToDo.addEntry);
 
