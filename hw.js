@@ -102,10 +102,11 @@ class Todo{
     //document.querySelector('#sort').addEventListener('click', ()=>{this.sortBy();});
     
    
-    changeSortValue(sortValue){        
+    changeSortValue(sortValue){    
+        let sortedByDate = sortValue;    
         if(sortValue == "date"){
-            let sortedByDate = sortValue;//entries.slice().sort((a, b, c, d) => c.date);//sorteeri kp jÃ¤rgi     
-            document.getElementById("#sortBy").innerHTML = sortedByDate;
+            //entries.slice().sort((a, b, c, d) => c.date);//sorteeri kp jÃ¤rgi     
+            //document.getElementById("#sortBy").innerHTML = sortedByDate;
             sortedByDate();
         } else if(sortValue == "name"){
             sortedByName();
@@ -116,6 +117,19 @@ class Todo{
             sortedToBasic();
         }
     }
+
+    sortedByDate(){
+
+    }
+
+    sortedByName(){
+
+    }
+
+    sortedByImportance(){
+        
+    }
+
 }
 
 
