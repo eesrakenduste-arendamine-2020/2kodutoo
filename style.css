@@ -5,7 +5,7 @@ body {
 .task-completed {
   background-color: lightgreen;
   text-decoration: line-through;
-  width: 80%;
+  width: 87vw;
   cursor: pointer;
 }
 

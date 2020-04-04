@@ -74,10 +74,10 @@ class Todo {
       });
 
       if (entryValue.done) {
-        div.classList.add("task-completed");
+        li.classList.add("task-completed");
       }
 
-      div.addEventListener("click", event => {
+      li.addEventListener("click", (event) => {
         event.target.classList.add("task-completed");
         this.entries[entryIndex].done = true;
         this.saveLocal();
