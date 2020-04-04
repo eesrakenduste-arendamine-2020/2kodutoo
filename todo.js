@@ -1,8 +1,6 @@
 console.log("fail ühendatud");
 
-window.addEventListener('load', function () {
-    loadFromFile("");
-})
+
 
 class Entry{
     constructor(title, description, date){
@@ -18,7 +16,7 @@ class toDo{
     constructor(){
         console.log("toDo sees");
 
-        document.querySelector("#add").addEventListener("click", ()=>{this.addEntry()})
+        //document.querySelector("#add").addEventListener("click", ()=>{this.addEntry()})
 
         this.entries = [];
     }
@@ -116,14 +114,15 @@ function GetSortOrder(prop) {
 }
 
 function loadFromFile(text){
-
+    console.log("aaaaaaaaaaaaaaaaaa");
     const sort_order = document.querySelector("#sort_order").value;
-    //console.log();
+
     $.get('database.txt', function(data){
         let content = JSON.parse(data).content;
 
         ToDo.entries = [];
         //content.sort(GetSortOrder("title"));
+        console.log("LOAD");
         content.sort(GetSortOrder(sort_order));
         content.forEach(function(todo){
 
@@ -150,12 +149,30 @@ function searchTest(){
     loadFromFile(text);
 }
 $('#search').on('keydown', function() {
-        searchTest();
+    searchTest();
 });
 
-$('#sort_order').change(loadFromFile(""));
-$('#load').click(loadFromFile(""));
-$('#save').click(saveToFile);
-$('#add').click(ToDo.addEntry);
+function a(){
+    console.log("YES");
+}
 
-loadFromFile();
+$('#load').on('click', function() {
+    loadFromFile("");
+});
+
+$('#save').on('click', function() {
+    saveToFile();
+});
+
+$('#sort_order').on('change', function() {
+    loadFromFile("");
+});
+
+$('#add').on('click', function() {
+    ToDo.addEntry();
+});
+
+//$('#add').click(ToDo.addEntry);
+
+
+loadFromFile("");
