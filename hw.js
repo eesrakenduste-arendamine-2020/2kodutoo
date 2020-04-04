@@ -107,12 +107,9 @@ class Todo{
     changeSortValue(sortValue){    
         let sortedByDate = sortValue;    
         if(sortValue == "date"){
-            //entries.slice().sort((a, b, c, d) => c.date);//sorteeri kp jÃ¤rgi     
-            //document.getElementById("#sortBy").innerHTML = sortedByDate;
             this.sortedByDate();
         } else if(sortValue == "name"){
-            this.sortedByName();
-            //sorteeri nime jÃ¤rgi
+            sortedByName();
         } else if(sortValue == "important"){
             this.sortedByImportance();            
         } else if(sortValue == "unimportant" || sortValue == "blank"){
@@ -128,6 +125,15 @@ class Todo{
             console.log(this.todos);
             return 0;
         })
+        this.entries = JSON.parse(window.localStorage.getItem('entries')) || [];
+        entries[Entry.date].sort(function(a, b){
+        if (a.date > b.date) {return 1;}
+        if (a.date < b.date) {return -1;}
+        return 0;
+        
+        })
+        console.log(entries);
+
     }
 
     sortedByName(){
