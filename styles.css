@@ -127,6 +127,7 @@
     border-radius: 0.75em;
     width: 12.5%;
     height: auto;
+    cursor: pointer;
 }
 
 #add:active {
@@ -242,9 +243,6 @@ label {
 
 .important-button {
     background: url("important.svg") no-repeat;
-    cursor: pointer;
-    grid-area: important;
-    place-self: center;
     padding: 1.5em;
     margin: 0.5em;
 }
@@ -255,15 +253,38 @@ label {
 
 .delete-button {
     background: url("x.svg") no-repeat;
-    cursor: pointer;
-    grid-area: delete;
-    place-self: center;
     padding: 1em;
     margin: 0.5em;
 }
 
-.delete-button:hover {
-    transform: rotate(90deg);
+.delete-button-container{
+    box-shadow: var(--shadow);
+    border-radius: 0.75em;
+    padding: 1em;
+    cursor: pointer;grid-area: delete;
+    place-self: center;
+
 }
+
+.delete-button-container:active{
+    box-shadow: none;
+    transition: 0.1s;
+}
+
+
+.important-button-container{
+    box-shadow: var(--shadow);
+    border-radius: 0.75em;
+    padding: 1em;
+    cursor: pointer;
+    grid-area: important;
+    place-self: center;
+}
+
+.important-button-container:active{
+    box-shadow: none;
+    transition: 0.1s;
+}
+
 
 /* } */

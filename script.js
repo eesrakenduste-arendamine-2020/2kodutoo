@@ -118,16 +118,22 @@ async function renderEntries(todosArray) {
         }
 
         // importantButton
+        const importantButtonContainer = document.createElement('div');
+        importantButtonContainer.classList.add('important-button-container');
         const importantButton = document.createElement('div');
         importantButton.classList.add('important-button');
-        importantButton.addEventListener('click', () => {importantButtonHandler(todo);});
-        todoDiv.appendChild(importantButton);
+        importantButtonContainer.addEventListener('click', () => {importantButtonHandler(todo);});
+        importantButtonContainer.appendChild(importantButton)
+        todoDiv.appendChild(importantButtonContainer);
 
         // removeButton
+        const removeButtonContainer = document.createElement('div');
+        removeButtonContainer.classList.add('delete-button-container');
         const removeButton = document.createElement('div');
         removeButton.classList.add('delete-button');
-        removeButton.addEventListener('click', () => {removeButtonHandler(todo.id);});
-        todoDiv.appendChild(removeButton);
+        removeButtonContainer.addEventListener('click', () => {removeButtonHandler(todo.id);});
+        removeButtonContainer.appendChild(removeButton);
+        todoDiv.appendChild(removeButtonContainer);
 
         // Lisame individuaalse todo containeri kõiki todosid sisaldavase virtuaalkonteinerisse
         todoFrame.appendChild(todoDiv);
