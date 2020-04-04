@@ -43,10 +43,7 @@ class Todo{
             sortValue = document.querySelector('#sortBy').value;
             this.sortBy(sortValue);
         });
-        //document.querySelector('#sortBy').value;
 
-        console.log(sortValue);
-        //document.querySelector('#clickSort').addEventListener('click', ()=>{this.sortBy(sortValue);});
 
         if(document.querySelector('.todo-list')){
             document.body.removeChild(document.querySelector('.todo-list'));
