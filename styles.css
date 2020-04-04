@@ -85,7 +85,7 @@
 .todo {
     box-shadow: var(--shadow);
     border-radius: 0.5em;
-    max-height: 10em;
+    max-height: 12em;
     display: grid;
     grid-template-columns: min-content minmax(auto, max-content) minmax(auto, max-content) minmax(min-content, auto) min-content min-content;
     column-gap: 0.5em;
