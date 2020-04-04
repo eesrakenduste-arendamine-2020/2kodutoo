@@ -21,7 +21,7 @@
     <script defer src="todo.js"></script>
     <title>Todo</title>
   </head>
-  <body onload="sortFunction()">
+  <body>
     <div id="container">
       <div id="inputContainer">
         <input type="text" name="title" id="title" />
@@ -35,9 +35,9 @@
 
       <div id="sortContainer">
         <select id="sort">
-          <option value="1" selected="selected">Uuemad enne</option>
-          <option value="2">Vanemad enne</option>
-          <option value="3">Nime järgi</option>
+          <option value="" disabled selected hidden>Sorteeri...</option>
+          <option value="1">Uuemad enne</option>
+          <option value="2">Nime järgi</option>
         </select>
       </div>
     </div>

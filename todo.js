@@ -1,33 +1,5 @@
 console.log("fail õigesti ühendatud.");
 
-function sortFunction() {
-  const sortbutton = document.getElementById("sort");
-  sortbutton.addEventListener("change", sortFunction);
-  var selected = sortbutton.value;
-  console.log(selected);
-  sortList(selected);
-}
-
-//Funktsioon mis sorteerib Entry-d vastavalt valikule
-function sortList(selected) {
-  if (selected == "3") {
-    $("ul li")
-      .sort(Ascending_sort)
-      .appendTo("ul");
-  }
-}
-
-function Ascending_sort(a, b) {
-  return $(b)
-    .text()
-    .toUpperCase() <
-    $(a)
-      .text()
-      .toUpperCase()
-    ? 1
-    : -1;
-}
-
 class Entry {
   constructor(title, description, date) {
     this.title = title;
@@ -43,6 +15,10 @@ class Todo {
 
     document.querySelector("#addButton").addEventListener("click", () => {
       this.addEntry();
+    });
+
+    document.querySelector("#sort").addEventListener("change", () => {
+      this.sortFunction();
     });
 
     this.render();
@@ -61,6 +37,19 @@ class Todo {
     this.saveLocal();
 
     this.render();
+  }
+
+  sortFunction() {
+    const sortbutton = document.getElementById("sort");
+    var selected = sortbutton.value;
+    console.log(selected);
+    if (selected == "2") {
+      this.entries.sort((a, b) => a.title.localeCompare(b.title));
+      this.render();
+    } else if (selected == "1") {
+      this.entries.sort((a, b) => a.date.localeCompare(b.date));
+      this.render();
+    }
   }
 
   render() {
