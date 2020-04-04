@@ -105,7 +105,7 @@ class Todo{
     
    
     sortBy(sortValue){        
-        if(sortValue = "Date"){
+        if(sortValue = "date"){
             const sortedByDate = sortValue;//entries.slice().sort((a, b, c, d) => c.date);//sorteeri kp jÃ¤rgi     
             document.getElementById("#sortBy").innerHTML = sortedByDate;
         } //else {
