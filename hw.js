@@ -108,7 +108,7 @@ class Todo{
         if(sortValue == "date"){
             this.sortedByDate();
         } else if(sortValue == "name"){
-            sortedByName();
+            this.sortedByName();
         } else if(sortValue == "important"){
             this.sortedByImportance();            
         } else if(sortValue == "unimportant" || sortValue == "blank"){
@@ -117,25 +117,37 @@ class Todo{
     }
 
     sortedByDate(){
-        function compare(a, b){
-            const ab = a.date;
-            const ba = b.date;
-            let comparison;
-            if(ab > ba){
+        function compareDate(a, b){
+            const date1 = a.date;
+            const date2 = b.date;
+            let comparison = 0;
+            if(date1 > date2){
                 comparison = 1;
-            } else if(ab < ba){
+            } else if(date1 < date2){
                 comparison = -1;
             }
             return comparison;
         }
 
-        this.entries.sort(compare);
+        this.entries.sort(compareDate);
         this.render();
 
     }
 
     sortedByName(){
-
+        function compareName(a,b){
+            const title1 = a.title.toLowerCase();
+            const title2 = b.title.toLowerCase();
+            let comparison = 0;
+            if(title1 > title2){
+                comparison = 1;
+            } else if(title1 < title2){
+                comparison = -1;
+            }
+            return comparison;
+        }
+        this.entries.sort(compareName);
+        this.render();
     }
 
     sortedByImportance(){
