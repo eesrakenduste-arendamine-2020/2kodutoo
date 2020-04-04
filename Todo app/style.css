@@ -4,25 +4,42 @@ body {
     margin: 0
   }
   
-  #data {
+#data {
     font-size: large;
     font-family: "Pacifico", cursive;
   }
 
+#count {
+    display: flex;
+    font-size: 24px;
+    color: darkblue;
+    transition: 0.3s;
+    align-self: baseline;
+    
+}
 .task-completed{
-    border-color: lightgreen;
+    border-color: rgb(99, 85, 8);
 }
 
 .task-completed .entry-value{
     text-decoration: line-through;
 }
 
-#inputContainer, #buttonContainer{
+#inputContainer{
     width:100vw;
     display: flex;
     justify-content: center;
     margin: 5px;
+    order: 3;
 }
+
+#buttonContainer{
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    order: 2;
+} 
 
 input{
     width: 25%;
@@ -40,11 +57,12 @@ input[type="button"]{
     background-color: green;
     border: 1px solid green;
     color:white;
+    transition: 0.7s;
 }
 input[type="button"]:hover{
     background-color: darkgreen;
     border-color: darkgreen;
-    font-weight: 600;
+
 }
 
 li{
@@ -73,6 +91,7 @@ li{
 }
 
 .entry-value{
+    
     cursor:pointer;
     width: 80%;
     display: flex;
@@ -80,10 +99,11 @@ li{
 }
 
 .entry-value:hover{
-    background-color: #EEE;
+    background-color: #bbb;
 }
 
 .clear i {
+  order: 1;
   font-size: 30px;
   color:black;
 }

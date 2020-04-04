@@ -1,18 +1,29 @@
+/*window.onload = function(){
+  document.write(count);
+}*/
+
 class Entry {
   constructor(title, description, date) {
     this.title = title;
     this.description = description;
     this.date = date;
     this.done = false;
+   
   }
 }
 
 let entries = [];
+
+let count = 0;
+let countContainer = document.querySelector('#count');
+
 const clear = document.querySelector(".clear");
 
 clear.addEventListener("click", function() {
   localStorage.clear();
   location.reload();
+  title.value='';
+  description.value="";
 });
 
 
@@ -21,25 +32,46 @@ class Todo {
   constructor() {
     this.entries = JSON.parse(window.localStorage.getItem("entries")) || [];
 
-    document.querySelector("#addButton").addEventListener("click", () => {
+    document.querySelector("#save").addEventListener("click", () => {
       this.addEntry();
+      this.saveToFile();
     });
 
- 
+    
+   
     this.render();
   }
+    
+  saveToFile(){
+  
+    $.post('server.php', {save: this.entries}).done(function(){
+         alert('Success');
+     }).fail(function(){
+         alert('FAIL');
+     });
+   
+  }
 
+   
+  
+  NumberOfEntries(){
+    const list = document.getElementById("todo-list");
+    document.write(list.children.length);
+  }
+  
   addEntry() {
-    const titleValue = document.querySelector("#title").value;
-    const descriptionValue = document.querySelector("#description").value;
-    const dateValue = document.querySelector("#date").value;
+
+    const titleValue = $('#title').val();
+    const descriptionValue = $('#description').val();
+    const dateValue = $('#date').val();
 
     this.entries.push(new Entry(titleValue, descriptionValue, dateValue));
-
+    count ++;
+   
+    countContainer.innerHTML = count;
     console.log(this.entries);
     this.saveLocal();
     this.render();
-    this.saveToFile();
   }
 
   render() {
@@ -66,6 +98,7 @@ class Todo {
         this.entries.splice(entryIndex, 1);
         this.saveLocal();
         this.render();
+        NumberOfEntries();
       });
 
       if (entryValue.done) {
@@ -77,10 +110,13 @@ class Todo {
           li.classList.remove("task-completed");
           this.entries[entryIndex].done = false;
           this.saveLocal();
+          this.saveToFile();
+
         } else {
           li.classList.add("task-completed");
           this.entries[entryIndex].done = true;
           this.saveLocal();
+          this.saveToFile();
         }
       });
 
@@ -97,15 +133,7 @@ class Todo {
     window.localStorage.setItem("entries", JSON.stringify(this.entries));
   }
 
-  saveToFile(){
-    $.post('server.php', {save: this.entries}).done(function(){
-        console.log('Success');
-    }).fail(function(){
-        alert('FAIL');
-    }).always(function(){
-        console.log('Tegime midagi AJAXiga');
-    });
-}
+ 
 
 }
 

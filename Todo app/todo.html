@@ -5,25 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script defer src="todo.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap"  rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Todo</title>
 </head>
 <body>
-    <!--Commit test-->
+   
+    
     <div class="clear">
         <i class="fa fa-refresh"></i>
     </div>
-
+    <div id="count">Here you will see how many todos you have</div>
     <div id="inputContainer">
         <input type="text" name="title" id="title" placeholder="Add a title" onfocus="this.value=''"/>>
         <input type="text" name="description" id="description"  placeholder="Add a description" onfocus="this.value=''"/>>
         <input type="date" name="date" id="date">
     </div>
     <div id="buttonContainer">
-        <input type="button" value="ADD" id="addButton">
-        
+        <input type="button" value="ADD" id="save">   
+            
     </div>
     <div id="database">
        <a href="database.php">See your post history</a>
