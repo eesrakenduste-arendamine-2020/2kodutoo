@@ -14,10 +14,6 @@ class Todo{
 
         document.querySelector('#addButton').addEventListener('click', ()=>{this.addEntry();});
 
-        const sortValue = document.querySelector('#sortBy').value;
-
-        console.log(sortValue);
-        document.querySelector('#clickSort').addEventListener('click', ()=>{this.sortBy(sortValue);});
         this.render();
     }
 
@@ -38,6 +34,11 @@ class Todo{
     }
 
     render(){
+        const sortValue = document.querySelector('#sortBy').value;
+
+        console.log(sortValue);
+        //document.querySelector('#clickSort').addEventListener('click', ()=>{this.sortBy(sortValue);});
+
         if(document.querySelector('.todo-list')){
             document.body.removeChild(document.querySelector('.todo-list'));
 
