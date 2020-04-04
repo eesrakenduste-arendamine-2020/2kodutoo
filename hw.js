@@ -34,8 +34,9 @@ class Todo{
     }
 
     render(){
-        const sortValue = document.querySelector('#sortBy').value;
-
+        let sortValue = document.querySelector("#sortBy").addEventListener("click", ()=>{
+            sortValue = document.querySelector('#sortBy').value;
+        });
         console.log(sortValue);
         //document.querySelector('#clickSort').addEventListener('click', ()=>{this.sortBy(sortValue);});
 
@@ -103,7 +104,7 @@ class Todo{
     
    
     sortBy(sortValue){        
-        if(sortValue = "Date"){
+        if(sortValue = "date"){
             const sortedByDate = sortValue;//entries.slice().sort((a, b, c, d) => c.date);//sorteeri kp jÃ¤rgi     
             document.getElementById("#sortBy").innerHTML = sortedByDate;
         } //else {
