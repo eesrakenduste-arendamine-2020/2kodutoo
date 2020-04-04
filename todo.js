@@ -68,10 +68,28 @@ class toDo{
                 this.entries[entryIndex].done = true;
             });
 
+
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+
+            today = yyyy + '-' + mm + '-' + dd;
+            console.log(today + " - " + entryValue.date);
+
+            var color = "black";
+
+            if(entryValue.date < today){
+                color = "red";
+            }
+            else if(entryValue.date === today){
+                color = "green";
+            }
+
             li.innerHTML = `<div id="text_box">
             <div id="list_title">${entryValue.title} </div>
             <div id="list_description">${entryValue.description} </div>
-            <div id="list_date">${entryValue.date}</div></div>`;
+            <div id="list_date"><font color="`+color+`">${entryValue.date}</font> </div></div>`;
             removeButton.appendChild(removeIcon);
 
             li.appendChild(removeButton);
