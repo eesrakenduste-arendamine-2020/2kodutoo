@@ -1,9 +1,10 @@
 class Entry{
-    constructor(title, description, date){
+    constructor(title, description, date, important){
         this.title = title;
         this.description = description;
         this.date = date;
         this.done = false;
+        this.importance = important;
         
     }
 }
@@ -20,9 +21,10 @@ class Todo{
         const titleValue = document.querySelector('#title').value;
         const descriptionValue = document.querySelector('#description').value;
         const dateValue = document.querySelector('#date').value;
-        //const importanceValue = document.querySelector("#Cbox").value;
+        const importanceValue = this.checkIfImportant();
+        console.log(importanceValue);
 
-        this.entries.push(new Entry(titleValue, descriptionValue, dateValue ));
+        this.entries.push(new Entry(titleValue, descriptionValue, dateValue, importanceValue));
        
         console.log(this.entries);
         this.saveLocal();
@@ -37,8 +39,6 @@ class Todo{
             sortValue = document.querySelector('#sortBy').value;
             this.changeSortValue(sortValue);
         });
-        
-
 
         if(document.querySelector('.todo-list')){
             document.body.removeChild(document.querySelector('.todo-list'));
@@ -99,9 +99,18 @@ class Todo{
         window.localStorage.setItem('entries', JSON.stringify(this.entries));
     }
 
-
     //document.querySelector('#sort').addEventListener('click', ()=>{this.sortBy();});
-    
+    checkIfImportant(){
+        var checkBox = document.querySelector("#Cbox").checked;
+        console.log(checkBox)
+        var important = "";
+        if(checkBox == true){
+            important = "yes";
+        } else {
+            important = "no";
+        }
+        return important;
+    }
    
     changeSortValue(sortValue){    
         let sortedByDate = sortValue;    
@@ -111,7 +120,9 @@ class Todo{
             this.sortedByName();
         } else if(sortValue == "important"){
             this.sortedByImportance();            
-        } else if(sortValue == "unimportant" || sortValue == "blank"){
+        } else if(sortValue == "unimportant"){
+            this.sortedUnimportant();
+        } else if(sortValue == "blank"){
             this.sortedToBasic();
         }
     }
@@ -154,7 +165,16 @@ class Todo{
 
     }
 
+    sortedUnimportant(){
+
+    }
+
+    sortedToBasic(){
+
+    }
+
 }
+
 
 
 const todo = new Todo();
