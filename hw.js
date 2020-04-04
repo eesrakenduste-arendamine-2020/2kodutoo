@@ -94,7 +94,7 @@ class Todo{
     }
 
 
-    //document.querySelector('#sortBy').addEventListener('click', ()=>{this.sortBy();});
+    document.querySelector('#submit').addEventListener('click', ()=>{this.sortBy();});
     
    
     sortBy(){
@@ -111,4 +111,3 @@ class Todo{
 
 
 const todo = new Todo();
-
