@@ -122,7 +122,7 @@ class Todo{
         this.todos.sort(function(a, b){
             if(a.dateValue < b.dateValue) {return -1;}
             if(b.dateValue > a.dateValue) {return 1;}
-            console.log(this.todos);
+            console.log(this.todos(a));
             return 0;
         })
         this.entries = JSON.parse(window.localStorage.getItem('entries')) || [];
