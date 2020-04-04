@@ -14,10 +14,11 @@ class Todo{
 
         document.querySelector('#addButton').addEventListener('click', ()=>{this.addEntry();});
 
-        const sortValue = document.querySelector('#sortBy').value;
-
+        /*const sortValue = document.querySelector('#clickSort').value;
         console.log(sortValue);
+
         document.querySelector('#sort').addEventListener('click', ()=>{this.sortBy(sortValue);});
+        */
         this.render();
     }
 
@@ -38,6 +39,10 @@ class Todo{
     }
 
     render(){
+        const sortValue = document.getElementById('#clickSort').value;
+        console.log(sortValue);
+        document.querySelector('#sort').addEventListener('click', ()=>{this.sortBy(sortValue);});
+
         if(document.querySelector('.todo-list')){
             document.body.removeChild(document.querySelector('.todo-list'));
 
