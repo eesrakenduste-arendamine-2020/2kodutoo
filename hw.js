@@ -11,7 +11,6 @@ class Entry{
 class Todo{
     constructor(){
         this.entries = JSON.parse(window.localStorage.getItem('entries')) || [];
-        this.todos = this.entries.concat();
 
         document.querySelector('#addButton').addEventListener('click', ()=>{this.addEntry();});
         this.render();
@@ -118,21 +117,20 @@ class Todo{
     }
 
     sortedByDate(){
-        console.log(this.todos);
-        this.todos.sort(function(a, b){
-            if(a.dateValue < b.dateValue) {return -1;}
-            if(b.dateValue > a.dateValue) {return 1;}
-            console.log(this.todos(a));
-            return 0;
-        })
-        this.entries = JSON.parse(window.localStorage.getItem('entries')) || [];
-        entries[Entry.date].sort(function(a, b){
-        if (a.date > b.date) {return 1;}
-        if (a.date < b.date) {return -1;}
-        return 0;
-        
-        })
-        console.log(entries);
+        function compare(a, b){
+            const ab = a.date;
+            const ba = b.date;
+            let comparison;
+            if(ab > ba){
+                comparison = 1;
+            } else if(ab < ba){
+                comparison = -1;
+            }
+            return comparison;
+        }
+
+        this.entries.sort(compare);
+        this.render();
 
     }
 
