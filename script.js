@@ -65,11 +65,18 @@ const todos = new TodoMap();
 // Saab muuta const-iks kui TodoMap.prototype.set() teha normaalsemaks, mitte uut array-d luua iga kord
 let todosView = [];
 
+// const sortState = new Map([['title', { active: false, reverse: false }], ['dueDate', { active: false, reverse: false }]]);
+const sortState = {
+    title: false,
+    dueDate: false,
+    reverse: false,
+};
+
 loadEntries();
 
 // Efektiivne viis renderdada todo list
 // Tõenäoliselt saab teha asünkroonseks ilma probleemideta
-async function renderEntries(todosArray, sortOptions = { key: '', reverse: false }) {
+async function renderEntries(todosArray) {
 
     const todosElement = document.getElementById('todos');
 
@@ -81,8 +88,10 @@ async function renderEntries(todosArray, sortOptions = { key: '', reverse: false
     todoFrame.id = 'todo-frame';
 
     // Kui on sorteerimise argument siis sorteerime todosView-i vastavalt enne renderdamist
-    if (sortOptions) {
-        sortEntries(todosArray, sortOptions.key, sortOptions.reverse);
+    if (sortState.title) {
+        sortEntries(todosArray, 'title', sortState.reverse);
+    } else if (sortState.dueDate) {
+        sortEntries(todosArray, 'dueDate', sortState.reverse);
     }
 
     // Käime kõik todo-d läbi ükshaaval
@@ -228,14 +237,32 @@ for (const button of sortButtons) {
 function sortButtonHandler() {
     // Kui tal flip classi ei ole siis anname selle
     // Kui on siis eemaldame selle
-    // Samal ajal ka sorteerime todos array vastavalt
+    // Samal ajal ka muudame globaalset sorteerimis olekut ja renderdame listi uuesti
+    // Ma ausalt ei viitsinud seda paremini teha
     if (!this.classList.contains('flip')) {
-        this.id === 'sort-title' ? renderEntries(todosView, { key: 'title' }) : renderEntries(todosView, { key: 'dueDate' });
+        if (this.id === 'sort-title') {
+            sortState.dueDate = false;
+            sortState.title = true;
+            sortState.reverse = false;
+        } else {
+            sortState.title = false;
+            sortState.dueDate = true;
+            sortState.reverse = false;
+        }
         this.classList.add('flip');
     } else {
-        this.id === 'sort-title' ? renderEntries(todosView, { key: 'title', reverse: 'true' }) : renderEntries(todosView, { key: 'dueDate', reverse: 'true' });
+        if (this.id === 'sort-title') {
+            sortState.dueDate = false;
+            sortState.title = true;
+            sortState.reverse = true;
+        } else {
+            sortState.title = false;
+            sortState.dueDate = true;
+            sortState.reverse = true;
+        }
         this.classList.remove('flip');
     }
+    renderEntries(todosView);
 }
 
 // Üritame leida database.json-i üles, kui see on olemas siis kirjutame todos Map-i üle
