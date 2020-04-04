@@ -11,7 +11,7 @@
    - funktsionaalsuste kirjeldust ❌
 1. Todo rakenduse funktsionaalsused:
    - Saab lisad ja kustutada (1 punkt) ✔️
-   - Saab märkida ülesandeid tehtuks (1 punkt) ✔️ (Poolik, clickable zone on ainult tekstil, mitte tervel div-il)
+   - Saab märkida ülesandeid tehtuks (1 punkt) ✔️
    - Saab järjestada kuupäeva ja nime järgi ülesandeid (2 punkti) ✔️
    - Ülesanded salvestatakse localStorage'isse ja faili/andmebaasi (2 punkti) ✔️
    - Ülesannete salvestamiseks ja kuvamiseks kasutatakse AJAX-it (1 punkti) ✔️
