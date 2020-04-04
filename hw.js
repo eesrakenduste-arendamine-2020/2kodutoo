@@ -130,6 +130,7 @@ class Todo{
         }
 
         this.entries.sort(compare);
+        this.render();
 
     }
 
