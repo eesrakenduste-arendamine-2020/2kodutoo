@@ -184,6 +184,7 @@ input {
     background: url("sort.svg") no-repeat;
     padding: 1em;
     margin-right: 2em;
+    margin-left: 1em;
     border: none;
     cursor: pointer;
 }
