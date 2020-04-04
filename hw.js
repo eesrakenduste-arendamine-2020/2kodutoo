@@ -5,6 +5,7 @@ class Entry{
         this.date = date;
         this.done = false;
         
+        
     }
 }
 
@@ -13,23 +14,27 @@ class Todo{
         this.entries = JSON.parse(window.localStorage.getItem('entries')) || [];
 
         document.querySelector('#addButton').addEventListener('click', ()=>{this.addEntry();});
-        this.render();
+        this.render();   
     }
-
+    
     addEntry(){
+        
         const titleValue = document.querySelector('#title').value;
         const descriptionValue = document.querySelector('#description').value;
         const dateValue = document.querySelector('#date').value;
         //const importanceValue = document.querySelector("#Cbox").value;
-
-        this.entries.push(new Entry(titleValue, descriptionValue, dateValue ));
-       
+        
+        this.entries.push(new Entry(titleValue, descriptionValue, dateValue));
+        //$('#addButton').click(function(){$('.entry').fadeIn(2000);});
+        
         console.log(this.entries);
         this.saveLocal();
 
         this.render();
         
+        
     }
+    
 
     render(){
         let sortValue = document.querySelector('#sortBy').value;
@@ -37,8 +42,6 @@ class Todo{
             sortValue = document.querySelector('#sortBy').value;
             this.changeSortValue(sortValue);
         });
-        
-
 
         if(document.querySelector('.todo-list')){
             document.body.removeChild(document.querySelector('.todo-list'));
@@ -47,9 +50,9 @@ class Todo{
         const ul = document.createElement('ul');
         ul.className = "todo-list";
 
-        this.entries.forEach((entryValue, entryIndex)=>{
+        this.entries.forEach((entryValue, entryIndex)=>{            
             const li = document.createElement('li');
-            li.classList.add('entry');
+            li.classList.add('entry');            
             const div = document.createElement('div');
             div.classList.add('entry-value')
             const removeButton = document.createElement('div');
@@ -58,13 +61,16 @@ class Todo{
 
             div.innerHTML = `<div>${entryValue.title}</div><div> ${entryValue.description}</div>
             <div>${entryValue.date}</div>`;
-
-            removeButton.addEventListener('click', ()=>{
+            $('.Entry').hide();
+            $('.entry').fadeToggle(2000);
+           
+            removeButton.addEventListener('click', ()=>{                
                 ul.removeChild(li);
-                this.entries.splice(entryIndex, 1);
+                this.entries.splice(entryIndex, 1); 
                 this.saveLocal();
                 this.render();
-            });
+               
+            });            
 
             if(entryValue.done){
                 li.classList.add('task-completed');
@@ -80,28 +86,21 @@ class Todo{
                     this.entries[entryIndex].done = true;
                     this.saveLocal();
                 }
-            });
-
+            });      
             removeButton.appendChild(removeIcon);
             li.appendChild(div);
             li.appendChild(removeButton);
             ul.appendChild(li);
-
         });
 
-        document.body.appendChild(ul);
+        document.body.appendChild(ul);        
+    }    
 
-        
-        
-    }
+    
 
     saveLocal(){
         window.localStorage.setItem('entries', JSON.stringify(this.entries));
     }
-
-
-    //document.querySelector('#sort').addEventListener('click', ()=>{this.sortBy();});
-    
    
     changeSortValue(sortValue){    
         let sortedByDate = sortValue;    
@@ -159,3 +158,5 @@ class Todo{
 
 const todo = new Todo();
 document.body.style.backgroundImage = "url('marble.jpg')"; 
+
+$('.delete-button').click(function(){$('.entry').fadeOut(1000);});
