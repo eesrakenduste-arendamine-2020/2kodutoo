@@ -105,7 +105,7 @@ class Todo{
     changeSortValue(sortValue){    
         let sortedByDate = sortValue;    
         if(sortValue == "date"){
-            this.sortedByDate(entries);
+            this.sortedByDate();
         } else if(sortValue == "name"){
             sortedByName();
         } else if(sortValue == "important"){
@@ -115,8 +115,9 @@ class Todo{
         }
     }
 
-    sortedByDate(entries){
-        this.entries[Entry.date].sort(function(a, b){
+    sortedByDate(){
+        this.entries = JSON.parse(window.localStorage.getItem('entries')) || [];
+        entries[Entry.date].sort(function(a, b){
         if (a.date > b.date) {return 1;}
         if (a.date < b.date) {return -1;}
         return 0;
