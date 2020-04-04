@@ -18,7 +18,7 @@ body {
     
 }
 .task-completed{
-    border-color: rgb(99, 85, 8);
+    border-color: rgb(33, 146, 11);
 }
 
 .task-completed .entry-value{
