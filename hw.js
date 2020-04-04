@@ -112,7 +112,7 @@ class Todo{
         } else if(sortValue == "important"){
             sortedByImportance();            
         } else if(sortValue == "unimportant" || sortValue == "blank"){
-
+            sortedToBasic();
         }
     }
 }
