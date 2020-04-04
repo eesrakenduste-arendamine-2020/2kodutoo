@@ -84,6 +84,7 @@ $(document).ready(function() {
         let todoItem = $(this).parents('.todo-item');
         $(todoItem).addClass('removalClassGreen');
         $(todoItem).slideUp(600, function() { $(todoItem).remove();});
+        markAsDone($(todoItem).children('[name="task_id"]').val());
     });
 
 });
@@ -131,6 +132,17 @@ function addNewToFile(name, category, chosenColorClass, important, taskObject) {
 
 function removeFromFile(taskId) {
     let url = 'remove.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {"task_id": taskId}
+    }).done(function(response) {
+       console.log(response);
+    });
+}
+
+function markAsDone(taskId) {
+    let url = 'done.php';
     $.ajax({
         type: "POST",
         url: url,

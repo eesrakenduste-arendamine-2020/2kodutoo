@@ -44,6 +44,9 @@ function createTaskHTML() {
             if ($array['data'][$i]['important'] == 1) {
                 $importanceClass = 'importantColors';
             }
+            if ($array['data'][$i]['done'] == 1) {
+                continue;
+            }
         ?>
             <div class="i3__list__item todo-item <?php echo $importanceClass;?>">
                 <div class="l1 checkmark js-done">&#10003;</div>
@@ -75,7 +78,6 @@ function removeFromFile() {
     $taskId = $_POST['task_id'];
     $array = getFileArray();
     $newArray = createFileArray();
-    
     for($i=0;$i < sizeof($array['data']);$i++) :
         if ($array['data'][$i]['id'] == $taskId) {
             continue;
@@ -91,5 +93,19 @@ function writeNewArray($array) {
     $fileLocation = 'database.json';
     $fileData_JSON = json_encode( $array, JSON_PRETTY_PRINT );
     file_put_contents( $fileLocation, $fileData_JSON );
-    echo "kirjutatud";
+}
+
+function markAsDone() {
+    $taskId = $_POST['task_id'];
+    $array = getFileArray();
+
+    for($i=0;$i < sizeof($array['data']);$i++) :
+        if ($array['data'][$i]['id'] == $taskId) {
+            $array['data'][$i]['done'] = 1;
+            break;
+        }
+
+    endfor;
+
+    writeNewArray($array);
 }
