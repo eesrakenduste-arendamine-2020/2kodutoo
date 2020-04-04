@@ -9,6 +9,7 @@
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -52,14 +53,23 @@
         </div><!--.i3__box-->
 
         <div class="i3__list">
-
+            
+        <div class="i3__list__item todo-item todo-copy">
+            <div class="l1 checkmark js-done">&#10003;</div>
+            <div class="l2 circle"></div>
+            <div class="l3 list__text">Osta moosipalle</div>
+            <div class="l4"></div>
+            <div class="l5">Kategooria</div>
+            <div class="l6 remove">&times;</div>
+        </div>
+            
             <div class="i3__list__item todo-item">
-                <div class="l1 checkmark">&#10004;</div>
+                <div class="l1 checkmark js-done">&#10003;</div>
                 <div class="l2 circle blueCircle"></div>
                 <div class="l3 list__text">Osta moosipalle</div>
                 <div class="l4"></div>
                 <div class="l5">Kategooria</div>
-                <div class="l6 remove">&#10008;</div>
+                <div class="l6 remove">&times;</div>
             </div>
 
             <div class="i3__list__item add-new">
@@ -84,6 +94,7 @@
 </div><!--.container-->
 
 
+
 <div class="addNewTaskModal">
     <div class="addNewTaskModal__content">
 
@@ -95,15 +106,38 @@
             </div>
 
             <div class="dialogBox__fields">
-                <form action="" class="dialobBox__form">
+                <form action="" method="POST" class="dialogBox__form">
 
                     <div class="inputBox">
-                        <input class="inputBox__input" type="text">
-                    </div>      
+                        <input name="todo_name" placeholder="Nimetus" class="inputBox__input" type="text">
+                    </div>
+
+                    <div class="inputBox">
+                        <input name="category" placeholder="Kategooria" class="inputBox__input" type="text">
+                    </div>
+
+                    <div class="inputBox inputCustom">
+                        Oluline?
+                        <div class="importanceBox fa fa-star"></div>
+                    </div>
+
+                    <div class="inputBox inputCustom">
+                        Värvus
+                        <div class="colorBlock">
+                            <div class="customColor circle blueCircle customColorSelected" data-cl="blueCircle"></div>
+                            <div class="customColor circle pinkCircle" data-cl="pinkCircle"></div>
+                            <div class="customColor circle redCircle" data-cl="redCircle"></div>
+                            <div class="customColor circle yellowCircle" data-cl="yellowCircle"></div>
+                            <div class="customColor circle greenCircle" data-cl="greenCircle"></div>
+                        </div>
+
+                    </div>
+
                     <button class="submitBox" type="submit">
                         <div class="submitBox__content">Loo</div>
                     </button>
-                </form><!--.dialobBox__form-->
+                </form><!--.dialogBox__form-->
+
             </div><!--.dialogBox__fields-->
         </div><!--.dialogBox-->
 
