@@ -34,9 +34,13 @@ class Todo{
     }
 
     render(){
-        let sortValue = document.querySelector("#sortBy").addEventListener("click", ()=>{
+        let sortValue = document.querySelector('#sortBy').value;
+        document.querySelector("#clickSort").addEventListener("click", ()=>{
             sortValue = document.querySelector('#sortBy').value;
+            this.sortBy(sortValue);
         });
+        //document.querySelector('#sortBy').value;
+
         console.log(sortValue);
         //document.querySelector('#clickSort').addEventListener('click', ()=>{this.sortBy(sortValue);});
 
