@@ -4,6 +4,7 @@ class Entry{
         this.description = description;
         this.date = date;
         this.done = false;
+        
     }
 }
 
@@ -22,11 +23,14 @@ class Todo{
         const dateValue = document.querySelector('#date').value;
 
         this.entries.push(new Entry(titleValue, descriptionValue, dateValue));
-
+       
         console.log(this.entries);
         this.saveLocal();
 
         this.render();
+        var dates = [];
+        dates.push(dateValue);
+        console.log(dates);
     }
 
     render(){
@@ -80,6 +84,9 @@ class Todo{
         });
 
         document.body.appendChild(ul);
+
+        
+        
     }
 
     saveLocal(){
@@ -88,18 +95,20 @@ class Todo{
 
 
     //document.querySelector('#sortBy').addEventListener('click', ()=>{this.sortBy();});
-
+    
+   
     sortBy(){
         var val = document.getElementById('#sortBy').value;
         console.log(val);
         if(val = "Date"){
-            const sortedByDate = entries.slice().sort((a, b, c, d) => c.date);//sorteeri kp järgi     
+            const sortedByDate = entries.slice().sort((a, b, c, d) => c.date);//sorteeri kp jÃ¤rgi     
             document.getElementById("#sortBy").innerHTML = sortedByDate;
         } //else {
-            //sorteeri nime järgi
+            //sorteeri nime jÃ¤rgi
         //}
     }
 }
 
 
 const todo = new Todo();
+
