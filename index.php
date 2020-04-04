@@ -13,6 +13,10 @@
 </head>
 <body>
 
+<?php
+
+?>
+
 <div class="container">
 
     <div class="item i1">
@@ -78,6 +82,33 @@
     </div><!--.i4-->
 
 </div><!--.container-->
+
+
+<div class="addNewTaskModal">
+    <div class="addNewTaskModal__content">
+
+        <div class="dialogBox">
+            <h1 class="dialogBox__title">Lisa uus ülesanne</h1>
+            <div class="dialogBox__titlePadding"></div>
+            <div class="dialogBox__closeIcon">
+                <div class="dialogBox__close"></div>
+            </div>
+
+            <div class="dialogBox__fields">
+                <form action="" class="dialobBox__form">
+
+                    <div class="inputBox">
+                        <input class="inputBox__input" type="text">
+                    </div>      
+                    <button class="submitBox" type="submit">
+                        <div class="submitBox__content">Loo</div>
+                    </button>
+                </form><!--.dialobBox__form-->
+            </div><!--.dialogBox__fields-->
+        </div><!--.dialogBox-->
+
+    </div><!--.addNewTaskModal__content-->
+</div><!--.addNewTaskModal-->
 
 <script src="script.js"></script>
 </body>

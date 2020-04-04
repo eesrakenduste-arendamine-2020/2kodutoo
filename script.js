@@ -32,4 +32,13 @@ $(document).ready(function() {
         $('.plus').css('color', '#2699fb');
     });
 
+    // Create new modal styles
+    $(document).on('click', '.plus', function() {
+        $('.addNewTaskModal').css('display', 'flex');
+    });
+
+    $(document).on('click', '.dialogBox__closeIcon', function() {
+        $('.addNewTaskModal').hide();
+    });
+
 });
