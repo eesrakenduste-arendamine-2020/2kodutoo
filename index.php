@@ -16,6 +16,7 @@
 
 <?php
 
+require('functions.php');
 ?>
 
 <div class="container">
@@ -32,16 +33,7 @@
 
         <div class="i2__text">
             <div>
-                <p>SORTEERI</p>
-                <p>Aeg</p>
-                <p>Nimetus</p>
-                <p>Olulised</p>
-                <p>Tehtud</p>
-                <br>
-                <p>KATEGOORIAD</p>
-                <p>Kodu</p>
-                <p>Kool</p>
-                <p>Trenn</p>
+                <p></p>
             </div>
         </div><!--.i2_text-->
     </div><!--.i2-->
@@ -61,25 +53,17 @@
             <div class="l4"></div>
             <div class="l5">Kategooria</div>
             <div class="l6 remove">&times;</div>
+            <input type="hidden" name="task_id">
         </div>
-            
-            <div class="i3__list__item todo-item">
-                <div class="l1 checkmark js-done">&#10003;</div>
-                <div class="l2 circle blueCircle"></div>
-                <div class="l3 list__text">Osta moosipalle</div>
-                <div class="l4"></div>
-                <div class="l5">Kategooria</div>
-                <div class="l6 remove">&times;</div>
-            </div>
-
-            <div class="i3__list__item add-new">
-                <div class="l1"></div>
-                <div class="l2 plus">&#10010;</div>
-                <div class="l3 list__text add-new-text">Lisa uus</div>
-                <div class="l4"></div>
-                <div class="l5"></div>
-                <div class="l6"></div>
-            </div>
+            <?php createTaskHTML(); ?>
+        <div class="i3__list__item add-new">
+            <div class="l1"></div>
+            <div class="l2 plus">&#10010;</div>
+            <div class="l3 list__text add-new-text">Lisa uus</div>
+            <div class="l4"></div>
+            <div class="l5"></div>
+            <div class="l6"></div>
+        </div>
 
         </div>
 

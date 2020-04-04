@@ -70,13 +70,13 @@ $(document).ready(function() {
     });
 
 
-    // Remove item js
+    // Remove item js, trigger ajax
     $(document).on('click', '.remove', function() {
         let todoItem = $(this).parents('.todo-item');
         $(todoItem).addClass('removalClassRed');
         $(todoItem).slideUp(600, function() { $(todoItem).remove();});
+        removeFromFile($(todoItem).children('[name="task_id"]').val());
     });
-
 
 
     // Check off as done css
@@ -89,21 +89,25 @@ $(document).ready(function() {
 });
 
 
-// Create new list in FE only
+// Create new list in FE, trigger ajax
 function createNewListItem() {
     let newCopy = $( '.todo-copy' ).clone(true, true).removeClass('todo-copy').hide().prependTo( '.i3__list' ).slideDown("fast");
     let name = $('[name="todo_name"]').val();
     let category = $('[name="category"]').val();
     let chosenColorClass = $('.customColorSelected').data('cl');
+    let important = 0;
 
     if ($('.fa-star').hasClass('importanceSelected')) {
         $(newCopy).addClass('importantColors');
+        important = 1;
     }
 
     $(newCopy).children('.l2').addClass(chosenColorClass);
     $(newCopy).children('.l3').text(name);
     $(newCopy).children('.l5').text(category);
     cleanModalFields();
+    // TODO loadingModal() vms?
+    addNewToFile(name, category, chosenColorClass, important, $(newCopy));
 }
 
 function cleanModalFields(){
@@ -111,4 +115,27 @@ function cleanModalFields(){
     $('[name="category"]').val("");
     $('.fa-star').removeClass('importanceSelected');
 
+}
+
+// Ajax create new task, save to database.json
+function addNewToFile(name, category, chosenColorClass, important, taskObject) {
+    let url = 'add.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {"name": name, "category": category, "colorclass": chosenColorClass, "important": important}
+    }).done(function(response) {
+       $(taskObject).children('[name="task_id"]').val(response);
+    });
+}
+
+function removeFromFile(taskId) {
+    let url = 'remove.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {"task_id": taskId}
+    }).done(function(response) {
+       console.log(response);
+    });
 }
