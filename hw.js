@@ -13,7 +13,6 @@ class Todo{
         this.entries = JSON.parse(window.localStorage.getItem('entries')) || [];
 
         document.querySelector('#addButton').addEventListener('click', ()=>{this.addEntry();});
-
         this.render();
     }
 
@@ -28,20 +27,14 @@ class Todo{
         this.saveLocal();
 
         this.render();
-
-        var dates = [];
-        var titles = [];
-        dates.push(dateValue);
-        titles.push(titleValue);
-        console.log(dates);
-        console.log(titles);
+        
     }
 
     render(){
         let sortValue = document.querySelector('#sortBy').value;
         document.querySelector("#clickSort").addEventListener("click", ()=>{
             sortValue = document.querySelector('#sortBy').value;
-            this.sortBy(sortValue);
+            this.changeSortValue(sortValue);
         });
 
 
@@ -108,13 +101,19 @@ class Todo{
     //document.querySelector('#sort').addEventListener('click', ()=>{this.sortBy();});
     
    
-    sortBy(sortValue){        
-        if(sortValue = "date"){
-            const sortedByDate = sortValue;//entries.slice().sort((a, b, c, d) => c.date);//sorteeri kp jÃ¤rgi     
+    changeSortValue(sortValue){        
+        if(sortValue == "date"){
+            let sortedByDate = sortValue;//entries.slice().sort((a, b, c, d) => c.date);//sorteeri kp jÃ¤rgi     
             document.getElementById("#sortBy").innerHTML = sortedByDate;
-        } //else {
+            sortedByDate();
+        } else if(sortValue == "name"){
+            sortedByName();
             //sorteeri nime jÃ¤rgi
-        
+        } else if(sortValue == "important"){
+            sortedByImportance();            
+        } else if(sortValue == "unimportant" || sortValue == "blank"){
+
+        }
     }
 }
 
