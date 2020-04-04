@@ -1,0 +1,115 @@
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url(mountain.jpg);
+    background-size: cover;
+    
+}
+
+div{
+    text-align: center;
+}
+
+
+#time{
+    color: aqua;
+    font-size: 8em;
+    font-weight: bold;
+    padding: 20px;
+}
+
+#alldate{
+    padding: 20px;
+    height: auto;
+    color: whitesmoke;
+    margin: auto;
+    text-align: center;
+    width: auto;
+    font-size: 4.5em;
+    display: flex;
+    justify-content: center;
+}
+
+#alldate div{
+    padding: 15px;
+}
+
+.task-completed {
+    background-color: lightgreen;
+    text-decoration: line-through;
+    width: 80%;
+    cursor: pointer;
+}
+
+#inputContainer, #buttonContainer{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    
+}
+
+input{
+    margin: 5px;
+    height: 25px;
+    border-radius: 5px;
+    width: 25%;
+    font-size: 18px;
+}
+
+.entry{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid lightgray;
+    margin: 5px;
+    padding: 1%;
+    border-radius: 10px;
+    background-color: chartreuse;
+    font-style: italic;
+    font-size: medium;
+}
+
+.todo-list{
+    width: 90%;
+}
+
+.delete-button {
+    color: red;
+    font-size: 25px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    color: darkred;
+    font-size: 27px;
+}
+
+input[type="button"]{
+    background-color: green;
+    border: 1px solid gray;
+    color: white;
+    padding: 10px;
+    height: 40px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+input[type="button"]:hover{
+    color: wheat;
+    background-color: darkgreen;
+}
+
+.header{
+    color: white;
+    font-size: 20px;
+}
+
+.sortButton{
+    background-color: cyan !important;
+    color: black !important;
+}
