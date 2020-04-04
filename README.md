@@ -21,7 +21,7 @@
      Näiteks:
      - Võimalus lisada kategooriad ja nende alusel jagada ülesandeid ❌
      - Möödunud ja/või tänase kuupäevaga tegemata ülesanded märkida erinevalt ❌
-     - Võimalus otsida ülesandeid ❌
+     - Võimalus otsida ülesandeid ✔️
      - Võimalus märkida ülesandeid tähtsaks ning kuvada tähtsad ülesanded eraldi listina ❌
 1. Väljanägemine ja animatsioonid
    - Rakendus näeb kena välja (3 punkti) ❌
