@@ -16,8 +16,6 @@ class toDo{
     constructor(){
         console.log("toDo sees");
 
-        //document.querySelector("#add").addEventListener("click", ()=>{this.addEntry()})
-
         this.entries = [];
     }
 
@@ -114,14 +112,14 @@ function GetSortOrder(prop) {
 }
 
 function loadFromFile(text){
-    console.log("aaaaaaaaaaaaaaaaaa");
+
     const sort_order = document.querySelector("#sort_order").value;
 
     $.get('database.txt', function(data){
         let content = JSON.parse(data).content;
 
         ToDo.entries = [];
-        //content.sort(GetSortOrder("title"));
+
         console.log("LOAD");
         content.sort(GetSortOrder(sort_order));
         content.forEach(function(todo){
@@ -152,9 +150,6 @@ $('#search').on('keydown', function() {
     searchTest();
 });
 
-function a(){
-    console.log("YES");
-}
 
 $('#load').on('click', function() {
     loadFromFile("");
@@ -171,8 +166,6 @@ $('#sort_order').on('change', function() {
 $('#add').on('click', function() {
     ToDo.addEntry();
 });
-
-//$('#add').click(ToDo.addEntry);
 
 
 loadFromFile("");
