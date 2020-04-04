@@ -28,10 +28,23 @@ class TodoMap extends Map {
         return map;
     }
 
+    // Mõningatel juhtudel kui ma ei taha
+    setNoRender(...args) {
+        const map = super.set(...args);
+        todosView = [...this.values()];
+        return map;
+    }
+
     delete(...args) {
         const map = super.delete(...args);
         todosView.splice(todosView.findIndex(todo => todo.id === args[0]), 1);
         renderEntries(todosView);
+        return map;
+    }
+
+    deleteNoRender(...args) {
+        const map = super.delete(...args);
+        todosView.splice(todosView.findIndex(todo => todo.id === args[0]), 1);
         return map;
     }
 
@@ -56,7 +69,7 @@ loadEntries();
 
 // Efektiivne viis renderdada todo list
 // Tõenäoliselt saab teha asünkroonseks ilma probleemideta
-async function renderEntries(todosArray) {
+async function renderEntries(todosArray, sortOptions = { key: '', reverse: false }) {
 
     const todosElement = document.getElementById('todos');
 
@@ -66,6 +79,11 @@ async function renderEntries(todosArray) {
     // Teeme konteineri mida saame hiljem asendada
     const todoFrame = document.createElement('div');
     todoFrame.id = 'todo-frame';
+
+    // Kui on sorteerimise argument siis sorteerime todosView-i vastavalt enne renderdamist
+    if (sortOptions) {
+        sortEntries(todosArray, sortOptions.key, sortOptions.reverse);
+    }
 
     // Käime kõik todo-d läbi ükshaaval
     for (const todo of todosArray) {
@@ -81,7 +99,7 @@ async function renderEntries(todosArray) {
         const inputCheckbox = document.createElement('input');
         inputCheckbox.className = 'checkbox';
         inputCheckbox.type = 'checkbox';
-        inputCheckbox.addEventListener('click', () => {checkboxHandler(todo);});
+        inputCheckbox.addEventListener('click', () => {checkboxHandler(todo, todoDiv);});
 
         // div checkbox-i kõrvale
         const div = document.createElement('div');
@@ -122,8 +140,8 @@ async function renderEntries(todosArray) {
         importantButtonContainer.classList.add('important-button-container');
         const importantButton = document.createElement('div');
         importantButton.classList.add('important-button');
-        importantButtonContainer.addEventListener('click', () => {importantButtonHandler(todo);});
-        importantButtonContainer.appendChild(importantButton)
+        importantButtonContainer.addEventListener('click', () => {importantButtonHandler(todo, todoDiv);});
+        importantButtonContainer.appendChild(importantButton);
         todoDiv.appendChild(importantButtonContainer);
 
         // removeButton
@@ -131,7 +149,7 @@ async function renderEntries(todosArray) {
         removeButtonContainer.classList.add('delete-button-container');
         const removeButton = document.createElement('div');
         removeButton.classList.add('delete-button');
-        removeButtonContainer.addEventListener('click', () => {removeButtonHandler(todo.id);});
+        removeButtonContainer.addEventListener('click', () => {removeButtonHandler(todo.id, todoDiv);});
         removeButtonContainer.appendChild(removeButton);
         todoDiv.appendChild(removeButtonContainer);
 
@@ -144,32 +162,31 @@ async function renderEntries(todosArray) {
     // Me võime textContenti tühjaks teha ja siis alati appendChild teha kuid see teeks kokku 2 reflow-i funktsiooni jooksul
     // Kasutades .replaceWith() saame terve funktsiooni läbida 1 reflow-iga
     todosElement.textContent === '' ? todosElement.appendChild(todoFragment) : document.getElementById('todo-frame').replaceWith(todoFragment);
-
-    const sortTitle = document.getElementById('sort-title');
-    const dueDate = document.getElementById('sort-date');
-    if (dueDate.classList.contains('flip')) {
-        sortEntries(todosView, 'title', true);
-    } else if (sortTitle.classList.contains('flip')) {
-        sortEntries(todosView, 'dueDate', true);
-    }
 }
 
-function importantButtonHandler(todo) {
+function importantButtonHandler(todo, parentElement) {
     todo.isImportant = !todo.isImportant;
-    todos.set(todo.id, todo);
+    todos.setNoRender(todo.id, todo);
+    todo.isImportant ? parentElement.classList.add('important-task') : parentElement.classList.remove('important-task');
     saveData('server.php', todos)
         .catch(error => console.error('Salvestamine ebaõnnestus', error));
 }
 
-function removeButtonHandler(id) {
-    todos.delete(id);
+function removeButtonHandler(id, parentElement) {
+    todos.deleteNoRender(id);
+    parentElement.classList.add('marked-for-deletion');
+
+    // Aeg võiks olla sama palju kui CSS-is kuna ma ei viitsi eventHandleriga seda teha
+    setTimeout(() => parentElement.remove(), 2000);
+    
     saveData('server.php', todos)
         .catch(error => console.error('Salvestamine ebaõnnestus', error));
 }
 
-function checkboxHandler(todo) {
+function checkboxHandler(todo, parentElement) {
     todo.isChecked = !todo.isChecked;
-    todos.set(todo.id, todo);
+    todos.setNoRender(todo.id, todo);
+    todo.isChecked ? parentElement.classList.add('checked') : parentElement.classList.remove('checked');
     saveData('server.php', todos)
         .catch(error => console.error('Salvestamine ebaõnnestus', error));
 }
@@ -198,7 +215,6 @@ function sortEntries(array, key, reverse = false) {
         return typeof a === 'string' ? a.localeCompare(b) : a - b;
     });
     if (reverse) array.reverse();
-    renderEntries(todosView);
 }
 
 // Leiame kõik sorteerimisnupud (hetkel 2)
@@ -206,19 +222,20 @@ const sortButtons = document.getElementsByClassName('sort-button');
 
 // Igale sorteerimisnuptodoDive lisame eventlisteneri
 for (const button of sortButtons) {
-    button.addEventListener('click', function () {
+    button.addEventListener('click', sortButtonHandler);
+}
 
-        // Kui tal flip classi ei ole siis anname selle
-        // Kui on siis eemaldame selle
-        // Samal ajal ka sorteerime todos array vastavalt
-        if (!this.classList.contains('flip')) {
-            this.id === 'sort-title' ? sortEntries(todosView, 'title') : sortEntries(todosView, 'dueDate');
-            this.classList.add('flip');
-        } else {
-            this.id === 'sort-title' ? sortEntries(todosView, 'title', true) : sortEntries(todosView, 'dueDate', true);
-            this.classList.remove('flip');
-        }
-    });
+function sortButtonHandler() {
+    // Kui tal flip classi ei ole siis anname selle
+    // Kui on siis eemaldame selle
+    // Samal ajal ka sorteerime todos array vastavalt
+    if (!this.classList.contains('flip')) {
+        this.id === 'sort-title' ? renderEntries(todosView, { key: 'title' }) : renderEntries(todosView, { key: 'dueDate' });
+        this.classList.add('flip');
+    } else {
+        this.id === 'sort-title' ? renderEntries(todosView, { key: 'title', reverse: 'true' }) : renderEntries(todosView, { key: 'dueDate', reverse: 'true' });
+        this.classList.remove('flip');
+    }
 }
 
 // Üritame leida database.json-i üles, kui see on olemas siis kirjutame todos Map-i üle

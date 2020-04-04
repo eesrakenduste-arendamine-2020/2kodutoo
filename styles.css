@@ -13,6 +13,10 @@
     --gray-tint-3: hsl(0, 1%, 75%);
     /* Favorites color */
     --important-color: hsl(44, 75%, 84%);
+    /* Important button highlight color */
+    --important-highlight: hsla(43, 69%, 72%, 0.67);
+    /* Delete button highlight color */
+    --delete-highlight: hsla(3, 69%, 72%, 0.67);
     font-family: 'Cabin', sans-serif;
     color: var(--gray-tint-1);
 }
@@ -81,11 +85,16 @@
 .todo {
     box-shadow: var(--shadow);
     border-radius: 0.5em;
+    max-height: 10em;
     display: grid;
     grid-template-columns: min-content minmax(auto, max-content) minmax(auto, max-content) minmax(min-content, auto) min-content min-content;
     column-gap: 0.5em;
     grid-template-rows: auto auto 2em;
     grid-template-areas: "checkbox title title date important delete" "checkbox description description description important delete" "checkbox description description description important delete";
+}
+
+.todo>* {
+    max-height: 10em;
 }
 
 #todo-container {
@@ -138,6 +147,8 @@
 #todos {
     padding: 2em;
     overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
 }
 
 body {
@@ -145,7 +156,7 @@ body {
 }
 
 * {
-    transition: all 0.67s cubic-bezier(0, 0, 0.2, 1);
+    transition: all 0.25s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .checked {
@@ -243,8 +254,7 @@ label {
 
 .important-button {
     background: url("important.svg") no-repeat;
-    padding: 1.5em;
-    margin: 0.5em;
+    padding: 1em;
 }
 
 .important-task {
@@ -254,25 +264,18 @@ label {
 .delete-button {
     background: url("x.svg") no-repeat;
     padding: 1em;
-    margin: 0.5em;
 }
 
-.delete-button-container{
+.delete-button-container {
     box-shadow: var(--shadow);
     border-radius: 0.75em;
     padding: 1em;
-    cursor: pointer;grid-area: delete;
+    cursor: pointer;
+    grid-area: delete;
     place-self: center;
-
 }
 
-.delete-button-container:active{
-    box-shadow: none;
-    transition: 0.1s;
-}
-
-
-.important-button-container{
+.important-button-container {
     box-shadow: var(--shadow);
     border-radius: 0.75em;
     padding: 1em;
@@ -281,10 +284,37 @@ label {
     place-self: center;
 }
 
-.important-button-container:active{
+.delete-button-container:active, .important-button-container:active {
     box-shadow: none;
-    transition: 0.1s;
+    transition: 0.05s;
 }
 
+.delete-button-container:hover {
+    background-color: var(--delete-highlight);
+}
+
+.important-button-container:hover {
+    background-color: var(--important-highlight);
+}
 
 /* } */
+
+.marked-for-deletion {
+    transform: translateX(300%);
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    transition: all 1.5s;
+}
+
+.marked-for-deletion>* {
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    transition: all 1.5s;
+}
+
+#todo-frame {
+    display: flex;
+    flex-direction: column;
+}
