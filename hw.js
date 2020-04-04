@@ -28,9 +28,13 @@ class Todo{
         this.saveLocal();
 
         this.render();
+
         var dates = [];
+        var titles = [];
         dates.push(dateValue);
+        titles.push(titleValue);
         console.log(dates);
+        console.log(titles);
     }
 
     render(){
@@ -113,7 +117,7 @@ class Todo{
             document.getElementById("#sortBy").innerHTML = sortedByDate;
         } //else {
             //sorteeri nime jÃ¤rgi
-        //}
+        
     }
 }
 
