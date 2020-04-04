@@ -15,6 +15,21 @@ $(document).ready(function() {
         }
     });
 
+    // Add-new button styles
+    $(document).on('mouseenter', '.add-new-text', function() {;
+        $('.plus').css('color', '#67b8ff');
+    });
 
+    $(document).on('mouseleave', '.add-new-text', function() {
+        $('.plus').css('color', '#2699fb');
+    });
+
+    $(document).on('mouseenter', '.plus', function() {;
+        $('.plus').css('color', '#67b8ff');
+    });
+
+    $(document).on('mouseleave', '.plus', function() {
+        $('.plus').css('color', '#2699fb');
+    });
 
 });
