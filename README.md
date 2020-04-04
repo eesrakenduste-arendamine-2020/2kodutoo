@@ -28,7 +28,7 @@ Mõlemad aitasime üksteist nii javascriptis kui css'is
 
 1) Saab lisada todo koos pealkirja, kirjelduse ja kuupäevaga
 2) Võimaldab ka Salvestada ja Laadida salvestatud todosi
-3) Võimalik eemaldada olemasolevaid todo'si
+3) Võimalik eemaldada olemasolevaid todo'si (Võimalik removeda kõik peale 1 toDo, et motiveerida kasutajat alati tegema midagi)
 4) Saab otsida nime ja sisu järgi
 5) Saab sorteerida nime ja sisu järgi
 6) Kuupäeva värv muutub vastavalt tähtajale
