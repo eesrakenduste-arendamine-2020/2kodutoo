@@ -27,11 +27,13 @@ class Todo{
         console.log(this.entries);
         this.saveLocal();
 
-        this.render();
+        this.render(); 
 
-        var dates = [];
+        
         var titles = [];
-        dates.push(dateValue);
+        var dates = []; 
+        
+        dates.push(entryValue.date);
         titles.push(titleValue);
         console.log(dates);
         console.log(titles);
@@ -41,8 +43,9 @@ class Todo{
         let sortValue = document.querySelector('#sortBy').value;
         document.querySelector("#clickSort").addEventListener("click", ()=>{
             sortValue = document.querySelector('#sortBy').value;
-            this.sortBy(sortValue);
+            this.sortByDate();
         });
+        
 
 
         if(document.querySelector('.todo-list')){
@@ -108,15 +111,11 @@ class Todo{
     //document.querySelector('#sort').addEventListener('click', ()=>{this.sortBy();});
     
    
-    sortBy(sortValue){        
-        if(sortValue = "date"){
-            const sortedByDate = sortValue;//entries.slice().sort((a, b, c, d) => c.date);//sorteeri kp jÃ¤rgi     
-            document.getElementById("#sortBy").innerHTML = sortedByDate;
-        } //else {
-            //sorteeri nime jÃ¤rgi
+     sortByDate () {
         
     }
 }
 
 
 const todo = new Todo();
+document.body.style.backgroundImage = "url('marble.jpg')";
