@@ -6,7 +6,7 @@
 
 1. Töö tuleb teha vähemalt kahekesi, eelnevalt kokkuleppel on lubatud ka kolm liiget. GitHub'is peab eristuma, kes mida tegi!
 1. README.md fail sisaldab (1 punkti):
-   - autorite nimesid; ❌
+   - autorite nimesid; ✔️
    - kirjeldust tekkinud keerukustest ❌
    - funktsionaalsuste kirjeldust ❌
 1. Todo rakenduse funktsionaalsused:
@@ -33,3 +33,7 @@
 - [Collaboration on github](https://github.com/eesrakenduste-arendamine-2019/2kodutoo/settings/collaboration)
 - [JQuery POST](https://api.jquery.com/jquery.post/)
 - [JQuery AJAX](http://api.jquery.com/jquery.ajax/)
+
+<h1>Autorid</h2>
+Marten Jürgens
+Aleksandr Rõbakov
