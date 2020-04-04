@@ -21,6 +21,10 @@ class Todo {
       this.sortFunction();
     });
 
+    document.querySelector(".searchform").addEventListener("keyup", () => {
+      this.searchFunction();
+    });
+
     this.render();
   }
 
@@ -52,12 +56,33 @@ class Todo {
     }
   }
 
+  searchFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("todo");
+    li = ul.getElementsByTagName("li");
+    console.log(li);
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByTagName("a")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+
   render() {
     if (document.querySelector(".todo-list")) {
       document.body.removeChild(document.querySelector(".todo-list"));
     }
     const ul = document.createElement("ul");
     ul.className = "todo-list";
+    ul.id = "todo";
     this.entries.forEach((entryValue, entryIndex) => {
       const li = document.createElement("li");
       const div = document.createElement("div");
@@ -83,7 +108,7 @@ class Todo {
         this.saveLocal();
       });
 
-      div.innerHTML = ` <b> ${entryValue.title} </b> <br> ${entryValue.description} <br> ${entryValue.date}`;
+      div.innerHTML = `<a href=""> <b> ${entryValue.title} </b> <br> ${entryValue.description} <br> ${entryValue.date} </a>`;
 
       removeButton.appendChild(removeIcon);
       li.appendChild(div);
