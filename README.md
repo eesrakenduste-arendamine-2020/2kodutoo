@@ -1,6 +1,8 @@
 # 2. kodutöö – ToDo rakendus
 
 Andreas Kuuskaru
+
+
 Martten Mitri
 
 Kuna kasutasime ühist veebiserverit on kõik commitid minu poolt 
