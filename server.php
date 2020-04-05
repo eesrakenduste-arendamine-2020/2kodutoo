@@ -1,14 +1,19 @@
 <?php
-    if(isset($_POST["save"]) && !empty($_POST["save"])){
-        saveToFile($_POST["save"]);
+     if(isset($_GET["data"]) && !empty($_GET["data"])){
+        saveToFile($_GET["data"]);
+        //echo $_GET["data"];
     }
 
+    
     function saveToFile($stringToSave){
-        $object = new StdClass();
-        $object->last_modified = time();
-        $object->content = $stringToSave;
-        $jsonString = json_encode($object);
-        file_put_contents("database.txt", $jsonString);
-
+        $text = new Stdclass();
+        $text->content = $stringToSave;
+        $jsonString = json_encode($text);
+        $file = "database.txt";
+        $openFile = fopen($file, "w");
+    
+        fwrite($openFile, stripslashes($jsonString));
+        fclose($openFile);
     }
+
 ?>
