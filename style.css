@@ -96,3 +96,48 @@
     /*box-shadow: 0 5px #666;*/
     transform: translateY(2px);
   }
+  #changeImage {
+    width: 90px;
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    color: black;
+    border: .1px solid rgb(116, 116, 116);
+    border-radius: 8px;
+    background-image: url(img/linn.jpeg);
+    
+  }
+
+  #changeImage:hover {
+    background-color: white;
+  }
+
+  #changeImage:active {
+    background-color: #adadad;
+    /*box-shadow: 0 5px #666;*/
+    transform: translateY(2px);
+  }
+  
+  #change-font {
+    width: 90px;
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    color: black;
+    border: .5px solid rgb(116, 116, 116);
+    border-radius: 8px;
+  }
+
+  #change-font:hover {
+    background-color: white;
+  }
+
+  #change-font:active {
+    background-color: #adadad;
+    /*box-shadow: 0 5px #666;*/
+    transform: translateY(2px);
+  }
