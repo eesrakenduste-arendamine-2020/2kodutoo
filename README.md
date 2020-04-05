@@ -47,7 +47,7 @@ Koodi vormistus + testimine
 
 *Daniel Eelmaa:
 Olulisemad punktid:
-Tegelesin enamjaolt JS'i funktsionaalsuste loomisega.
+Tegelesin JS'i funktsionaalsuste loomisega.
 Tegin valmis põhjalikuma Add funktsiooni. 
 Arendasin Search ja Sort funktsioone lehe jaoks.
 Võimaluse märkida ülesanded tehtuks.
