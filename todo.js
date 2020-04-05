@@ -7,8 +7,8 @@ function Todo(description, title, dueDate) {
   this.done = "undone";
 }
   
-let todos = new Array();
 let localTodo = localStorage.getItem("todo");
+let todos = new Array();
 let doneS = 0;
 
 function datefn(){
@@ -31,13 +31,11 @@ function init() {
   submitButton.onclick = getFormData;
   getTodoData();
 }
-
-
+  
 function saveLocal (){
   localStorage.setItem('here are your events', JSON.stringify(todos));
 }
-
-
+  
 function getTodoData() {
   let request = new XMLHttpRequest();
   request.open("GET", "todo.txt");
@@ -54,8 +52,6 @@ function getTodoData() {
   request.send();
 }
 
-
-
 function parseTodoItems(todoJSON) {
   if (todoJSON == null || todoJSON.trim() == "") {
     return;
@@ -71,8 +67,6 @@ function parseTodoItems(todoJSON) {
   }
 }
   
-
-
 function addTodosToPage() {
   let ul = document.getElementById("todoList");
   let ul1 = document.getElementById("todoListI");
@@ -154,7 +148,6 @@ function addTodosToPage() {
   }
 }
 
-
 function getFormData() {
   let description = document.getElementById("description").value;
   if (checkInputText(description, "Please enter a description")) return;
@@ -177,7 +170,7 @@ function getFormData() {
   document.getElementById("todoListI").innerHTML = "";
   addTodosToPage();
 }
-
+  
 function checkInputText(value, msg) {
   if (value == null || value == "") {
     alert(msg);
@@ -185,7 +178,7 @@ function checkInputText(value, msg) {
   }
   return false;
 }
-
+  
 function saveTodoData() {
   let todoJSON = JSON.stringify(todos);
   let request = new XMLHttpRequest();
@@ -194,7 +187,7 @@ function saveTodoData() {
   request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
   request.send();
 }
-
+  
 function checkedImportant() {
   let checkBox = document.getElementById("important");
   if (checkBox.checked == true) {
@@ -204,8 +197,7 @@ function checkedImportant() {
     important = "No";
   }
 }
-
-
+  
 function sortAlphabetically() {
   todos.sort(function(a, b){
     if(a.title.toLowerCase() < b.title.toLowerCase()) { return -1; }
@@ -274,7 +266,23 @@ function mysearch() {
     }
   }
 }
-  
+
+function play() {
+  let music=document.getElementById("musicu");
+  let audio = document.getElementById("audio");
+  if(music.value=="Turn on the beat"){
+    audio.play();
+    audio.volume=0.02;
+    audio.loop=true;
+    music.value="Turn off the beat";
+    $('body').css('backgroundImage', 'url("bodybuilder.gif")');
+  }else{
+    audio.pause();
+    music.value="Turn on the beat";
+    $('body').css('backgroundImage', 'url("car.gif")');
+  }
+}
+
 function sortDone(){
   let checkbox1 = document.getElementById("doneCheck");
   let checkbox2 = document.getElementById("notdoneCheck");

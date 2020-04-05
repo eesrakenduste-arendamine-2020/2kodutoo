@@ -13,6 +13,8 @@
   <title>ToDo List</title>
 </head>
 <body>
+  <input id="musicu" type="button" value="Turn on the beat" onclick="play()">
+    <audio id="audio" src="rollin.mp3"></audio>
   <input type="text" id="search" onkeyup="mysearch()" placeholder="Search on page">
   <form id="addTodoForm">
     <h1>Add a new todo item</h1>
@@ -45,18 +47,18 @@
   </fieldset>
   </form>
   <form id="todoForm">
-    <legend>Sort</legend>
-    <div class = "right">
-      <label id="normal">Normal todo</label>
-      <label id="due">Due date is today</label>
-      <label id="passed">Due date has passed</label>
-    </div>
-    <select id="todoSort" onchange="changeSorting();">
-      <option value="" disabled selected>Select your option</option>
-      <option value="byDate">Date</option>
-      <option value="byAlphabet">Alphabetically</option>
-    </select>
-    <div>
+      <legend>Sort</legend>
+      <div class = "right">
+        <label id="normal">Normal todo</label>
+        <label id="due">Due date is today</label>
+        <label id="passed">Due date has passed</label>
+      </div>
+      <select id="todoSort" onchange="changeSorting();">
+        <option value="" disabled selected>Select your option</option>
+        <option value="byDate">Date</option>
+        <option value="byAlphabet">Alphabetically</option>
+      </select>
+      <div>
       <label>Finished</label>
       <input type="checkbox" id="doneCheck"  onclick="sortDone()" checked>
     </div>
