@@ -45,6 +45,11 @@
   </form>
   <form id="todoForm">
     <legend>Sort</legend>
+    <div class = "right">
+      <label id="normal">Normal todo</label>
+      <label id="due">Due date is today</label>
+      <label id="passed">Due date has passed</label>
+    </div>
     <select id="todoSort" onchange="changeSorting();">
       <option value="" disabled selected>Select your option</option>
       <option value="byDate">Date</option>

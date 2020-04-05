@@ -1,0 +1,54 @@
+#todoForm{
+    color: #EEEEEE;
+    font-family: Varela Round;
+    width: 20;
+    top: auto;
+    position: center;
+    
+}
+li{
+    font-family: Varela Round;
+    background-image: linear-gradient(to right,purple , yellow);
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
+    border: 3px solid lightgray;
+    border-radius: 10px;
+    margin: 5px;
+    color: white;
+}
+
+.delete-button{
+    width: 30px;
+    color:red;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.delete-button:hover{
+    width: 30px;
+    font-weight: 900;
+    color: darkred;
+    font-size: 1.4em;
+    cursor: pointer;
+}
+
+.done-button{
+    margin-left: auto;
+    margin-right: 20px;
+    text-shadow: 2px 2px black;
+    width: 80px;
+    color:green;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+.done-button:hover{
+    margin-left: auto;
+    margin-right: 20px;
+    font-weight: 900;
+    color: blue;
+    font-size: 1.4em;
+    cursor: pointer;
+}

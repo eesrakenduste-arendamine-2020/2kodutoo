@@ -11,6 +11,19 @@ let todos = new Array();
 let localTodo = localStorage.getItem("todo");
 let doneS = 0;
 
+function datefn(){
+  let month = ((new Date()).getMonth()+1);
+  let date = (new Date()).getDate();
+  if(month < 10){
+    month = "0" + month;
+  }
+  if(date < 10){
+    date = "0" + date;
+  }
+  let today = (new Date()).getFullYear() + "-" + month + "-" + date
+  return today;
+}
+
 window.onload = init;
   
 function init() {
@@ -69,6 +82,15 @@ function addTodosToPage() {
     let todoItem = todos[i];
     let li = document.createElement("li");
     let a = document.createElement("a");
+    
+    today = datefn();
+    //console.log(todoItem.dueDate)
+    //console.log(today)
+    if(todoItem.dueDate == today){
+      li.style.color = "red";
+    } else if(todoItem.dueDate < today){
+      li.style.color = "yellow";
+    }
     if (todoItem.deleted == null) {
       
       a.innerHTML = todoItem.title + "  " + todoItem.description + " by " + todoItem.dueDate;
@@ -81,7 +103,10 @@ function addTodosToPage() {
         }else{
           c = ul;
         }
-        ul.removeChild(li);
+        $(li).fadeOut(1000);
+        setTimeout(function(){
+          c.removeChild(li);
+        },1000);
         todoItem.deleted = "yes";
         saveTodoData();
       });
@@ -105,10 +130,12 @@ function addTodosToPage() {
           saveTodoData();
         });
       }
+
       li.appendChild(a);
       li.appendChild(doneButton);
       removeButton.appendChild(removeIcon);
       li.appendChild(removeButton);
+      
       if(todoItem.important == "Yes"){
         c = ul1;
       }else{
@@ -121,6 +148,8 @@ function addTodosToPage() {
       } else if(doneS == 1 && todoItem.done == "undone"){
         c.appendChild(li);
       }
+      $('#todoList').hide().fadeIn(1200);
+      $('#todoListI').hide().fadeIn(1200);
     }
   }
 }
