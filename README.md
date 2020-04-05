@@ -9,13 +9,13 @@ Todo rakenduse funktsionaalsused:
 
 Saab lisad ja kustutada -  Maris Jool, Nina Katarina Weiss, Liisi Liivik
 
-Saab märkida ülesandeid tehtuks - Maris Jool
+Saab märkida ülesandeid tehtuks - Liisi Liivik
 
-Saab järjestada kuupäeva järgi ülesandeid - Liisi Liivik
+Saab järjestada kuupäeva järgi ülesandeid - Maris Jool
 
 Saab järjestada nime järgi ülesandeid - Nina Katarina Weiss
 
-Ülesanded salvestatakse localStorage'isse ja faili/andmebaasi -  Maris Jool, Nina Katarina Weiss, Liisi Liivik
+Ülesanded salvestatakse localStorage'isse ja faili/andmebaasi -  Maris Jool, Nina Katarina Weiss
 
 Ülesannete salvestamiseks ja kuvamiseks kasutatakse AJAX-it -  Maris Jool, Nina Katarina Weiss, Liisi Liivik
 
