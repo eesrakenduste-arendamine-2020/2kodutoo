@@ -1,0 +1,151 @@
+body{
+    margin:0;
+    font-family: 'Gotu', sans-serif;
+}
+
+header{
+    font-size: 5em;
+    text-align: center;
+    color: rgb(97, 96, 96);
+    font-family: 'Gotu', sans-serif;
+}
+#container{
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+}
+#legend{
+    background-color: rgb(156, 154, 154);
+    height: 90px;
+    width: 100px;
+    float: left;    
+    align-content: center;
+}
+
+#sortContainer{    
+    display: flex;
+    padding: 0.3%;
+    justify-content: center;
+    float: right;    
+    font-family: 'Gotu', sans-serif;
+    width: 90vw;
+}
+
+#imp{
+    color: #cbbce6;    
+    line-height: 10px;
+}
+#undone{
+    color: rgb(82, 81, 81);
+    line-height: 10px;
+}
+#done{
+    color: whitesmoke;
+    line-height: 10px;
+}
+
+.task-completed{
+    border-color: whitesmoke;    
+}
+
+.important.task-completed{    
+    border-color: whitesmoke;
+}
+
+.task-completed .entry-value{
+    text-decoration: line-through;
+}
+
+#sortBy{
+    margin: 5px;
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+    border-style: inset;
+    border-width: 2px;
+}
+
+#clickSort{
+    width: 100px;
+    height: 30px;
+}
+
+#inputContainer, #button{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    font-family: 'Gotu', sans-serif;
+}
+
+input{
+    width: 25%;
+    margin: 5px;
+    border-radius: 10px;
+    height:25px;
+    font-family: 'Gotu', sans-serif;
+}
+
+input[type="button"]{
+    height: 37px;
+    font-size: 20px;
+    background-color: rgb(241, 197, 203);
+    border: 1px solid rgb(241, 197, 203);
+    width: 15%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+input[type="button"]:hover{
+    background-color:  rgb(144, 186, 202);
+    border-color:  rgb(144, 186, 202);
+    font-weight: 600;
+}
+
+li{
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
+    border: 2px solid rgb(82, 81, 81);
+    border-radius: 10px;
+    margin: 5px;
+}
+
+li:hover{
+    background-color:  rgb(144, 186, 202);
+}
+
+.important{
+    border-color: #cbbce6;
+    border-width: 3px;
+}
+
+.delete-button{
+    color: red;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.delete-button:hover{
+    font-size: 1.4em;
+    color: black;
+    cursor: pointer;
+}
+
+.entry-value{
+    cursor: pointer;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.entry-value:hover{
+    background-color: rgb(144, 186, 202);
+    font-size: large;
+}
+
+#Cbox{
+    width: 3em;
+}

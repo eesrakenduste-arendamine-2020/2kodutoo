@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+    </script>
+    <script defer src="hw.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Gotu&display=swap" rel="stylesheet">
+    <title>TO DO LIST</title>
+</head>
+<body>
+    <header>~ To do list ~</header>
+    <div id="inputContainer">
+        <input type="text" name="title" id="title">
+        <input type="text" name="description" id="description">
+        <input type="date" name="date" id="date">
+        <label for="cBox">Tähtis</label>
+        <input type="checkbox" name="box" id="Cbox">
+    </div>
+    <div id="button">
+        <input type="button" value="Lisa" id="addButton">       
+    </div>   
+    <div id="container">
+    <div id="legend">        
+        <p id="imp" >TÄHTIS</p>
+        <p id="undone">TEGEMATA</p>
+        <p id="done">TEHTUD</p>
+    </div>
+    <div id="sortContainer">  
+        <select name="sort" id="sortBy">
+            <option value="blank"></option>
+            <option value="date">Kuupäev</option>
+            <option value="name">Nimi</option>
+            <option value="important">Tähtsad</option>
+            <option value="unimportant">Mittetähtsad</option>
+            <option value="notdone">Tegemata</option>
+        </select>
+        <input type="Submit" id = "clickSort" value = "Sorteeri">
+    </div>   
+</div>
+</body> 
+</html>
