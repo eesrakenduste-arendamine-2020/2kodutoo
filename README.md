@@ -43,4 +43,13 @@ Arendasime koos To Do'de eristamiseks sorteerimisvõimaluse.
 CSS kujundamine, disain ja nende paigutused. Lisasin legendi, et paremini eristada To Do'sid.
 Koodi vormistus + testimine
 
+*Daniel Eelmaa:
+Olulisemad punktid:
+Tegelesin enamjaolt JS'i funktsionaalsuste loomisega.
+Tegin valmis põhjalikuma Add funktsiooni. 
+Arendasin Search ja Sort funktsioone lehe jaoks.
+Võimaluse märkida ülesanded tehtuks.
+JQUERY animatsioonid ToDo'de kuvamisel.
+ToDo'de tähtsaks märkimine ja eraldi kuvamine.
+Koodi vormistus + testimine
 
