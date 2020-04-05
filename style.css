@@ -31,3 +31,32 @@
     /*box-shadow: 0 5px #666;*/
     transform: translateY(2px);
   }
+  #sortWithNames{
+    width: 90px;
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Playfair Display', serif;text-align: center;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border: 2px solid rgb(184, 170, 255);
+    transition-duration: 0.7s;
+    border-radius: 8px;
+  }
+  #sortWithNames:hover {
+    background-color: rgb(184, 170, 255);
+    color: white;
+  }
+  
+  #sortWithDate {
+    width: 90px;
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border: 2px solid rgb(184, 170, 255);
+    transition-duration: 0.7s;
+    border-radius: 8px;
+  }
+  #sortWithDate:hover {
+    background-color: rgb(184, 170, 255);
+    color: white;
