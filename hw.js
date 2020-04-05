@@ -1,8 +1,8 @@
-$(document).ready(function(){
+// $(document).ready(function(){
 
-    $('#addButton').click(function(){$('.todo-list.entry').fadeIn(2000);});
-    $('.todo-list.delete-button').click(function(){$('.todo-list.entry').fadeOut(2000)});
-});
+//     $('#addButton').click(function(){$('.todo-list.entry').fadeIn(2000);});
+//     $('.todo-list.delete-button').click(function(){$('.todo-list.entry').fadeOut(2000)});
+// });
 
 
 class Entry{
@@ -54,18 +54,22 @@ class Todo{
         }
         const ul = document.createElement('ul');
         ul.className = "todo-list";
+        ul.id = "todo";
 
         newArray.forEach((entryValue, entryIndex)=>{
             const li = document.createElement('li');
             li.classList.add('entry');
+            li.id = "entry";
             const div = document.createElement('div');
             div.classList.add('entry-value')
             const removeButton = document.createElement('div');
             removeButton.className = "delete-button";
+            removeButton.id = "deleteButton";
             const removeIcon = document.createTextNode('X');
             
             div.innerHTML = `<div> ${entryValue.title}</div><div> ${entryValue.description}</div>
             <div>${entryValue.date}</div>`;
+            
 
             removeButton.addEventListener('click', ()=>{
                 ul.removeChild(li);
@@ -98,7 +102,7 @@ class Todo{
         });
 
         document.body.appendChild(ul);
-
+        $('#todo').hide().fadeIn(5000);
         
         
     }
