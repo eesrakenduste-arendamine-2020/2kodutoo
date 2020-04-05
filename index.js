@@ -76,6 +76,7 @@ class Todo{
     }
     const todo = new ToDo();
 
+
     function search () {
         let input, filter, ul, li, i, txtValue;
         let entries = JSON.parse(window.localStorage.getItem('entries'));
@@ -115,4 +116,29 @@ class Todo{
           }
         }
       }
- 
+      
+      
+    /*   FONDI JA SUURUSE MUUTMINE */ 
+
+    function changeFont() {
+      console.log('test');
+      if (fontChanged == 0) {
+        document.body.style.fontFamily = 'Arial';
+        fontChanged = 1;
+      } else {
+        document.body.style.fontFamily = 'Times New Roman';
+        fontChanged = 0;
+      }
+    }
+
+    function changeTextSize() {
+      console.log('size');
+      if (sizeChanged == 0) {
+        document.body.style.fontSize = 'xx-large';
+        sizeChanged = 1;
+      } else {
+        document.body.style.fontSize = 'small';
+        sizeChanged = 0;
+      }
+    }
+
