@@ -149,7 +149,7 @@ class Todo {
     alertPositive() {
       var alert = document.createElement("div");
       alert.classList.add('alertPositive');
-      var textnode = document.createTextNode("New todo item added!");
+      var textnode = document.createTextNode("Uus todo ülesanne lisatud!");
       alert.appendChild(textnode);
     
       var list = document.getElementById("message");
@@ -161,7 +161,7 @@ class Todo {
     alertNegative() {
       var alert = document.createElement("div");
       alert.classList.add('alertNegative');
-      var textnode = document.createTextNode("Insert please every field!");
+      var textnode = document.createTextNode("Palun sisesta kõik väljad!");
       alert.appendChild(textnode);
     
       var list = document.getElementById("message");
