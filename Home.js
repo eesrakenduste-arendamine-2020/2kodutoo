@@ -115,7 +115,6 @@ class Todo {
     var firstChars, ul, li, a, i, txtValue;
     firstChars = searchButton.value.toLowerCase();
     ul = document.getElementsByClassName("todo-list");
-    console.log(ul[0]);
     li = ul[0].getElementsByTagName("li");
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("div")[0];
@@ -132,23 +131,43 @@ class Todo {
         const descriptionValue = document.querySelector('#description').value;
         const dateValue = document.querySelector('#date1').value;
 
-        console.log(titleValue, descriptionValue, dateValue);
-
         if(titleValue && descriptionValue && dateValue){
             this.entries.push(new Entry(titleValue, descriptionValue, dateValue));
-
-            console.log(this.entries);
             this.saveLocal();
             this.saveToFile();
             this.render();
-            alert("ülesanne lisatud! Kui ülesanne on tehtud, kliki selle peale.");
+            this.alertPositive();
 
             document.querySelector('#title').value = "";
             document.querySelector('#description').value = "";
             document.querySelector('#date1').value = "";
         } else {
-            alert("Kõik väljad ei ole täidetud! Ülesannet lisada ei saa.")
+            this.alertNegative();
         }
+    }
+
+    alertPositive() {
+      var alert = document.createElement("div");
+      alert.classList.add('alertPositive');
+      var textnode = document.createTextNode("New todo item added!");
+      alert.appendChild(textnode);
+    
+      var list = document.getElementById("message");
+      list.insertBefore(alert, list.childNodes[0]);
+      alert.parentElement.style.display = 'block';
+      setTimeout(function(){alert.parentElement.removeChild(alert);}, 2000);
+    }
+
+    alertNegative() {
+      var alert = document.createElement("div");
+      alert.classList.add('alertNegative');
+      var textnode = document.createTextNode("Insert please every field!");
+      alert.appendChild(textnode);
+    
+      var list = document.getElementById("message");
+      list.insertBefore(alert, list.childNodes[0]);
+      alert.parentElement.style.display = 'block';
+      setTimeout(function(){alert.parentElement.removeChild(alert)}, 2000);
     }
 
     render(){
@@ -197,7 +216,6 @@ class Todo {
      saveToFile(){
         $.post('server.php', {save: JSON.stringify(this.entries)}).done(function(){
         }).fail(function(){
-          alert('fail');
         }).always(function(){
         });
       }
@@ -205,7 +223,6 @@ class Todo {
 
     saveLocal(){
         window.localStorage.setItem('entries', JSON.stringify(this.entries));
-        console.log('save');
     }
 
 
