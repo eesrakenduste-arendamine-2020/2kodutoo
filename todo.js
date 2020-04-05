@@ -190,6 +190,7 @@ class Todo{
 
 
         document.body.appendChild(ul);
+        
     }
 
     saveLocal(){
