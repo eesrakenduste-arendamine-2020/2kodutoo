@@ -30,9 +30,17 @@ Suurem osa gruppitööst oli tehtud koostöös Discordi teel ning katsetatud put
 
 *Herman Petrov :
 Olulisemad punktid:
-Kirjutasin ja arendasin koodi mis võimaldaks lugeda ajaxi abil todo.txt failist andmeid ja ka salvestaks neid. 
+Kirjutasin ja arendasin koodi, mis võimaldaks lugeda ajaxi abil todo.txt failist andmeid ja ka salvestaks neid. 
 Kirjutasin localStorage võimaluse todoListile. 
 Kujundasin CSS, arendasin tausta todo ja paigutust. 
 Arendasin Delete ja Add võimalused todod.
+Koodi vormistus + testmine
+
+*Tauri Miilits:
+Olulisemad punktid:
+Arendasin välja koodi, kus sai lõpuks siduda läbi serveri funktsioonide todo.txt faili (AJAX).
+Arendasime koos To Do'de eristamiseks sorteerimisvõimaluse.
+CSS kujundamine, disain ja nende paigutused. Lisasin legendi, et paremini eristada To Do'sid.
+Koodi vormistus + testimine
 
 
