@@ -113,14 +113,13 @@ class Todo{
         return important;
     }
    
-    changeSortValue(sortValue){    
-        let sortedByDate = sortValue;    
+    changeSortValue(sortValue){  
         if(sortValue == "date"){
             this.sortedByDate();
         } else if(sortValue == "name"){
             this.sortedByName();
         } else if(sortValue == "important"){
-            this.sortedByImportance();            
+            this.sortedByImportance();
         } else if(sortValue == "unimportant"){
             this.sortedUnimportant();
         } else if(sortValue == "blank"){
@@ -140,9 +139,9 @@ class Todo{
             }
             return comparison;
         }
-
-        this.entries.sort(compareDate);
-        this.render(this.entries);
+        var sortDate = this.entries.concat();
+        sortDate.sort(compareDate);
+        this.render(sortDate);
 
     }
 
@@ -158,8 +157,9 @@ class Todo{
             }
             return comparison;
         }
-        this.entries.sort(compareName);
-        this.render(this.entries);
+        var sortName = this.entries.concat();
+        sortName.sort(compareName);
+        this.render(sortName);
     }
 
     sortedByImportance(){
@@ -174,11 +174,19 @@ class Todo{
     }
 
     sortedUnimportant(){
+        let uniImportant = new Array();
+        for(let i=0; i < this.entries.length; i++){
+            let entry = this.entries[i];
+            if(entry.importance != "yes"){
+                uniImportant.push(entry);
+            }
+        }
+        this.render(uniImportant);
 
     }
 
     sortedToBasic(){
-
+        this.render(this.entries);
     }
 
 }
