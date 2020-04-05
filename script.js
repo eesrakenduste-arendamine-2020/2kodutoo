@@ -169,6 +169,15 @@ function markAsDone(taskId) {
         data: {'task_id': taskId}
     }).done(function(response) {
         console.log(response);
+        // Mark as done in local storage
+        let currentStorage = JSON.parse(localStorage.getItem('todo'));
+        for(let i=0; i < currentStorage['data'].length;i++) {
+            if (currentStorage['data'][i]['id'] == taskId) {
+                currentStorage['data'][i]['done'] = 1;
+            }
+        }
+
+        localStorage.setItem('todo', JSON.stringify(currentStorage));
     });
 }
 
