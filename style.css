@@ -1,0 +1,119 @@
+body{
+    margin: 0;
+    background: radial-gradient(80% 40%, rgb(74, 194, 222), rgb(47, 99, 126)) no-repeat center center fixed ;
+}
+
+.task-missed{
+    border-color: darkred;
+    background-color: indianred;
+}
+
+.task-completed{
+    border-color: darkgreen;
+    background-color: lightgreen;
+}
+
+.task-completed .entry-value{
+    text-decoration: line-through;
+}
+
+#inputContainer, #buttonContainer{
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 5px;
+    padding-top: 10px;
+
+}
+
+input{
+    width: 21%;
+    margin: 5px;
+    border-radius: 5px;
+    height: 25px;
+}
+
+#addButton:hover{
+    cursor: pointer;
+    border-color: black;
+    border-radius: 5px;
+    background-color: rgb(192, 240, 164);
+    box-shadow: 1px 1px 3px 3px rgba(0,0,0,0.5);
+}
+
+input[type = "buton"]{
+    width: 15%;
+    border-radius: 10px;
+    height: 37px ;
+    padding: 10px ;
+    font-size: 17px ;
+    background-color: green ;
+    border: 1px solid green;
+    color:white;
+
+}
+input[type = "buton"]:hover{
+    background-color: darkgreen;
+    border-color: darkgreen;
+    font-weight: 600;
+}
+li{
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    background-color: white;
+
+
+
+
+}
+#sorting{
+    display:flex;
+    justify-content:left;
+    align-items: center;
+    margin: 1px;
+    padding-bottom: 1px;
+    padding-left: 50px;
+
+}
+
+.done-button{
+    color: green;
+    font-size: 1.3em;
+    font-weight: 900;
+}
+
+.done-button:hover{
+    font-weight: 900;
+    color:darkgreen;
+    font-size: 1.4em;
+    cursor: pointer;
+}
+
+.delete-button{
+    color: red;
+    font-size: 1.3em;
+    font-weight: 900;
+}
+
+.delete-button:hover{
+    font-weight: 900;
+    color:darkred;
+    font-size: 1.4em;
+    cursor: pointer;
+}
+
+.entry-value{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+}

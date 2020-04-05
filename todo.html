@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script defer src = "todo.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Todo</title>
+</head>
+<body>
+    <div id = "inputContainer">
+        <input type = "text" name = "title" placeholder = "Nimetus" id = "title">
+        <input type = "text" name = "description" placeholder = "Kirjeldus" id = "description">
+        <input type = "date" name = "date" id = "date">
+    </div>
+
+    <div id="buttonContainer">
+        <input type = "button" value = "LISA" id = "addButton">
+    </div>
+    <div id="sorting">
+        <select id="sort">
+            <option value="asd">Sorteeri</option>
+            <option value="dateIncrease">Kuupäeva järgi ↑</option>
+            <option value="dateDecrease">Kuupäeva järgi ↓</option>
+            <option value="titleIncrease">Nime järgi ↑</option>
+            <option value="titleDecrease">Nime järgi ↓</option>
+        </select>
+    </div>
+</body>
+</html>
