@@ -14,6 +14,8 @@ class Todo{
         this.entries = JSON.parse(window.localStorage.getItem('entries')) || [];
 
         document.querySelector('#addButton').addEventListener('click', ()=>{this.addEntry();});
+        document.querySelector("#saveToFile").addEventListener("click", ()=>{this.saveToFile();});
+
         this.render(this.entries);
     }
 
@@ -98,7 +100,6 @@ class Todo{
         $('#todo').hide().fadeIn(2500);
         
     }
-    
 
     saveLocal(){
         window.localStorage.setItem('entries', JSON.stringify(this.entries));
