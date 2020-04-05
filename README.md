@@ -11,6 +11,7 @@ Funktsionaalsus:
 6. Kui kõik ülesanded seal listis tehtud on siis võib listi kustutada kasutades "Kustuta list" nuppu.
 7. Kui liste on palju siis on neid võimalik otsida "Otsi listi..." lahtriga
 
+
 --------------------------------------------------------------------------------------------------------------------------
 # 2. kodutöö – ToDo rakendus
 
