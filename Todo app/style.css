@@ -2,6 +2,7 @@ body {
     background-image: url("virmaline.jpg");
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     background-color: lightgray;
     font-family: "Pacifico", cursive;
     margin: 0
