@@ -1,3 +1,40 @@
+body {
+  margin: 0;
+  min-width: 250px;
+}
+
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: rgb(245, 245, 245);
+  font-size: 20px;
+  transition: 1s;
+
+
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+
+ul li:hover {
+  background: rgb(207, 194, 218);
+}
 #addButton{
     width: 120px;
     font-family: 'Raleway', sans-serif;
@@ -228,3 +265,4 @@
     height: 25px;
     border-radius: 5px;
   }
+  
