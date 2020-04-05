@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400&display=swap');
+:root {
+    --shadow: 0px 4px 24px hsla(0, 0%, 27%, 0.15);
+    /* Background color */
+    --background-color: hsl(195, 100%, 98%);
+    /* Frame color */
+    --frame-color: hsl(0, 0%, 100%);
+    /* Primary text */
+    --gray-tint-1: hsl(0, 0%, 20%);
+    /* Secondary text/icons */
+    --gray-tint-2: hsl(0, 0%, 55%);
+    /* Tertiary */
+    --gray-tint-3: hsl(0, 1%, 75%);
+    /* Favorites color */
+    --important-color: hsl(44, 75%, 84%);
+    /* Important button highlight color */
+    --important-highlight: hsla(43, 69%, 72%, 0.67);
+    /* Delete button highlight color */
+    --delete-highlight: hsla(3, 69%, 72%, 0.67);
+    font-family: 'Cabin', sans-serif;
+    color: var(--gray-tint-1);
+}
+
+/* Phone */
+
+@media screen and (max-width: 1024px), (orientation: portrait) {
+    body {
+        margin: 0;
+    }
+    #container {
+        height: 100vh;
+        max-height: 100vh;
+        overflow: hidden;
+    }
+    #container>* {
+        min-width: 100vw;
+        margin: 0;
+        padding: 0;
+    }
+    .todo {
+        padding: 0.5em;
+        margin: 0.75em;
+    }
+    .todo>* {
+        padding: 1rem;
+    }
+    #todo-container {
+        flex: 1;
+        overflow: hidden;
+    }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1024px) {
+    #container {
+        margin: 2em;
+    }
+    #container>* {
+        width: 50vw;
+    }
+    .todo {
+        padding: 1em;
+        margin: 0.5em;
+    }
+    .todo>* {
+        padding: 0.5rem;
+    }
+    #todo-container {
+        height: 60vh;
+        border-radius: 0.75em;
+    }
+    #input-container {
+        border-radius: 0.75em;
+        margin-top: 1em;
+    }
+    #sort-container {
+        border-radius: 0.75em 0.75em 0 0;
+    }
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+* {
+    transition: all 0.25s cubic-bezier(0, 0, 0.2, 1);
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#todos {
+    padding: 2em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+}
+
+#todo-frame {
+    display: flex;
+    flex-direction: column;
+}
+
+.todo {
+    box-shadow: var(--shadow);
+    border-radius: 0.5em;
+    max-height: 150em;
+    display: grid;
+    grid-template-columns: min-content minmax(auto, max-content) minmax(auto, max-content) minmax(min-content, auto) min-content min-content;
+    column-gap: 0.5em;
+    grid-template-rows: auto auto 2em;
+    grid-template-areas: "checkbox title title date important delete" "checkbox description description description important delete" "checkbox description description description important delete";
+}
+
+.todo>* {
+    max-height: 150em;
+}
+
+#todo-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--frame-color);
+    box-shadow: var(--shadow);
+}
+
+/* Sort */
+
+#sort-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1em;
+    box-shadow: var(--shadow);
+}
+
+.sort-button {
+    background: url("sort.svg") no-repeat;
+    padding: 1em;
+    margin-right: 2em;
+    margin-left: 1em;
+    border: none;
+    cursor: pointer;
+}
+
+.sort-button:focus {
+    outline: none;
+}
+
+#search {
+    background: url("magnifier.svg") no-repeat 1em 50%;
+    background-size: 1.5em;
+    box-shadow: inset var(--shadow);
+    border: none;
+    border-radius: 4em;
+    padding: 0.75em 1em;
+    padding-left: 3em;
+    color: var(--gray-tint-1);
+    margin-left: auto;
+    margin-right: 1em;
+    max-width: 12.5em;
+    min-width: 1em;
+}
+
+.flip {
+    /* Peegelpildi moodi flip, kuna rotate(180deg) pööraks ta teise suunda */
+    transform: scale(1, -1);
+}
+
+.sort-text {
+    letter-spacing: 0.2em;
+}
+
+/* Input */
+
+#input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 2rem 0;
+    background-color: var(--frame-color);
+    box-shadow: var(--shadow);
+    flex-wrap: wrap;
+}
+
+input {
+    font-family: 'Cabin', sans-serif;
+    font-size: 1.25em;
+}
+
+#input-container>::placeholder {
+    color: var(--gray-tint-3);
+}
+
+#titleInput, #descriptionInput, #dueDateInput {
+    box-shadow: var(--shadow);
+    border: 0.25rem solid var(--gray-tint-3);
+    border-radius: 0.75em;
+    padding: 1em 0.25em;
+    color: var(--gray-tint-1);
+}
+
+#titleInput, #descriptionInput {
+    max-width: 20%;
+}
+
+#dueDateInput {
+    max-width: 25%;
+}
+
+#add {
+    box-shadow: var(--shadow);
+    border: none;
+    border-radius: 0.75em;
+    width: 5em;
+    height: auto;
+    cursor: pointer;
+}
+
+#add:active {
+    box-shadow: none;
+    transition: 0.1s;
+}
+
+/* Todo */
+
+.checked {
+    text-decoration: line-through;
+}
+
+.title {
+    font-size: 1.667em;
+    grid-area: title;
+    overflow-wrap: anywhere;
+}
+
+.description {
+    color: var(--gray-tint-2);
+    grid-area: description;
+    overflow-wrap: anywhere;
+}
+
+.dueDate {
+    color: var(--gray-tint-2);
+    grid-area: date;
+    align-self: center;
+    justify-self: end;
+    white-space: nowrap;
+}
+
+/* Checkbox, täielik hack, algusest lõpuni kuna SVG on nii tore */
+
+label {
+    grid-area: checkbox;
+    place-self: center center;
+    border: 0.1875em solid var(--gray-tint-3);
+    border-radius: 0.25em;
+}
+
+.checkbox {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.checkbox:checked+.checkbox-decoy {
+    background: url("checkmark.svg") no-repeat;
+    filter: none;
+    opacity: 1;
+}
+
+.checkbox-decoy {
+    height: 3em;
+    max-width: 3em;
+    width: 3em;
+    cursor: pointer;
+    background: url("checkmark.svg") no-repeat;
+    filter: brightness(150%);
+    opacity: 0;
+}
+
+.checkbox-decoy:hover {
+    opacity: 1;
+}
+
+/* Todo actions */
+
+.important-button {
+    background: url("important.svg") no-repeat;
+    padding: 1em;
+}
+
+.important-task {
+    background-color: var(--important-color);
+}
+
+.delete-button {
+    background: url("x.svg") no-repeat;
+    padding: 1em;
+}
+
+.delete-button-container {
+    box-shadow: var(--shadow);
+    border-radius: 0.75em;
+    padding: 1em;
+    cursor: pointer;
+    grid-area: delete;
+    place-self: center;
+}
+
+.important-button-container {
+    box-shadow: var(--shadow);
+    border-radius: 0.75em;
+    padding: 1em;
+    cursor: pointer;
+    grid-area: important;
+    place-self: center;
+}
+
+.delete-button-container:active, .important-button-container:active {
+    box-shadow: none;
+    transition: 0.05s;
+}
+
+.delete-button-container:hover {
+    background-color: var(--delete-highlight);
+}
+
+.important-button-container:hover {
+    background-color: var(--important-highlight);
+}
+
+/* Deletion animations */
+
+.marked-for-deletion {
+    transform: translateX(300%);
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    transition: all 1.5s;
+}
+
+.marked-for-deletion>* {
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    transition: all 1.5s;
+}

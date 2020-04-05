@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="et">
+
+<head>
+    <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="styles.css">
+
+    <meta charset="utf-8">
+    <meta name="description" content="Lisa ja kustuta ülesandeid">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="script.js"></script>
+
+
+    <title>ToDo</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="todo-container">
+            <div id="sort-container">
+                <div class="sort-text">TIITEL</div>
+                <button id="sort-title" class="sort-button"></button>
+                <div class="sort-text">KUUPÄEV</div>
+                <button id="sort-date" class="sort-button"></button>
+                <input type="text" id="search" maxlength="30">
+            </div>
+            <div id="todos"></div>
+        </div>
+        <div id="input-container">
+            <input type="text" id="titleInput" placeholder="Tiitel" maxlength="30">
+            <input type="text" id="descriptionInput" placeholder="Kirjeldus" maxlength="120">
+            <input type="date" id="dueDateInput">
+            <svg viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg" id="add">
+                <path d="M 3 1 l 0 4" style="stroke: hsl(0, 0%, 55%); stroke-width: 1px" />
+                <path d="M 1 3 l 4 0" style="stroke: hsl(0, 0%, 55%); stroke-width: 1px" />
+            </svg>
+        </div>
+    </div>
+</body>
+
+</html>
