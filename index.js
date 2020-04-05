@@ -74,4 +74,5 @@ class Todo{
         window.localStorage.setItem('entries', JSON.stringify(this.entries));
       }
     }
+    const todo = new ToDo();
  
