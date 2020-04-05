@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="todo.js"></script>
+    <title>Todo</title>
+</head>
+<body>
+    <h1>By Noor & Sauer</h1>
+    <div id="container">
+        <div id="inputContainer">
+            <label for="game">Aine: </label><br>
+            <input type="text" name="game" id="game"><br />
+            <label for="score">Ülesanne: </label><br>
+            <input type="text" name="score" id="score"><br />
+            <label for="date">Kuupäev:</label><br>
+            <input type="date" name="date" id="date"><br>
+            <input  class="button" type="button" value="LISA" id="addButton"><br />
+        </div>
+        <div id="searchContainer">
+            <label for="searchLabel">sisesta märksõna: </label><br>
+            <input type="text" name="search" id="search"><br />
+        </div>
+        <div id="buttonContainer">
+            <input class="button" type="button" value="Otsi" id="searchButton"><br />
+            <input  class="button" type="button" value="Sorteeri aine järgi" id="sortGameButton">
+            <input  class="button" type="button" value="Sorteeri Ülesande järgi" id="sortScoreButton">
+            <input  class="button" type="button" value="Sorteeri kuupäeva järgi" id="sortDateButton">
+        </div>
+    </div>
+</body>
+</html> 
