@@ -67,8 +67,8 @@ input[type="button"]{
 }
 
 input[type="button"]:hover{
-    background-color: steelblue;
-    border-color: steelblue;
+    background-color:  rgb(144, 186, 202);
+    border-color:  rgb(144, 186, 202);
     font-weight: 600;
 }
 
@@ -84,7 +84,7 @@ li{
 }
 
 li:hover{
-    background-color: steelblue;
+    background-color:  rgb(144, 186, 202);
 }
 
 .delete-button{
@@ -107,7 +107,7 @@ li:hover{
 }
 
 .entry-value:hover{
-    background-color: steelblue;
+    background-color: rgb(144, 186, 202);
     font-size: large;
 }
 
