@@ -4,8 +4,6 @@ class Entry{
         this.description = description;
         this.date = date;
         this.done = false;
-        this.important = false;
-        this.missed = false;
     }
 }
 
@@ -25,10 +23,12 @@ class Todo{
 
         this.entries.push(new Entry(titleValue, descriptionValue, dateValue));
 
+        console.log(this.entries);
         this.saveLocal();
 
         this.render();
     }
+    
 
     render(){
         if(document.querySelector('.todo-list')){
@@ -50,6 +50,10 @@ class Todo{
             const removeButton = document.createElement('div');
             removeButton.className = "delete-button";
             const removeIcon = document.createTextNode('X');
+            const importantButton = document.createElement('div');
+            importantButton.className = "important-button";
+            const importantIcon = document.createTextNode('★')
+
 
             div.innerHTML = `<div id = "title">${entryValue.title}</div><div> ${entryValue.description}</div>
             <div id = "date">${entryValue.date}</div>`;
@@ -57,8 +61,9 @@ class Todo{
             removeButton.addEventListener('click', ()=>{
                 $(li).animate({
                     opacity:".0"
-                },250, "linear", function(){
+                },1000, "linear", function(){
                     ul.removeChild(li);
+                    // this.render();
                 });
                 this.entries.splice(entryIndex, 1);
                 this.saveLocal();
@@ -84,60 +89,30 @@ class Todo{
 
             if(entryValue.date < formatDate()) {
                 li.classList.add('task-missed');
-                this.entries[entryIndex].missed = true;
                 this.saveLocal();
             } else {
                 li.classList.remove('task-missed');
-                this.entries[entryIndex].missed = false;
                 this.saveLocal();
             }
 
-            doneButton.addEventListener('click', ()=>{
-                if(entryValue.done && this.entries[entryIndex].missed){
-                    $(li).animate({
-                        backgroundColor: "indianred"
-                    },1000, "linear", function(){
-                        li.classList.remove('task-completed');
-                    });
-                    this.entries[entryIndex].done = false;
-                    this.saveLocal();
-                }
-                else if(entryValue.done){
+            doneButton.addEventListener('click', (keyframes, options)=>{
+                if(entryValue.done){
                     $(li).animate({
                         backgroundColor: "#fff"
-                    },1000, "linear", function(){
+                    },100, "linear", function(){
                         li.classList.remove('task-completed');
                     });
+
                     this.entries[entryIndex].done = false;
                     this.saveLocal();
-
                 }else{
                     $(li).animate({
-                        backgroundColor: "#90EE90",
+                        "background-color": "#90EE90"
                     }, 1000, "linear", function () {
                         li.classList.add('task-completed');
                     });
                     this.entries[entryIndex].done = true;
                     this.saveLocal();
-                }
-            });
-
-            div.addEventListener("click", ()=> {
-                if (this.entries[entryIndex].important && this.entries[entryIndex].done) {
-                    li.style.backgroundColor = "lightgreen";
-                    this.entries[entryIndex].important = false;
-                    this.saveLocal();
-                }
-                else if(this.entries[entryIndex].important && this.entries[entryIndex].missed){
-                        li.style.backgroundColor = "indianred";
-                    this.entries[entryIndex].important = false;
-                }
-                else if(this.entries[entryIndex].important){
-                    li.style.backgroundColor = "initial";
-                    this.entries[entryIndex].important = false;
-                } else {
-                    li.style.backgroundColor = "rgb(213,213,46)";
-                    this.entries[entryIndex].important = true;
                 }
             });
 
@@ -152,30 +127,31 @@ class Todo{
 
         $("#sort").change(function(){
             let elems = $.makeArray($(".entry"));
-
+            console.log(elems);
             if(this.value === "dateIncrease"){
+
                 elems.sort(function(a,b){
                     return Date.parse($(".entry-value #date", a).text()) > Date.parse($(".entry-value #date", b).text()) ? 1 : -1;
                 })
-            }
 
+            }
             if(this.value === "dateDecrease") {
                 elems.sort(function(a,b){
                     return Date.parse($(".entry-value #date", b).text()) > Date.parse($(".entry-value #date", a).text()) ? 1 : -1;
                 })
             }
-
             $(".todo-list").empty().append(elems);
         });
 
 
         $("#sort").change(function(){
             let titleArray = $.makeArray($(".entry"));
-
             if(this.value === "titleIncrease") {
                 titleArray.sort(function (a, b) {
                     return ($(b).text()) < ($(a).text()) ? 1 : -1;
                 });
+
+
             } else {
                 if(this.value === "titleDecrease") {
                     titleArray.sort(function (a, b) {
@@ -183,7 +159,6 @@ class Todo{
                     });
                 }
             }
-
             $(".todo-list").empty().append(titleArray)
         });
 
