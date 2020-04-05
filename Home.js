@@ -61,6 +61,8 @@ class Entry {
     this.done = false;
   }
 }
+
+var searchButton = document.querySelector('#searchInput');
 class Todo {
   constructor() {
     this.entries = JSON.parse(window.localStorage.getItem("entries")) || [];
@@ -68,9 +70,9 @@ class Todo {
       this.addEntry();
     });
     document.querySelector('#sortByTitle').addEventListener('click', ()=>{this.sortByTitle()});
-    document.querySelector("#sortByDate").addEventListener("click", () => {
-      this.sortByDate();
-    });
+    document.querySelector("#sortByDate").addEventListener("click", () => {this.sortByDate();});
+    searchButton.addEventListener('keyup', ()=>{this.search()});
+
     this.render();
   }
   sortByTitle() {
@@ -109,6 +111,22 @@ class Todo {
     this.render();
   }
 
+  search() {
+    var firstChars, ul, li, a, i, txtValue;
+    firstChars = searchButton.value.toLowerCase();
+    ul = document.getElementsByClassName("todo-list");
+    console.log(ul[0]);
+    li = ul[0].getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("div")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toLowerCase().indexOf(firstChars) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
     addEntry(){
         const titleValue = document.querySelector('#title').value;
         const descriptionValue = document.querySelector('#description').value;
