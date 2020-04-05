@@ -11,8 +11,11 @@ header{
 }
 
 .task-completed{
+    border-color: whitesmoke;    
+}
+
+.important.task-completed{    
     border-color: whitesmoke;
-    
 }
 
 .task-completed .entry-value{
@@ -85,6 +88,11 @@ li{
 
 li:hover{
     background-color: steelblue;
+}
+
+.important{
+    border-color: #cbbce6;
+    border-width: 3px;
 }
 
 .delete-button{

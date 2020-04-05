@@ -42,8 +42,6 @@ class Todo{
             this.changeSortValue(sortValue);
         });
         
-        
-
         if(document.querySelector('.todo-list')){
             document.body.removeChild(document.querySelector('.todo-list'));
 
@@ -61,10 +59,16 @@ class Todo{
             const removeButton = document.createElement('div');
             removeButton.className = "delete-button";
             removeButton.id = "deleteButton";
-            const removeIcon = document.createTextNode('X');
+            const removeIcon = document.createTextNode('X');           
             
             div.innerHTML = `<div> ${entryValue.title}</div><div> ${entryValue.description}</div>
             <div>${entryValue.date}</div>`;
+
+            if(entryValue.importance == "yes"){
+                li.classList.add('important');
+            } else {
+                li.classList.add('unimportant');
+            }
 
             removeButton.addEventListener('click', ()=>{                
                 ul.removeChild(li);
@@ -75,7 +79,7 @@ class Todo{
 
             if(entryValue.done){
                 li.classList.add('task-completed');
-            }
+            }          
 
             div.addEventListener('click', ()=>{
                 if(entryValue.done){
@@ -93,12 +97,10 @@ class Todo{
             li.appendChild(div);
             li.appendChild(removeButton);
             ul.appendChild(li);
-
         });
 
         document.body.appendChild(ul);
-        $('#todo').hide().fadeIn(2500);
-        
+        $('#todo').hide().fadeIn(2500);        
     }
 
     saveLocal(){
