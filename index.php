@@ -36,6 +36,8 @@ require('functions.php');
                 <p class="filterButtons__button js-all">Kõik</p>
                 <br>
                 <p class="filterButtons__button js-important">Olulised</p>
+                <br>
+                <p class="filterButtons__button js-done-tasks-list">Märgitud tehtuks</p>
             </div>
         </div><!--.i2_text-->
     </div><!--.i2-->

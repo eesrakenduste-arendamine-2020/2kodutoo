@@ -85,6 +85,11 @@ $(document).ready(function() {
        displayAllTasks();
     });
 
+    $(document).on('click', '.js-done-tasks-list', function() {
+       displayDoneTasks();
+    });
+
+
 });
 
 
@@ -253,5 +258,26 @@ function displayAllTasks() {
             }
             
         }
+    }
+}
+
+function  displayDoneTasks() {
+    let currentStorage = JSON.parse(localStorage.getItem('todo'));
+    if ( currentStorage['data'] === undefined || currentStorage['data'].length == 0) {
+        return;
+    }
+
+    removeCurrentViewTasks();
+    for(let i=0; i < currentStorage['data'].length;i++) {
+        
+        if (currentStorage['data'][i]['done'] == 1) {
+            let newCopy = $( '.todo-copy' ).clone(true, true).removeClass('todo-copy').hide().prependTo( '.i3__list' ).slideDown("fast");
+            $(newCopy).children('.l2').addClass(currentStorage['data'][i]['colorclass']);
+            $(newCopy).children('.l3').text(currentStorage['data'][i]['name']);
+            $(newCopy).children('.l5').text(currentStorage['data'][i]['category']);
+            $(newCopy).addClass('importantColors');
+            $(newCopy).children('[name="task_id"]').val(currentStorage['data'][i]['id']);
+        }
+
     }
 }
