@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">  <title>Minu TO-DO list</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+  <div id="myDIV" class="header">
+    <h2 style="margin:5px">Minu TO-DO List</h2>
+    <br>
+    <input type="text" id="title" placeholder="Ülesanne">
+    <input type="text" id="description" placeholder="Kirjeldus">
+    <input type="date" id="date" placeholder="Kuupäev">
+    <button id="addButton">Lisa ülesanne</button>
+    <h3>Sorteeri:</h3>
+    <button id="sortName" onclick="sortName()">Nime järgi</button>
+    <button id="sortDate" onclick="sortDate()">Kuupäeva järgi</button>
+    <input type="text" id="myInput" placeholder="Otsi nime järgi..." onkeyup="searchTitle()">
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
