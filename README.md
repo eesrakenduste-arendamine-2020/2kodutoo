@@ -6,9 +6,8 @@ Herman Petrov, Daniel Eelmaa, Tauri Miilits
 ### Tekkinud keerukused:
 Sortimine, AJAXI töölesaamine, animatsioonid, 
 
-Suurim probleem siiski jääb AJAXI ja andmebaasi sidumine. Oli  raske seadistada nii ,et üle ei kirjutaks olevadi entry-sid.
-Kuna tahtsime, et olev todo list oleks keskendatud todo.txt andmebaasiga ja mitte tavapärase localStoragega, andes nii võimaluse
-kasutajal ka teiselt arvutilt täiendada enda to-do listi. 
+Suurim probleem siiski jääb AJAXI ja andmebaasi sidumine. Oli  raske seadistada nii ,et üle ei kirjutaks olevaid entry-sid.
+Kuna tahtsime, et olev t-odo list oleks keskendatud todo.txt andmebaasiga töötamisele ja mitte tavapärase localStoragega, andes nii võimaluse kasutajal ka teiselt arvutilt täiendada ja kuvada enda to-do listi. 
 
 ### Funktsionaalsuste kirjeldused:
 * Kasutaja saab lisada erinevaid ülesandeid ja neid kustutada
