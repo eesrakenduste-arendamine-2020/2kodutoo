@@ -29,6 +29,10 @@
           </div>
       </div>
       <div class="tableRow">
+        <label for="important">Importance</label>
+            <input type="checkbox" id="important" onclick="checkedImportant()">
+      </div>
+      <div class="tableRow">
         <label for="dueDate">Due Date: </label>
             <input type="date" id="dueDate">
       </div>
@@ -54,6 +58,8 @@
       <label>Unfinished</label>
       <input type="checkbox" id="notdoneCheck"  onclick="sortDone()" checked>
     </div>
+  <h1>My Important ToDo List</h1>
+  <ul id="todoListI"></ul>
   <h1>My ToDo List</h1>
   <ul id="todoList"></ul>
 </fieldset>

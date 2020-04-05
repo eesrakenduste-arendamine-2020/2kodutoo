@@ -1,6 +1,7 @@
 function Todo(description, title, dueDate) {
   this.description = description;
   this.title = title;
+  this.important = important;
   this.dueDate = dueDate;
   this.deleted = null;
   this.done = "undone";
@@ -61,6 +62,8 @@ function parseTodoItems(todoJSON) {
 
 function addTodosToPage() {
   let ul = document.getElementById("todoList");
+  let ul1 = document.getElementById("todoListI");
+  let c = 0;
   document.forms[0].reset();  
   for (let i = 0; i < todos.length; i++) {
     let todoItem = todos[i];
@@ -73,6 +76,11 @@ function addTodosToPage() {
       removeButton.className = "delete-button";
       const removeIcon = document.createTextNode("X");
       removeButton.addEventListener("click", () => {
+        if(todoItem.important == "Yes"){
+          c = ul1;
+        }else{
+          c = ul;
+        }
         ul.removeChild(li);
         todoItem.deleted = "yes";
         saveTodoData();
@@ -101,12 +109,17 @@ function addTodosToPage() {
       li.appendChild(doneButton);
       removeButton.appendChild(removeIcon);
       li.appendChild(removeButton);
+      if(todoItem.important == "Yes"){
+        c = ul1;
+      }else{
+        c = ul;
+      }
       if(todoItem.done == "done" && doneS == 2){
-        ul.appendChild(li);
+        c.appendChild(li);
       } else if(doneS == 0){
-        ul.appendChild(li);
+        c.appendChild(li);
       } else if(doneS == 1 && todoItem.done == "undone"){
-        ul.appendChild(li);
+        c.appendChild(li);
       }
     }
   }
@@ -123,12 +136,16 @@ function getFormData() {
   let date = document.getElementById("dueDate").value;
   if (checkInputText(date, "Please enter a due date")) return;
 
-  console.log("New description " + description + ", for: " + title + ", by: " + date);
-  let todoItem = new Todo(description, title, date);
+  let important = document.getElementById("important").value;
+  
+
+  console.log("New description " + description + ", for: " + title + ", by: " + date + ", with important " + important);
+  let todoItem = new Todo(description, title, date, important);
   todos.push(todoItem);
   saveTodoData();
   saveLocal(todoItem);
   document.getElementById("todoList").innerHTML = "";
+  document.getElementById("todoListI").innerHTML = "";
   addTodosToPage();
 }
 
@@ -149,7 +166,15 @@ function saveTodoData() {
   request.send();
 }
 
-
+function checkedImportant() {
+  let checkBox = document.getElementById("important");
+  if (checkBox.checked == true) {
+    important = "Yes";
+    return important;
+  } else {
+    important = "No";
+  }
+}
 
 
 function sortAlphabetically() {
@@ -163,6 +188,7 @@ function sortAlphabetically() {
 
 function changeSorting() {
   document.getElementById("todoList").innerHTML = "";
+  document.getElementById("todoListI").innerHTML = "";
   if ($("#todoSort").val() == "byAlphabet") {
     doneS = 0;
     sortAlphabetically();
@@ -200,5 +226,6 @@ function sortDone(){
     doneS = 3;
   }
   document.getElementById("todoList").innerHTML = "";
+  document.getElementById("todoListI").innerHTML = "";
   addTodosToPage();
 }
