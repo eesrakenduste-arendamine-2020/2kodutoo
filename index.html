@@ -40,6 +40,12 @@
   </fieldset>
   </form>
   <form id="todoForm">
+    <legend>Sort</legend>
+    <select id="todoSort" onchange="changeSorting();">
+      <option value="" disabled selected>Select your option</option>
+      <option value="byDate">Date</option>
+      <option value="byAlphabet">Alphabetically</option>
+    </select>
     <div>
       <label>Finished</label>
       <input type="checkbox" id="doneCheck"  onclick="sortDone()" checked>

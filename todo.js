@@ -148,6 +148,44 @@ function saveTodoData() {
   request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
   request.send();
 }
+
+
+
+
+function sortAlphabetically() {
+  todos.sort(function(a, b){
+    if(a.title.toLowerCase() < b.title.toLowerCase()) { return -1; }
+    if(a.title.toLowerCase() > b.title.toLowerCase()) { return 1; }
+    console.log(todos)
+    return 0;
+  })
+}
+
+function changeSorting() {
+  document.getElementById("todoList").innerHTML = "";
+  if ($("#todoSort").val() == "byAlphabet") {
+    doneS = 0;
+    sortAlphabetically();
+    addTodosToPage();
+    sortDone()
+  } else if ($("#todoSort").val() == "byDate") {
+    doneS = 0;
+    sortByDate();
+    addTodosToPage();
+    sortDone()
+  }
+}
+
+function sortByDate() {
+  todos.sort(function(a, b){
+    if(a.dueDate < b.dueDate) { return -1; }
+    if(a.dueDate > b.dueDate) { return 1; }
+    console.log(todos)
+    return 0;
+  })
+}
+
+
   
 function sortDone(){
   let checkbox1 = document.getElementById("doneCheck");
