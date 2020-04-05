@@ -5,6 +5,7 @@ function Todo(description, title, dueDate) {
 }
   
 let todos = new Array();
+let localTodo = localStorage.getItem("todo");
 
 window.onload = init;
   
@@ -15,6 +16,10 @@ function init() {
 }
 
 
+function saveLocal (){
+  localStorage.setItem('here are your events', JSON.stringify(todos));
+}
+
 
 function getTodoData() {
   let request = new XMLHttpRequest();
@@ -23,7 +28,7 @@ function getTodoData() {
     if (this.readyState == this.DONE && this.status == 200) {
       if (this.responseText) {
         parseTodoItems(this.responseText);
-
+        addTodosToPage();
       } else {
         console.log("Error no data");
       }
@@ -90,11 +95,18 @@ function getFormData() {
   let todoItem = new Todo(description, title, date);
   todos.push(todoItem);
   saveTodoData();
+  saveLocal(todoItem);
   document.getElementById("todoList").innerHTML = "";
-
-
+  addTodosToPage();
 }
 
+function checkInputText(value, msg) {
+  if (value == null || value == "") {
+    alert(msg);
+    return true;
+  }
+  return false;
+}
 
 function saveTodoData() {
   let todoJSON = JSON.stringify(todos);
