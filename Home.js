@@ -108,58 +108,6 @@ class Todo {
     this.saveLocal();
     this.render();
   }
-  addEntry() {
-    const titleValue = document.querySelector("#title").value;
-    const descriptionValue = document.querySelector("#description").value;
-    const dateValue = document.querySelector("#date1").value;
-    console.log(titleValue, descriptionValue, dateValue);
-    this.entries.push(new Entry(titleValue, descriptionValue, dateValue));
-    console.log(this.entries);
-    this.saveLocal();
-    this.render();
-  }
-  render() {
-    if (document.querySelector(".todo-list")) {
-      document.body.removeChild(document.querySelector(".todo-list"));
-    }
-<<<<<<< HEAD
-    const ul = document.createElement("ul");
-    ul.className = "todo-list";
-    ul.setAttribute("id", "list");
-    this.entries.forEach((entryValue, entryIndex) => {
-      const li = document.createElement("li");
-      const div = document.createElement("div");
-      const removeButton = document.createElement("div");
-      removeButton.classList.add("delete-button");
-      const removeIcon = document.createTextNode("X");
-      li.classList.add("entry");
-      removeButton.addEventListener("click", () => {
-        ul.removeChild(li);
-        this.entries.splice(entryIndex, 1);
-        this.saveLocal();
-        this.render();
-      });
-      if (entryValue.done) {
-        li.classList.add("task-completed");
-      }
-      div.addEventListener("click", (event) => {
-        event.target.classList.add("task-completed");
-        this.entries[entryIndex].done = true;
-        this.saveLocal();
-      });
-      div.innerHTML = `${entryValue.title} <br> ${entryValue.description} <br> ${entryValue.date}`;
-      removeButton.appendChild(removeIcon);
-      li.appendChild(div);
-      li.appendChild(removeButton);
-      ul.appendChild(li);
-    });
-    document.body.appendChild(ul);
-  }
-  saveLocal() {
-    window.localStorage.setItem("entries", JSON.stringify(this.entries));
-    console.log("save");
-  }
-=======
 
     addEntry(){
         const titleValue = document.querySelector('#title').value;
@@ -189,7 +137,6 @@ class Todo {
         if(document.querySelector('.todo-list')){
             document.body.removeChild(document.querySelector('.todo-list'));
         }
-
         const ul = document.createElement('ul');
         ul.className = 'todo-list';
         this.entries.forEach((entryValue, entryIndex)=>{
@@ -226,7 +173,6 @@ class Todo {
             li.appendChild(removeButton);
             ul.appendChild(li);
         });
-
         document.body.appendChild(ul);
     }
 
@@ -244,37 +190,7 @@ class Todo {
         console.log('save');
     }
 
->>>>>>> 3c17f685e8267e0f0f8835b89aa809a511f2b425
+
 }
-/*function sortList() {	
-    var list, i, switching, b, shouldSwitch;	
-    list = document.getElementById('list');	
-    switching = true;	
-    // Make a loop that will continue until	
-    //no switching has been done: 	
-    while (switching) {	
-        // Start by saying: no switching is done:	
-        switching = false;	
-        b = list.getElementsByTagName('li');	
-        // Loop through all list items:	
-        for (i = 0; i < (b.length - 1); i++) {	
-            // Start by saying there should be no switching:	
-            shouldSwitch = false;	
-            // Check if the next item should	
-           // switch place with the current item: 	
-            if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {	
-                // If next item is alphabetically lower than current item,	
-               // mark as a switch and break the loop: 	
-                shouldSwitch = true;	
-                break;	
-            }	
-        }	
-        if (shouldSwitch) {	
-            // If a switch has been marked, make the switch	
-           // and mark the switch as done: 
-            b[i].parentNode.insertBefore(b[i + 1], b[i]);	
-            switching = true;	
-        }	
-    }	
-}	*/
+
 const todo = new Todo();
