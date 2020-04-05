@@ -1,4 +1,8 @@
+
 # 2. kodutöö – ToDo rakendus
+
+Autorid: Mihkel Vaher, Raner Rebane, Gevin Paas
+
 
 ### Tähtpäev 05.04.2020 23:59
 
