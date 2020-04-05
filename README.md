@@ -6,6 +6,8 @@ Herman Petrov, Daniel Eelmaa, Tauri Miilits
 ### Tekkinud keerukused:
 Sortimine, AJAXI töölesaamine, animatsioonid, 
 
+Suurim probleem siiski jääb AJAXI ja andmebaasi sidumine. Oli  raske seadistada nii ,et üle ei kirjutaks olevadi entry-sid.
+
 ### Funktsionaalsuste kirjeldused:
 * Kasutaja saab lisada erinevaid ülesandeid ja neid kustutada
 * Ülesannete lisamisel saab kasutaja märkida ülesande pealkirja/märksõna, kirjutada täpsemalt antud ülesande kohta, Võimalus märkida ülesanne tähtsaks ning viimasena märkida ülesande kuupäeva.
