@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="todo.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Varela+Round" />
+  <link rel="stylesheet" href="todo.css">
+  <title>ToDo List</title>
+</head>
+<body>
+  <form id="addTodoForm">
+    <h1>Add a new todo item</h1>
+    <div class="tableContainer">
+      <div class="tableRow">
+        <label for="title">Title</label>
+          <div>
+            <input type="text" id="title" placeholder="Go to store" maxlength="30">
+          </div>
+      </div>
+      <div class="tableRow">
+        <label for="description">Description</label>
+          <div>
+            <input type="text" id="description" placeholder="get milk">
+          </div>
+      </div>
+      <div class="tableRow">
+        <label for="dueDate">Due Date: </label>
+            <input type="date" id="dueDate">
+      </div>
+      <div class="tableRow">
+        <label for="submit"></label>
+        <input type="button" id="submit" value="submit">
+      </div>
+    </div>
+  </fieldset>
+  </form>
+  <form id="todoForm">
+  <h1>My ToDo List</h1>
+  <ul id="todoList"></ul>
+</fieldset>
+</form>      
+</body>
+</html>  
