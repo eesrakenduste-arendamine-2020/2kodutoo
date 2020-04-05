@@ -41,24 +41,24 @@ class Todo{
             li.classList.add('entry');
             // li.classList.add('hidden');
             const div = document.createElement('div');
-            div.classList.add('entry-value')
+            div.classList.add('entry-value');
             const doneButton = document.createElement('div');
             doneButton.className = "done-button";
-            const doneIcon = document.createTextNode('✓')
+            const doneIcon = document.createTextNode('✓');
             const removeButton = document.createElement('div');
             removeButton.className = "delete-button";
             const removeIcon = document.createTextNode('X');
 
-            div.innerHTML = `<div>${entryValue.title}</div><div> ${entryValue.description}</div>
+            div.innerHTML = `<div id = "title">${entryValue.title}</div><div> ${entryValue.description}</div>
             <div id = "date">${entryValue.date}</div>`;
 
             removeButton.addEventListener('click', ()=>{
                 $(li).animate({
                     opacity:".0"
-                }, "slow", function(){
+                },1000, "linear", function(){
                     ul.removeChild(li);
-                    this.render();
-                })
+                    // this.render();
+                });
                 this.entries.splice(entryIndex, 1);
                 this.saveLocal();
             });
@@ -89,22 +89,22 @@ class Todo{
                 this.saveLocal();
             }
 
-            doneButton.addEventListener('click', ()=>{
+            doneButton.addEventListener('click', (keyframes, options)=>{
                 if(entryValue.done){
                     $(li).animate({
                         backgroundColor: "#fff"
                     },100, "linear", function(){
                         li.classList.remove('task-completed');
-                    })
+                    });
 
                     this.entries[entryIndex].done = false;
                     this.saveLocal();
                 }else{
                     $(li).animate({
                         "background-color": "#90EE90"
-                    },100, "linear", function(){
+                    }, 1000, "linear", function () {
                         li.classList.add('task-completed');
-                    })
+                    });
                     this.entries[entryIndex].done = true;
                     this.saveLocal();
                 }
@@ -116,35 +116,50 @@ class Todo{
             li.appendChild(doneButton);
             li.appendChild(removeButton);
             ul.appendChild(li)
-            // $(li).animate({
-            //     opacity:0.1
-            // },1000, "linear", function(){
-            //     li.classList.remove(".hidden");
-            // });
+
         });
 
         $("#sort").change(function(){
             let elems = $.makeArray($(".entry"));
-            if(this.value === "increase"){
+            console.log(elems);
+            if(this.value === "dateIncrease"){
 
                 elems.sort(function(a,b){
                     return Date.parse($(".entry-value #date", a).text()) > Date.parse($(".entry-value #date", b).text()) ? 1 : -1;
                 })
 
             }
-            if(this.value === "decrease") {
+            if(this.value === "dateDecrease") {
                 elems.sort(function(a,b){
                     return Date.parse($(".entry-value #date", b).text()) > Date.parse($(".entry-value #date", a).text()) ? 1 : -1;
                 })
             }
-
             $(".todo-list").empty().append(elems);
-        })
+        });
+
+
+        $("#sort").change(function(){
+            let titleArray = $.makeArray($(".entry"));
+            if(this.value === "titleIncrease") {
+                titleArray.sort(function (a, b) {
+                    return ($(b).text()) < ($(a).text()) ? 1 : -1;
+                });
+
+
+            } else {
+                if(this.value === "titleDecrease") {
+                    titleArray.sort(function (a, b) {
+                        return ($(b).text()) > ($(a).text()) ? 1 : -1;
+                    });
+                }
+            }
+            $(".todo-list").empty().append(titleArray)
+        });
+
+
 
         document.body.appendChild(ul);
     }
-
-
 
     saveLocal(){
         window.localStorage.setItem('entries', JSON.stringify(this.entries));
