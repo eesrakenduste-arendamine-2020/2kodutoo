@@ -22,3 +22,14 @@ Sortimine, AJAXI töölesaamine, animatsioonid,
 * Elementide kuvamisel/eemaldamisel on kasutatud jQuery animatsioone
 * Võimalus otsida ülesandeid
 * Soovi korral saab ka muusika mängima panna
+
+Suurem osa gruppitööst oli tehtud koostöös Discordi teel ning katsetatud putty: greeny keskkonas +  WinSCP.
+
+*Herman Petrov :
+Olulisemad punktid:
+Kirjutasin ja arendasin koodi mis võimaldaks lugeda ajaxi abil todo.txt failist andmeid ja ka salvestaks neid. 
+Kirjutasin localStorage võimaluse todoListile. 
+Kujundasin CSS, arendasin tausta todo ja paigutust. 
+Arendasin Delete ja Add võimalused todod.
+
+
