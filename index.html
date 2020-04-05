@@ -10,19 +10,18 @@
         crossorigin="anonymous"></script>
     <script defer src="index.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>To-Do List</title>
+    <title>Todo</title>
 </head>
 <body>
-<div id="inputContainer">
-    <input type="text" id="title">
-    <input type="text" id="description">
-    <input type="date" id="date">
-</div>
-<div id="buttonContainer">
-    <input type="button" id="load" value="Load">
-    <input type="button" id="save" value="Save">
-    <input type="button" id="add" value="Add">
-    <div id="todos"><p>To-Do's are to be added here</p></div>
-</div>
+    <br>
+    <br>
+    <input type="text" id="title"><br>
+    <input type="text" id="description"><br>
+    <input type="date" id="date"><br>
+    <input type="button" id="load" value="Laadi">
+    <input type="button" id="save" value="Salvesta">
+    <input type="button" id="add" value="Lisa"><br>
+    <input type="text" id="myInput" onkeyup="search()" placeholder="Search the todo list">
+    <div id="todos">Siia lisame todod</div>
 </body>
 </html>
