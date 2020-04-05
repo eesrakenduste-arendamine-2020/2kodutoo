@@ -122,6 +122,7 @@ class Todo {
     if (document.querySelector(".todo-list")) {
       document.body.removeChild(document.querySelector(".todo-list"));
     }
+<<<<<<< HEAD
     const ul = document.createElement("ul");
     ul.className = "todo-list";
     ul.setAttribute("id", "list");
@@ -158,6 +159,92 @@ class Todo {
     window.localStorage.setItem("entries", JSON.stringify(this.entries));
     console.log("save");
   }
+=======
+
+    addEntry(){
+        const titleValue = document.querySelector('#title').value;
+        const descriptionValue = document.querySelector('#description').value;
+        const dateValue = document.querySelector('#date1').value;
+
+        console.log(titleValue, descriptionValue, dateValue);
+
+        if(titleValue && descriptionValue && dateValue){
+            this.entries.push(new Entry(titleValue, descriptionValue, dateValue));
+
+            console.log(this.entries);
+            this.saveLocal();
+            this.saveToFile();
+            this.render();
+            alert("ülesanne lisatud! Kui ülesanne on tehtud, kliki selle peale.");
+
+            document.querySelector('#title').value = "";
+            document.querySelector('#description').value = "";
+            document.querySelector('#date1').value = "";
+        } else {
+            alert("Kõik väljad ei ole täidetud! Ülesannet lisada ei saa.")
+        }
+    }
+
+    render(){
+        if(document.querySelector('.todo-list')){
+            document.body.removeChild(document.querySelector('.todo-list'));
+        }
+
+        const ul = document.createElement('ul');
+        ul.className = 'todo-list';
+        this.entries.forEach((entryValue, entryIndex)=>{
+            const li = document.createElement('li');
+            const div = document.createElement('div');
+            const removeButton = document.createElement('div');
+            removeButton.classList.add('delete-button');
+            const removeIcon = document.createElement('i');
+            removeIcon.classList.add('fas');
+            removeIcon.classList.add('fa-trash-alt');
+            li.classList.add('entry');
+            removeButton.addEventListener('click', ()=>{
+                ul.removeChild(li);
+                this.entries.splice(entryIndex, 1);
+                this.saveLocal();
+                this.render();
+            });
+
+            if(entryValue.done){
+                li.classList.add('task-completed');
+            }
+
+            div.addEventListener('click', (event)=>{
+                event.target.classList.add('task-completed');
+                this.entries[entryIndex].done = true;
+                this.saveLocal();
+                setTimeout(function(){window.location.reload(1);}, 2000);
+            });
+
+            div.innerHTML = `${entryValue.title} <br> ${entryValue.description} <br> ${entryValue.date}`;
+
+            removeButton.appendChild(removeIcon);
+            li.appendChild(div);
+            li.appendChild(removeButton);
+            ul.appendChild(li);
+        });
+
+        document.body.appendChild(ul);
+    }
+
+     saveToFile(){
+        $.post('server.php', {save: JSON.stringify(this.entries)}).done(function(){
+        }).fail(function(){
+          alert('fail');
+        }).always(function(){
+        });
+      }
+
+
+    saveLocal(){
+        window.localStorage.setItem('entries', JSON.stringify(this.entries));
+        console.log('save');
+    }
+
+>>>>>>> 3c17f685e8267e0f0f8835b89aa809a511f2b425
 }
 /*function sortList() {	
     var list, i, switching, b, shouldSwitch;	
