@@ -7,7 +7,7 @@
 1. Töö tuleb teha vähemalt kahekesi, eelnevalt kokkuleppel on lubatud ka kolm liiget. GitHub'is peab eristuma, kes mida tegi!
 1. README.md fail sisaldab (1 punkti):
    - autorite nimesid; ✔️
-   - kirjeldust tekkinud keerukustest ❌
+   - kirjeldust tekkinud keerukustest ✔️
    - funktsionaalsuste kirjeldust ❌
 1. Todo rakenduse funktsionaalsused:
    - Saab lisad ja kustutada (1 punkt) ✔️
