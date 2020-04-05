@@ -1,0 +1,105 @@
+body{
+    margin:0;
+}
+
+.task-completed{
+    border-color: lightgreen;
+}
+
+.task-completed .entry-value{
+    text-decoration: line-through;
+    color: limegreen;
+}
+
+.task-failed{
+    border-color: palevioletred;
+}
+
+.task-failed .entry-value{
+    text-decoration: line-through;
+    color: red
+}
+
+#inputContainer, #buttonContainer, #mode{
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+input{
+    width: 25%;
+    margin: 5px;
+    border-radius: 5px;
+    height: 25px;
+}
+
+input[type="button"]{
+    width:15%;
+    border-radius: 10px;
+    height: 37px;
+    padding: 10px;
+    font-size: 17px;
+    background-color: green;
+    border: 1px solid green;
+    color:white;
+}
+input[type="button"]:hover{
+    background-color: darkgreen;
+    border-color: darkgreen;
+    font-weight: 600;
+}
+
+.button {
+    width:15%;
+    border-radius: 10px;
+    height: 37px;
+    padding: 10px;
+    font-size: 17px;
+    background-color: green;
+    border: 1px solid green;
+    color:white;
+}
+
+.button:hover {
+    background-color: darkgreen;
+    border-color: darkgreen;
+    font-weight: 600;
+}
+
+li{
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    margin: 5px;
+    color: black;
+}
+
+.delete-button{
+    color: red;
+    font-size: 1.3em;
+    font-weight:500;
+}
+
+.delete-button:hover{
+    font-weight: 900;
+    color:darkred;
+    font-size: 1.8em;
+    cursor: pointer;
+
+}
+
+.entry-value{
+    cursor:pointer;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.entry-value:hover{
+    background-color: gray;
+}
