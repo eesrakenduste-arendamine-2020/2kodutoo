@@ -118,12 +118,12 @@ class Todo {
     });
 
     document.body.appendChild(ul);
+    $("#todo").hide().fadeIn(2500);
   }
 
   saveLocal() {
     window.localStorage.setItem("entries", JSON.stringify(this.entries));
     console.log("save");
   }
-
 }
 const todo = new Todo();
