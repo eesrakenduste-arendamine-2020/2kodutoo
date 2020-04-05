@@ -8,25 +8,39 @@
         src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
+        <script src="js/jquery.js"></script>
+        <script>
+            $(document).ready(function() {
+
+                $(".box").click(function() {
+                    $(".box").animate({
+                        width: '250px',
+                        height: '150px'
+                    }, 1000);
+                    $(".selgitus").show().animate({opacity: '1'}, 3000);
+                })
+            });
+        </script>
     <script defer src="index.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Todo</title>
 </head>
 <body>
     <br>
+    <input type="text" id="title" placeholder="To-Do's title"><br>
+    <input type="text" id="description" placeholder="To-Do's description"><br>
+    <input type="date" id="date"><br>
+    <input type="button" id="load" value="Load">
+    <input type="button" id="save" value="Save">
+    <input type="button" id="add" value="Add">
     <br>
-    <div id="container">
-        <div id="inputContainer">
-            <input type="text" id="title" placeholder="To-Do's title"><br>
-            <input type="text" id="description" placeholder="To-Do's description"><br>
-            <input type="date" id="date"><br>
-        </div>
-        <div id="buttonContainer">
-            <input type="button" id="load" value="Load">
-            <input type="button" id="save" value="Save">
-            <input type="button" id="add" value="Add">
-        </div><br>
+    <div class="box">
+        <p class="content">???</p>
+        <p class="selgitus"> Nupp laadi laeb todo selrverisse.</p>
+        <p class="selgitus"> Nupp salvesta salvestb todo.</p>
+        <p class="selgitus"> Nupp lisa lisab sinu todo lehele</p>
     </div>
+    <br>
     <input type="text" id="myInput" onkeyup="search()" placeholder="Search the todo list">
     <div id="todos">To-Do's to be added here</div>
 </body>

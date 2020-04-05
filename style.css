@@ -24,7 +24,9 @@ body{
   text-decoration: line-through;
 }
 
-
+.task-important {
+  background-color: darksalmon;
+}
 
 #inputContainer{
   width: 100vw;
@@ -82,4 +84,25 @@ div{
 
 ul {
   padding-inline-start: 380px;
+}
+
+.box {
+  width: 100px;
+  height: 50px;
+  border-radius: 6px;
+  background-color: black;
+  color: white;
+  font-size: 17px;
+  padding: 2px;
+  cursor: pointer;
+  margin: auto;
+}
+
+.selgitus {
+  display: none;
+  font-size: 17px;
+  color: white;
+  text-align: left;
+  line-height: 16px;
+  opacity: 0;
 }
