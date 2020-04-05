@@ -75,4 +75,44 @@ class Todo{
       }
     }
     const todo = new ToDo();
+
+    function search () {
+        let input, filter, ul, li, i, txtValue;
+        let entries = JSON.parse(window.localStorage.getItem('entries'));
+        input = document.getElementById('myInput');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUl");
+        li = ul.getElementsByTagName("li");
+      
+        for (i = 0; i < li.length; i++) {
+          txtValue = entries[i].title;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
+        }
+      }
+      
+      
+      function sortWithNames(){
+        var list, i, switching, b, shouldSwitch;
+        list = document.getElementById("myUl");
+        switching = true;
+        while (switching) {
+          switching = false;
+          b = list.getElementsByTagName("li");
+          for (i = 0; i < (b.length - 1); i++) {
+            shouldSwitch = false;
+            if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+          if (shouldSwitch) {
+            b[i].parentNode.insertBefore(b[i + 1], b[i]);
+            switching = true;
+          }
+        }
+      }
  
