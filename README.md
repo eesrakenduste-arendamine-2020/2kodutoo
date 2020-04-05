@@ -65,4 +65,4 @@ Funktsionaalsuste kirjeldus:
 *Dark ja light theme
 *Saab muusika käima panna
 *Rakendus näeb kena välja
-
+ 
