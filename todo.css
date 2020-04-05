@@ -47,6 +47,48 @@ body{
     -ms-user-select: none;
     user-select: none;
 }
+#submit{
+    
+    font-weight: bold;
+    font-size: large;
+    height: 30px;
+    background-color: bisque;
+    background-position: center;
+    border: 0.5px solid purple;
+    border-radius: 40px;
+    position: sticky;
+    background-image: linear-gradient(to right,purple , violet);
+    background-color: blueviolet;
+    color: white;
+}
+
+.tableContainer{
+    font-size: 100% ;
+    font-family: Calibri;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tableRow{
+    width: 300px;
+    height: auto;
+    background-color: bisque;
+    border: 2px solid purple;
+    border-radius: 40px;
+}
+legend{
+    color: white;
+    font-family:Varela Round;
+    font-size: 200%;
+    
+}
+#addTodoForm{
+    position: relative;
+    text-align: center;
+    justify-content: center;
+}
 #todoForm{
     color: #EEEEEE;
     font-family: Varela Round;
@@ -101,6 +143,21 @@ li{
     font-size: 1.4em;
     cursor: pointer;
 }
+#todoSort{
+    background-color: bisque;
+    background-position: center;
+    border: 2px solid purple;
+    border-radius: 40px;
+    position: sticky;
+    background-image: linear-gradient(to right,purple , violet);
+    background-color: blueviolet;
+    color: wheat;
+}
+::placeholder {
+    color:black;
+    opacity: 1;
+}
+
 #search{
     text-align: center;
     color: black;
@@ -110,6 +167,7 @@ li{
     border: 2px solid purple;
     border-radius: 40px;
 }
+
 #musicu{
     color: black;
     width: auto;
@@ -118,4 +176,32 @@ li{
     background-position: center;
     border: 2px solid purple;
     border-radius: 40px;
+}
+
+.right{
+    border-radius: 4px;
+    background-color: darkslategray;
+    background-position: center;
+    border: 2px solid purple;
+    text-align: center;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    float: right;
+}
+
+#passed{
+    color: red;
+}
+
+#due{
+    color: yellow;
+}
+
+#normal{
+    color: white;
+}
+h1{
+    color: #EEEEEE;
+    font-family: Varela Round;
 }

@@ -149,11 +149,11 @@ function addTodosToPage() {
 }
 
 function getFormData() {
-  let description = document.getElementById("description").value;
-  if (checkInputText(description, "Please enter a description")) return;
-
   let title = document.getElementById("title").value;
   if (checkInputText(title, "Please enter a title")) return;
+
+  let description = document.getElementById("description").value;
+  if (checkInputText(description, "Please enter a description")) return;
 
   let date = document.getElementById("dueDate").value;
   if (checkInputText(date, "Please enter a due date")) return;
