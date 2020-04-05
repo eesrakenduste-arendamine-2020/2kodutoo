@@ -1,6 +1,6 @@
-2. kodutöö – ToDo rakendus
+# 2. kodutöö – ToDo rakendus
 
-Koostasid: Maris Jool, Nina Katarina Weiss, Liisi Liivik
+## Koostasid: Maris Jool, Nina Katarina Weiss, Liisi Liivik
 
 
 Töö koostamisel jagunesid ülesanded järgnevalt:
