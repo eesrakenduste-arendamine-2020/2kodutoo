@@ -84,12 +84,21 @@ class Todo{
 
         console.log(titleValue, descriptionValue, dateValue);
 
-        this.entries.push(new Entry(titleValue, descriptionValue, dateValue));
+        if(titleValue && descriptionValue && dateValue){
+            this.entries.push(new Entry(titleValue, descriptionValue, dateValue));
 
-        console.log(this.entries);
-        this.saveLocal();
+            console.log(this.entries);
+            this.saveLocal();
+            this.saveToFile();
+            this.render();
+            alert("ülesanne lisatud! Kui ülesanne on tehtud, kliki selle peale.");
 
-        this.render();
+            document.querySelector('#title').value = "";
+            document.querySelector('#description').value = "";
+            document.querySelector('#date1').value = "";
+        } else {
+            alert("Kõik väljad ei ole täidetud! Ülesannet lisada ei saa.")
+        }
     }
 
     render(){
@@ -104,7 +113,9 @@ class Todo{
             const div = document.createElement('div');
             const removeButton = document.createElement('div');
             removeButton.classList.add('delete-button');
-            const removeIcon = document.createTextNode('X');
+            const removeIcon = document.createElement('i');
+            removeIcon.classList.add('fas');
+            removeIcon.classList.add('fa-trash-alt');
             li.classList.add('entry');
             removeButton.addEventListener('click', ()=>{
                 ul.removeChild(li);
@@ -121,6 +132,7 @@ class Todo{
                 event.target.classList.add('task-completed');
                 this.entries[entryIndex].done = true;
                 this.saveLocal();
+                setTimeout(function(){window.location.reload(1);}, 2000);
             });
 
             div.innerHTML = `${entryValue.title} <br> ${entryValue.description} <br> ${entryValue.date}`;
@@ -133,6 +145,15 @@ class Todo{
 
         document.body.appendChild(ul);
     }
+
+     saveToFile(){
+        $.post('server.php', {save: JSON.stringify(this.entries)}).done(function(){
+        }).fail(function(){
+          alert('fail');
+        }).always(function(){
+        });
+      }
+
 
     saveLocal(){
         window.localStorage.setItem('entries', JSON.stringify(this.entries));
