@@ -1,8 +1,12 @@
-2. kodutöö – ToDo rakendus
+<p align="center">2. kodutöö – ToDo rakendus</p>
 
 Sandra Maidla, Anete Vaalu
 
-Funktsionaalsus - saab lisada ja kustutada, kui kasutaja tuleb lehele, siis näidatakse varem salvestatud ülesandeid (1 punkt),  Saab märkida ülesandeid tehtuks, saab järjestada kuupäeva ja nime järgi,
+Funktsionaalsus - Ülesandeid saab lisada ja kustutada, nad tekivad jQuery fadeiniga. Salvestatakse Local Storage'isse.
+
+Kasutaja saab lisada tiitli, kirjelduse, aja kunaseks peab valmis olema ning kas ülesanne on tähtis või ei. Samuti saab sorteerida järgmiste parameetrite järgi: Kuupäev, nimi, tähtsad, mittetähtsad, tehtud ning võimalus tagasi minna algse järjestuse juurde.
+
+Ül saab märkida tehtuks, tehtud ülesannete äär muutub valgeks, et nad ei paistaks nii väga silma teiste kõrval.
 
 ## Nõuded
 
