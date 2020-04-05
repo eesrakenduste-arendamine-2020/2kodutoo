@@ -1,6 +1,27 @@
 # 2. kodutöö – ToDo rakendus
 
-AUTORID:  Roos-Marie Lunden, Jan Morten Kivi
+AUTORID:  Roos-Marie Lunden, Jan Morten Kivi
+
+Tekkinud probleemid: 
+Probleem tekkis fontide, tausta ning teksti suuruste muutmistega.  Eelnevalt lihtsad tunduvad funktsioonid ei tahtnud tööle hakata. Nende peale kulus mitu tundi omavahelist edasi-tagasi failide saatmist, lõpuks avastasime, et olime teinud kirjavea mille tõttu nupud ei töötanud. 
+Rohkem probleeme ei tekkinud. Saime tööga hästi hakkama. Kasutasime omavaheliseks suhtluseks keskkonda ZOOM .
+
+Funktsionaalsused: 
+
+  1) Võimalik ülesandeid lisada ning kustutada
+  2) Saab märkida ülesandeid tehtuks
+  3) Võimalik muuda ülesannete taustavärvi
+  4) Võimalik kuulata helifaili
+  5) Võimalik muuta taustapilti
+  6) Saab muuta teksti suurust
+  7) Võimalik muuta teksti fonti
+  8) Võimalik otsida nime järgi ülesandeid
+  9) Võimalus sorteerida nime ja kuupäeva järgi
+  10) Ülesannete salvestamiseks ja kuvamiseks kasutatakse AJAX-it
+  11) Kui kasutaja tuleb lehele, siis näidatakse varem salvestatud ülesandeid 
+  12) Ülesanded salvestatakse localStorage'isse ja faili/andmebaasi
+  
+  
 
 ### Tähtpäev 05.04.2020 23:59
 
