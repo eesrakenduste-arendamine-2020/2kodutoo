@@ -19,7 +19,7 @@ class Todo{
         const descriptionValue = document.querySelector('#description').value;
         const dateValue = document.querySelector('#date').value;
         this.entries.push(new Entry(titleValue, descriptionValue, dateValue));
-        this.saveOnLocalStorage();
+        this.saveLocal();
         this.render();
     }
     render(){
