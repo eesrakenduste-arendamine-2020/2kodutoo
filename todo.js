@@ -240,7 +240,40 @@ function sortByDate() {
   })
 }
 
+function mysearch() {
+  let input, filter, li, a, i, text , li2, d, text2, a2;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  let list = new Array();
+  d = document.getElementById("todoList");
+  li = d.getElementsByTagName("li");
+  list.push(li);
+  d = document.getElementById("todoListI");
+  li2 = d.getElementsByTagName("li");
+  list.push(li2)
 
+  for (i = 0; i < list.length; i++) {
+    a = list[0][i].getElementsByTagName("a")[0];
+    a2 = list[1][i].getElementsByTagName("a")[0];
+    text = a.textContent || a.innerText;
+    text2 = a2.textContent || a2.innerText;
+    if (text.toUpperCase().indexOf(filter) > -1 && text2.toUpperCase().indexOf(filter) > -1 ) {
+      li[i].style.display = "";
+      li2[i].style.display = "";
+    }else if(text.toUpperCase().indexOf(filter) > -1 || text2.toUpperCase().indexOf(filter) > -1){
+      if(text.toUpperCase().indexOf(filter) > -1){
+        li[i].style.display = "";
+        li2[i].style.display = "none";
+      }else if(text2.toUpperCase().indexOf(filter) > -1){
+        li[i].style.display = "none";
+        li2[i].style.display = "";
+      }
+    } else {
+      li[i].style.display = "none";
+      li2[i].style.display = "none";
+    }
+  }
+}
   
 function sortDone(){
   let checkbox1 = document.getElementById("doneCheck");

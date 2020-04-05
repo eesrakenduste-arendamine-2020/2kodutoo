@@ -52,3 +52,12 @@ li{
     font-size: 1.4em;
     cursor: pointer;
 }
+#search{
+    text-align: center;
+    color: black;
+    width: auto;
+    height: auto;
+    background-color: bisque;
+    border: 2px solid purple;
+    border-radius: 40px;
+}
