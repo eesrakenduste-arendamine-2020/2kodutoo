@@ -35,10 +35,10 @@
 - [JQuery AJAX](http://api.jquery.com/jquery.ajax/)
 
 <h2>Autorid</h2>
-Marten Jürgens&nbsp;
-
+Marten Jürgens
+&nbsp;
 Aleksandr Rõbakov
-
+&nbsp;
 Kenet Paurmann
 
 <h2>Tekkinud Raskused</h2>
