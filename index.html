@@ -2,25 +2,47 @@
 
 <head>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Roboto&display=swap" rel="stylesheet">
     <script
             src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
             crossorigin="anonymous">
     </script>
     <script defer src="index.js"></script>
+    <script defer src="clock.js"></script>
     <title>Todo</title>
 </head>
 
-<body>
+<body onload="realtimeClock()">
+
     <div id="container">
+
+        <div id="titleContainer">
+            <h1>todo</h1>
+        </div>
+
+        <div id="clockContainer">
+            <div id="clock"></div>
+        </div>
+
         <div id="inputContainer">
-            <input type="text" name="title" id="title">
-            <input type="text" name="description" id="description">
+            <input type="text" placeholder="Title" name="title" id="title">
+            <input type="text" placeholder="Description" name="description" id="description">
             <input type="date" name="date" id="date">
         </div>
+
         <div id="buttonContainer">
+            <select id="sort">
+                <option value="" disabled selected hidden>Sort by...</option>
+                <option value="1">Date</option>
+                <option value="2">Title</option>
+              </select>
             <input type="button" value="LISA" id="addButton">
+            <form class="searchform">
+                <input type="text" placeholder="Search.." name="search" id="searchInput">
+            </form>
         </div>
+
     </div>
 
 </body>
