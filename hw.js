@@ -73,6 +73,7 @@ class Todo{
 
             removeButton.addEventListener('click', ()=>{
                 ul.removeChild(li);
+                //$('#entry').fadeOut(2500);
                 newArray.splice(entryIndex, 1);
                 this.saveLocal();
                 this.render(newArray);
@@ -102,7 +103,7 @@ class Todo{
         });
 
         document.body.appendChild(ul);
-        $('#entry').hide().fadeIn(2500);
+        $('#todo').hide().fadeIn(2500);
         
     }
     
