@@ -6,7 +6,6 @@ class Entry{
         this.done = false;
         this.importance = important;
         
-        
     }
 }
 
@@ -17,17 +16,11 @@ class Todo{
         document.querySelector('#addButton').addEventListener('click', ()=>{this.addEntry();});
         this.render(this.entries);
     }
-    
+
     addEntry(){
-        
         const titleValue = document.querySelector('#title').value;
         const descriptionValue = document.querySelector('#description').value;
         const dateValue = document.querySelector('#date').value;
-        //const importanceValue = document.querySelector("#Cbox").value;
-        
-        this.entries.push(new Entry(titleValue, descriptionValue, dateValue));
-        //$('#addButton').click(function(){$('.entry').fadeIn(2000);});
-        
         const importanceValue = this.checkIfImportant();
         console.log(importanceValue);
 
@@ -38,9 +31,7 @@ class Todo{
 
         this.render(this.entries);
         
-        
     }
-    
 
     render(array){
         let newArray = array;
@@ -59,19 +50,27 @@ class Todo{
 
         newArray.forEach((entryValue, entryIndex)=>{
             const li = document.createElement('li');
-            li.classList.add('entry');            
+            li.classList.add('entry');
             const div = document.createElement('div');
             div.classList.add('entry-value')
             const removeButton = document.createElement('div');
             removeButton.className = "delete-button";
             const removeIcon = document.createTextNode('X');
 
-            div.innerHTML = `<div>${entryValue.title}</div><div> ${entryValue.description}</div>
+            var msMinute = 60*1000;
+            var today = this.dateRightNow();
+            console.log(today);
+            console.log(entryValue.date);
+            var daysLeft = today - 12;
+            var daysLeftt = Math.floor((today-entryValue.date)/msMinute);
+            console.log(daysLeft);
+            if(daysLeft <= 2 && entryValue.done != true){
+                document.querySelector(".entry-value").style.backgroundColor = "tomato"; 
+            }
+            div.innerHTML = `<div> ${entryValue.title}</div><div> ${entryValue.description}</div>
             <div>${entryValue.date}</div>`;
-            $('.Entry').hide();
-            $('.entry').fadeToggle(2000);
-           
-            removeButton.addEventListener('click', ()=>{                
+
+            removeButton.addEventListener('click', ()=>{
                 ul.removeChild(li);
                 newArray.splice(entryIndex, 1);
                 this.saveLocal();
@@ -92,17 +91,32 @@ class Todo{
                     newArray[entryIndex].done = true;
                     this.saveLocal();
                 }
-            });      
+            });
+
             removeButton.appendChild(removeIcon);
             li.appendChild(div);
             li.appendChild(removeButton);
             ul.appendChild(li);
+
         });
 
-        document.body.appendChild(ul);        
-    }    
+        document.body.appendChild(ul);
 
-    
+        
+        
+    }
+    dateRightNow(){
+        let month = ((new Date()).getMonth()+1);
+        let date = (new Date()).getDate();
+        if(month < 10){
+          month = "0" + month;
+        }
+        if(date < 10){
+          date = "0" + date;
+        }
+        let today = (new Date()).getFullYear() + "-" + date + "-" + month;
+        return today;
+      }
 
     saveLocal(){
         window.localStorage.setItem('entries', JSON.stringify(this.entries));
@@ -216,5 +230,3 @@ class Todo{
 
 const todo = new Todo();
 document.body.style.backgroundImage = "url('marble.jpg')"; 
-
-$('.delete-button').click(function(){$('.entry').fadeOut(1000);});
