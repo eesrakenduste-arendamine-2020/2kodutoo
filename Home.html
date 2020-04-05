@@ -13,6 +13,9 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
 </head>
+<audio id="myMusic">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 <body>
     <div id="container">
         <div id="time">Kellaeg</div>
@@ -40,6 +43,8 @@
             <input class="sortButton" type="button" value="Sordi kuupäeva järgi" id="sortByDate">
             </div>
         </div>
+        <button class="musicButton" onclick="play()" type="button">Play music</button>
+        <button class="musicButton" onclick="pause()" type="button">Pause music</button>
     </div>
     <input type="text" id="searchInput" placeholder="Otsi ülesandeid..." title="Sisesta ülesanne">
 </body>

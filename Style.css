@@ -135,3 +135,10 @@ input[type="button"]:hover{
 .due {
     background-color: red;
 }
+
+.musicButton{
+    background-color:	#8A2BE2;
+    border: 2px solid #87CEFA;
+    color: black ;
+    border-radius: 12px;
+}

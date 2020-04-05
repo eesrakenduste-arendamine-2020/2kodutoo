@@ -31,6 +31,7 @@ let months = [
   "November",
   "Detsember",
 ];
+var x = document.getElementById("myMusic");
 yearContainer.innerHTML = year;
 monthContainer.innerHTML = months[month];
 dayContainer.innerHTML = days[day];
@@ -222,4 +223,11 @@ class Todo {
     }
 }
 
+function play(){ 
+  x.play(); 
+} 
+
+function pause(){ 
+  x.pause(); 
+} 
 const todo = new Todo();
