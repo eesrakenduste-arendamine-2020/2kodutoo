@@ -1,0 +1,120 @@
+body{
+  
+	text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  background-color: azure;
+}
+
+button{
+  background-color: black;
+  border: 2px solid black;
+  border-radius: 15%;
+  color: white;
+  padding: 10px;
+  height: 55px;
+  font-size: 15px;
+  font-weight: 0;
+  width: 135px;
+}
+
+.entry{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 700px;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 40px;
+  border: 1px solid darkgrey;
+  border-radius: 100px;
+  height: 5px;
+  background-color: lightgray;
+}
+
+.task-done{
+  background-color: lightgreen;
+  text-decoration: line-through;
+}
+
+.task-important {
+  background-color: darksalmon;
+}
+
+#inputContainer{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+input{
+  margin: 5px;
+  height: 25px;
+  border-radius: 5px;
+  width: 25%;
+  font-size: 18px;
+  text-align: center;
+}
+
+.todo-list{
+  width: 50%;
+  
+  
+}
+
+.delete-button{
+  color: red;
+  width: 80px;
+	height: 30px;
+	font-size: 20px;
+	text-align: center;
+}
+
+.delete-button:hover{
+  color: darkred;
+  font-size: 23px;
+}
+
+input[type="button"]{
+  background-color: black;
+  border: 2px solid black;
+  color: white;
+  padding: 10px;
+  height: 40px;
+  font-size: 17px;
+  font-weight: 0;
+  cursor: pointer;
+  width: 120px;
+}
+
+div{
+  padding: 40px;
+  height: 10px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+ul {
+  padding-inline-start: 380px;
+}
+
+.box {
+  width: 100px;
+  height: 50px;
+  border-radius: 6px;
+  background-color: black;
+  color: white;
+  font-size: 17px;
+  padding: 2px;
+  cursor: pointer;
+  margin: auto;
+}
+
+.selgitus {
+  display: none;
+  font-size: 17px;
+  color: white;
+  text-align: left;
+  line-height: 16px;
+  opacity: 0;
+}
