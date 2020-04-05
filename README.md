@@ -25,7 +25,7 @@
      - Võimalus märkida ülesandeid tähtsaks ning kuvada tähtsad ülesanded eraldi listina ❌
 1. Väljanägemine ja animatsioonid
    - Rakendus näeb kena välja (3 punkti) ✔️
-   - Elementide kuvamisel/eemaldamisel on kasutatud jQuery animatsioone (1 punkt) ❌
+   - Elementide kuvamisel/eemaldamisel on kasutatud jQuery animatsioone (1 punkt) ✔️
 
 ## Kasulikud viited
 
