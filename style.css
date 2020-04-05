@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "montserrat", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  min-height: 100vh;
+}
+
+h3 {
+  margin: 10px 0;
+  text-align: center;
+  color: white;
+}
+h2 {
+  margin: 10px 0;
+  text-align: center;
+  color: white;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 10px;
+}
+
+#container {
+  text-align: center;
+  width: 500px;
+  margin: 50px auto;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+#inputContainer {
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 10px;
+  outline: none;
+  font-size: 18px;
+}
+
+#two-container {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 18px;
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input {
+  margin: 5px;
+  height: 25px;
+  border-radius: 2px;
+  width: 80%;
+  font-size: 16px;
+  border: 1px solid black;
+}
+
+input[type="button"] {
+  background-color: green;
+  border: 1px solid black;
+  color: white;
+  padding: 10px;
+  height: 40px;
+  font-size: 17px;
+  font-weight: 100;
+  cursor: pointer;
+  margin: 6px;
+}
+
+input[type="button"]:hover {
+  background-color: darkgreen;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  margin: 5px;
+  padding: 1%;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.5);
+}
+#todo {
+  width: 500px;
+  margin: 50px auto;
+}
+#todo li a {
+  text-decoration: none;
+  color: black;
+}
+
+.todo-list {
+  width: 87vw;
+  cursor: pointer;
+}
+
+.delete-button {
+  color: red;
+  font-size: 25px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.task-completed {
+  background-color: lightgreen;
+  text-decoration: line-through;
+}
+
+form.searchform input[type="text"] {
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid grey;
+  float: left;
+  width: 10vw;
+  height: 4vh;
+  background: white;
+}
+
+#sort {
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid grey;
+  float: right;
+  width: 12vw;
+  height: 4vh;
+  background: white;
+}

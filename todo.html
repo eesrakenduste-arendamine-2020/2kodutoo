@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="todo.js"></script>
+    <title>Todo</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="inputContainer">
+        <h3>TODO</h3>
+        <p>
+          <input type="text" name="title" id="title" placeholder=" Pealkiri" />
+        </p>
+        <p>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            placeholder=" Sisu"
+          />
+        </p>
+        <p>
+          <input
+            placeholder=" Kuupäev"
+            class="textbox-n"
+            type="text"
+            onfocus="(this.type='date')"
+            id="date"
+          />
+        </p>
+        <input type="button" value="LISA" id="addButton" />
+      </div>
+
+      <div id="two-container">
+        <div id="searchContainer">
+          <form class="searchform">
+            <input
+              type="text"
+              placeholder="Otsi.."
+              name="search"
+              id="searchInput"
+            />
+          </form>
+        </div>
+        <div id="sortContainer">
+          <select id="sort">
+            <option selected disabled hidden>Sorteeri...</option>
+            <option value="1">Uuemad enne</option>
+            <option value="2">Nime järgi</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
