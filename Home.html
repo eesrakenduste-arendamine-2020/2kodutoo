@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <script defer src="Home.js"></script>
+    <title>Kodutöö nr 2</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+</head>
+<audio id="myMusic">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+<body>
+    <div id="container">
+        <div id="time">Kellaeg</div>
+        <div id="alldate">
+            <div id="weekday">Nädalapäev</div>
+            <div id="clockdate">Kuupäev</div>
+            <div id="month">Kuu</div>
+            <div id="year">Aasta</div>
+        </div>
+        <div id= "todo">
+            <div class="header">TO DO list</div>
+            <div id="message"></div>
+            <input type="text" placeholder="Pealkiri" name="title" id="title">
+            <input type="text" placeholder="Sisu" name="description" id="description">
+            <input type="date" name="date1" id="date1">
+        </div>
+        <div>
+            <div id="buttonContainer">
+            <input type="button" value="LISA" id="addButton">
+        </div>
+        
+        <div>
+            <div id="sortContainer">
+            <input class="sortButton" type="button" value="Sordi nime järgi" id="sortByTitle">
+            <input class="sortButton" type="button" value="Sordi kuupäeva järgi" id="sortByDate">
+            </div>
+        </div>
+        <button class="musicButton" onclick="play()" type="button">Play music</button>
+        <button class="musicButton" onclick="pause()" type="button">Pause music</button>
+    </div>
+    <input type="text" id="searchInput" placeholder="Otsi ülesandeid..." title="Sisesta ülesanne">
+</body>
+</html>
