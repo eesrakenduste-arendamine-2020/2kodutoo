@@ -56,8 +56,8 @@ class Todo{
             const removeButton = document.createElement('div');
             removeButton.className = "delete-button";
             const removeIcon = document.createTextNode('X');
-
-            div.innerHTML = `<div>${entryValue.title}</div><div> ${entryValue.description}</div>
+            
+            div.innerHTML = `<div> ${entryValue.title}</div><div> ${entryValue.description}</div>
             <div>${entryValue.date}</div>`;
 
             removeButton.addEventListener('click', ()=>{
@@ -95,6 +95,7 @@ class Todo{
         
         
     }
+    
 
     saveLocal(){
         window.localStorage.setItem('entries', JSON.stringify(this.entries));
