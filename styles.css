@@ -22,8 +22,7 @@
 }
 
 /* Phone */
-
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px), (orientation: portrait) {
     body {
         margin: 0;
     }
@@ -51,7 +50,6 @@
 }
 
 /* Desktop */
-
 @media screen and (min-width: 1024px) {
     #container {
         margin: 2em;
@@ -79,9 +77,29 @@
     }
 }
 
+body {
+    background-color: var(--background-color);
+}
+
+* {
+    transition: all 0.25s cubic-bezier(0, 0, 0.2, 1);
+}
+
 #container {
     display: flex;
     align-items: center;
+    flex-direction: column;
+}
+
+#todos {
+    padding: 2em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+}
+
+#todo-frame {
+    display: flex;
     flex-direction: column;
 }
 
@@ -107,6 +125,39 @@
     box-shadow: var(--shadow);
 }
 
+/* Sort */
+
+#sort-container {
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+    box-shadow: var(--shadow);
+}
+
+.sort-button {
+    background: url("sort.svg") no-repeat;
+    padding: 1em;
+    margin-right: 2em;
+    margin-left: 1em;
+    border: none;
+    cursor: pointer;
+}
+
+.sort-button:focus {
+    outline: none;
+}
+
+.flip {
+    /* Peegelpildi moodi flip, kuna rotate(180deg) pööraks ta teise suunda */
+    transform: scale(1, -1);
+}
+
+.sort-text {
+    letter-spacing: 0.2em;
+}
+
+/* Input */
+
 #input-container {
     display: flex;
     flex-direction: row;
@@ -115,6 +166,15 @@
     background-color: var(--frame-color);
     box-shadow: var(--shadow);
     flex-wrap: wrap;
+}
+
+input {
+    font-family: 'Cabin', sans-serif;
+    font-size: 1.25em;
+}
+
+#input-container>::placeholder {
+    color: var(--gray-tint-3);
 }
 
 #titleInput, #descriptionInput, #dueDateInput {
@@ -147,61 +207,10 @@
     transition: 0.1s;
 }
 
-#todos {
-    padding: 2em;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: thin;
-}
-
-body {
-    background-color: var(--background-color);
-}
-
-* {
-    transition: all 0.25s cubic-bezier(0, 0, 0.2, 1);
-}
+/* Todo */
 
 .checked {
     text-decoration: line-through;
-}
-
-input {
-    font-family: 'Cabin', sans-serif;
-    font-size: 1.25em;
-}
-
-#input-container>::placeholder {
-    color: var(--gray-tint-3);
-}
-
-#sort-container {
-    display: flex;
-    flex-direction: row;
-    padding: 1em;
-    box-shadow: var(--shadow);
-}
-
-.sort-button {
-    background: url("sort.svg") no-repeat;
-    padding: 1em;
-    margin-right: 2em;
-    margin-left: 1em;
-    border: none;
-    cursor: pointer;
-}
-
-.sort-button:focus {
-    outline: none;
-}
-
-.flip {
-    /* Peegelpildi moodi flip, kuna rotate(180deg) pööraks ta teise suunda */
-    transform: scale(1, -1);
-}
-
-.sort-text {
-    letter-spacing: 0.2em;
 }
 
 .title {
@@ -251,9 +260,7 @@ label {
     cursor: pointer;
 }
 
-/* } */
-
-/* Task actions { */
+/* Todo actions */
 
 .important-button {
     background: url("important.svg") no-repeat;
@@ -300,7 +307,7 @@ label {
     background-color: var(--important-highlight);
 }
 
-/* } */
+/* Deletion animations */
 
 .marked-for-deletion {
     transform: translateX(300%);
@@ -315,9 +322,4 @@ label {
     margin: 0;
     padding: 0;
     transition: all 1.5s;
-}
-
-#todo-frame {
-    display: flex;
-    flex-direction: column;
 }
