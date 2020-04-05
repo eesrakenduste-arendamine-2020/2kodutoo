@@ -1,47 +1,57 @@
 # 2. kodutöö – ToDo rakendus
 
-### Tähtpäev 05.04.2020 23:59
+### Autorid:
+Herman Petrov, Daniel Eelmaa, Tauri Miilits
 
-## Nõuded
+### Tekkinud keerukused:
+Sortimine, AJAXI töölesaamine, animatsioonid, 
 
-1. Töö tuleb teha vähemalt kahekesi, eelnevalt kokkuleppel on lubatud ka kolm liiget. GitHub'is peab eristuma, kes mida tegi!
-1. README.md fail sisaldab (1 punkti):
-    * autorite nimesid; 
-    * kirjeldust tekkinud keerukustest
-    * funktsionaalsuste kirjeldust
-1. Todo rakenduse funktsionaalsused:   
-    * Saab lisad ja kustutada (1 punkt)
-    * Saab märkida ülesandeid tehtuks (1 punkt)
-    * Saab järjestada kuupäeva ja nime järgi ülesandeid (2 punkti)
-    * Ülesanded salvestatakse localStorage'isse ja faili/andmebaasi (2 punkti)
-    * Ülesannete salvestamiseks ja kuvamiseks kasutatakse AJAX-it (1 punkti)
-    * Kui kasutaja tuleb lehele, siis näidatakse varem salvestatud ülesandeid (1 punkt)
-    * Rakendus töötab loogiliselt ja kasutaja ei pea mõtlema, et kuidas rakendus töötab. (2 punkti)
-    * Lisa ise 5 funktsionaalsust juurde.(5 punkti)
-      Näiteks: 
-         * Võimalus lisada kategooriad ja nende alusel jagada ülesandeid
-         * Möödunud ja/või tänase kuupäevaga tegemata ülesanded märkida erinevalt
-         * Võimalus otsida ülesandeid
-         * Võimalus märkida ülesandeid tähtsaks ning kuvada tähtsad ülesanded eraldi listina
-1. Väljanägemine ja animatsioonid
-    * Rakendus näeb kena välja (3 punkti)
-    * Elementide kuvamisel/eemaldamisel on kasutatud jQuery animatsioone (1 punkt)
+Suurim probleem siiski jääb AJAXI ja andmebaasi sidumine. Oli  raske seadistada nii ,et üle ei kirjutaks olevaid entry-sid.
+Kuna tahtsime, et olev t-odo list oleks keskendatud todo.txt andmebaasiga töötamisele ja mitte tavapärase localStoragega, andes nii võimaluse kasutajal ka teiselt arvutilt täiendada ja kuvada enda to-do listi. 
 
+### Funktsionaalsuste kirjeldused:
+* Kasutaja saab lisada erinevaid ülesandeid ja neid kustutada
+* Ülesannete lisamisel saab kasutaja märkida ülesande pealkirja/märksõna, kirjutada täpsemalt antud ülesande kohta, Võimalus märkida ülesanne tähtsaks ning viimasena märkida ülesande kuupäeva.
+* Saab märkida ülesandeid, kas need on tehtud või mitte
+* Kasutajal on võimalus järjestada ülesandeid kuupäeva ja nime järgi. Lisaks saab omakorda kuvada ülesandeid, mis on tehtud, tegemata või kõiki korraga(nii tehtud kui tegemata)
+* Ülesannet saab salvestada localStorage'isse ja faili andmebaasi. LocalStorage'i key on "here are your events" ja faili andmebaas "todo.txt"
+* Ülesanne salvestatakse ja kuvatakse kasutades AJAX'it (todo.txt)
+* Tulles tagasi lehele saab näha ka varem salvestatud ülesandeid
+* Rakenduses on väljatoodud legend To Do eristamiseks
+* Kuvatakse eraldi kaks To Do listi kasutajale:
+    * Oluline To Do list
+    * Tavaline To Do list
+* Ülesanded kuvatakse erinevate värvustega: möödunud kuupäev on kollane, tänane kuupäev on punane ning valgega on märgitud ülesanded, millega on aega
+* Elementide kuvamisel/eemaldamisel on kasutatud jQuery animatsioone
+* Võimalus otsida ülesandeid
+* Soovi korral saab ka muusika mängima panna
 
-## Githubi töövoog grupiga töötades
+Suurem osa gruppitööst oli tehtud koostöös Discordi teel ning katsetatud putty: greeny keskkonas +  WinSCP.
 
-1. Üks grupi liikmetest teeb fork-i 2kodutoo repositooriumist
-2. Tuleb lisada meeskonnaliikmed collaborators-iteks fork-itud repositooriumi 
-3. Collaborator-id peavad kutsega nõustuma (e-mail)
-4. Iga ühel tuleb teha git clone fork-itud repositooriumist (git clone https://YOURUSERNAME@github.com/REPOSITORYOWNERUSERNAME/REPOSITORY.git)
-5. Muudatuste lisamine:
-     * git add
-     * git commit
-     * git fetch & pull
-     * git push
+*Herman Petrov :
+Olulisemad punktid: 
+Js-funktsionaalsuse testimine ja loomine+css.
+Kirjutasin ja arendasin koodi, mis võimaldaks lugeda ajaxi abil todo.txt failist andmeid ja ka salvestaks neid. 
+Kirjutasin localStorage võimaluse todoListile.
+Andmebaasi töötamise testimine ja arendamine.
+Kujundasin CSS, arendasin tausta todo ja paigutust. 
+Arendasin Delete ja Add võimalused todod.
+Koodi vormistus + testmine
 
-## Kasulikud viited
-* [JQuery dokumentatsioon](http://api.jquery.com)
-* [Collaboration on github](https://github.com/eesrakenduste-arendamine-2019/2kodutoo/settings/collaboration)
-* [JQuery POST](https://api.jquery.com/jquery.post/)
-* [JQuery AJAX](http://api.jquery.com/jquery.ajax/)
+*Tauri Miilits:
+Olulisemad punktid:
+Arendasin välja koodi, kus sai lõpuks siduda läbi serveri funktsioonide todo.txt faili (AJAX).
+Arendasime koos To Do'de eristamiseks sorteerimisvõimaluse.
+CSS kujundamine, disain ja nende paigutused. Lisasin legendi, et paremini eristada To Do'sid.
+Koodi vormistus + testimine
+
+*Daniel Eelmaa:
+Olulisemad punktid:
+Tegelesin JS'i funktsionaalsuste loomisega.
+Tegin valmis põhjalikuma Add funktsiooni. 
+Arendasin Search ja Sort funktsioone lehe jaoks.
+Võimaluse märkida ülesanded tehtuks.
+JQUERY animatsioonid ToDo'de kuvamisel.
+ToDo'de tähtsaks märkimine ja eraldi kuvamine.
+Koodi vormistus + testimine
+
