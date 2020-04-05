@@ -133,7 +133,7 @@ class Todo {
             this.saveToFile();
             this.render();
             this.alertPositive();
-
+            play();
             document.querySelector('#title').value = "";
             document.querySelector('#description').value = "";
             document.querySelector('#date1').value = "";
@@ -147,7 +147,6 @@ class Todo {
       alert.classList.add('alertPositive');
       var textnode = document.createTextNode("Uus todo ülesanne lisatud!");
       alert.appendChild(textnode);
-    
       var list = document.getElementById("message");
       list.insertBefore(alert, list.childNodes[0]);
       setTimeout(function(){alert.parentElement.removeChild(alert);}, 2000);
