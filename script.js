@@ -121,6 +121,7 @@ function addNewToFile(name, category, chosenColorClass, important, taskObject) {
         data: fileData
     }).done(function(response) {
         $(taskObject).children('[name="task_id"]').val(response);
+        // Add to local storage
         let currentStorage = JSON.parse(localStorage.getItem("todo"));
         fileData["id"] = response;
         fileData["done"] = 0;
@@ -133,7 +134,7 @@ function addNewToFile(name, category, chosenColorClass, important, taskObject) {
             localStorage.setItem('todo', JSON.stringify(storageData));
         } else {
             currentStorage["data"].push(fileData);
-            localStorage.setItem('todo', JSON.stringify(currentStorage["data"]));
+            localStorage.setItem('todo', JSON.stringify(currentStorage));
         }
 
     });
@@ -146,7 +147,17 @@ function removeFromFile(taskId) {
         url: url,
         data: {"task_id": taskId}
     }).done(function(response) {
-       console.log(response);
+        console.log(response);
+        // Remove from local storage
+        let currentStorage = JSON.parse(localStorage.getItem("todo"));
+        for(let i=0; i < currentStorage["data"].length;i++) {
+            if (currentStorage["data"][i]['id'] == taskId) {
+                currentStorage["data"].splice(i, 1);
+            }
+        }
+
+        localStorage.setItem('todo', JSON.stringify(currentStorage));
+
     });
 }
 
