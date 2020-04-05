@@ -22,6 +22,7 @@
 }
 
 /* Phone */
+
 @media screen and (max-width: 1024px), (orientation: portrait) {
     body {
         margin: 0;
@@ -50,6 +51,7 @@
 }
 
 /* Desktop */
+
 @media screen and (min-width: 1024px) {
     #container {
         margin: 2em;
@@ -106,7 +108,7 @@ body {
 .todo {
     box-shadow: var(--shadow);
     border-radius: 0.5em;
-    max-height: 12em;
+    max-height: 150em;
     display: grid;
     grid-template-columns: min-content minmax(auto, max-content) minmax(auto, max-content) minmax(min-content, auto) min-content min-content;
     column-gap: 0.5em;
@@ -115,7 +117,7 @@ body {
 }
 
 .todo>* {
-    max-height: 10em;
+    max-height: 150em;
 }
 
 #todo-container {
@@ -232,11 +234,13 @@ input {
 .title {
     font-size: 1.667em;
     grid-area: title;
+    overflow-wrap: anywhere;
 }
 
 .description {
     color: var(--gray-tint-2);
     grid-area: description;
+    overflow-wrap: anywhere;
 }
 
 .dueDate {
