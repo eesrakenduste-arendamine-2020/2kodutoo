@@ -1,5 +1,7 @@
 # 2. kodutöö – ToDo rakendus
 
+AUTORID:  Roos-Marie Lunden, Jan Morten Kivi
+
 ### Tähtpäev 05.04.2020 23:59
 
 ## Nõuded
