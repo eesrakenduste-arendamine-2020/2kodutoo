@@ -227,6 +227,7 @@ function displayImportantTasks() {
             $(newCopy).children('.l3').text(currentStorage['data'][i]['name']);
             $(newCopy).children('.l5').text(currentStorage['data'][i]['category']);
             $(newCopy).addClass('importantColors');
+            $(newCopy).children('[name="task_id"]').val(currentStorage['data'][i]['id']);
         }
 
     }
@@ -246,6 +247,7 @@ function displayAllTasks() {
             $(newCopy).children('.l2').addClass(currentStorage['data'][i]['colorclass']);
             $(newCopy).children('.l3').text(currentStorage['data'][i]['name']);
             $(newCopy).children('.l5').text(currentStorage['data'][i]['category']);
+            $(newCopy).children('[name="task_id"]').val(currentStorage['data'][i]['id']);
             if (currentStorage['data'][i]['important'] == 1 ) {
                 $(newCopy).addClass('importantColors');
             }
