@@ -1,207 +1,202 @@
-body{
-    background-image: url("car.gif");
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    background-repeat: repeat;
-    margin:0;
+body {
+  background-image: url("car.gif");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat;
+  margin: 0;
 }
-#title{
-    height: 20px;
-    width: 200px;
-    text-align: center;
-    border: 0.5px solid purple;
-    border-radius: 40px;
-    overflow-wrap: break-word;
-
-}
-
-#description{
-    height: 30px;
-    width: 200px;
-    text-align: center;
-    border: 0.5px solid purple;
-    border-radius: 40px;
-    overflow-wrap: break-word;
-
+#title {
+  height: 20px;
+  width: 200px;
+  text-align: center;
+  border: 0.5px solid purple;
+  border-radius: 40px;
+  overflow-wrap: break-word;
 }
 
-#dueDate{
-    height: 15px;
-    width: auto;
-    text-align: center;
-    border: 0.5px solid purple;
-    border-radius: 40px;
-    overflow-wrap: break-word;
-}
-#important{
-    display: block;
-    left: 140px;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-#submit{
-    
-    font-weight: bold;
-    font-size: large;
-    height: 30px;
-    background-color: bisque;
-    background-position: center;
-    border: 0.5px solid purple;
-    border-radius: 40px;
-    position: sticky;
-    background-image: linear-gradient(to right,purple , violet);
-    background-color: blueviolet;
-    color: white;
+#description {
+  height: 30px;
+  width: 200px;
+  text-align: center;
+  border: 0.5px solid purple;
+  border-radius: 40px;
+  overflow-wrap: break-word;
 }
 
-.tableContainer{
-    font-size: 100% ;
-    font-family: Calibri;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#dueDate {
+  height: 15px;
+  width: auto;
+  text-align: center;
+  border: 0.5px solid purple;
+  border-radius: 40px;
+  overflow-wrap: break-word;
+}
+#important {
+  display: block;
+  left: 140px;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#submit {
+  font-weight: bold;
+  font-size: large;
+  height: 30px;
+  background-color: bisque;
+  background-position: center;
+  border: 0.5px solid purple;
+  border-radius: 40px;
+  position: sticky;
+  background-image: linear-gradient(to right, purple, violet);
+  background-color: blueviolet;
+  color: white;
 }
 
-.tableRow{
-    width: 300px;
-    height: auto;
-    background-color: bisque;
-    border: 2px solid purple;
-    border-radius: 40px;
-}
-legend{
-    color: white;
-    font-family:Varela Round;
-    font-size: 200%;
-    
-}
-#addTodoForm{
-    position: relative;
-    text-align: center;
-    justify-content: center;
-}
-#todoForm{
-    color: #EEEEEE;
-    font-family: Varela Round;
-    width: 20;
-    top: auto;
-    position: center;
-    
-}
-li{
-    font-family: Varela Round;
-    background-image: linear-gradient(to right,purple , yellow);
-    display: flex;
-    width: 90%;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1%;
-    border: 3px solid lightgray;
-    border-radius: 10px;
-    margin: 5px;
-    color: white;
+.tableContainer {
+  font-size: 100%;
+  font-family: Calibri;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.delete-button{
-    width: 30px;
-    color:red;
-    font-size: 1.3em;
-    font-weight: 500;
+.tableRow {
+  width: 300px;
+  height: auto;
+  background-color: bisque;
+  border: 2px solid purple;
+  border-radius: 40px;
+}
+legend {
+  color: white;
+  font-family: Varela Round;
+  font-size: 200%;
+}
+#addTodoForm {
+  position: relative;
+  text-align: center;
+  justify-content: center;
+}
+#todoForm {
+  color: #eeeeee;
+  font-family: Varela Round;
+  width: 20;
+  top: auto;
+  position: center;
+}
+li {
+  font-family: Varela Round;
+  background-image: linear-gradient(to right, purple, yellow);
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1%;
+  border: 3px solid lightgray;
+  border-radius: 10px;
+  margin: 5px;
+  color: white;
 }
 
-.delete-button:hover{
-    width: 30px;
-    font-weight: 900;
-    color: darkred;
-    font-size: 1.4em;
-    cursor: pointer;
+.delete-button {
+  width: 30px;
+  color: red;
+  font-size: 1.3em;
+  font-weight: 500;
 }
 
-.done-button{
-    margin-left: auto;
-    margin-right: 20px;
-    text-shadow: 2px 2px black;
-    width: 80px;
-    color:green;
-    font-size: 1.3em;
-    font-weight: 500;
+.delete-button:hover {
+  width: 30px;
+  font-weight: 900;
+  color: darkred;
+  font-size: 1.4em;
+  cursor: pointer;
 }
-.done-button:hover{
-    margin-left: auto;
-    margin-right: 20px;
-    font-weight: 900;
-    color: blue;
-    font-size: 1.4em;
-    cursor: pointer;
+
+.done-button {
+  margin-left: auto;
+  margin-right: 20px;
+  text-shadow: 2px 2px black;
+  width: 80px;
+  color: green;
+  font-size: 1.3em;
+  font-weight: 500;
 }
-#todoSort{
-    background-color: bisque;
-    background-position: center;
-    border: 2px solid purple;
-    border-radius: 40px;
-    position: sticky;
-    background-image: linear-gradient(to right,purple , violet);
-    background-color: blueviolet;
-    color: wheat;
+.done-button:hover {
+  margin-left: auto;
+  margin-right: 20px;
+  font-weight: 900;
+  color: blue;
+  font-size: 1.4em;
+  cursor: pointer;
+}
+#todoSort {
+  background-color: bisque;
+  background-position: center;
+  border: 2px solid purple;
+  border-radius: 40px;
+  position: sticky;
+  background-image: linear-gradient(to right, purple, violet);
+  background-color: blueviolet;
+  color: wheat;
 }
 ::placeholder {
-    color:black;
-    opacity: 1;
+  color: black;
+  opacity: 1;
 }
 
-#search{
-    text-align: center;
-    color: black;
-    width: auto;
-    height: auto;
-    background-color: bisque;
-    border: 2px solid purple;
-    border-radius: 40px;
+#search {
+  text-align: center;
+  color: black;
+  width: auto;
+  height: auto;
+  background-color: bisque;
+  border: 2px solid purple;
+  border-radius: 40px;
 }
 
-#musicu{
-    color: black;
-    width: auto;
-    height: auto;
-    background-color: bisque;
-    background-position: center;
-    border: 2px solid purple;
-    border-radius: 40px;
+#musicu {
+  color: black;
+  width: auto;
+  height: auto;
+  background-color: bisque;
+  background-position: center;
+  border: 2px solid purple;
+  border-radius: 40px;
 }
 
-.right{
-    border-radius: 4px;
-    background-color: darkslategray;
-    background-position: center;
-    border: 2px solid purple;
-    text-align: center;
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    float: right;
+.right {
+  border-radius: 4px;
+  background-color: darkslategray;
+  background-position: center;
+  border: 2px solid purple;
+  text-align: center;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  float: right;
 }
 
-#passed{
-    color: red;
+#passed {
+  color: red;
 }
 
-#due{
-    color: yellow;
+#due {
+  color: yellow;
 }
 
-#normal{
-    color: white;
+#normal {
+  color: white;
 }
-h1{
-    color: #EEEEEE;
-    font-family: Varela Round;
+h1 {
+  color: #eeeeee;
+  font-family: Varela Round;
 }
