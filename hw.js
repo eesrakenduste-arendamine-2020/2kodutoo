@@ -1,3 +1,10 @@
+$(document).ready(function(){
+
+    $('#addButton').click(function(){$('.todo-list.entry').fadeIn(2000);});
+    $('.todo-list.delete-button').click(function(){$('.todo-list.entry').fadeOut(2000)});
+});
+
+
 class Entry{
     constructor(title, description, date, important){
         this.title = title;
