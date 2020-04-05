@@ -31,6 +31,3 @@ Rakendus näeb kena välja -  Maris Jool, Nina Katarina Weiss, Liisi Liivik
 
 Elementide kuvamisel/eemaldamisel on kasutatud jQuery animatsioone -  Maris Jool, Nina Katarina Weiss, Liisi Liivik
 
-kirjeldus tekkinud keerukustest:
-
-Proovisime tööle saada ka funktsiooni, mis võimaldab möödunud ja/või tänase kuupäevaga tegemata ülesanded märkida erinevalt, kuid kokkuvõttes see toimima ei hakkanud.
