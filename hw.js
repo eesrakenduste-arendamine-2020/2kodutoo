@@ -1,10 +1,3 @@
-// $(document).ready(function(){
-
-//     $('#addButton').click(function(){$('.todo-list.entry').fadeIn(2000);});
-//     $('.todo-list.delete-button').click(function(){$('.todo-list.entry').fadeOut(2000)});
-// });
-
-
 class Entry{
     constructor(title, description, date, important){
         this.title = title;
@@ -70,16 +63,9 @@ class Todo{
             
             div.innerHTML = `<div> ${entryValue.title}</div><div> ${entryValue.description}</div>
             <div>${entryValue.date}</div>`;
-           // $('.entry').hide();
-            //$('.entry').fadeIn(1000);
 
-            removeButton.addEventListener('click', ()=>{
-                //$(document).ready(function(){
-               // $('#addButton').click(function(){$('.todo-list.entry').fadeIn(2000);});
-                //});
-               // $('li.delete-button').click(function(){$('#1').hide(1000)});
+            removeButton.addEventListener('click', ()=>{                
                 ul.removeChild(li);
-                //$('#entry').fadeOut(2500);
                 newArray.splice(entryIndex, 1);
                 this.saveLocal();
                 this.render(newArray);
