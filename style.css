@@ -1,0 +1,176 @@
+body {
+	background-color: paleturquoise;
+	color: black;
+	display: grid;
+	grid: 
+	  "header header header haedaer" auto
+	  "..... lists active  ....." auto /
+	  1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
+
+}
+
+
+.title {
+	grid-area: header;
+	text-align: center;
+	font-size: 7vw;
+	font-weight: 705;
+	color: black;
+	letter-spacing: 1px;
+	margin: 1em 0 0.5em;
+	border-style: none;
+}
+
+.all-tasks {
+	grid-area: lists;
+}
+
+.task-list {
+	font-size: 2rem;
+	line-height: 2;
+	list-style: kannada;
+	padding-left: 1em;
+}
+
+
+form {
+	display: flex;
+}
+
+
+.btn {
+	cursor: pointer;
+	background: 10;
+	border: 20;
+	padding: 5;
+	color: inherit;
+}
+
+.btn.create {
+	font-size: 1rem;
+	font-weight: 999;
+	margin-left: 0.5em;
+}
+
+.btn.create:hover {
+	opacity: 0.5;
+}
+
+
+.new {
+	background: transparent;
+	border: 0;
+	color: inherit;
+	border-bottom: 1px solid currentColor;
+	font-size: inherit;
+	outline: none;
+
+	
+}
+
+
+.new:focus {
+	border-bottom-width: 3px;
+}
+
+.new:focus::placeholder{
+	opacity: 0.6;
+}
+
+
+
+.list-name {
+	cursor: pointer;
+}
+.list-name:hover {
+	opacity: 0.6
+}
+
+
+[type="checkbox"]:checked + label {
+	opacity: 0.6;
+	text-decoration: line-through;
+	color: green;
+}
+
+[type="checkbox"]:hover{
+	cursor: pointer;
+}
+
+.delete-list-and-task{
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.btn.delete{
+	font-size: 15px;
+	border-style: solid;
+}
+
+.btn.delete:hover{
+	opacity: 0.6;
+	color: rgb(128, 73, 0);
+}
+
+.task label {
+	align-items: center;
+	line-height: 2em;
+	margin-bottom: 1em;
+}
+
+.active-list {
+	font-weight: 400;
+	color: rgb(0, 183, 255);
+}
+
+.todo-list {
+	grid-area: active;
+	background: white;
+	color: black;
+}
+
+.todo-header {
+	padding: 0.5cm;
+	background:teal;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-style: inset;
+	border-color: yellowgreen;
+	border-radius: 0px 0px 40px 40px;
+}
+
+.list-title {
+	margin: 10;
+}
+
+.tast-count {
+	margin: 0;
+}
+
+.todo-body {
+	padding: 2rem;
+}
+
+.new-list::placeholder{
+	color: white;
+}
+
+
+
+.search{
+	background: transparent;
+	border: 0;
+	color: inherit;
+	border-bottom: 1px solid currentColor;
+	font-size: inherit;
+	outline: none;
+}
+
+.search:focus {
+	border-bottom-width: 3px;
+}
+
+.search:focus::placeholder{
+	opacity: 0.6;
+}
