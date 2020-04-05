@@ -1,7 +1,7 @@
-body{
+html{
     margin: 0;
+    background: radial-gradient(80% 40%, #303030, #5a5a5a) no-repeat center center fixed ;
 }
-
 .task-missed{
     border-color: darkred;
     background-color: indianred;
@@ -32,8 +32,8 @@ input{
 
 #addButton:hover{
     cursor: pointer;
-    border-color: black;
-    border-radius: 5px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px 3px rgba(0,0,0,0.5);
 }
 
 input[type = "buton"]{

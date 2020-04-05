@@ -93,7 +93,16 @@ class Todo{
             }
 
             doneButton.addEventListener('click', ()=>{
-                if(entryValue.done){
+                if(entryValue.done && this.entries[entryIndex].missed){
+                    $(li).animate({
+                        backgroundColor: "indianred"
+                    },1000, "linear", function(){
+                        li.classList.remove('task-completed');
+                    });
+                    this.entries[entryIndex].done = false;
+                    this.saveLocal();
+                }
+                else if(entryValue.done){
                     $(li).animate({
                         backgroundColor: "#fff"
                     },1000, "linear", function(){
@@ -105,7 +114,6 @@ class Todo{
                 }else{
                     $(li).animate({
                         backgroundColor: "#90EE90",
-                        textDecoration: "line-through"
                     }, 1000, "linear", function () {
                         li.classList.add('task-completed');
                     });
@@ -118,6 +126,7 @@ class Todo{
                 if (this.entries[entryIndex].important && this.entries[entryIndex].done) {
                     li.style.backgroundColor = "lightgreen";
                     this.entries[entryIndex].important = false;
+                    this.saveLocal();
                 }
                 else if(this.entries[entryIndex].important && this.entries[entryIndex].missed){
                         li.style.backgroundColor = "indianred";
@@ -127,7 +136,7 @@ class Todo{
                     li.style.backgroundColor = "initial";
                     this.entries[entryIndex].important = false;
                 } else {
-                    li.style.backgroundColor = "rgb(255, 255, 0)";
+                    li.style.backgroundColor = "rgb(213,213,46)";
                     this.entries[entryIndex].important = true;
                 }
             });
