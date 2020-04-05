@@ -1,13 +1,12 @@
 class Todo {
-    constructor(title, description, date) {
+    constructor(title, description, dueDate) {
         this.title = title;
         this.description = description;
-        this.date = date;
+        this.dueDate = dueDate;
     }
 }
 
 const todos = [];
-const url = 'https://httpbin.org/post';
 
 // Funktsioon kutsutakse esile faili laadides
 loadEntries();
@@ -19,28 +18,25 @@ function loadEntries() {
 function addEntry() {
     const title = document.getElementById('title').value;
     const desc = document.getElementById('description').value;
-    const date = document.getElementById('date').value;
+    const date = document.getElementById('dueDate').value;
 
 
 }
 
+const url = 'server.php';
 const data = {
     title: 'test',
-    desc: 'ladida',
+    desc: 'sadawdawdwadaw',
 };
-  
-async function postData(url, data) {
-    const response = await fetch(url, {
-        method: 'POST',
-        /*
-        headers: { 
-            'Content-Type': 'application/x-www-form-urlencoded', 
-        },
-        */
-        body: '?save=' + data,
-       
+
+async function saveData(url, data) {
+    return new Promise(function (resolve, reject) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', url);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () { this.status >= 200 && this.status < 300 ? resolve : reject }
+        xhr.onerror = reject;
+        xhr.send('save=' + JSON.stringify(data));
     });
-    return await response;
 }
-  
-postData(url, data).then((result) => console.log(result));
+saveData(url, data).then((result) => console.log(result));
