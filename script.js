@@ -1,19 +1,6 @@
 $(document).ready(function() {
 
-    // Search box css
-    $(document).on('click', '.icon', function() {
-        $('.input-field').focus();
-    });
 
-    $(document).on('focusin', '.input-field', function() {
-        $('.icon').css('opacity', 0);
-    });
-
-    $(document).on('focusout', '.input-field', function() {
-        if ($(this).val() == '') {
-            $('.icon').css('opacity', 0.8);
-        }
-    });
 
     // Add-new button css
     $(document).on('mouseenter', '.add-new-text', function() {;
@@ -86,6 +73,7 @@ $(document).ready(function() {
         $(todoItem).slideUp(600, function() { $(todoItem).remove();});
         markAsDone($(todoItem).children('[name="task_id"]').val());
     });
+fileToLocalStorage();
 
 });
 
@@ -107,7 +95,6 @@ function createNewListItem() {
     $(newCopy).children('.l3').text(name);
     $(newCopy).children('.l5').text(category);
     cleanModalFields();
-    // TODO loadingModal() vms?
     addNewToFile(name, category, chosenColorClass, important, $(newCopy));
 }
 
@@ -120,13 +107,35 @@ function cleanModalFields(){
 
 // Ajax create new task, save to database.json
 function addNewToFile(name, category, chosenColorClass, important, taskObject) {
+    let fileData = {
+        "name": name,
+        "category": category, 
+        "colorclass": chosenColorClass, 
+        "important": important
+    }
+
     let url = 'add.php';
     $.ajax({
         type: "POST",
         url: url,
-        data: {"name": name, "category": category, "colorclass": chosenColorClass, "important": important}
+        data: fileData
     }).done(function(response) {
-       $(taskObject).children('[name="task_id"]').val(response);
+        $(taskObject).children('[name="task_id"]').val(response);
+        let currentStorage = JSON.parse(localStorage.getItem("todo"));
+        fileData["id"] = response;
+        fileData["done"] = 0;
+
+        if ( currentStorage["data"] === undefined || currentStorage["data"].length == 0) {
+            let storageData = {
+                "data": [fileData]
+            }
+
+            localStorage.setItem('todo', JSON.stringify(storageData));
+        } else {
+            currentStorage["data"].push(fileData);
+            localStorage.setItem('todo', JSON.stringify(currentStorage["data"]));
+        }
+
     });
 }
 
@@ -150,4 +159,16 @@ function markAsDone(taskId) {
     }).done(function(response) {
        console.log(response);
     });
+}
+
+// Runs on page load
+function fileToLocalStorage() {
+    var fileData; 
+    $.getJSON('data.php', function(jsonData) {
+        fileData = jsonData;
+        console.log(fileData['data'][0]);
+        if (fileData) {
+            localStorage.setItem('todo', JSON.stringify(fileData));
+        } 
+    }); 
 }

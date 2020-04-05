@@ -1,7 +1,4 @@
 <?php
-
-date_default_timezone_set('Europe/Tallinn');
-
 function getFileArray() {
     if ( file_exists('database.json') ) {
         $fileLocation = 'database.json';
@@ -19,11 +16,9 @@ function createFileArray() {
 
 function saveToFile($dataArray) {
     $fileLocation = 'database.json';
-    $currentDate = date('m/d/Y h:i:s', time());
     $newArray = array();
     $newArray['id'] = generateId();
     $newArray['name'] = $_POST['name'];
-    $newArray['date'] = $currentDate;
     $newArray['category'] = $_POST['category'];
     $newArray['colorclass'] =  $_POST['colorclass'];
     $newArray['important'] = $_POST['important'];
@@ -61,11 +56,7 @@ function createTaskHTML() {
 
         <?php endfor;
 
- 
-            
-
     endif;
-
 
 
 }
@@ -108,4 +99,14 @@ function markAsDone() {
     endfor;
 
     writeNewArray($array);
+}
+
+function fileToLocalStorage() {
+    $array = getFileArray();
+    if ($array) :
+        echo json_encode( $array, JSON_PRETTY_PRINT );
+        return;
+    endif;
+    return false;
+    
 }

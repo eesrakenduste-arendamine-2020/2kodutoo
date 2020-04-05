@@ -61,30 +61,6 @@ body {
     background-color: #24bfd2;
 }
 
-.icon {
-    top: 7px;
-    padding-left: 5px;
-    position: absolute;
-    opacity: 0.8;
-    transition: opacity .3s;
-} 
-    
-.input-field { 
-    width: 100%; 
-    border: 0;
-    height: 50px;
-    background: #24bfd2;
-    font-size: 20px;
-    margin-top: 0px;
-    vertical-align: top;
-    color:#ffffff;
-    padding-left: 10px;
-    outline: 0;
-}
-
-.icon:hover {
-    cursor: text;
-}
 
 
 /* List item */
@@ -383,4 +359,18 @@ body {
 .removalClassGreen {
     background: forestgreen;
     transition: background 1s;
+}
+
+/* Filters */
+
+.filterButtons__button {
+    opacity: 0.8;
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: opacity .3s;
+}
+
+.filterButtons__button:hover {
+   opacity: 1;
 }
