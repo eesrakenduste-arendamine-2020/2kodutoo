@@ -124,7 +124,20 @@ class Todo{
             this.sortedUnimportant();
         } else if(sortValue == "blank"){
             this.sortedToBasic();
+        } else if(sortValue == "notdone"){
+            this.sortedNotDone();
         }
+    }
+
+    sortedNotDone(){
+        var notDone = new Array();
+        for(let i=0; i < this.entries.length; i++){
+            let entry = this.entries[i];
+            if(entry.done != true){
+                notDone.push(entry);
+            }
+        }
+        this.render(notDone);
     }
 
     sortedByDate(){
