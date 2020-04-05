@@ -149,7 +149,6 @@ class Todo {
     
       var list = document.getElementById("message");
       list.insertBefore(alert, list.childNodes[0]);
-      alert.parentElement.style.display = 'block';
       setTimeout(function(){alert.parentElement.removeChild(alert);}, 2000);
     }
 
@@ -161,7 +160,6 @@ class Todo {
     
       var list = document.getElementById("message");
       list.insertBefore(alert, list.childNodes[0]);
-      alert.parentElement.style.display = 'block';
       setTimeout(function(){alert.parentElement.removeChild(alert)}, 2000);
     }
 
@@ -189,6 +187,10 @@ class Todo {
 
             if(entryValue.done){
                 li.classList.add('task-completed');
+            }
+
+            if(!entryValue.done && d > new Date(entryValue.date)){
+              li.classList.add('due');
             }
 
             div.addEventListener('click', (event)=>{
