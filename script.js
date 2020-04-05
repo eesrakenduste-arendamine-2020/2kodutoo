@@ -99,8 +99,8 @@ function createNewListItem() {
 }
 
 function cleanModalFields(){
-    $('[name="todo_name"]').val("");
-    $('[name="category"]').val("");
+    $('[name="todo_name"]').val('');
+    $('[name="category"]').val('');
     $('.fa-star').removeClass('importanceSelected');
 
 }
@@ -108,32 +108,32 @@ function cleanModalFields(){
 // Ajax create new task, save to database.json
 function addNewToFile(name, category, chosenColorClass, important, taskObject) {
     let fileData = {
-        "name": name,
-        "category": category, 
-        "colorclass": chosenColorClass, 
-        "important": important
+        'name': name,
+        'category': category, 
+        'colorclass': chosenColorClass, 
+        'important': important
     }
 
     let url = 'add.php';
     $.ajax({
-        type: "POST",
+        type: 'POST',
         url: url,
         data: fileData
     }).done(function(response) {
         $(taskObject).children('[name="task_id"]').val(response);
         // Add to local storage
         let currentStorage = JSON.parse(localStorage.getItem("todo"));
-        fileData["id"] = response;
-        fileData["done"] = 0;
+        fileData['id'] = response;
+        fileData['done'] = 0;
 
-        if ( currentStorage["data"] === undefined || currentStorage["data"].length == 0) {
+        if ( currentStorage['data'] === undefined || currentStorage['data'].length == 0) {
             let storageData = {
-                "data": [fileData]
+                'data': [fileData]
             }
 
             localStorage.setItem('todo', JSON.stringify(storageData));
         } else {
-            currentStorage["data"].push(fileData);
+            currentStorage['data'].push(fileData);
             localStorage.setItem('todo', JSON.stringify(currentStorage));
         }
 
@@ -143,16 +143,16 @@ function addNewToFile(name, category, chosenColorClass, important, taskObject) {
 function removeFromFile(taskId) {
     let url = 'remove.php';
     $.ajax({
-        type: "POST",
+        type: 'POST',
         url: url,
-        data: {"task_id": taskId}
+        data: {'task_id': taskId}
     }).done(function(response) {
         console.log(response);
         // Remove from local storage
-        let currentStorage = JSON.parse(localStorage.getItem("todo"));
-        for(let i=0; i < currentStorage["data"].length;i++) {
-            if (currentStorage["data"][i]['id'] == taskId) {
-                currentStorage["data"].splice(i, 1);
+        let currentStorage = JSON.parse(localStorage.getItem('todo'));
+        for(let i=0; i < currentStorage['data'].length;i++) {
+            if (currentStorage['data'][i]['id'] == taskId) {
+                currentStorage['data'].splice(i, 1);
             }
         }
 
@@ -164,11 +164,11 @@ function removeFromFile(taskId) {
 function markAsDone(taskId) {
     let url = 'done.php';
     $.ajax({
-        type: "POST",
+        type: 'POST',
         url: url,
-        data: {"task_id": taskId}
+        data: {'task_id': taskId}
     }).done(function(response) {
-       console.log(response);
+        console.log(response);
     });
 }
 
