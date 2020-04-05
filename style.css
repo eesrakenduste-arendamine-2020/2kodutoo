@@ -5,6 +5,18 @@ body{
   background-color: azure;
 }
 
+button{
+  background-color: black;
+  border: 2px solid black;
+  border-radius: 15%;
+  color: white;
+  padding: 10px;
+  height: 55px;
+  font-size: 15px;
+  font-weight: 0;
+  width: 135px;
+}
+
 .entry{
   display: flex;
   align-items: center;

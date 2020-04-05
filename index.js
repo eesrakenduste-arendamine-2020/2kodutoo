@@ -16,9 +16,13 @@ class ToDo{
 
         document.querySelector('#add').addEventListener('click', ()=>{this.addEntry()});
         document.querySelector('#save').addEventListener('click', ()=>{this.saveToFile()});
+        document.querySelector('#load').addEventListener('click', ()=>{this.loadFromFile()});
+        document.querySelector('#sortByTitle').addEventListener('click', ()=>{this.sortByTitle()});
+        document.querySelector('#sortByDate').addEventListener('click', ()=>{this.sortByDate()});
+        //document.querySelector('#importantButton').addEventListener('click', ()=>(this.sortImportantOnly));
 
         this.entries = JSON.parse(window.localStorage.getItem('entries')) || [];
-
+ 
         this.render();
     }
 
@@ -52,11 +56,12 @@ class ToDo{
 
             const importantButton = document.createElement('div');
             importantButton.classList.add('important-button');
-            const importantIcon = document.createTextNode('Mark as important');
+            const importantIcon = document.createTextNode('🏳️‍🌈');
 
             importantButton.addEventListener('click', (event)=>{
                 event.target.classList.add('task-important');
                 this.entries[entryIndex].important = true;
+                this.entries[entryIndex].done = false;
                 li.classList.add('task-important');
                 this.saveLocal;
             });
@@ -78,10 +83,10 @@ class ToDo{
                 this.saveLocal();
             });
 
-            /* if(entryValue.important){
+            /*if(entryValue.important){
                 li.classList.add('task-important');
             }
-
+            
             li.addEventListener('click', (event)=>{
                 event.target.classList.add('task-important');
                 this.entries[entryIndex].important = true;
@@ -105,7 +110,7 @@ class ToDo{
     }
 
     saveToFile(){
-        $.post('server.php', {save: this.entries}).done(function(){
+        $.post('server.php', {save: ToDo.entries}).done(function(){
             console.log("To-Do's succesfully saved");
         }).fail(function(){
             alert("To-Do save failed");
@@ -113,6 +118,31 @@ class ToDo{
             console.log("Something has been done using AJAX");
         })
     }
+
+    loadFromFile(){
+        $(ToDo.entries).html("");
+    
+        $.get('database.txt', function(data){
+            let content = JSON.parse(data).content;
+            console.log(content);
+    
+            content.forEach(function(todo, todoIndex){
+                $('#todos').append("<ul><li>" + todo.title + "</li><li>" + todo.description + "</li><li>" + todo.date + "</li></ul>");
+            });
+        })
+    }
+
+    sortByTitle(){
+        this.entries.sort((a, b) => a.title.localeCompare(b.title));
+        this.render();
+    }
+
+    sortByDate(){
+        this.entries.sort((a, b) => a.date.localeCompare(b.date));
+        this.render();
+    }
+
+    
 }
 
 const todo = new ToDo();

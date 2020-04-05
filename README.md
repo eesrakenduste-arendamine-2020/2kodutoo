@@ -1,47 +1,20 @@
 # 2. kodutöö – ToDo rakendus
 
-### Tähtpäev 05.04.2020 23:59
+## Grupiliikmed
+Dmitri Vassiltsov
+Timofey Shapovalov
 
-## Nõuded
+## Tekkinud raskused
 
-1. Töö tuleb teha vähemalt kahekesi, eelnevalt kokkuleppel on lubatud ka kolm liiget. GitHub'is peab eristuma, kes mida tegi!
-1. README.md fail sisaldab (1 punkti):
-    * autorite nimesid; 
-    * kirjeldust tekkinud keerukustest
-    * funktsionaalsuste kirjeldust
-1. Todo rakenduse funktsionaalsused:   
-    * Saab lisad ja kustutada (1 punkt)
-    * Saab märkida ülesandeid tehtuks (1 punkt)
-    * Saab järjestada kuupäeva ja nime järgi ülesandeid (2 punkti)
-    * Ülesanded salvestatakse localStorage'isse ja faili/andmebaasi (2 punkti)
-    * Ülesannete salvestamiseks ja kuvamiseks kasutatakse AJAX-it (1 punkti)
-    * Kui kasutaja tuleb lehele, siis näidatakse varem salvestatud ülesandeid (1 punkt)
-    * Rakendus töötab loogiliselt ja kasutaja ei pea mõtlema, et kuidas rakendus töötab. (2 punkti)
-    * Lisa ise 5 funktsionaalsust juurde.(5 punkti)
-      Näiteks: 
-         * Võimalus lisada kategooriad ja nende alusel jagada ülesandeid
-         * Möödunud ja/või tänase kuupäevaga tegemata ülesanded märkida erinevalt
-         * Võimalus otsida ülesandeid
-         * Võimalus märkida ülesandeid tähtsaks ning kuvada tähtsad ülesanded eraldi listina
-1. Väljanägemine ja animatsioonid
-    * Rakendus näeb kena välja (3 punkti)
-    * Elementide kuvamisel/eemaldamisel on kasutatud jQuery animatsioone (1 punkt)
+1. Kuna oleme unustanud sellest kodutööst ning tuli meelde väga hilja oli meil vähe aega selleks, et teha piisavalt palju tööd selleks, et see rakendus oleks väga mugav ja funktsionaalne.
+1. Keerukust pakkus jQueryga töötamine, kuna tunnis oli kõik tehtud kiiresti, mille tõttu pidi ise rohkem vaeva nägema selle arusaamisega.
+1. Keerukust pakkus funktsioon saveToFile, kuna millegi pärast see salvestas ainult ühe korra ning peale seda pole midagi salvestanud.
+1. Samuti tekkis probleeme todo´de tähtsaks märkimisega. See märkis seda tähtsaks ainult siis kui todo on pannud valminuks. Selle tõttu ei saanud ka teha filtreerimist ainult tähtsaks märgitud tododega.
 
+## Funktsionaalsus
 
-## Githubi töövoog grupiga töötades
+1. Saab lisada ja kustutada ToDo´d.
+1. ToDo´d salvestatakse localStorage´isse, mille abil veebilehele tagasi tulles on sul samad todo´d alles.
+1. Võimalus sorteerida todo´d nime või kuupäeva järgi.
+1. Võimalus märkida todo´d valmideks ning kustutada neid.
 
-1. Üks grupi liikmetest teeb fork-i 2kodutoo repositooriumist
-2. Tuleb lisada meeskonnaliikmed collaborators-iteks fork-itud repositooriumi 
-3. Collaborator-id peavad kutsega nõustuma (e-mail)
-4. Iga ühel tuleb teha git clone fork-itud repositooriumist (git clone https://YOURUSERNAME@github.com/REPOSITORYOWNERUSERNAME/REPOSITORY.git)
-5. Muudatuste lisamine:
-     * git add
-     * git commit
-     * git fetch & pull
-     * git push
-
-## Kasulikud viited
-* [JQuery dokumentatsioon](http://api.jquery.com)
-* [Collaboration on github](https://github.com/eesrakenduste-arendamine-2019/2kodutoo/settings/collaboration)
-* [JQuery POST](https://api.jquery.com/jquery.post/)
-* [JQuery AJAX](http://api.jquery.com/jquery.ajax/)

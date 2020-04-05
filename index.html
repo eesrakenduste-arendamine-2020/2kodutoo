@@ -8,14 +8,14 @@
         src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
-        <script src="js/jquery.js"></script>
+       
         <script>
             $(document).ready(function() {
 
                 $(".box").click(function() {
                     $(".box").animate({
                         width: '250px',
-                        height: '150px'
+                        height: '300px'
                     }, 1000);
                     $(".selgitus").show().animate({opacity: '1'}, 3000);
                 })
@@ -26,19 +26,23 @@
     <title>Todo</title>
 </head>
 <body>
+<button id="sortByTitle">Sort To-Do's by title</button>
+<button id="sortByDate">Sort To-Do's by date</button>
     <br>
     <input type="text" id="title" placeholder="To-Do's title"><br>
     <input type="text" id="description" placeholder="To-Do's description"><br>
     <input type="date" id="date"><br>
-    <input type="button" id="load" value="Load">
     <input type="button" id="save" value="Save">
     <input type="button" id="add" value="Add">
+    <input type="button" id="load" value="Load">
     <br>
     <div class="box">
-        <p class="content">???</p>
-        <p class="selgitus"> Nupp laadi laeb todo selrverisse.</p>
-        <p class="selgitus"> Nupp salvesta salvestb todo.</p>
-        <p class="selgitus"> Nupp lisa lisab sinu todo lehele</p>
+        <p class="content">Help</p>
+        <p class="selgitus"> Load button lets you load your previous saved To-Do's</p>
+        <p class="selgitus"> Save button saves your To-Do's to the server</p>
+        <p class="selgitus"> Add button adds a To-Do to the page</p>
+        <p class="selgitus"> Sorting buttons sort your To-Do's either by title or date</p>
+        <p class="selgitus"> Click on the flag to mark as important, doubleclick to mark as done</p>
     </div>
     <br>
     <input type="text" id="myInput" onkeyup="search()" placeholder="Search the todo list">
