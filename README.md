@@ -1,7 +1,7 @@
 ﻿# 2. kodutöö – ToDo rakendus
 
 ## Autorid
-**Georg-Henri Allas** & **Karl Martin Vellik
+**Georg-Henri Allas** & **Karl Martin Vellik**
 ## Keerukused
 * Jquery animatsioonide lisamine
 * Kuupäevade sortimise tegemine
