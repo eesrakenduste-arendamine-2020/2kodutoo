@@ -125,7 +125,42 @@ class Todo{
       }
       
       function sortDateFunction(){
+        let currentTodos = localStorage.getItem('entries');
 
+        if (currentTodos != null) {
+          todos = JSON.parse(currentTodos);
+        }
+        else {
+          todos = [];
+        }
+        return todos.sort(function(a, b){
+          return new Date(b.date) - new Date(a.date);
+        });
+
+      }
+
+      function changeImage(){
+        document.getElementById('sec1').style.backgroundImage = "url(img/linn.jpeg)";
+      }
+
+      let buttonContainer = document.querySelector('#buttonContainer');
+
+      window.onload = function() {
+        changeBackgroundColor();
+        changeColorButton = document.querySelector('#change-color');
+        changeColorButton.addEventListener(
+          'click',
+          this.changeBackgroundColor,
+          this.changeDivColor
+        );
+        changeFontButton = document.querySelector('#change-size');
+        changeFontButton.addEventListener('click', changeFont);
+        fontChanged = 0;
+
+        changeFontSize = document.querySelector('#change-font');
+        changeFontSize.addEventListener('click', changeTextSize);
+        sizeChanged = 0;
+      };
 
         
         function changeBackgroundColor() {
