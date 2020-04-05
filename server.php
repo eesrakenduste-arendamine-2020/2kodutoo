@@ -2,7 +2,6 @@
   if(isset($_POST["save"]) && !empty($_POST["save"])){
     saveToFile($_POST["save"]);
   }
-
   function saveToFile($stringToSave){
     $object = new StdClass();
     $object->last_modified = time();
@@ -12,5 +11,4 @@
       echo "success";
     }
   }
-
 ?>

@@ -113,9 +113,3 @@ input[type="button"]:hover{
     background-color: cyan !important;
     color: black !important;
 }
-
-.notcompleted, .completed{
-    text-align: left;
-    margin-left: 50px;
-    color: white;
-}
