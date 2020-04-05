@@ -1,0 +1,116 @@
+body{
+    margin: 0;
+
+}
+/*.hidden{*/
+/*    opacity: 0;*/
+/*}*/
+.task-missed{
+    border-color: darkred;
+    background-color: indianred;
+}
+
+.task-completed{
+    border-color: darkgreen;
+    background-color: lightgreen;
+}
+
+.task-completed .entry-value{
+    text-decoration: line-through;
+}
+
+#inputContainer, #buttonContainer{
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+
+}
+
+input{
+    width: 21%;
+    margin: 5px;
+    border-radius: 5px;
+    height: 25px;
+}
+
+#addButton:hover{
+    cursor: pointer;
+    border-color: black;
+    border-radius: 5px;
+}
+
+input[type = "buton"]{
+    width: 15%;
+    border-radius: 10px;
+    height: 37px ;
+    padding: 10px ;
+    font-size: 17px ;
+    background-color: green ;
+    border: 1px solid green;
+    color:white;
+
+}
+input[type = "buton"]:hover{
+    background-color: darkgreen;
+    border-color: darkgreen;
+    font-weight: 600;
+}
+li{
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin-bottom: 5px;
+
+
+
+}
+#sorting{
+    display:flex;
+    justify-content:left;
+    align-items: center;
+    margin: 1px;
+    padding-bottom: 1px;
+}
+
+.done-button{
+    color: green;
+    font-size: 1.3em;
+    font-weight: 900;
+}
+
+.done-button:hover{
+    font-weight: 900;
+    color:darkgreen;
+    font-size: 1.4em;
+    cursor: pointer;
+}
+
+.delete-button{
+    color: red;
+    font-size: 1.3em;
+    font-weight: 900;
+}
+
+.delete-button:hover{
+    font-weight: 900;
+    color:darkred;
+    font-size: 1.4em;
+    cursor: pointer;
+}
+
+.entry-value{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.entry-value:hover{
+    background-color: rgb(53, 53, 134));
+
+}
