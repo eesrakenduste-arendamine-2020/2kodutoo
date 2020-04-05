@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +13,7 @@
 </head>
 <body>
     <div id="inputContainer">
-        <label for="title">Nimi</label>
+        <label for="title">Tiitel</label>
         <input type="text" name="title" id="title">
         <label for="description">Kirjeldus</label>
         <input type="text" name="description" id="description">
@@ -20,10 +21,13 @@
         <input type="date" name="date" id="date">
     </div>
     <div id="buttonContainer">
-        <input type="button" value="LISA" id="addButton" class="button">
+        <input type="button" value="LISA" id="addButton">
+        <input type="button" value="SORTEERI(TIITLI JÄRGI)" id="sortByTitleButton">
+        <input type="button" value="SORTEERI(KUUPAEVA JÄRGI)" id="sortByDateButton">
     </div>
     <div id="mode">
-        <input type="button" id="backgroundMode" class="mode" class="button" type="submit"></input>
+        <input id="backgroundMode" class="mode" type="button" value="Dark mode"></input>
     </div>
+    <audio id="muss" controls src="muss.mp3" type="audio/mpeg">Kahjuks teie veebilehitseja ei toeta HTML5 audio elementi</audio>
 </body>
 </html>

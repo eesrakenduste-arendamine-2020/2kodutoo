@@ -1,6 +1,3 @@
-let backgroundChanger = document.querySelector("#mode")
-
-
 class Entry{
     constructor(title, description, date){
         this.title = title;
@@ -15,6 +12,9 @@ class Todo{
         this.entries = JSON.parse(window.localStorage.getItem('entries')) || [];
 
         document.querySelector('#addButton').addEventListener('click', ()=>{this.addEntry();});
+        document.querySelector("#sortByTitleButton").addEventListener("click", () => {this.sortEntriesByTitle()});
+        document.querySelector("#sortByDateButton").addEventListener("click", () => {this.sortEntriesByDate()});
+        this.entries = JSON.parse(window.localStorage.getItem("entries")) || [];
 
         this.render();
     }
@@ -29,6 +29,14 @@ class Todo{
         console.log(this.entries);
         this.saveLocal();
 
+        this.render();
+    }
+    sortEntriesByTitle(){
+        this.entries.sort((a, b) => a.title.localeCompare(b.title));
+        this.render();
+    }
+    sortEntriesByDate(){
+        this.entries.sort((a, b) => a.date.localeCompare(b.date));
         this.render();
     }
 
@@ -88,6 +96,7 @@ class Todo{
                 }
             });
 
+
             removeButton.appendChild(removeIcon);
             li.appendChild(div);
             li.appendChild(removeButton);
@@ -100,10 +109,12 @@ class Todo{
 
     saveLocal(){
         window.localStorage.setItem('entries', JSON.stringify(this.entries));
-    }    
+    }
 }
 
 const todo = new Todo();
+
+let backgroundChanger = document.querySelector("#mode")
 
 document.getElementById("backgroundMode").value="LIGHT MODE";
 

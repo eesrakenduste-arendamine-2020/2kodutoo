@@ -3,14 +3,13 @@ body{
 }
 
 .task-completed{
-    border-color: lightgreen;
+    border-color: limegreen;
 }
 
 .task-completed .entry-value{
     text-decoration: line-through;
     color: limegreen;
 }
-
 .task-failed{
     border-color: palevioletred;
 }
@@ -20,7 +19,7 @@ body{
     color: red
 }
 
-#inputContainer, #buttonContainer, #mode{
+#inputContainer, #buttonContainer{
     width:100vw;
     display: flex;
     justify-content: center;
@@ -50,23 +49,6 @@ input[type="button"]:hover{
     font-weight: 600;
 }
 
-.button {
-    width:15%;
-    border-radius: 10px;
-    height: 37px;
-    padding: 10px;
-    font-size: 17px;
-    background-color: green;
-    border: 1px solid green;
-    color:white;
-}
-
-.button:hover {
-    background-color: darkgreen;
-    border-color: darkgreen;
-    font-weight: 600;
-}
-
 li{
     display: flex;
     width: 90%;
@@ -76,7 +58,6 @@ li{
     border: 2px solid lightgray;
     border-radius: 10px;
     margin: 5px;
-    color: black;
 }
 
 .delete-button{
@@ -88,7 +69,7 @@ li{
 .delete-button:hover{
     font-weight: 900;
     color:darkred;
-    font-size: 1.8em;
+    font-size: 1.4em;
     cursor: pointer;
 
 }
@@ -101,5 +82,24 @@ li{
 }
 
 .entry-value:hover{
-    background-color: gray;
+    background-color: violet;
+}
+.backgroundMode.active{
+    background-image: url("i.pinimg.com/originals/d0/99/fb/d099fbe1334992232264f479a516983e.jpg");
+}
+#muss{
+    position: absolute;
+    top: 6%;
+    right: 1500px;
+    position: center;
+}
+#backgroundMode{
+    position: absolute;
+    top: 5.6%;
+    right: 210px;
+    position: center;
+    background-color: green;
+    Font-size: 17px;
+    color: white;
+    border-radius: 10px;
 }
