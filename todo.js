@@ -133,7 +133,7 @@ class Todo{
                     this.entries[entryIndex].important = false;
                 }
                 else if(this.entries[entryIndex].important){
-                    li.style.backgroundColor = "initial";
+                    li.style.backgroundColor = "white";
                     this.entries[entryIndex].important = false;
                 } else {
                     li.style.backgroundColor = "rgb(213,213,46)";
