@@ -8,6 +8,7 @@ function Todo(description, title, dueDate) {
   
 let todos = new Array();
 let localTodo = localStorage.getItem("todo");
+let doneS = 0;
 
 window.onload = init;
   
@@ -100,7 +101,13 @@ function addTodosToPage() {
       li.appendChild(doneButton);
       removeButton.appendChild(removeIcon);
       li.appendChild(removeButton);
-      ul.appendChild(li);
+      if(todoItem.done == "done" && doneS == 2){
+        ul.appendChild(li);
+      } else if(doneS == 0){
+        ul.appendChild(li);
+      } else if(doneS == 1 && todoItem.done == "undone"){
+        ul.appendChild(li);
+      }
     }
   }
 }
@@ -142,3 +149,18 @@ function saveTodoData() {
   request.send();
 }
   
+function sortDone(){
+  let checkbox1 = document.getElementById("doneCheck");
+  let checkbox2 = document.getElementById("notdoneCheck");
+  if (checkbox1.checked == true && checkbox2.checked == true){
+    doneS = 0;
+  } else if(checkbox1.checked == true && checkbox2.checked == false) {
+    doneS = 2;
+  }else if(checkbox1.checked == false && checkbox2.checked == true) {
+    doneS = 1;
+  }else{
+    doneS = 3;
+  }
+  document.getElementById("todoList").innerHTML = "";
+  addTodosToPage();
+}

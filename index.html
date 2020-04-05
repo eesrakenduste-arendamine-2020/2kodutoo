@@ -40,6 +40,14 @@
   </fieldset>
   </form>
   <form id="todoForm">
+    <div>
+      <label>Finished</label>
+      <input type="checkbox" id="doneCheck"  onclick="sortDone()" checked>
+    </div>
+    <div>
+      <label>Unfinished</label>
+      <input type="checkbox" id="notdoneCheck"  onclick="sortDone()" checked>
+    </div>
   <h1>My ToDo List</h1>
   <ul id="todoList"></ul>
 </fieldset>
