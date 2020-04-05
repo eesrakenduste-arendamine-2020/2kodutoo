@@ -1,0 +1,118 @@
+body {
+  text-align: center;
+  background: linear-gradient(120deg, #e9edfd, #a7aaca);
+}
+#content {
+  background-color: white;
+  padding: 30px 0 70px 0;
+  margin: 30px auto 0 auto;
+  width: 600px;
+  border-radius: 10px;
+}
+.completed {
+  color: lightgrey !Important;
+  text-decoration: line-through !Important;
+}
+.completed:hover {
+  color: lightgrey !Important;
+}
+.todo {
+  cursor: pointer;
+  margin: 12px 0 0 0;
+  border-bottom: 1px solid rgb(211, 211, 211);
+  padding-bottom: 5px;
+  transition: 0.1s ease-in-out;
+  text-align: left;
+}
+.todo:first-letter {
+  text-transform: capitalize;
+}
+.todo:hover {
+  transform: translateY(-3px);
+}
+.deleter {
+  color: black;
+  margin-left: 10px;
+  text-decoration: none !Important;
+  padding-top: 11px;
+  cursor: pointer;
+  margin: auto;
+  border: 1px solid lightgrey;
+  padding: 3px;
+  border-radius: 2px;
+  background-color:#f34c4c;
+  color: white;
+}
+.deleter:hover {
+  color:black;
+}
+.list {
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+  grid-gap: 5px;
+  width: 500px;
+  margin: auto;
+  margin-top: 20px;
+  text-align: center;
+}
+input[type=button] {
+  border: 1px solid white !Important;
+}
+input[type=button],
+.sort button {
+  background: linear-gradient(120deg, #5aaef1, #6c78ff);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.sort button {
+  background: linear-gradient(270deg, #717be2, #7d95f5);
+  padding: 8px 16px;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+}
+.sort button:hover {
+  background: linear-gradient(270deg, #61e67e, #4cd46e);
+}
+input[type=button]:hover {
+  color: black;
+}
+input[type=text] {
+  height: 20px;
+}
+input[type=checkbox] {
+  height: 18px;
+  width: 18px;
+  transform: translateY(4px);
+}
+.heading {
+  margin: auto;
+  text-align: center;
+  border-bottom: 2px solid black;
+  width: 300px;
+  padding-top: 30px;
+  text-transform: uppercase;
+}
+.due {
+  color: #f59898;
+}
+.past {
+  color: #f34c4c;
+  font-style: italic;
+}
+.legend {
+  text-align: center;
+  width: 200px;
+  background: white;
+  border-radius: 3px;
+  text-align: center;
+}
+.sort {
+  margin-top: 30px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <script defer src="todo.js"></script>
+  <title>Todo</title>
+</head>
+
+<body>
+  <h2>ToDo list</h2>
+  <div class="todoList">
+   
+        <input type="text" id="title" placeholder="Todo" autocomplete="off"/>
+
+        <label for="date" style="margin-left: 10px;">Due Date:</label>
+        <input type="date" id="date" name="date">
+
+        <label for="important" style="margin-left: 10px;"> Important:</label>
+        <input type="checkbox" id="important" name="important" value="1">
+
+        <input type="button" id="add" value="Add Todo" />
+
+    <hr>
+  </div>
+
+  <div class="sort">
+    <button id="sortAdded">Sort by Added</button>
+    <button id="sortAsc">Sort alphabetically ↓</button>
+    <button id="sortDesc">Sort alphabetically ↑</button>
+    <button id="sortdateasc">Sort by Date ↓</button>
+    <button id="sortdatedesc">Sort by Date ↑</button>
+  </div>
+
+  <div id="content"></div> 
+
+  <br>
+  <br>
+
+  <div class="legend">
+    <h4 class="past">Due Date has passed!</h4>
+    <h4 class="due">Due Date is TODAY</h4>
+    <h4 style="border: none; padding: 0;">Normal todo</h4>
+    <h4 class="completed">Todo has been completed</h4>
+  </div>
+
+</body>
+
+</html>
