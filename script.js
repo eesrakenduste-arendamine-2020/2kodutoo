@@ -141,7 +141,7 @@ function addNewToFile(name, category, chosenColorClass, important, taskObject) {
         fileData['id'] = response;
         fileData['done'] = 0;
 
-        if ( currentStorage['data'] === undefined || currentStorage['data'].length == 0) {
+        if ( currentStorage === null || currentStorage['data'] === undefined || currentStorage['data'].length == 0) {
             let storageData = {
                 'data': [fileData]
             }
@@ -219,7 +219,7 @@ function removeCurrentViewTasks() {
 
 function displayImportantTasks() {
     let currentStorage = JSON.parse(localStorage.getItem('todo'));
-    if ( currentStorage['data'] === undefined || currentStorage['data'].length == 0) {
+    if ( currentStorage === null || currentStorage['data'] === undefined || currentStorage['data'].length == 0) {
         return;
     }
 
@@ -240,7 +240,7 @@ function displayImportantTasks() {
 
 function displayAllTasks() {
     let currentStorage = JSON.parse(localStorage.getItem('todo'));
-    if ( currentStorage['data'] === undefined || currentStorage['data'].length == 0) {
+    if ( currentStorage === null || currentStorage['data'] === undefined || currentStorage['data'].length == 0) {
         return;
     }
 
@@ -263,7 +263,7 @@ function displayAllTasks() {
 
 function  displayDoneTasks() {
     let currentStorage = JSON.parse(localStorage.getItem('todo'));
-    if ( currentStorage['data'] === undefined || currentStorage['data'].length == 0) {
+    if ( currentStorage === null || currentStorage['data'] === undefined || currentStorage['data'].length == 0) {
         return;
     }
 
