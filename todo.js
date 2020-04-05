@@ -4,6 +4,8 @@ class Entry{
         this.description = description;
         this.date = date;
         this.done = false;
+        this.important = false;
+        this.missed = false;
     }
 }
 
@@ -55,9 +57,8 @@ class Todo{
             removeButton.addEventListener('click', ()=>{
                 $(li).animate({
                     opacity:".0"
-                },1000, "linear", function(){
+                },250, "linear", function(){
                     ul.removeChild(li);
-                    // this.render();
                 });
                 this.entries.splice(entryIndex, 1);
                 this.saveLocal();
@@ -83,30 +84,51 @@ class Todo{
 
             if(entryValue.date < formatDate()) {
                 li.classList.add('task-missed');
+                this.entries[entryIndex].missed = true;
                 this.saveLocal();
             } else {
                 li.classList.remove('task-missed');
+                this.entries[entryIndex].missed = false;
                 this.saveLocal();
             }
 
-            doneButton.addEventListener('click', (keyframes, options)=>{
+            doneButton.addEventListener('click', ()=>{
                 if(entryValue.done){
                     $(li).animate({
                         backgroundColor: "#fff"
-                    },100, "linear", function(){
+                    },1000, "linear", function(){
                         li.classList.remove('task-completed');
                     });
-
                     this.entries[entryIndex].done = false;
                     this.saveLocal();
+
                 }else{
                     $(li).animate({
-                        "background-color": "#90EE90"
+                        backgroundColor: "#90EE90",
+                        textDecoration: "line-through"
                     }, 1000, "linear", function () {
                         li.classList.add('task-completed');
                     });
                     this.entries[entryIndex].done = true;
                     this.saveLocal();
+                }
+            });
+
+            div.addEventListener("click", ()=> {
+                if (this.entries[entryIndex].important && this.entries[entryIndex].done) {
+                    li.style.backgroundColor = "lightgreen";
+                    this.entries[entryIndex].important = false;
+                }
+                else if(this.entries[entryIndex].important && this.entries[entryIndex].missed){
+                        li.style.backgroundColor = "indianred";
+                    this.entries[entryIndex].important = false;
+                }
+                else if(this.entries[entryIndex].important){
+                    li.style.backgroundColor = "initial";
+                    this.entries[entryIndex].important = false;
+                } else {
+                    li.style.backgroundColor = "rgb(255, 255, 0)";
+                    this.entries[entryIndex].important = true;
                 }
             });
 
@@ -121,31 +143,30 @@ class Todo{
 
         $("#sort").change(function(){
             let elems = $.makeArray($(".entry"));
-            console.log(elems);
-            if(this.value === "dateIncrease"){
 
+            if(this.value === "dateIncrease"){
                 elems.sort(function(a,b){
                     return Date.parse($(".entry-value #date", a).text()) > Date.parse($(".entry-value #date", b).text()) ? 1 : -1;
                 })
-
             }
+
             if(this.value === "dateDecrease") {
                 elems.sort(function(a,b){
                     return Date.parse($(".entry-value #date", b).text()) > Date.parse($(".entry-value #date", a).text()) ? 1 : -1;
                 })
             }
+
             $(".todo-list").empty().append(elems);
         });
 
 
         $("#sort").change(function(){
             let titleArray = $.makeArray($(".entry"));
+
             if(this.value === "titleIncrease") {
                 titleArray.sort(function (a, b) {
                     return ($(b).text()) < ($(a).text()) ? 1 : -1;
                 });
-
-
             } else {
                 if(this.value === "titleDecrease") {
                     titleArray.sort(function (a, b) {
@@ -153,6 +174,7 @@ class Todo{
                     });
                 }
             }
+
             $(".todo-list").empty().append(titleArray)
         });
 
