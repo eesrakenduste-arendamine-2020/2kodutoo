@@ -117,7 +117,29 @@ class Todo{
         }
       }
       
+      function sortWithDate(){
+        let todos = sortDateFunction();
+        window.localStorage.setItem('entries', JSON.stringify(todos));
+        window.location.href = "index.html";
       
+      }
+      
+      function sortDateFunction(){
+
+
+        
+        function changeBackgroundColor() {
+          const red = Math.round(Math.random() * 255);
+          const green = Math.round(Math.random() * 255);
+          const blue = Math.round(Math.random() * 255);
+          document.body.style.backgroundColor =
+            'rgb(' + red + ',' + green + ',' + blue + ')';
+        }
+        
+        function changeColor(colorValue) {
+          document.body.style.backgroundColor = colorValue;
+        }
+
     /*   FONDI JA SUURUSE MUUTMINE */ 
 
     function changeFont() {
