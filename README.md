@@ -9,7 +9,7 @@ Aleksandr Rõbakov
 Kenet Paurmann
 
 <h2>Tekkinud Raskused</h2>
-Kenetil ja Aleksandril oli Githubi üleslaadimisega probleeme ning seetõttu saatsime enda koodi osa edasi Martenile ning tema oli peamine üleslaadija.
+Kenetil ja Aleksandril oli Githubi üleslaadimisega probleeme ning seetõttu saatsime enda koodi osa edasi Martenile ning tema oli peamine üleslaadija.Kasutasime töö tegemiseks Discordi. 
 Kõige keerukamaks osutus Javascript. Esialgu olime hädas sorteerimise ja otsinguga, sest internetis oli neist väga erinevaid variante ning pidime need erinevatest koodijuppidest kokku panema. Hiljem tekkisid probleemid ka ikoonide lisamisega entrysse.
 
 <h2>Funktsionaalsus</h2>
