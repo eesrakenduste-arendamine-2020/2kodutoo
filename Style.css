@@ -120,9 +120,9 @@ input[type="button"]:hover{
     color: white;
     margin-left: 20%;
     margin-right: 20%;
-  }
+}
 
-  .alertPositive {
+.alertPositive {
     padding: 20px;
     background-color: #4CAF50;
     color: white;
@@ -130,19 +130,4 @@ input[type="button"]:hover{
     transition: opacity 0.6s;
     margin-left: 20%;
     margin-right: 20%;
-  }
-  
-.closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.closebtn:hover {
-    color: black;
 }

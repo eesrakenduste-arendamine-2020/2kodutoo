@@ -66,9 +66,7 @@ var searchButton = document.querySelector('#searchInput');
 class Todo {
   constructor() {
     this.entries = JSON.parse(window.localStorage.getItem("entries")) || [];
-    document.querySelector("#addButton").addEventListener("click", () => {
-      this.addEntry();
-    });
+    document.querySelector("#addButton").addEventListener("click", () => {this.addEntry();});
     document.querySelector('#sortByTitle').addEventListener('click', ()=>{this.sortByTitle()});
     document.querySelector("#sortByDate").addEventListener("click", () => {this.sortByDate();});
     searchButton.addEventListener('keyup', ()=>{this.search()});
@@ -76,7 +74,6 @@ class Todo {
     this.render();
   }
   sortByTitle() {
-
       this.entries.sort(function (a, b) {
         var x = a.title.toLowerCase();
         var y = b.title.toLowerCase();
@@ -87,14 +84,12 @@ class Todo {
           return 1;
         }
         return 0;
-      })
-    ;
+      });
 
     this.saveLocal();
     this.render();
   }
   sortByDate() {
-
       this.entries.sort(function (a, b) {
         var x = a.date;
         var y = b.date;
@@ -220,12 +215,9 @@ class Todo {
         });
       }
 
-
     saveLocal(){
         window.localStorage.setItem('entries', JSON.stringify(this.entries));
     }
-
-
 }
 
 const todo = new Todo();
