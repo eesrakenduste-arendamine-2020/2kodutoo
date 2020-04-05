@@ -15,7 +15,7 @@ class Todo{
         this.entries = JSON.parse(window.localStorage.getItem('entries')) || [];
 
         document.querySelector('#addButton').addEventListener('click', ()=>{this.addEntry();});
-        this.render();   
+        this.render(this.entries);
     }
     
     addEntry(){
@@ -36,13 +36,14 @@ class Todo{
         console.log(this.entries);
         this.saveLocal();
 
-        this.render();
+        this.render(this.entries);
         
         
     }
     
 
-    render(){
+    render(array){
+        let newArray = array;
         let sortValue = document.querySelector('#sortBy').value;
         document.querySelector("#clickSort").addEventListener("click", ()=>{
             sortValue = document.querySelector('#sortBy').value;
@@ -56,7 +57,7 @@ class Todo{
         const ul = document.createElement('ul');
         ul.className = "todo-list";
 
-        this.entries.forEach((entryValue, entryIndex)=>{            
+        newArray.forEach((entryValue, entryIndex)=>{
             const li = document.createElement('li');
             li.classList.add('entry');            
             const div = document.createElement('div');
@@ -72,11 +73,10 @@ class Todo{
            
             removeButton.addEventListener('click', ()=>{                
                 ul.removeChild(li);
-                this.entries.splice(entryIndex, 1); 
+                newArray.splice(entryIndex, 1);
                 this.saveLocal();
-                this.render();
-               
-            });            
+                this.render(newArray);
+            });
 
             if(entryValue.done){
                 li.classList.add('task-completed');
@@ -85,11 +85,11 @@ class Todo{
             div.addEventListener('click', ()=>{
                 if(entryValue.done){
                     li.classList.remove('task-completed');
-                    this.entries[entryIndex].done = false;
+                    newArray[entryIndex].done = false;
                     this.saveLocal();
                 }else{
                     li.classList.add('task-completed');
-                    this.entries[entryIndex].done = true;
+                    newArray[entryIndex].done = true;
                     this.saveLocal();
                 }
             });      
@@ -121,19 +121,31 @@ class Todo{
         return important;
     }
    
-    changeSortValue(sortValue){    
-        let sortedByDate = sortValue;    
+    changeSortValue(sortValue){  
         if(sortValue == "date"){
             this.sortedByDate();
         } else if(sortValue == "name"){
             this.sortedByName();
         } else if(sortValue == "important"){
-            this.sortedByImportance();            
+            this.sortedByImportance();
         } else if(sortValue == "unimportant"){
             this.sortedUnimportant();
         } else if(sortValue == "blank"){
             this.sortedToBasic();
+        } else if(sortValue == "notdone"){
+            this.sortedNotDone();
         }
+    }
+
+    sortedNotDone(){
+        var notDone = new Array();
+        for(let i=0; i < this.entries.length; i++){
+            let entry = this.entries[i];
+            if(entry.done != true){
+                notDone.push(entry);
+            }
+        }
+        this.render(notDone);
     }
 
     sortedByDate(){
@@ -148,9 +160,9 @@ class Todo{
             }
             return comparison;
         }
-
-        this.entries.sort(compareDate);
-        this.render();
+        var sortDate = this.entries.concat();
+        sortDate.sort(compareDate);
+        this.render(sortDate);
 
     }
 
@@ -166,20 +178,36 @@ class Todo{
             }
             return comparison;
         }
-        this.entries.sort(compareName);
-        this.render();
+        var sortName = this.entries.concat();
+        sortName.sort(compareName);
+        this.render(sortName);
     }
 
     sortedByImportance(){
-
+        let important = new Array();
+        for(let i=0; i < this.entries.length; i++){
+            let entry = this.entries[i];
+            if(entry.importance != "no"){
+                important.push(entry);
+            }
+        }
+        this.render(important);
     }
 
     sortedUnimportant(){
+        let uniImportant = new Array();
+        for(let i=0; i < this.entries.length; i++){
+            let entry = this.entries[i];
+            if(entry.importance != "yes"){
+                uniImportant.push(entry);
+            }
+        }
+        this.render(uniImportant);
 
     }
 
     sortedToBasic(){
-
+        this.render(this.entries);
     }
 
 }
