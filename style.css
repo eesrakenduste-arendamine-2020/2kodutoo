@@ -35,234 +35,223 @@ ul li:nth-child(odd) {
 ul li:hover {
   background: rgb(207, 194, 218);
 }
-#addButton{
-    width: 120px;
-    font-family: 'Raleway', sans-serif;
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    font-size: 16px;
-    background-color: rgb(255, 255, 255);
-    color: black;
-    border: 2px solid rgb(142, 120, 252);
-    transition-duration: 0.7s;
-    border-radius: 6px;
+
+
+ul li.checked {
+  background: #9c9c9c;
+  color: #fff;
+  text-decoration: line-through;
+  text-decoration-color: #9c9c9c;
 }
+
+
+ul li.checked::before {
+  content: 'TEHTUD';
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  margin-left: 1000px;
+}
+
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: 1px solid #f9f9f9;
+
+}
+
+.close:hover {
+  background-color: rgb(255, 62, 88);
+  color: white;
+}
+
+.header {
+  background-color: #c0cdff;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+
+input {
+  margin: 0;
+  border: none;
+  padding: 10px;
+  float: center;
+  font-size: 16px;
+  width: 24vw;
+  height: 25px;
+  border-radius: 5px;
+}
+
+#addButton{
+  width: 120px;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  font-size: 16px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: 2px solid rgb(142, 120, 252);
+  transition-duration: 0.7s;
+  border-radius: 6px;
+}
+#addButton:hover {
+  background-color: rgb(142, 120, 252);
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.28), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+
+#sortWithNames{
+width: 90px;
+font-family: 'Raleway', sans-serif;
+font-family: 'Playfair Display', serif;text-align: center;
+background-color: rgb(255, 255, 255);
+color: black;
+border: 2px solid rgb(184, 170, 255);
+transition-duration: 0.7s;
+border-radius: 8px;
+}
+#sortWithNames:hover {
+background-color: rgb(184, 170, 255);
+color: white;
+}
+
+#sortWithDate {
+width: 90px;
+font-family: 'Raleway', sans-serif;
+font-family: 'Playfair Display', serif;
+text-align: center;
+background-color: rgb(255, 255, 255);
+color: black;
+border: 2px solid rgb(184, 170, 255);
+transition-duration: 0.7s;
+border-radius: 8px;
+}
+#sortWithDate:hover {
+background-color: rgb(184, 170, 255);
+color: white;
+}
+
+
+
+
+body {
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Playfair Display', serif;
+}
+
+.header {
+  background-color: #a8d6ff;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+
+#change-color {
+  width: 90px;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  color: black;
+  border: .5px solid rgb(116, 116, 116);
+  border-radius: 8px;
+}
+
+#change-color:hover {
+  background-color: white;
+}
+
+#change-color:active {
+  background-color: #adadad;
+  /*box-shadow: 0 5px #666;*/
+  transform: translateY(2px);
+}
+
+#changeImage {
+  width: 90px;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  color: black;
+  border: .1px solid rgb(116, 116, 116);
+  border-radius: 8px;
+  background-image: url(img/linn.jpeg);
+  
+}
+
+#changeImage:hover {
+  background-color: white;
+}
+
+#changeImage:active {
+  background-color: #adadad;
+  /*box-shadow: 0 5px #666;*/
+  transform: translateY(2px);
+}
+
+
+
+#change-font {
+  width: 90px;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  color: black;
+  border: .5px solid rgb(116, 116, 116);
+  border-radius: 8px;
+}
+
+#change-font:hover {
+  background-color: white;
+}
+
+#change-font:active {
+  background-color: #adadad;
+  /*box-shadow: 0 5px #666;*/
+  transform: translateY(2px);
+}
+
 #change-size {
-    width: 90px;
-    font-family: 'Raleway', sans-serif;
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-    position: relative;
-    color: black;
-    border: .5px solid rgb(116, 116, 116);
-    border-radius: 8px;
-  }
+  width: 90px;
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  color: black;
+  border: .5px solid rgb(116, 116, 116);
+  border-radius: 8px;
+}
 
-  #change-size:hover {
-    background-color: white;
-  }
+#change-size:hover {
+  background-color: white;
+}
 
-  #change-size:active {
-    background-color: #adadad;
-    /*box-shadow: 0 5px #666;*/
-    transform: translateY(2px);
-  }
-  #sortWithNames{
-    width: 90px;
-    font-family: 'Raleway', sans-serif;
-    font-family: 'Playfair Display', serif;text-align: center;
-    background-color: rgb(255, 255, 255);
-    color: black;
-    border: 2px solid rgb(184, 170, 255);
-    transition-duration: 0.7s;
-    border-radius: 8px;
-  }
-  #sortWithNames:hover {
-    background-color: rgb(184, 170, 255);
-    color: white;
-  }
-  
-  #sortWithDate {
-    width: 90px;
-    font-family: 'Raleway', sans-serif;
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-    color: black;
-    border: 2px solid rgb(184, 170, 255);
-    transition-duration: 0.7s;
-    border-radius: 8px;
-  }
-  #sortWithDate:hover {
-    background-color: rgb(184, 170, 255);
-    color: white;
-
-     
-  body {
-    font-family: 'Raleway', sans-serif;
-    font-family: 'Playfair Display', serif;
-  }
-
-  .header {
-    background-color: #a8d6ff;
-    padding: 30px 40px;
-    color: white;
-    text-align: center;
-  }
-
-
-  #change-color {
-    width: 90px;
-    font-family: 'Raleway', sans-serif;
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-    position: relative;
-    color: black;
-    border: .5px solid rgb(116, 116, 116);
-    border-radius: 8px;
-  }
-
-  #change-color:hover {
-    background-color: white;
-  }
-
-  #change-color:active {
-    background-color: #adadad;
-    /*box-shadow: 0 5px #666;*/
-    transform: translateY(2px);
-  }
-  #changeImage {
-    width: 90px;
-    font-family: 'Raleway', sans-serif;
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-    position: relative;
-    color: black;
-    border: .1px solid rgb(116, 116, 116);
-    border-radius: 8px;
-    background-image: url(img/linn.jpeg);
-    
-  }
-
-  #changeImage:hover {
-    background-color: white;
-  }
-
-  #changeImage:active {
-    background-color: #adadad;
-    /*box-shadow: 0 5px #666;*/
-    transform: translateY(2px);
-  }
-  
-  #change-font {
-    width: 90px;
-    font-family: 'Raleway', sans-serif;
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-    position: relative;
-    color: black;
-    border: .5px solid rgb(116, 116, 116);
-    border-radius: 8px;
-  }
-
-  #change-font:hover {
-    background-color: white;
-  }
-
-  #change-font:active {
-    background-color: #adadad;
-    /*box-shadow: 0 5px #666;*/
-    transform: translateY(2px);
-  }
-
-  .header {
-    background-color: #c0cdff;
-    padding: 30px 40px;
-    color: white;
-    text-align: center;
-  }
-
-  .header:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-
-  
-
-  input {
-    margin: 0;
-    border: none;
-    padding: 10px;
-    float: center;
-    font-size: 16px;
-    width: 24vw;
-    height: 25px;
-    border-radius: 5px;
-  }
-
-  ul li.checked {
-    background: #9c9c9c;
-    color: #fff;
-    text-decoration: line-through;
-    text-decoration-color: #9c9c9c;
-  }
-
-  
-  ul li.checked::before {
-    content: 'TEHTUD';
-    position: absolute;
-    top: 10px;
-    left: 16px;
-    margin-left: 1000px;
-  }
-
-  
-  .close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 12px 16px 12px 16px;
-    background-color: rgb(255, 255, 255);
-    color: black;
-    border: 1px solid #f9f9f9;
-
-  }
-
-  .close:hover {
-    background-color: rgb(255, 62, 88);
-    color: white;
-  }
-
-  .header {
-    background-color: #c0cdff;
-    padding: 30px 40px;
-    color: white;
-    text-align: center;
-  }
-
-  .header:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-
-  
-
-  input {
-    margin: 0;
-    border: none;
-    padding: 10px;
-    float: center;
-    font-size: 16px;
-    width: 24vw;
-    height: 25px;
-    border-radius: 5px;
-  }
-  
+#change-size:active {
+  background-color: #adadad;
+  /*box-shadow: 0 5px #666;*/
+  transform: translateY(2px);
+}
