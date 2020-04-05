@@ -29,9 +29,11 @@ Kuna tahtsime, et olev t-odo list oleks keskendatud todo.txt andmebaasiga tööt
 Suurem osa gruppitööst oli tehtud koostöös Discordi teel ning katsetatud putty: greeny keskkonas +  WinSCP.
 
 *Herman Petrov :
-Olulisemad punktid:
+Olulisemad punktid: 
+Js-funktsionaalsuse testimine ja loomine+css.
 Kirjutasin ja arendasin koodi, mis võimaldaks lugeda ajaxi abil todo.txt failist andmeid ja ka salvestaks neid. 
-Kirjutasin localStorage võimaluse todoListile. 
+Kirjutasin localStorage võimaluse todoListile.
+Andmebaasi töötamise testimine ja arendamine.
 Kujundasin CSS, arendasin tausta todo ja paigutust. 
 Arendasin Delete ja Add võimalused todod.
 Koodi vormistus + testmine
