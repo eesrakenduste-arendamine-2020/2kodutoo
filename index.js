@@ -5,13 +5,14 @@ class Entry{
         this.title = title;
         this.description = description;
         this.date = date;
+        this.important = false;
         this.done = false;
     }
 }
 
 class ToDo{
     constructor(){
-        console.log("Todo sees");
+        console.log("Inside the To-Do");
 
         document.querySelector('#add').addEventListener('click', ()=>{this.addEntry()});
         document.querySelector('#save').addEventListener('click', ()=>{this.saveToFile()});
@@ -46,8 +47,19 @@ class ToDo{
             const li = document.createElement('li');
             const removeButton = document.createElement('div');
             removeButton.classList.add('delete-button');
-            const removeIcon = document.createTextNode('Delete To-Do');
+            const removeIcon = document.createTextNode('x');
             li.classList.add('entry');
+
+            const importantButton = document.createElement('div');
+            importantButton.classList.add('important-button');
+            const importantIcon = document.createTextNode('Mark as important');
+
+            importantButton.addEventListener('click', (event)=>{
+                event.target.classList.add('task-important');
+                this.entries[entryIndex].important = true;
+                li.classList.add('task-important');
+                this.saveLocal;
+            });
 
             removeButton.addEventListener('click', ()=>{
                 ul.removeChild(li);
@@ -60,14 +72,26 @@ class ToDo{
                 li.classList.add('task-done');
             }
 
-            li.addEventListener('click', (event)=>{
+            li.addEventListener('dblclick', (event)=>{
                 event.target.classList.add('task-done');
                 this.entries[entryIndex].done = true;
                 this.saveLocal();
             });
 
+            /* if(entryValue.important){
+                li.classList.add('task-important');
+            }
+
+            li.addEventListener('click', (event)=>{
+                event.target.classList.add('task-important');
+                this.entries[entryIndex].important = true;
+                this.saveLocal();
+            }) */
+
             li.innerHTML = `${entryValue.title} <br> ${entryValue.description} <br> ${entryValue.date}`;
             removeButton.appendChild(removeIcon);
+            importantButton.appendChild(importantIcon);
+            li.appendChild(importantButton);
             li.appendChild(removeButton);
             ul.appendChild(li);
         });
@@ -77,7 +101,7 @@ class ToDo{
 
     saveLocal(){
         window.localStorage.setItem('entries', JSON.stringify(this.entries));
-        console.log("save");
+        console.log("Saved to local storage");
     }
 
     saveToFile(){

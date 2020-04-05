@@ -15,13 +15,19 @@
 <body>
     <br>
     <br>
-    <input type="text" id="title"><br>
-    <input type="text" id="description"><br>
-    <input type="date" id="date"><br>
-    <input type="button" id="load" value="Laadi">
-    <input type="button" id="save" value="Salvesta">
-    <input type="button" id="add" value="Lisa"><br>
+    <div id="container">
+        <div id="inputContainer">
+            <input type="text" id="title" placeholder="To-Do's title"><br>
+            <input type="text" id="description" placeholder="To-Do's description"><br>
+            <input type="date" id="date"><br>
+        </div>
+        <div id="buttonContainer">
+            <input type="button" id="load" value="Load">
+            <input type="button" id="save" value="Save">
+            <input type="button" id="add" value="Add">
+        </div><br>
+    </div>
     <input type="text" id="myInput" onkeyup="search()" placeholder="Search the todo list">
-    <div id="todos">Siia lisame todod</div>
+    <div id="todos">To-Do's to be added here</div>
 </body>
 </html>
