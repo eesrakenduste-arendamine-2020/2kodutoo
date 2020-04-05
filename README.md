@@ -17,8 +17,6 @@ Saab järjestada nime järgi ülesandeid - Nina Katarina Weiss
 
 Ülesanded salvestatakse localStorage'isse ja faili/andmebaasi -  Maris Jool, Nina Katarina Weiss
 
-Ülesannete salvestamiseks ja kuvamiseks kasutatakse AJAX-it -  Maris Jool, Nina Katarina Weiss, Liisi Liivik
-
 Kui kasutaja tuleb lehele, siis näidatakse varem salvestatud ülesandeid -  Maris Jool, Nina Katarina Weiss, Liisi Liivik
 
 Rakendus töötab loogiliselt ja kasutaja ei pea mõtlema, et kuidas rakendus töötab -  Maris Jool, Nina Katarina Weiss, Liisi Liivik
