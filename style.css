@@ -1,7 +1,10 @@
-html{
+body{
     margin: 0;
-    background: radial-gradient(80% 40%, #303030, #5a5a5a) no-repeat center center fixed ;
+    background-color: rgb(83, 187, 235);
 }
+/*.hidden{*/
+/*    opacity: 0;*/
+/*}*/
 .task-missed{
     border-color: darkred;
     background-color: indianred;
@@ -20,7 +23,11 @@ html{
     width:100vw;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: row;
     margin: 5px;
+    padding-top: 25px;
+
 }
 
 input{
@@ -32,8 +39,9 @@ input{
 
 #addButton:hover{
     cursor: pointer;
-    border-radius: 3px;
-    box-shadow: 1px 1px 3px 3px rgba(0,0,0,0.5);
+    border-color: black;
+    border-radius: 5px;
+    background-color: rgb(192, 240, 164);
 }
 
 input[type = "buton"]{
@@ -45,14 +53,13 @@ input[type = "buton"]{
     background-color: green ;
     border: 1px solid green;
     color:white;
-}
 
+}
 input[type = "buton"]:hover{
     background-color: darkgreen;
     border-color: darkgreen;
     font-weight: 600;
 }
-
 li{
     display: flex;
     width: 90%;
@@ -62,15 +69,18 @@ li{
     border: 1px solid lightgray;
     border-radius: 10px;
     margin-bottom: 5px;
-    background
-}
+    background-color: white;
 
+
+
+}
 #sorting{
     display:flex;
     justify-content:left;
     align-items: center;
     margin: 1px;
     padding-bottom: 1px;
+    padding-left: 50px;
 }
 
 .done-button{
@@ -103,11 +113,5 @@ li{
     width: 80%;
     display: flex;
     justify-content: space-between;
-
-}
-
-.entry-value:hover{
-    background-color: rgb(53, 53, 134));
-    cursor: pointer;
 
 }
