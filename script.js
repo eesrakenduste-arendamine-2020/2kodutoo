@@ -79,7 +79,10 @@ $(document).ready(function() {
 
     $(document).on('click', '.js-important', function() {
         displayImportantTasks();
+    });
 
+    $(document).on('click', '.js-all', function() {
+       displayAllTasks();
     });
 
 });
@@ -226,5 +229,27 @@ function displayImportantTasks() {
             $(newCopy).addClass('importantColors');
         }
 
+    }
+}
+
+function displayAllTasks() {
+    let currentStorage = JSON.parse(localStorage.getItem('todo'));
+    if ( currentStorage['data'] === undefined || currentStorage['data'].length == 0) {
+        return;
+    }
+
+    removeCurrentViewTasks();
+    for(let i=0; i < currentStorage['data'].length;i++) {
+
+        if (currentStorage['data'][i]['done'] == 0) {
+            let newCopy = $( '.todo-copy' ).clone(true, true).removeClass('todo-copy').hide().prependTo( '.i3__list' ).slideDown("fast");
+            $(newCopy).children('.l2').addClass(currentStorage['data'][i]['colorclass']);
+            $(newCopy).children('.l3').text(currentStorage['data'][i]['name']);
+            $(newCopy).children('.l5').text(currentStorage['data'][i]['category']);
+            if (currentStorage['data'][i]['important'] == 1 ) {
+                $(newCopy).addClass('importantColors');
+            }
+            
+        }
     }
 }
