@@ -47,6 +47,7 @@ class Todo{
             sortValue = document.querySelector('#sortBy').value;
             this.changeSortValue(sortValue);
         });
+        
 
         if(document.querySelector('.todo-list')){
             document.body.removeChild(document.querySelector('.todo-list'));
@@ -69,7 +70,6 @@ class Todo{
             
             div.innerHTML = `<div> ${entryValue.title}</div><div> ${entryValue.description}</div>
             <div>${entryValue.date}</div>`;
-            
 
             removeButton.addEventListener('click', ()=>{
                 ul.removeChild(li);
@@ -102,8 +102,7 @@ class Todo{
         });
 
         document.body.appendChild(ul);
-        $('#todo').hide().fadeIn(5000);
-        
+        $('#entry').hide().fadeIn(2500);
         
     }
     
