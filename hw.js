@@ -41,6 +41,7 @@ class Todo{
             this.changeSortValue(sortValue);
         });
         
+        
 
         if(document.querySelector('.todo-list')){
             document.body.removeChild(document.querySelector('.todo-list'));
