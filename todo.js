@@ -89,6 +89,7 @@ class Todo {
       const removeButton = document.createElement("div");
       removeButton.classList.add("delete-button");
       const removeIcon = document.createTextNode("X");
+      //var del = $("<i class='fas fa-trash-alt'></i>").click(function();
       li.classList.add("entry");
 
       removeButton.addEventListener("click", () => {
@@ -123,5 +124,6 @@ class Todo {
     window.localStorage.setItem("entries", JSON.stringify(this.entries));
     console.log("save");
   }
+
 }
 const todo = new Todo();
