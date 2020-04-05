@@ -2,6 +2,8 @@ function Todo(description, title, dueDate) {
   this.description = description;
   this.title = title;
   this.dueDate = dueDate;
+  this.deleted = null;
+  this.done = "undone";
 }
   
 let todos = new Array();
@@ -62,9 +64,10 @@ function addTodosToPage() {
   for (let i = 0; i < todos.length; i++) {
     let todoItem = todos[i];
     let li = document.createElement("li");
+    let a = document.createElement("a");
     if (todoItem.deleted == null) {
       
-      li.innerHTML = todoItem.title + "  " + todoItem.description + " by " + todoItem.dueDate;
+      a.innerHTML = todoItem.title + "  " + todoItem.description + " by " + todoItem.dueDate;
       const removeButton = document.createElement("div");
       removeButton.className = "delete-button";
       const removeIcon = document.createTextNode("X");
@@ -73,6 +76,28 @@ function addTodosToPage() {
         todoItem.deleted = "yes";
         saveTodoData();
       });
+      const doneButton = document.createElement("div");
+      doneButton.innerHTML = "Mark Done";
+      doneButton.className = "done-button";
+      if (todoItem.done == "undone") {
+        doneButton.innerHTML = "Mark Done";
+        doneButton.addEventListener("click", () => {
+          console.log(todoItem.done);
+          doneButton.innerHTML = "Mark Undone";
+          todoItem.done = "done";
+          saveTodoData();
+        });
+      } else if (todoItem.done == "done") {
+        doneButton.innerHTML = "Mark Undone";
+        doneButton.addEventListener("click", () => {
+          console.log(todoItem.done);
+          doneButton.innerHTML = "Mark Done";
+          todoItem.done = "undone";
+          saveTodoData();
+        });
+      }
+      li.appendChild(a);
+      li.appendChild(doneButton);
       removeButton.appendChild(removeIcon);
       li.appendChild(removeButton);
       ul.appendChild(li);
