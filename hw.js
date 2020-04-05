@@ -47,6 +47,7 @@ class Todo{
             sortValue = document.querySelector('#sortBy').value;
             this.changeSortValue(sortValue);
         });
+        
 
         if(document.querySelector('.todo-list')){
             document.body.removeChild(document.querySelector('.todo-list'));
@@ -54,14 +55,17 @@ class Todo{
         }
         const ul = document.createElement('ul');
         ul.className = "todo-list";
+        ul.id = "todo";
 
         newArray.forEach((entryValue, entryIndex)=>{
             const li = document.createElement('li');
             li.classList.add('entry');
+            li.id = "entry";
             const div = document.createElement('div');
             div.classList.add('entry-value')
             const removeButton = document.createElement('div');
             removeButton.className = "delete-button";
+            removeButton.id = "deleteButton";
             const removeIcon = document.createTextNode('X');
             
             div.innerHTML = `<div> ${entryValue.title}</div><div> ${entryValue.description}</div>
@@ -75,6 +79,7 @@ class Todo{
                 //});
                // $('li.delete-button').click(function(){$('#1').hide(1000)});
                 ul.removeChild(li);
+                //$('#entry').fadeOut(2500);
                 newArray.splice(entryIndex, 1);
                 this.saveLocal();
                 this.render(newArray);
@@ -104,9 +109,7 @@ class Todo{
         });
 
         document.body.appendChild(ul);
-        
-        
-        
+        $('#todo').hide().fadeIn(2500);
         
     }
     
