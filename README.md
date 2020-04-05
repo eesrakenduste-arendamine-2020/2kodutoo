@@ -35,7 +35,7 @@
 - [JQuery AJAX](http://api.jquery.com/jquery.ajax/)
 
 <h2>Autorid</h2>
-Marten Jürgens\
+Marten Jürgens&nbsp;
 
 Aleksandr Rõbakov
 
