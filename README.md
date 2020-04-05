@@ -3,6 +3,15 @@
 
 Autorid: Mihkel Vaher, Raner Rebane, Gevin Paas
 
+Funktsionaalsus: 
+1) On võimalik otsida Ülesannete seast kindlat ülesannet.
+2) Kui ülesande tähtaeg on möödunud ja see on tegemata, siis taustavärv läheb punaseks.
+3) Kasutaja näeb ülesande lisamisel üleval täpset kellaaega koos kuupäevaga.
+4) Kasutajal on võimalik sorteerida ülesandeid nime ja kuupäeva alusel.
+5) Kasutajal on võimalik kustutada ning märkida tehtuks ülesanne.
+6) Kui kasutaja ei ole täitnud kõiki vajalikke lahtreid, ilmub veateade, mis kustub 2sekundi pärast.
+7) Kui lisad uue Todo, siis läheb tööle muusika.
+
 
 ### Tähtpäev 05.04.2020 23:59
 
