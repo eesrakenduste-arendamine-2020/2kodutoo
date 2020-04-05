@@ -1,0 +1,139 @@
+body {
+    background-image: url("virmaline.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat;
+    background-color: lightgray;
+    font-family: 'Mukta', sans-serif;
+    margin: 0
+  }
+  
+#data {
+    font-size: large;
+    font-family: "Pacifico", cursive;
+  }
+
+#editPage {
+    position: relative;
+    bottom: 0; 
+}
+#count {
+    display: flex;
+    font-size: 24px;
+    color: darkblue;
+    transition: 0.3s; 
+    
+    
+}
+.task-completed{
+    border-color: rgb(33, 146, 11);
+}
+
+.task-completed .entry-value{
+    text-decoration: line-through;
+}
+
+#inputContainer{
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    order: 3;
+}
+
+#buttonContainer{
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    order: 2;
+} 
+
+input{
+    width: 25%;
+    margin: 5px;
+    border-radius: 5px;
+    height: 25px;
+}
+
+input[type="button"]{
+    width:15%;
+    border-radius: 10px;
+    height: 37px;
+    padding: 10px;
+    font-size: 17px;
+    background-color: green;
+    border: 1px solid green;
+    color:white;
+    transition: 0.7s;
+}
+input[type="button"]:hover{
+    background-color: darkgreen;
+    border-color: darkgreen;
+
+}
+
+li{
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
+    border: 2px solid gray;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.edit-button{
+    float: right; 
+    color: green;
+    font-size: 1.3em;
+    font-weight:500;
+}
+
+.edit-button:hover{
+    font-weight: 900;
+    color:darkgreen;
+    font-size: 1.4em;
+    cursor: pointer;
+
+}
+.delete-button{
+    color: red;
+    font-size: 1.3em;
+    font-weight:500;
+}
+
+.delete-button:hover{
+    font-weight: 900;
+    color:darkred;
+    font-size: 1.4em;
+    cursor: pointer;
+
+}
+
+.entry-value{
+    
+    cursor:pointer;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.entry-value:hover{
+    background-color: #bbb;
+}
+
+.clear i {
+  order: 1;
+  font-size: 30px;
+  color:black;
+  bottom: 0;
+}
+.clear i:hover {
+  cursor: pointer;
+  text-shadow: 1px 3px 5px #000;
+  transform: rotate(45deg);
+  transition: 0.3s; 
+  
+}

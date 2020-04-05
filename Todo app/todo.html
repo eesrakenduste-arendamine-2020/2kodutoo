@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+    <script defer src="todo.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <title>Todo</title>
+</head>
+<body>
+   
+    <!--Edit-->
+    <div data-role="page" id="editPage">
+    <div data-role="content">
+    <form id="editForm">
+        <h3>Here you can edit: </h3>
+          <label for="editTitle" >Add a new title: </label>
+          <input type="text" id="editTitle" placeholder="Add a title" onfocus="this.value=''">
+          <label for="editDescription" >Add a new description: </label>
+          <input type="text" id="editDescription" placeholder="Add a description" onfocus="this.value=''">
+          <label for="editDate">Add a new date: </label>
+          <input type="date" data-role="date" class="date" id="editDate" data-inline="true">
+    
+          <button id="submitEdit" >EDIT</button>
+        </form>
+      </div>
+      </div>
+     <!--Home / add-->
+
+    <div data-role="page" id="addPage">
+      <div data-role="content">
+        <header data-role="header">
+          <h1 align="center">ToDoApp</h1>
+        </header>
+    <div class="clear">
+        <i class="fa fa-refresh"></i>
+    </div> 
+    <div id="count">Here you will see how many todos you have</div>
+    <form id="addForm">
+    <div id="inputContainer">
+        <input type="text" name="title" id="title" placeholder="Add a title" onfocus="this.value=''"/>>
+        <input type="text" name="description" id="description"  placeholder="Add a description" onfocus="this.value=''"/>>
+        <input type="date" name="date" id="date">
+    </div>
+    <div id="buttonContainer">
+        <input type="button" value="ADD" id="save">
+    </form>
+    <input type="text" id="myInput" onkeyup="search()" placeholder="search a todo">
+            
+    </div>
+    <div id="database">
+       <a href="database.php">See your post history</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
