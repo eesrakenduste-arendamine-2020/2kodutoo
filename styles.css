@@ -130,6 +130,7 @@ body {
 #sort-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 1em;
     box-shadow: var(--shadow);
 }
@@ -145,6 +146,21 @@ body {
 
 .sort-button:focus {
     outline: none;
+}
+
+#search {
+    background: url("magnifier.svg") no-repeat 1em 50%;
+    background-size: 1.5em;
+    box-shadow: inset var(--shadow);
+    border: none;
+    border-radius: 4em;
+    padding: 0.75em 1em;
+    padding-left: 3em;
+    color: var(--gray-tint-1);
+    margin-left: auto;
+    margin-right: 1em;
+    max-width: 12.5em;
+    min-width: 1em;
 }
 
 .flip {
@@ -231,11 +247,13 @@ input {
     white-space: nowrap;
 }
 
-/* Checkbox { */
+/* Checkbox, täielik hack, algusest lõpuni kuna SVG on nii tore */
 
 label {
     grid-area: checkbox;
     place-self: center center;
+    border: 0.1875em solid var(--gray-tint-3);
+    border-radius: 0.25em;
 }
 
 .checkbox {
@@ -244,13 +262,10 @@ label {
     height: 0;
 }
 
-.checkbox+.checkbox-decoy {
-    border: 0.1875em solid var(--gray-tint-3);
-    border-radius: 0.125em;
-}
-
 .checkbox:checked+.checkbox-decoy {
     background: url("checkmark.svg") no-repeat;
+    filter: none;
+    opacity: 1;
 }
 
 .checkbox-decoy {
@@ -258,6 +273,13 @@ label {
     max-width: 3em;
     width: 3em;
     cursor: pointer;
+    background: url("checkmark.svg") no-repeat;
+    filter: brightness(150%);
+    opacity: 0;
+}
+
+.checkbox-decoy:hover {
+    opacity: 1;
 }
 
 /* Todo actions */

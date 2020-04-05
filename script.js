@@ -16,33 +16,18 @@ class Todo {
     }
 }
 
-// Selle õuduse eksisteerimise põhjuseks on see, et on vaja Map-i ja Array-d sünkroonis hoida, Map-is on kiired lookupid ja Array-d saab kiirelt sorteerida
-// See kombinatsioon iseenesest tõenäoliselt väga palju kiirem ei ole tavalisest objektide array-st (kui on üldse)
+// Selle õuduse eksistentsi põhjuseks on see, et on vaja Map-i ja Array-d sünkroonis hoida, Map-is on kiired lookupid ja Array-d saab lihtsalt sorteerida
+// See kombinatsioon iseenesest tõenäoliselt väga palju kiirem ei ole tavalisest objektide array-st (kui on üldse kiirem)
 // Sünkroonis hoidmiseks igakord kui TodoMap-i uuendame siis uuendame kohe ka Array-d automaatselt ilma et seda peaks ise igas koodijupis manuaalselt tegema
 class TodoMap extends Map {
     set(...args) {
         const map = super.set(...args);
         // Seda vist saaks kiiremaks teha...
         todosView = [...this.values()];
-        renderEntries(todosView);
-        return map;
-    }
-
-    // Mõningatel juhtudel kui ma ei taha
-    setNoRender(...args) {
-        const map = super.set(...args);
-        todosView = [...this.values()];
         return map;
     }
 
     delete(...args) {
-        const map = super.delete(...args);
-        todosView.splice(todosView.findIndex(todo => todo.id === args[0]), 1);
-        renderEntries(todosView);
-        return map;
-    }
-
-    deleteNoRender(...args) {
         const map = super.delete(...args);
         todosView.splice(todosView.findIndex(todo => todo.id === args[0]), 1);
         return map;
@@ -65,7 +50,6 @@ const todos = new TodoMap();
 // Saab muuta const-iks kui TodoMap.prototype.set() teha normaalsemaks, mitte uut array-d luua iga kord
 let todosView = [];
 
-// const sortState = new Map([['title', { active: false, reverse: false }], ['dueDate', { active: false, reverse: false }]]);
 const sortState = {
     title: false,
     dueDate: false,
@@ -75,7 +59,8 @@ const sortState = {
 loadEntries();
 
 // Efektiivne viis renderdada todo list
-// Tõenäoliselt saab teha asünkroonseks ilma probleemideta
+// Vist töötab asünkroonselt ilma probleemideta
+// Algselt oli tore mõte teha selline funktsioon, kuni see hakkas kasvama aina rohkem, see on jube aga samas tõenäoliselt kiirem kui jQuery-ga sama asja tegemine
 async function renderEntries(todosArray) {
 
     const todosElement = document.getElementById('todos');
@@ -122,12 +107,13 @@ async function renderEntries(todosArray) {
 
         // Käime kõik todo võtmed läbi ükshaaval
         for (const item in todo) {
-
+            // Kuid mõningaid võtmeid meil pole vaja otseselt kajastada HTML-is
             if (item === 'isChecked') {
                 if (todo[item]) { 
                     todoDiv.classList.add('checked');
                     // Kuna seda HTML ei tee kui iga klikiga laetakse see osa DOM-ist uuesti
                     // aga ma tahan seda sest see teeb CSS-i natuke lihtsamaks
+                    // vb pole enam vajalik kui funktsiooni ei kutsuta esile iga muutusega TodoMap-is
                     inputCheckbox.checked = true;
                 }
                 continue;
@@ -144,7 +130,7 @@ async function renderEntries(todosArray) {
             todoDiv.appendChild(elementDiv);
         }
 
-        // importantButton
+        // importantButton ja tema container
         const importantButtonContainer = document.createElement('div');
         importantButtonContainer.classList.add('important-button-container');
         const importantButton = document.createElement('div');
@@ -153,7 +139,7 @@ async function renderEntries(todosArray) {
         importantButtonContainer.appendChild(importantButton);
         todoDiv.appendChild(importantButtonContainer);
 
-        // removeButton
+        // removeButton ja tema container
         const removeButtonContainer = document.createElement('div');
         removeButtonContainer.classList.add('delete-button-container');
         const removeButton = document.createElement('div');
@@ -175,18 +161,18 @@ async function renderEntries(todosArray) {
 
 function importantButtonHandler(todo, parentElement) {
     todo.isImportant = !todo.isImportant;
-    todos.setNoRender(todo.id, todo);
+    todos.set(todo.id, todo);
     todo.isImportant ? parentElement.classList.add('important-task') : parentElement.classList.remove('important-task');
     saveData('server.php', todos)
         .catch(error => console.error('Salvestamine ebaõnnestus', error));
 }
 
 function removeButtonHandler(id, parentElement) {
-    todos.deleteNoRender(id);
+    todos.delete(id);
     parentElement.classList.add('marked-for-deletion');
 
     // Aeg võiks olla sama palju kui CSS-is kuna ma ei viitsi eventHandleriga seda teha
-    setTimeout(() => parentElement.remove(), 2000);
+    setTimeout(() => parentElement.remove(), 1670);
     
     saveData('server.php', todos)
         .catch(error => console.error('Salvestamine ebaõnnestus', error));
@@ -194,7 +180,7 @@ function removeButtonHandler(id, parentElement) {
 
 function checkboxHandler(todo, parentElement) {
     todo.isChecked = !todo.isChecked;
-    todos.setNoRender(todo.id, todo);
+    todos.set(todo.id, todo);
     todo.isChecked ? parentElement.classList.add('checked') : parentElement.classList.remove('checked');
     saveData('server.php', todos)
         .catch(error => console.error('Salvestamine ebaõnnestus', error));
@@ -216,6 +202,8 @@ function addEntry() {
 
     saveData('server.php', todos)
         .catch(error => console.error('Salvestamine ebaõnnestus', error));
+
+    renderEntries(todosView);
 }
 
 // Sorteerib ülesanded soovitud key järgi, saab ka tagurpidi sorteerida
@@ -265,6 +253,21 @@ function sortButtonHandler() {
     renderEntries(todosView);
 }
 
+// Otsinguriba
+const searchbar = document.getElementById('search');
+
+searchbar.addEventListener('keyup', searchHandler);
+
+function searchHandler() {
+    const query = searchbar.value.toLowerCase();
+
+    const filteredTodosView = todosView.filter(entry => {
+        return entry.title.toLowerCase().includes(query) || entry.description.toLowerCase().includes(query);
+    });
+
+    renderEntries(filteredTodosView);
+}
+
 // Üritame leida database.json-i üles, kui see on olemas siis kirjutame todos Map-i üle
 async function loadEntries() {
     let jsonDatabase = await fetch('database.json')
@@ -276,7 +279,7 @@ async function loadEntries() {
             }
         })
         .catch(error => {
-            console.warn('Tühi või vigane JSON fail', error);
+            console.warn('Tühi või vigane JSON fail ', error);
         });
 
     if (!jsonDatabase) {
@@ -290,6 +293,7 @@ async function loadEntries() {
     for (const [id, todo] of jsonDatabase) {
         todos.set(id, new Todo(todo.title, todo.description, todo.dueDate, todo.isImportant, todo.isChecked, id));
     }
+    renderEntries(todosView);
 }
 
 // Alternatiiv jQuery POST meetodile; asünkroonne, oleks kasutanud Fetch API-t kuid see tegi POST-i asemel GET-i igakord ???
