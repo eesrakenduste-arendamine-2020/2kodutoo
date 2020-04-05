@@ -34,7 +34,15 @@
 - [JQuery POST](https://api.jquery.com/jquery.post/)
 - [JQuery AJAX](http://api.jquery.com/jquery.ajax/)
 
-<h1>Autorid</h2>
+<h2>Autorid</h2>
 Marten Jürgens
 
 Aleksandr Rõbakov
+
+Kenet Paurmann
+
+<h2>Tekkinud Raskused</h2>
+
+Kõige keerukamaks osutus Javascript. Esialgu olime hädas sorteerimise ja otsinguga, sest netis oli neist väga erinevaid variante ning pidime need erinevatest koodijuppidest kokku panema. Hiljem tekkisid probleemid ka ikoonide lisamisega entrysse.
+
+<h2>Funktsionaalsus</h2>
