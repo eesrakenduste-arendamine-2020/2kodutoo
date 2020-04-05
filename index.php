@@ -33,8 +33,8 @@ require('functions.php');
 
         <div class="i2__text">
             <div class="filterButtons">
-                <!-- <p class="filterButtons__button js-all">Kõik</p>
-                <p class="filterButtons__button js-important">Olulised</p> -->
+                <!-- <p class="filterButtons__button js-all">Kõik</p> -->
+                <p class="filterButtons__button js-important">Olulised</p>
             </div>
         </div><!--.i2_text-->
     </div><!--.i2-->

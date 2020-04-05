@@ -73,7 +73,14 @@ $(document).ready(function() {
         $(todoItem).slideUp(600, function() { $(todoItem).remove();});
         markAsDone($(todoItem).children('[name="task_id"]').val());
     });
-fileToLocalStorage();
+
+    fileToLocalStorage();
+
+
+    $(document).on('click', '.js-important', function() {
+        displayImportantTasks();
+
+    });
 
 });
 
@@ -191,4 +198,33 @@ function fileToLocalStorage() {
             localStorage.setItem('todo', JSON.stringify(fileData));
         } 
     }); 
+}
+
+
+function removeCurrentViewTasks() {
+    $( ".todo-item" ).each(function( index ) {
+        if (!$(this).hasClass('todo-copy')) {
+           $(this).remove();
+        }
+    });
+}
+
+function displayImportantTasks() {
+    let currentStorage = JSON.parse(localStorage.getItem('todo'));
+    if ( currentStorage['data'] === undefined || currentStorage['data'].length == 0) {
+        return;
+    }
+
+    removeCurrentViewTasks();
+    for(let i=0; i < currentStorage['data'].length;i++) {
+
+        if (currentStorage['data'][i]['done'] == 0 && currentStorage['data'][i]['important'] == 1) {
+            let newCopy = $( '.todo-copy' ).clone(true, true).removeClass('todo-copy').hide().prependTo( '.i3__list' ).slideDown("fast");
+            $(newCopy).children('.l2').addClass(currentStorage['data'][i]['colorclass']);
+            $(newCopy).children('.l3').text(currentStorage['data'][i]['name']);
+            $(newCopy).children('.l5').text(currentStorage['data'][i]['category']);
+            $(newCopy).addClass('importantColors');
+        }
+
+    }
 }
