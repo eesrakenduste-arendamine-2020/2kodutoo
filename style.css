@@ -3,8 +3,15 @@ body{
     font-family: 'Gotu', sans-serif;
 }
 
+header{
+    font-size: 5em;
+    text-align: center;
+    color: rgb(97, 96, 96);
+    font-family: 'Gotu', sans-serif;
+}
+
 .task-completed{
-    border-color: teal;
+    border-color: whitesmoke;
     
 }
 
@@ -17,7 +24,20 @@ body{
     padding: 0.3%;
     justify-content: center;
     font-family: 'Gotu', sans-serif;
+}
 
+#sortBy{
+    margin: 5px;
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+    border-style: inset;
+    border-width: 2px;
+}
+
+#clickSort{
+    width: 100px;
+    height: 30px;
 }
 
 #inputContainer, #button{
@@ -47,8 +67,8 @@ input[type="button"]{
 }
 
 input[type="button"]:hover{
-    background-color: teal;
-    border-color: teal;
+    background-color: steelblue;
+    border-color: steelblue;
     font-weight: 600;
 }
 
@@ -75,7 +95,7 @@ li:hover{
 
 .delete-button:hover{
     font-size: 1.4em;
-    color: slategrey;
+    color: black;
     cursor: pointer;
 }
 
