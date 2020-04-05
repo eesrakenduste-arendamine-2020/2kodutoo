@@ -1,5 +1,4 @@
-
-2. kodutöö – ToDo rakendus
+<p align="center">2. kodutöö – ToDo rakendus</p>
 
 Sandra Maidla, Anete Vaalu
 
