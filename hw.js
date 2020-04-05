@@ -1,9 +1,10 @@
 class Entry{
-    constructor(title, description, date){
+    constructor(title, description, date, important){
         this.title = title;
         this.description = description;
         this.date = date;
         this.done = false;
+        this.importance = important;
         
         
     }
@@ -27,6 +28,11 @@ class Todo{
         this.entries.push(new Entry(titleValue, descriptionValue, dateValue));
         //$('#addButton').click(function(){$('.entry').fadeIn(2000);});
         
+        const importanceValue = this.checkIfImportant();
+        console.log(importanceValue);
+
+        this.entries.push(new Entry(titleValue, descriptionValue, dateValue, importanceValue));
+       
         console.log(this.entries);
         this.saveLocal();
 
@@ -101,6 +107,19 @@ class Todo{
     saveLocal(){
         window.localStorage.setItem('entries', JSON.stringify(this.entries));
     }
+
+    //document.querySelector('#sort').addEventListener('click', ()=>{this.sortBy();});
+    checkIfImportant(){
+        var checkBox = document.querySelector("#Cbox").checked;
+        console.log(checkBox)
+        var important = "";
+        if(checkBox == true){
+            important = "yes";
+        } else {
+            important = "no";
+        }
+        return important;
+    }
    
     changeSortValue(sortValue){    
         let sortedByDate = sortValue;    
@@ -110,7 +129,9 @@ class Todo{
             this.sortedByName();
         } else if(sortValue == "important"){
             this.sortedByImportance();            
-        } else if(sortValue == "unimportant" || sortValue == "blank"){
+        } else if(sortValue == "unimportant"){
+            this.sortedUnimportant();
+        } else if(sortValue == "blank"){
             this.sortedToBasic();
         }
     }
@@ -153,7 +174,16 @@ class Todo{
 
     }
 
+    sortedUnimportant(){
+
+    }
+
+    sortedToBasic(){
+
+    }
+
 }
+
 
 
 const todo = new Todo();
