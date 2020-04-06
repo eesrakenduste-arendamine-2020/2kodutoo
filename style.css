@@ -22,6 +22,7 @@ body{
   color: white;
   text-align: center;
   font-family: 'Roboto', sans-serif;
+  text-shadow: 2px 2px 4px rgba(22, 76, 167, 0.6);
 }
 
 .task-completed{
@@ -29,6 +30,10 @@ body{
     text-decoration: line-through;
     width: 80%;
     cursor:pointer;
+}
+
+.task-loved{
+  background-color: palevioletred!important;
 }
 
  #inputContainer, #buttonContainer, #sortByContainer{
@@ -56,7 +61,7 @@ input{
     padding: 1%;
     border-radius: 10px;
     color: #164ca7;
-    font: 400 13.3333px Arial;
+    font: 400 20px Arial;
     cursor:pointer;
 }
 
@@ -108,7 +113,7 @@ input[type="button"]:hover{
     background-color: #ffffff;
     border: 1px solid rgba(22, 76, 167, 0.6);
     color: #164ca7;
-    font: 400 13.3333px Arial;
+    font: 400 20px Arial;
     text-align: center;
   }
   #addButton span, #sortByDateButton span, #sortByTitleButton span, #title span, #description span, #date span {
@@ -176,7 +181,7 @@ input#searchInput, select#sort {
     background-color: #ffffff;
     border: 1px solid rgba(22, 76, 167, 0.6);
     color: #164ca7;
-    font: 400 13.3333px Arial;
+    font: 400 20px Arial;
     border: none;
     text-align: center;
   }
