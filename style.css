@@ -1,0 +1,133 @@
+body {
+ background-color: red;
+}
+
+input{
+  max-width: 50vw;
+    min-width: 25px;
+  height: 25px;
+  border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+display:flex;
+  align-items: center;
+  justify-content: space-between;
+  width:97vw;
+    
+}
+
+button{
+  color: white;
+  border-radius: 5px;
+  background-color: #3AB041;
+  padding: 5px;
+    display: inline-block;
+    box-shadow: 0px 10px 20px #3333;
+    transition: box-shadow 0.3s;
+}
+
+button:active{
+  box-shadow: 0px 1px 0px #3333;
+}
+
+button:hover{
+  box-shadow: 0px 15px 45px #B5B1B0;
+}
+
+#addButton{
+text-align: center;
+font-size: 16px;
+margin: auto;
+    color: white;
+min-width: 22vw;    
+    
+}
+
+
+
+
+
+ul{
+  padding:0px;
+  width: 100vw;
+    
+
+}
+
+li{
+margin:auto;
+  border-radius: 5px;
+  list-style-type: none;
+  cursor:pointer
+  font-weight: 900;
+margin-bottom: 30px;
+    background-color: #F8F9F8;
+    box-shadow: 0px;
+    transition: box-shadow 0.3s, border-color 0.3s;
+    border-style: solid;
+    border-width: 1px;
+    border-color: darkgrey;
+}
+
+li:hover{
+    box-shadow: 0px 10px 20px #3333;
+    border-color: none;
+}
+
+.delete-task-button{
+  font-weight: 900;
+  font-size: 4vw;
+  color: red;
+  cursor:pointer;
+}
+
+.delete-task-button:hover{
+  color: darkred;
+}
+
+.task-completed{
+  color: darkred;
+}
+
+.entry{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:20px;
+  max-width:80vw;
+  font-size:18px;
+  cursor: pointer;
+    margin:20px;
+    
+}
+
+br {
+  line-height: 150%;
+}
+
+.navbar-brand{
+  font-size: 12px;
+}
+
+.container1 {
+  padding: 0px;
+    margin: 20px;
+    
+}
+
+
+label {
+  padding-bottom: 5px;
+    padding-top: 20px;
+}
+
+p {
+  color: lightgray;
+    font-size: 16px;
+    font-weight: 300;
+    line-height:20%;
+    font-family: Roboto; 
+}
+
+
+
