@@ -1,6 +1,6 @@
 # 2. kodutöö – ToDo rakendus
 
-### Tähtpäev 05.04.2020 23:59
+### Tähtpäev 12.04.2020 23:59
 
 ## Nõuded
 
