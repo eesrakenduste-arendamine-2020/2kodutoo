@@ -1,0 +1,63 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Todo listid</title>
+    
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="todoKT.js"></script>
+  </head>
+
+  <body>
+    <h1 class="title">ToDo kodutöö</h1>
+
+    <div class="all-tasks">
+      <h2 class="task-list-title">Listid</h2>
+      <form id="searchList">
+        <input type="text" class="search" placeholder="Otsi listi...">
+      </form>
+      <ul id="listidUl" class="task-list" all-lists></ul><!-- seotud listsContaineriga -->
+
+      <form action="" create-new-list-form>
+        <input type="text" class="new list" new-list-input placeholder="Loo uus list" aria-label="Loo uus list"/>
+        <button class="btn create" aria-label="Loo uus list">+</button>
+      </form>
+    </div>
+
+    <div class="todo-list" on-display-list-container>
+      <div class="todo-header">
+        <h2 class="list-title" list-title-container>Tegevus</h2>
+        <p class="task-count" list-count-container>"X" tegevust jäänud</p>
+      </div>
+
+      <div class="todo-body">
+
+        <div class="tasks" all-tasks></div>
+
+        <div class="new-task-creator">
+            <form action="" create-new-task-form>
+                <input type="text" new-task-input class="new task" placeholder="Loo uus ülesanne" aria-label="Loo uus ülesanne"/>
+                <button class="btn create" aria-label="loo uus ülesanne">+</button>
+              </form>
+        </div>
+
+        <div class="delete-list-and-task">
+          <button class="btn delete" clear-complete-tasks-btn>Tühjenda täidetud ülesanded</button>
+          <button class="btn delete" delete-list-btn>Kustuta list</button>
+        </div>
+      </div>
+    </div>
+
+   
+    </div>
+    <template id="task-template"> <!-- võimaldab kloonida seda ja panna ülesannetesse -->
+      <div class="task">
+        <input type="checkbox" />
+        <label>
+          <span class="custom-checkbox"></span>
+        </label>
+      </div>
+    </template>
+  </body>
+</html>
