@@ -186,11 +186,11 @@ li {
 }
 
 #passed {
-  color: red;
+  color: yellow;
 }
 
 #due {
-  color: yellow;
+  color: red;
 }
 
 #normal {
