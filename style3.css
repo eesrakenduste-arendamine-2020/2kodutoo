@@ -1,0 +1,74 @@
+body{
+    font-family: 'Raleway';
+    background-image: radial-gradient(#dadde0,#6c7a82);
+    height: 40vh;
+    
+}
+
+.container{
+    padding: 25px;
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 40px;    
+    border-radius: 5px;
+    }
+
+#time{    
+    letter-spacing: 4.5em;
+
+    
+}
+#taskList i{
+    float: right;
+    margin-left: 20px;
+}
+
+
+#taskInput{
+    width: 100%;
+    bottom: 5px;
+    border-color: #fad859;
+    border-radius: 5px;
+    font-family: 'Raleway';
+    color:#fad859;
+    font-size: 18px;
+    background-color: #6c7a82;
+}
+
+#clear{
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Raleway';
+    color: black;
+    font-size: 12px;
+
+}
+    
+#koostas{
+    position: fixed;
+    bottom: 80px;  
+    right: 5px;
+    font-family: 'Raleway';
+    font-size: 1em;
+    letter-spacing: 0.5em;
+    color: black; 
+    font-size: 1em;
+    letter-spacing: 0.5em;  
+
+
+  }
+
+#git{
+  position: fixed;
+  bottom: 40px;  
+  right: 5px;
+  font-family: 'Raleway';
+  font-size: 1em;
+  letter-spacing: 0.5em;
+  color: black;    
+  font-size: 1em;
+  letter-spacing: 0.5em;  
+
+
+}

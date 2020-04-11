@@ -1,3 +1,37 @@
+http://www.tlu.ee/~tluur/kodune2/index3.html
+
+![](img/To-do.png)
+
+Autorid :
+Taavi Luur (Esimene)
+Taavi Luur (Teine)
+
+Keerukus:
+Kõik tundus keeruline !
+CSS ja HTML kuidagi juba tulevad JSON -iga on vaja harjuda (harjutada).
+Toimiva koodi kokkupanemine miljoni näite najal on väga keeruline.
+Iga yks näitab natuke (kui koodi näiteid vaadata) ning sul on vaja hoopis kolmandat moodi ja siis 99% ajast läheb nuputamiseks kuidas kõik se kokku toimima panna.
+Kui ma sain toimima varjandi et ta tsekib tegemata taskid tehtud täskidesse, siis ei suutnud kuidagi ma seda localstori panna.
+Ja kui ma teist pidi sain ta lockalstori panna siis ei suutnub ma teda liikutama panna tegematta täskidest tehtud täskidesse...
+
+Funktsionaalsus :
+
+Trykid täskid sisse.
+Nummerdab need ära.
+Salvestab (kui tagasi tuled on alles)
+Saab kustutada yks haaval kui isu tuleb.
+Saab kustutada kogu mälu.
+Leht näitab kellaaega :)
+
+terv.
+
+Taavi Luur
+
+------------------------------------------------------
+
+
+
+
 # 2. kodutöö – ToDo rakendus
 
 ### Tähtpäev 12.04.2020 23:59
