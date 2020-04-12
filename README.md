@@ -27,6 +27,8 @@ Võimalus otsida ülesandeid - Maris Jool
 
 Võimalus märkida ülesandeid tähtsaks ning kuvada tähtsad ülesanded eraldi listina - Maris Jool
 
+Võimalus tühjendada kõik filtrid - Maris Jool, Nina Katarina Weiss, Liisi Liivik
+
 Rakendus näeb kena välja -  Maris Jool, Nina Katarina Weiss, Liisi Liivik
 
 Elementide kuvamisel/eemaldamisel on kasutatud jQuery animatsioone -  Maris Jool, Nina Katarina Weiss, Liisi Liivik
