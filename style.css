@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  background-image: url('https://thumbs.dreamstime.com/z/notes-to-do-list-christmas-composition-background-wallpaper-pine-cones-decoration-balls-white-flat-lay-top-vie-view-stylish-104455951.jpg');
+  background-size: cover;
+}
+
+.task-done {
+  background-color: lightgreen;
+
+}
+.entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 1%;
+  border: 1px solid lightgreen;
+  border-radius: 10px;
+}
+
+#inputContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 18px;
+  
+}
+
+#buttonContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+
+  margin-top: 40px;
+}
+
+.button {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
