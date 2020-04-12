@@ -1,9 +1,6 @@
-console.log('Fail õigesti ühendatud.');
-
 let changeColorButton;
 let changeFontButton, fontChanged;
 
-/*jshint esversion:6*/
 
 class Entry{
   constructor(title, description, date){
@@ -189,8 +186,6 @@ function changeBackgroundColor() {
 function changeColor(colorValue) {
   document.body.style.backgroundColor = colorValue;
 }
-
-/*   FONDI JA SUURUSE MUUTMINE */ 
 
 function changeFont() {
   console.log('test');
