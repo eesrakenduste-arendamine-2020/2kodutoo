@@ -2,6 +2,8 @@
 
 ## Koostasid: Maris Jool, Nina Katarina Weiss, Liisi Liivik
 
+## Link meie lehele: http://www.tlu.ee/~marisjo/Tund04/todo.html
+
 
 Töö koostamisel jagunesid ülesanded järgnevalt:
 
