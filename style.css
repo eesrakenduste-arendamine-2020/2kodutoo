@@ -1,0 +1,175 @@
+input{
+  width:150px; 
+  max-width: 50vw;
+  min-width: 10px;
+  height: 10px;
+  border: none;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;   
+}
+ 
+button{
+  color: white;
+  border: none;
+  background-color: rgb(165, 20, 223);
+  padding: 3px;
+  display: inline-block;
+  box-shadow: 0px 10px 15px #3333;
+  transition: box-shadow 0.5s;
+}
+ 
+button:active{
+  box-shadow: 0px 1px 0px #3333;
+}
+ 
+button:hover{
+  box-shadow: 0px 10px 30px rgb(23, 233, 238);
+}
+ 
+#addButton{
+  text-align: center;
+  font-size: 16px;
+  margin: auto;
+  color: white;
+  min-width: 22vw;    
+}
+ 
+#sortWithNames{
+  text-align: center;
+  font-size: 12px;
+  margin: auto;
+  color: white;
+  min-width: 12vw;  
+}
+
+
+
+#change-color{
+  text-align: center;
+  font-size: 12px;
+  margin: auto;
+  color: white;
+  min-width: 12vw; 
+  align-self: 25vw;
+}
+
+#change-font{
+  text-align: center;
+  font-size: 12px;
+  margin: auto;
+  color: white;
+  min-width: 12vw; 
+}
+
+#change-size{
+  text-align: center;
+  font-size: 12px;
+  margin: auto;
+  color: white;
+  min-width: 12vw; 
+}
+
+#repo{
+  text-align: center;
+  font-size: 12px;
+  margin: auto;
+  color: white;
+  min-width: 12vw; 
+}
+ 
+ul{
+  padding:0px;
+  width: 75vw;
+}
+ 
+li{
+  margin:auto;
+  list-style-type: none;
+  cursor:pointer;
+  font-weight: 900;
+  margin-bottom: 30px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px;
+  transition: box-shadow 0.1s, border-color 0.1s;
+}
+ 
+li:hover{
+  box-shadow: 0px 10px 20px cyan;
+  border-color: none;
+}
+ 
+.delete-task-button{
+  font-weight: 900;
+  font-size: 4vw;
+  color: red;
+  cursor:pointer;
+}
+ 
+.delete-task-button:hover{
+  color: darkred;
+}
+ 
+.task-completed{
+  color: darkred;
+}
+ 
+.entry{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:20px;
+  max-width:80vw;
+  font-size:18px;
+  cursor: pointer;
+  margin:20px;
+}
+ 
+br {
+  line-height: 150%;
+}
+
+.container1{
+  padding: 0px;
+  margin: 20px;
+  color: darkorange;
+  font-style: italic;
+}
+
+p{
+  color: darkorange;
+  font-size: 16px;
+  font-weight: 300;
+  line-height:20%;
+  font-family: Roboto; 
+}
+
+#wrapper{
+  align-items: center;
+  width:50vw;
+  height: fit-content;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#player{
+  background-color: whitesmoke;
+  border: 5px;
+  border-color: black;
+  width:400px;
+  height: 65px;
+  align-items: left;
+  padding:5px;
+}
+
+input[type="image"]{
+  float:left;
+  width: 30px;
+  height: 30px;
+}
+
+input[type="range"]{
+  width: 100px;
+  padding-left: 10px;
+}
