@@ -1,0 +1,107 @@
+body{
+  margin:0;
+  padding:0;
+  font-size: 18px;
+  background:rgb(161, 223, 185);
+}
+@media screen and (max-width:1280){
+#ulemine, body{
+  font-size: 3em;
+}
+ }
+#ulemine{
+  padding: 5px 15px;
+  flex-direction: column;
+  align-content: center;
+}
+ul{
+    list-style: none;
+
+}
+.kollane {
+    background-color: hotpink;
+}
+
+.punane{
+    background-color:rgb(75, 156, 50);
+
+}
+.sinine{
+    background-color: rgb(166, 166, 231);
+}
+
+.tooltip {
+    position: relative;
+    /*display: inline-block;*/
+    border-bottom: 1px dotted black;
+  }
+.kirje_id{
+
+  visibility: hidden;
+} 
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+  }
+  
+  .tooltip .tooltiptext::after {
+    
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+
+#tehtud, #kustuta{
+    text-align: center;
+    flex-direction: column;
+    flex-basis:auto;
+    flex: 1;
+}
+#tiitel, #sisu {
+    text-align: left;
+   
+}
+
+#tabel_rida {
+
+    text-align: center;
+    width: 100%;
+    background-color:rgb(126, 140, 187) ;
+  }
+#tabel_todo{
+    width: 100%;
+}
+#sisu{
+  width: 50vw;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+#tiitel{
+
+  width: 30vw;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
