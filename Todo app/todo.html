@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
     <script defer src="todo.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script
@@ -21,7 +21,6 @@
 </head>
 <body>
    
-    <!--Edit-->
     <div data-role="page" id="editPage">
     <div data-role="content">
     <form id="editForm">
@@ -37,7 +36,6 @@
         </form>
       </div>
       </div>
-     <!--Home / add-->
 
     <div data-role="page" id="addPage">
       <div data-role="content">
@@ -57,7 +55,8 @@
     <div id="buttonContainer">
         <input type="button" value="ADD" id="save">
     </form>
-    <input type="text" id="myInput" onkeyup="search()" placeholder="search a todo">
+
+    <input type="text" id="searchInput" placeholder="Otsi ülesannet..." title="Sisesta otsitav ülesanne">
             
     </div>
     <div id="database">

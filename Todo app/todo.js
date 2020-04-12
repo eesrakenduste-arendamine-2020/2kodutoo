@@ -10,7 +10,6 @@ class Entry {
     this.done = false;
   }
 }
-
 let count = 0;
 let countContainer = document.querySelector("#count");
 
@@ -23,6 +22,8 @@ clear.addEventListener("click", function() {
   description.value = "";
 });
 
+var searchButton = document.querySelector('#searchInput');
+
 class Todo {
   constructor() {
     //$('#entries').on('click', '#editLink', setCurrent)
@@ -30,6 +31,7 @@ class Todo {
     //$("#submitEdit").on("click", setCurrent);
     this.entries = JSON.parse(window.localStorage.getItem("entries")) || [];
     document.querySelector("#save").addEventListener("click", () => {
+      searchButton.addEventListener('keyup', ()=>{this.search()});
       this.addEntry();
       this.saveToFile();
     });
@@ -43,14 +45,32 @@ class Todo {
   }
 
   saveToFile() {
-    $.post("server.php", { save: this.entries })
-      .done(function() {
+    $.post("server.php", { save: this.entries }).done(function() {
+      console.log('done');
         //alert("Success");
-      })
-      .fail(function() {
-        alert("FAIL");
+      }).fail(function(){
+      console.log('fail')
+      }).always(function(){
+      console.log('always');
       });
   }
+
+  search(){
+    var firstChars, ul, li, a, i, txtValue;
+    firstChars = searchButton.value.toLowerCase();
+    ul = document.getElementsByClassName("todo-list");
+    console.log(ul[0]);
+    li = ul[0].getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("div")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toLowerCase().indexOf(firstChars) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+          }
+      }
+   }
 
   addEntry() {
     const title = $("#title").val();
@@ -241,26 +261,6 @@ class Todo {
       return new Date(b.date) - new Date(a.date);
     });
   }
-
-  search(){
-    let input = $('#myInput').val();
-    console.log(input);
-    input = input.toLowerCase();
-    let ul = document.getElementsByClassName('this.entries');
-    let li = $(ul).find("li");
-    console.log(ul.length);
-    for(let i = 0; i < ul.length; i++){
-        for(let j = 0; j < li.length; j++){
-        if(!li[j].innerHTML.toLowerCase().includes(input)){
-            li[j].style.display ="none";
-        }else{
-            li[j].style.display ="";
-        }
-    }
-        //siia vaja midagi
-    }
-    }
 }
-
 
 const todo = new Todo();
