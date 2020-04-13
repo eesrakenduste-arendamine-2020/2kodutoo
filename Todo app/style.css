@@ -96,6 +96,7 @@ li{
     color:darkgreen;
     font-size: 1.4em;
     cursor: pointer;
+    transition: 0.7s;
 
 }
 .delete-button{
@@ -109,6 +110,7 @@ li{
     color:darkred;
     font-size: 1.4em;
     cursor: pointer;
+    transition: 0.7s;
 
 }
 

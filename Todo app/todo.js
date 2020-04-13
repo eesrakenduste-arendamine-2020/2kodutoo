@@ -62,7 +62,7 @@ class Todo {
     console.log(ul[0]);
     li = ul[0].getElementsByTagName("li");
     for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("div")[0];
+        a = li[i].getElementsByTagName("div")[1];
         txtValue = a.textContent || a.innerText;
         if (txtValue.toLowerCase().indexOf(firstChars) > -1) {
             li[i].style.display = "";
