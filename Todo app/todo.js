@@ -30,8 +30,8 @@ class Todo {
     //$("#submitEdit").on("click", editTask);
     //$("#submitEdit").on("click", setCurrent);
     this.entries = JSON.parse(window.localStorage.getItem("entries")) || [];
+    searchButton.addEventListener('keyup', ()=>{this.search()});
     document.querySelector("#save").addEventListener("click", () => {
-      searchButton.addEventListener('keyup', ()=>{this.search()});
       this.addEntry();
       this.saveToFile();
     });
