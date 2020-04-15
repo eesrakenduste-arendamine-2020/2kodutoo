@@ -12,8 +12,9 @@
   $notice = "";
   $tehtud="";
   $kustutatudon="1";
-  
-  if(isset($_POST["lisaTodo"])){
+  global $showalltodos;
+  $showalltodos="";
+    if(isset($_POST["lisaTodo"])){
     if(strlen($_POST["tiitel"]) == 0){
       $error .= "Pealkiri on puudu!";
     }
@@ -53,22 +54,9 @@
         }
       }
   }
-  if(isset($_POST["allTODOs"])){   
-      echo $kustutatud;              
-        $result = allTODOs($kustutatud);
-  }
-  
+  $latestTodosHTML  = latestTodos(isset($_POST["allTodos"]));
 
-
-
-
-  $latestTodosHTML = allTodos();
-  
-
-
- 
-
-?>  
+  ?>  
 <div id="ulemine">
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 <div>
@@ -89,13 +77,12 @@
 <div>
 <br>
   <label>Kategooria: </label>
-  
-
-<?php
+  <?php
   echo '<select name="kategooria">' ."\n";
   for ($i = 0; $i < 4; $i ++){
+    
     echo '<option value="' .$i .'"';
-    if ($i == $kategooria){
+    if ($i == "2"){
       echo " selected ";
     }
     echo ">" .$kategooria[$i] ."</option> \n";
@@ -112,16 +99,11 @@
 </div>
 <hr>
 <h2>Senised ülesanded</h2>
-
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 <?php
   echo $lehe_tabel;
-  echo $latestTodosHTML;
-  
+  echo $latestTodosHTML;  
 ?>
-</tbody>
-
-</table>
 </body>
 </html>
 
