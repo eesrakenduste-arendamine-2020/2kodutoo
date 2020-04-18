@@ -101,6 +101,7 @@ table{
     text-align: center;
     width: 100%;
     background-color:rgb(126, 140, 187) ;
+    cursor: pointer;
   }
 #tabel_todo{
     width: 100%;
