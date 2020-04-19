@@ -45,3 +45,24 @@
 * [Collaboration on github](https://github.com/eesrakenduste-arendamine-2019/2kodutoo/settings/collaboration)
 * [JQuery POST](https://api.jquery.com/jquery.post/)
 * [JQuery AJAX](http://api.jquery.com/jquery.ajax/)
+
+
+
+Autorite nimed: Raimo Pindus & Rainer Halanurm
+Keerukuste tekkused:
+*Tahtsime algul taustapilti panna Dark mode jaoks, aga see ei tulnud välja seega otsustasime lihtsalt jätta musta tausta.
+*Ei saanud Javascriptis entry value hoverit muuta, et dark ja light mode-s oleks erinev hover ülesannete peal. 
+*Kui vajutati ülesande peale, siis ei saanud seda enam halliks tagasi muuta juhul kui ei tahtnud panna seda tehtuks või failiks. Lõpuks jäi ikka
+kas ülesanne on tehtud või tegemata.
+
+Funktsionaalsuste kirjeldus:
+*Saab lisada ja kustutada
+*Saab märkida ülesandeid tehtuks ja ebaõnnestunuks
+*Saab sorteerida kuupäeva ja nime järgi ülesandeid
+*Ülesanded salvestatakse localStorage'isse
+*Kasutaja lehele sisenedes näidatakse varem salvestatud ülesandeid
+*Rakendus töötab loogiliselt ning iga tabeli jaoks on kirjeldus, mis täpsemalt kuhu peaks minema.
+*Dark ja light theme
+*Saab muusika käima panna
+*Rakendus näeb kena välja
+ 
