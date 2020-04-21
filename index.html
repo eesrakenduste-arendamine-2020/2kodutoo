@@ -7,16 +7,62 @@
         src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
-    <script defer src="index.js"></script>
+    <script defer src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&display=swap" rel="stylesheet">
     <title>TO-DO</title>
 </head>
 <body>
-    <input type="text" id="description">
-    <input type="date" id="date">
-    <input type="button" id="load" value="Laadi"> 
-    <!--<input type="button" id="save" value="Salvesta">-->
-    <input type="button" id="add" value="Lisa">
-    <div id="todos">Siia lisame todod</div>
+    <h1>Todo-List</h1>
+    <div id="container">
+        <div style="float:left;">
+            <label for="description">Kirjeldus:</label>
+            <input type="text" id="description">
+        </div>
+        <div style="float:left;">
+            <label for="date">Tähtaeg:</label>
+            <input type="date" id="date">
+        </div>
+        <div style="float:left;">
+            <label for="level">Raskusaste:</label>
+            <select name="level" id="level">
+                <optgroup>
+                    <option disabled selected value="">Vali tähtsusaste:</option>
+                    <option selected value="low">Madal</option>
+                    <option selected value="medium">Keskmine</option>
+                    <option selected value="high">Kõrge</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+    <div id="addDiv">
+        <input type="button" id="add" value="Lisa">
+    </div>
+    <div id="onright">
+   <label for="sort">Sorteeri:</label>
+        <select id="sort" >
+            <optgroup class="test">
+                <option value disabled selected>Vali</option>
+                <option value="alphabet">A-Z</option>
+                <option value="alphabet2">Z-A</option>
+                <option value="dateUp">Varasemad enne</option>
+                <option value="dateDown">Hilisemad enne</option>
+            </optgroup>
+        </select>
+        <label for="filter">Näita lehel:</label>
+        <select id="filter">
+            <optgroup>
+                <option value="all" selected>Kõik ülesanded</option>
+                <option value="uncompleted">Tegemata ülesanded</option>
+                <option value="completed">Tehtud ülesanded</option>
+            </optgroup>
+        </select>
+    </div>
+    <p id="counter"></p>
+    <div id="legend">
+        <p id="leg1">Kõrge tähtsusaste</p>
+        <p id="leg2">Keskmine tähtsusaste</p>
+        <p id="leg3">Madal tähtsusaste</p>
+    </div>
 </body>
 </html>
