@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>  
+</head>
+<body>
+<div class="container1"> 
+    <h1>Ülesande lisamine</h1>
+      <div>
+        <h2>Pealkiri</h2>
+      </div>
+    <div>
+      <input type="text" id="title" placeholder="Sisesta pealkiri">
+    </div>
+      <div>
+        <h2>Sisu</h2>
+      </div>
+    <div>
+      <input type="text" id="description" placeholder="Kirjelda sisu">
+    </div>
+      <div>
+        <h2>Kuupäev</h2>
+      </div>
+    <div>
+      <input type="date" id="date">
+    </div>
+    <br>
+
+    <button id="addButton">LISA</button>
+    <br>
+    <h2>Muusikamängija</h2>
+    <br>
+    <div id="wrapper">
+      <div id='player'>
+        <audio id="music_player">
+            <source src="music/anne_vessu.mp3"/>
+        </audio>
+        <input type="image" src="pics/play.png" onclick="play_aud()" id="play_button">
+        <input type="image" src="pics/pause.png" onclick="pause_aud()" id="pause_button">
+        <input type="range" id="change_vol" onchange="change_vol()" step="0.05" min="0" max="1" value="1">
+      </div>
+    </div>
+
+    <div>
+      <h2>Sorteeri:</h2>
+    </div>
+
+    <button id="sortWithNames" onclick="sortWithNames()">Nime järgi</button>
+    <br>
+    <br>
+    <input type="text" id="myInput" placeholder="Otsi nime järgi..." onkeyup="search ()">
+    <br>
+    <div>
+      <h2>Vali kujundus:</h2>
+    </div>
+
+    <button id="change-color">Vaheta taustavärvi</button>
+    <button id="change-font">Muuda teksti suurust</button>
+    <button id="change-size">Muuda fondi stiili</button>
+    <button id="repo" onclick="location.href='https://github.com/rein-ra/2kodutoo'" type="button">Repositoorium</button>
+    <br>
+      
+    <div>
+    <hr>    
+      <div>
+        <h2>Ülesannete nimekiri</h2>
+        <p>Vajuta kastile, et märkida ToDo tehtuks</p> 
+      </div>
+    </div> 
+  <script src="script.js"></script> 
+</div>
+</body>
+</html>
