@@ -1,3 +1,23 @@
+
+### Autorid
+* Karl-Markus Pihlakas
+* Daniel Gurevitš
+
+## Keerukused
+* Põhiline keerukus oli selles, et kuidas kokku viia tunnis tehtud materjal koos veebis olevate materjalidega. Kuna kõiki võimalikke võimalusi on küllaltki palju, siis tekitas see natukene segadust. Aga mõne aja pärast praktiliselt välja töötades ning katsetades tulime õigele teele. Ainuke asi, mis segadust tekitas oli funktsioonide osa. Mõne uuema osa lisamine tekitas vahest pugisi, mis sai ka parandatud.
+
+## Funktsionaalsused
+* Saab lisada ja kustutada
+* Saab märkida ülesandeid tehtuks
+* Saab järjestada kuupäeva ja nime järgi ülesandeid
+* Ülesanded salvestatakse localStorage'isse ja faili/andmebaasi
+* Ülesannete salvestamiseks ja kuvamiseks kasutatakse AJAX-it
+* Kui kasutaja tuleb lehele, siis näidatakse varem salvestatud ülesandeid
+* Rakendus töötab loogiliselt
+* Võimalus otsida ülesandeid
+* On olemas reaalaja kell
+
+
 # 2. kodutöö – ToDo rakendus
 
 ### Tähtpäev 12.04.2020 23:59
@@ -45,3 +65,4 @@
 * [Collaboration on github](https://github.com/eesrakenduste-arendamine-2019/2kodutoo/settings/collaboration)
 * [JQuery POST](https://api.jquery.com/jquery.post/)
 * [JQuery AJAX](http://api.jquery.com/jquery.ajax/)
+>>>>>>> ec31ae9357e045d9bd8d491d15090a44ed8e642b
