@@ -1,0 +1,59 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <meta name="theme-color" content="#fafafa">
+  <title>Todo List</title>
+  <script type="module">
+    import { openDB, deleteDB } from 'https://unpkg.com/idb?module'
+  </script>
+  <script src ="js/indexdb.js"></script>
+  <script src="js/vendor/jquery-3.4.1.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+</head>
+<body>
+<form class="form" name="Task input" id="task-form">
+  <fieldset id="task-fieldset">
+    <legend>Create a ToDo</legend>
+      <label>When?
+      <br>
+      <input type="date" id="inDate" name="inDate" max="2025-01-01" required value="2020-01-01">
+      </label>
+      <br>
+      <br>
+      <label> What?
+      <br>
+      <input type="text" id="inName" name="inName" placeholder="Enter task here" required>
+      </label>
+      <br>
+      <br>
+      <input type="checkbox" id="isImportant" name="isImportant" value=true >
+      <label for="isImportant"> Tick the box if the task is high priority
+      </label>
+      <br>
+      <div style="text-align:center; ;">
+        <button id="saveToDb" onclick="" >Save to db</button>
+        <button id="add-task" onclick="checkForm($('#inDate').val().toString(), $('#inName').val().toString())" >Add task</button>
+      </div>
+  </fieldset>
+</form>
+<script>
+  $(document).ready(function () {
+   {
+     $("#filter-done").click(function () {
+       $(".Done").toggle()
+     })
+  }})
+</script>
+<div style="text-align:center;">
+  <button id="filter-done">Filter out 'done' tasks</button>
+  <button id="sort-date" onclick="toggleSortByDate()">Sort via date</button>
+  <button id="sort-name" onclick="toggleSortByName()">Sort via name</button>
+  <button id="sort-reset" onclick="printList()">Reset</button>
+</div>
+<br>
+<div id="result"></div>
+</body>
