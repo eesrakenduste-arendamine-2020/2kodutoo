@@ -1,6 +1,5 @@
-# 2. kodutöö – ToDo rakendus
 
-Autor: Urmas Kirsipuu
+Autor Urmas Kirsipuu 
 
 Funktsionaalus.
 
