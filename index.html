@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous">
+</script>
+
+</head>
+<body>
+
+<div class="containerMain"> 
+  <h1>Meeldetuletuste rakendus</h1>
+  <p>Antud rakendus on mõeldud ülesannete nimekirja koostamiseks ja täitmiseks!</p>
+  <br>
+
+  <div>
+    <label>Pealkiri</label>
+  </div>
+    <div>
+      <input type="text" id="title" placeholder="Sisesta pealkiri">
+    </div>
+
+    <div>
+    <div>
+      <label>Kirjeldus</label>
+   </div>
+      <input type="text" id="description" placeholder="Kirjelda sisu">
+    </div>
+    
+    <label>Tähtaeg</label>
+    <div>
+      <input type="date" id="date">
+    </div>
+  
+
+    <div>
+      <button id="addButton">LISA</button>
+    </div>
+    <br>
+
+    <div>
+      <label>Sorteeri:</label>
+    </div>
+
+    <br>
+    <button id="sortWithNames" onclick="sortWithNames()">Nime järgi</button>
+    <button id="sortWithDate" onclick="sortWithDate()">Kuupäeva järgi</button>
+    <br>
+
+    <input type="text" id="myInput" placeholder="Otsi Pealkirja järgi..." onkeyup="search ()">
+    <br>
+
+    <div>
+      <label>Isikupärasta:</label>
+    </div>
+    <br>
+
+    <button id="change-color">Vaheta taustavärvi</button>
+    <button id="change-font">Muuda teksti suurust</button>
+    <button id="change-size">Muuda fonti</button>
+    <br>
+    
+        
+    <div>
+    <hr>    
+    <div>
+      <h3>Meeldetuletuste nimekiri</h3>
+      <p>Vajuta kastile, et märkida antud ülesanne tehtuks!</p>
+      <p>Vajuta ristile, et kustutada ülesanne!</p> 
+        
+        
+    </div>
+    </div>
+      
+    <script src="script.js"></script> 
+</div>
+    
+ 
+</body>
+</html>

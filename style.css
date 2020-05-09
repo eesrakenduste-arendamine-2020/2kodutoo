@@ -1,0 +1,149 @@
+
+ input{
+   max-width: 40vw;
+     min-width: 25px;
+   height: 0px;
+   border-radius: 5px;
+     padding: 20px;
+     margin: 20px;
+ display:flex;
+   align-items: center;
+   justify-content: space-between;
+   width:97vw;
+     
+ }
+ 
+ button{
+   color: white;
+   border-radius: 5px;
+   background-color: rgb(82, 11, 163);
+   padding: 3px;
+     display: inline-block;
+     box-shadow: 0px 10px 15px #3333;
+     transition: box-shadow 0.5s;
+ }
+ 
+ button:active{
+   box-shadow: 0px 1px 0px #3333;
+ }
+ 
+ button:hover{
+   box-shadow: 0px 10px 30px rgb(41, 41, 41);
+ }
+ 
+ #addButton{
+ text-align: center;
+ font-size: 16px;
+ margin: auto;
+     color: white;
+ min-width: 22vw;    
+     
+ }
+ 
+ #sortWithNames{
+  text-align: center;
+  font-size: 12px;
+  margin: auto;
+      color: white;
+  min-width: 12vw;  
+ }
+
+ #sortWithDate{
+  text-align: center;
+  font-size: 12px;
+  margin: auto;
+      color: white;
+  min-width: 12vw;  
+ }
+
+ #change-color{
+  text-align: center;
+  font-size: 12px;
+  margin: auto;
+      color: white;
+  min-width: 12vw; 
+ }
+
+ #change-font{
+  text-align: center;
+  font-size: 12px;
+  margin: auto;
+      color: white;
+  min-width: 12vw; 
+ }
+
+ #change-size{
+  text-align: center;
+  font-size: 12px;
+  margin: auto;
+      color: white;
+  min-width: 12vw; 
+ }
+
+ 
+ 
+ ul{
+   padding:0px;
+   width: 75vw;
+     
+ }
+ 
+ li{
+ margin:auto;
+   border-radius: 5px;
+   list-style-type: none;
+   cursor:pointer;
+   font-weight: 900;
+ margin-bottom: 30px;
+     background-color: #F8F9F8;
+     box-shadow: 0px;
+     transition: box-shadow 0.3s, border-color 0.3s;
+     border-style: solid;
+     border-width: 1px;
+     border-color: darkgrey;
+ }
+ 
+ li:hover{
+     box-shadow: 0px 10px 20px #3333;
+     border-color: none;
+ }
+ 
+ .entry{
+   display:flex;
+   align-items: center;
+   justify-content: space-between;
+   padding:20px;
+   max-width:80vw;
+   font-size:18px;
+   cursor: pointer;
+     margin:20px;
+     
+ }
+ 
+ br {
+   line-height: 150%;
+ }
+ 
+ .containerMain {
+   padding: 0px;
+     margin: 20px;
+     
+ }
+ 
+ 
+ label {
+   font-size: x-large;
+   padding-bottom: 5px;
+     padding-top: 20px;
+ }
+ 
+ p {
+   color: black;
+     font-size: 16px;
+     font-weight: 300;
+     line-height:20%;
+     font-family: Roboto; 
+ }
+ 
+
+

@@ -1,5 +1,7 @@
 # 2. kodutöö – ToDo rakendus
 
+Töö koostasid Taavi Vestel ja Raimond Laatspera. Taavi tegeles peamiselt cssiga, Raimond tegeles html-iga ning koos tegelesime rohkem javascriptiga. Peamine probleem sellel lehel on hetkel see, et kuupäeva sorteerimine refreshib lehekülge ning muudab tausta värvi. Selle ToDo rakendusega saab lisada ning eemaldada ToDosid, samas ka märkida neid tehtuks. Võimalik on sorteerida nime ja kuupäeva alusel ning vajadusel saab ka ToDodest otsida pealkirja järgi. Samas saab ka lehekülge natukene isikupärastada.
+
 ### Tähtpäev 12.04.2020 23:59
 
 ## Nõuded
